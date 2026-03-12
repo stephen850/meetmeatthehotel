@@ -1,1 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Universe — Meet Me at the Hotel · ADE 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--teal:#4DA8A0;--deep:#2E7A74;--pool:#7DCDC7;--blk:#0A0A0A;--blkm:#111;--blkc:#161616;--blkb:#222;--wh:#F5F5F0;--wd:rgba(245,245,240,0.6);--fd:'Bebas Neue',sans-serif;--fc:'Barlow Condensed',sans-serif;--fb:'Barlow',sans-serif;--nav:72px;--subnav:52px;--tr:0.35s cubic-bezier(.4,0,.2,1)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--blk);color:var(--wh);font-family:var(--fb);overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.c{max-width:1280px;margin:0 auto;padding:0 80px}
+@media(max-width:1024px){.c{padding:0 40px}}
+@media(max-width:640px){.c{padding:0 20px}}
+h1,h2,h3,h4{font-family:var(--fd);line-height:.93;text-transform:uppercase;letter-spacing:-.01em}
+h1{font-size:clamp(64px,10vw,140px)}
+h2{font-size:clamp(40px,6vw,84px)}
+h3{font-size:clamp(22px,3vw,40px)}
+.lbl{font-family:var(--fc);font-size:11px;font-weight:600;letter-spacing:.28em;color:var(--teal);text-transform:uppercase;display:block;margin-bottom:16px}
+.btn{display:inline-block;font-family:var(--fc);font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:15px 36px;transition:all var(--tr);cursor:pointer;border:none}
+.bp{background:var(--teal);color:var(--blk)}.bp:hover{background:var(--deep);color:var(--wh)}
+.bo{border:1px solid var(--teal);color:var(--teal);background:transparent}.bo:hover{background:var(--teal);color:var(--blk)}
 
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;height:var(--nav);display:flex;align-items:center;justify-content:space-between;padding:0 40px;z-index:1000;background:rgba(10,10,10,.95);border-bottom:1px solid var(--blkb);backdrop-filter:blur(16px)}
+.nl{display:flex;align-items:center;gap:28px}
+.nl a{font-family:var(--fc);font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--wd);transition:color var(--tr)}.nl a:hover{color:var(--wh)}
+.nc{background:var(--teal);color:var(--blk)!important;padding:10px 20px}.nc:hover{background:var(--deep)!important;color:var(--wh)!important}
+.hb{display:none;flex-direction:column;gap:5px;cursor:pointer}
+.hb span{display:block;width:22px;height:1.5px;background:var(--wh)}
+@media(max-width:900px){
+  .hb{display:flex}
+  .nl{position:fixed;top:var(--nav);left:0;right:0;bottom:0;background:var(--blk);flex-direction:column;align-items:flex-start;padding:40px;gap:20px;transform:translateX(100%);transition:transform var(--tr)}
+  .nl.open{transform:none}
+  .nl a{font-size:20px}
+}
+
+/* STICKY SUB-NAV */
+.subnav{position:sticky;top:var(--nav);z-index:900;background:rgba(10,10,10,.97);border-bottom:1px solid var(--blkb);backdrop-filter:blur(16px);overflow-x:auto;scrollbar-width:none}
+.subnav::-webkit-scrollbar{display:none}
+.subnav-inner{display:flex;width:max-content;min-width:100%}
+.subnav-item{font-family:var(--fc);font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;padding:0 28px;height:var(--subnav);display:flex;align-items:center;color:var(--wd);border-right:1px solid var(--blkb);transition:all var(--tr);white-space:nowrap;cursor:pointer}
+.subnav-item:hover{color:var(--wh);background:rgba(255,255,255,.03)}
+.subnav-item.active{color:var(--sb-c,var(--teal));border-bottom:2px solid var(--sb-c,var(--teal))}
+
+/* HERO */
+.ph{padding-top:calc(var(--nav) + var(--subnav) + 80px);padding-bottom:80px;position:relative;overflow:hidden;background:#0a1412;border-bottom:1px solid var(--blkb)}
+.ph-img{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1920&q=80&fit=crop');background-size:cover;background-position:center;opacity:0.1}
+.ph-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(77,168,160,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(77,168,160,.04) 1px,transparent 1px);background-size:80px 80px}
+.ph-inner{position:relative;z-index:1}
+.ph-lead{font-family:var(--fc);font-size:clamp(14px,1.8vw,19px);font-weight:400;letter-spacing:.06em;color:var(--wd);max-width:640px;line-height:1.6;text-transform:uppercase;margin-top:20px}
+
+/* UNIVERSE OVERVIEW GRID */
+.overview{padding:80px 0;border-bottom:1px solid var(--blkb);background:var(--blkm)}
+.ov-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:48px}
+.ov-card{background:var(--blkc);border:1px solid var(--blkb);padding:28px 24px;transition:all var(--tr);cursor:pointer;position:relative;overflow:hidden}
+.ov-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--sb-c) 0%,transparent 55%);opacity:.06;transition:opacity var(--tr)}
+.ov-card:hover{border-color:var(--sb-c);transform:translateY(-3px)}.ov-card:hover::before{opacity:.16}
+.ov-num{font-family:var(--fc);font-size:10px;letter-spacing:.3em;color:var(--sb-c);margin-bottom:auto;padding-bottom:20px}
+.ov-card h4{font-family:var(--fd);font-size:22px;color:var(--wh);margin-bottom:8px;line-height:.95}
+.ov-card p{font-size:12px;color:var(--wd);line-height:1.55}
+.ov-arrow{font-family:var(--fc);font-size:14px;color:var(--sb-c);display:block;margin-top:16px;transition:transform var(--tr)}.ov-card:hover .ov-arrow{transform:translateX(5px)}
+@media(max-width:900px){.ov-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.ov-grid{grid-template-columns:1fr}}
+
+/* SUB-BRAND SECTIONS */
+.sb{padding:120px 0;border-bottom:1px solid var(--blkb);position:relative;overflow:hidden}
+.sb:nth-child(even){background:var(--blkm)}
+.sb-accent{position:absolute;top:0;left:0;right:0;height:3px;background:var(--sb-c,var(--teal))}
+.sb-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.sb-inner.flip{direction:rtl}.sb-inner.flip>*{direction:ltr}
+.sb-photo{position:relative;overflow:hidden}
+.sb-photo img{width:100%;aspect-ratio:4/3;object-fit:cover;filter:brightness(.7) saturate(.75);display:block;transition:transform .8s ease,filter .5s ease}
+.sb:hover .sb-photo img{transform:scale(1.03);filter:brightness(.8) saturate(.9)}
+.sb-photo-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,.4) 0%,transparent 60%)}
+.sb-tint{position:absolute;inset:0;opacity:.12;transition:opacity var(--tr)}
+.sb:hover .sb-tint{opacity:.22}
+.sb-num{font-family:var(--fd);font-size:100px;color:var(--sb-c,var(--teal));opacity:.08;line-height:1;margin-bottom:-20px}
+.sb-text h2{margin-bottom:12px}
+.sb-text h2 span{color:var(--sb-c,var(--teal))}
+.sb-text p{font-size:15px;color:var(--wd);line-height:1.8;font-weight:300;margin-bottom:24px;max-width:480px}
+.sb-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+.sb-tag{font-family:var(--fc);font-size:10px;letter-spacing:.2em;color:var(--sb-c,var(--teal));text-transform:uppercase;border:1px solid var(--sb-c,var(--teal));padding:5px 12px;opacity:.7}
+.sb-stat-row{display:flex;gap:32px;padding-top:24px;border-top:1px solid var(--blkb)}
+.sb-stat-num{font-family:var(--fd);font-size:36px;color:var(--sb-c,var(--teal));line-height:1}
+.sb-stat-lbl{font-family:var(--fc);font-size:10px;letter-spacing:.2em;color:var(--wd);text-transform:uppercase;margin-top:4px}
+@media(max-width:900px){.sb-inner,.sb-inner.flip{grid-template-columns:1fr;direction:ltr}}
+
+/* CTA BLOCK */
+.cta-block{padding:120px 0;text-align:center;background:radial-gradient(ellipse 80% 100% at 50% 50%,rgba(77,168,160,.06) 0%,transparent 70%),var(--blk)}
+.cta-block h2{margin-bottom:20px}
+.cta-block p{font-family:var(--fc);font-size:15px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase;max-width:560px;margin:0 auto 40px;line-height:1.7}
+
+/* FOOTER */
+.ft{padding:80px 0 40px;background:var(--blkc);border-top:1px solid var(--blkb)}
+.fg{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:60px}
+.fb p{font-size:13px;color:var(--wd);margin-top:20px;line-height:1.75;font-weight:300}
+.fadr{margin-top:10px;opacity:.4;font-size:12px}
+.fc{display:flex;flex-direction:column;gap:12px}
+.fct{font-family:var(--fc);font-size:10px;font-weight:600;letter-spacing:.3em;color:var(--teal);text-transform:uppercase;margin-bottom:4px}
+.fc a{font-family:var(--fc);font-size:13px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase;transition:color var(--tr)}.fc a:hover{color:var(--teal)}
+.fb2{display:flex;justify-content:space-between;padding-top:32px;border-top:1px solid var(--blkb);font-family:var(--fc);font-size:11px;letter-spacing:.1em;color:rgba(245,245,240,.3);text-transform:uppercase}
+.fb2 a:hover{color:var(--teal)}
+@media(max-width:900px){.fg{grid-template-columns:1fr 1fr;gap:40px}}
+@media(max-width:480px){.fg{grid-template-columns:1fr}.fb2{flex-direction:column;gap:12px}}
+
+.rv{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+.rv.vis{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" style="display:flex;align-items:center;">
+    <img src="logo.png" alt="Meet Me at the Hotel" style="height:48px;width:auto;display:block;">
+  </a>
+  <div class="nl" id="nl">
+    <a href="about.html">About</a>
+    <a href="programme.html">Programme</a>
+    <a href="universe.html" style="color:var(--teal)">Universe</a>
+    <a href="networking.html">Networking</a>
+    <a href="showcases.html">Showcases</a>
+    <a href="partners.html">Partners</a>
+    <a href="booking.html" class="nc">Book Your Stay</a>
+  </div>
+  <div class="hb" onclick="document.getElementById('nl').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- STICKY SUB-NAV -->
+<nav class="subnav" id="subnav">
+  <div class="subnav-inner">
+    <a class="subnav-item active" href="#industry" style="--sb-c:#4DA8A0" onclick="setActive(this)">01 Industry</a>
+    <a class="subnav-item" href="#innovation" style="--sb-c:#2E7A74" onclick="setActive(this)">02 Innovation</a>
+    <a class="subnav-item" href="#brand" style="--sb-c:#7DCDC7" onclick="setActive(this)">03 Brand</a>
+    <a class="subnav-item" href="#creator" style="--sb-c:#4DA8A0" onclick="setActive(this)">04 Creator</a>
+    <a class="subnav-item" href="#networking" style="--sb-c:#2E7A74" onclick="setActive(this)">05 Networking</a>
+    <a class="subnav-item" href="#podcast" style="--sb-c:#B8E4E1" onclick="setActive(this)">06 Podcast</a>
+    <a class="subnav-item" href="#fashion" style="--sb-c:#4DA8A0" onclick="setActive(this)">07 Fashion Lab</a>
+    <a class="subnav-item" href="#experience" style="--sb-c:#7DCDC7" onclick="setActive(this)">08 Experience</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="ph">
+  <div class="ph-img"></div>
+  <div class="ph-grid"></div>
+  <div class="c ph-inner">
+    <span class="lbl">The Meet Me Universe</span>
+    <h1>
+      <span style="display:block;color:var(--wh)">ONE HOTEL.</span>
+      <span style="display:block;color:var(--teal)">EIGHT WORLDS.</span>
+    </h1>
+    <p class="ph-lead">MMATH is not one event — it's an ecosystem. Eight distinct platforms, each with its own community, programming and purpose. All under one roof.</p>
+  </div>
+</section>
+
+<!-- OVERVIEW GRID -->
+<section class="overview">
+  <div class="c">
+    <span class="lbl rv">The Universe</span>
+    <h2 class="rv" style="color:var(--wh)">All eight<br><span style="color:var(--teal)">worlds.</span></h2>
+    <div class="ov-grid">
+      <a href="#industry" class="ov-card rv" style="--sb-c:#4DA8A0"><div class="ov-num">01</div><h4>MEET ME INDUSTRY</h4><p>Executive meetings & CEO roundtables</p><span class="ov-arrow">→</span></a>
+      <a href="#innovation" class="ov-card rv d1" style="--sb-c:#2E7A74"><div class="ov-num">02</div><h4>MEET ME INNOVATION</h4><p>Music tech, AI & Web3</p><span class="ov-arrow">→</span></a>
+      <a href="#brand" class="ov-card rv d2" style="--sb-c:#7DCDC7"><div class="ov-num">03</div><h4>MEET ME BRAND</h4><p>Global brands × artists</p><span class="ov-arrow">→</span></a>
+      <a href="#creator" class="ov-card rv d3" style="--sb-c:#4DA8A0"><div class="ov-num">04</div><h4>MEET ME CREATOR</h4><p>Content, podcasts & live video</p><span class="ov-arrow">→</span></a>
+      <a href="#networking" class="ov-card rv" style="--sb-c:#2E7A74"><div class="ov-num">05</div><h4>MEET ME NETWORKING</h4><p>Curated matchmaking</p><span class="ov-arrow">→</span></a>
+      <a href="#podcast" class="ov-card rv d1" style="--sb-c:#B8E4E1"><div class="ov-num">06</div><h4>MEET ME PODCAST</h4><p>The voice of the industry</p><span class="ov-arrow">→</span></a>
+      <a href="#fashion" class="ov-card rv d2" style="--sb-c:#4DA8A0"><div class="ov-num">07</div><h4>MEET ME FASHION LAB</h4><p>Music & culture collide</p><span class="ov-arrow">→</span></a>
+      <a href="#experience" class="ov-card rv d3" style="--sb-c:#7DCDC7"><div class="ov-num">08</div><h4>MEET ME EXPERIENCE</h4><p>Boats, dinners & the unexpected</p><span class="ov-arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- 01 INDUSTRY -->
+<section class="sb" id="industry" style="--sb-c:#4DA8A0">
+  <div class="sb-accent"></div>
+  <div class="c">
+    <div class="sb-inner">
+      <div class="sb-photo rv">
+        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80&fit=crop" alt="Industry">
+        <div class="sb-photo-overlay"></div>
+        <div class="sb-tint" style="background:#4DA8A0"></div>
+      </div>
+      <div class="rv d1">
+        <div class="sb-num">01</div>
+        <span class="lbl" style="color:#4DA8A0">Meet Me</span>
+        <h2><span style="color:#4DA8A0">INDUSTRY</span></h2>
+        <p>The business layer of the dance world. Where label heads, booking agents, managers and promoters sit across from each other and get things done. No fluff. No panels for panels' sake. Real conversations, real decisions.</p>
+        <div class="sb-tags">
+          <span class="sb-tag" style="--sb-c:#4DA8A0">CEO Roundtables</span>
+          <span class="sb-tag" style="--sb-c:#4DA8A0">Label Meetings</span>
+          <span class="sb-tag" style="--sb-c:#4DA8A0">Deal Making</span>
+          <span class="sb-tag" style="--sb-c:#4DA8A0">Invite Only Tiers</span>
+        </div>
+        <div class="sb-stat-row">
+          <div><div class="sb-stat-num" style="color:#4DA8A0">200+</div><div class="sb-stat-lbl">Exec Attendees</div></div>
+          <div><div class="sb-stat-num" style="color:#4DA8A0">B2B</div><div class="sb-stat-lbl">Industry Only</div></div>
+          <div><div class="sb-stat-num" style="color:#4DA8A0">5★</div><div class="sb-stat-lbl">Satisfaction</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 INNOVATION -->
+<section class="sb" id="innovation" style="--sb-c:#2E7A74">
+  <div class="sb-accent"></div>
+  <div class="c">
+    <div class="sb-inner flip">
+      <div class="sb-photo rv">
+        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=80&fit=crop" alt="Innovation">
+        <div class="sb-photo-overlay"></div>
+        <div class="sb-tint" style="background:#2E7A74"></div>
+      </div>
+      <div class="rv d1">
+        <div class="sb-num">02</div>
+        <span class="lbl" style="color:#2E7A74">Meet Me</span>
+        <h2><span style="color:#2E7A74">INNOVATION</span></h2>
+        <p>The frontier of music technology. AI-generated music, blockchain rights management, Web3 distribution, immersive audio. The tools reshaping how music is made, owned and heard — demonstrated live at the hotel.</p>
+        <div class="sb-tags">
+          <span class="sb-tag" style="--sb-c:#2E7A74">Music Tech</span>
+          <span class="sb-tag" style="--sb-c:#2E7A74">AI & Generative</span>
+          <span class="sb-tag" style="--sb-c:#2E7A74">Web3 & NFT</span>
+          <span class="sb-tag" style="--sb-c:#2E7A74">Live Demos</span>
+        </div>
+        <div class="sb-stat-row">
+          <div><div class="sb-stat-num" style="color:#2E7A74">30+</div><div class="sb-stat-lbl">Tech Companies</div></div>
+          <div><div class="sb-stat-num" style="color:#2E7A74">12</div><div class="sb-stat-lbl">Live Demos</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 BRAND -->
+<section class="sb" id="brand" style="--sb-c:#7DCDC7">
+  <div class="sb-accent"></div>
+  <div class="c">
+    <div class="sb-inner">
+      <div class="sb-photo rv">
+        <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800&q=80&fit=crop" alt="Brand">
+        <div class="sb-photo-overlay"></div>
+        <div class="sb-tint" style="background:#7DCDC7"></div>
+      </div>
+      <div class="rv d1">
+        <div class="sb-num">03</div>
+        <span class="lbl" style="color:#7DCDC7">Meet Me</span>
+        <h2><span style="color:#7DCDC7">BRAND</span></h2>
+        <p>Where global brands meet electronic music culture. The intersection of commercial ambition and creative credibility. Brand partnerships, artist collaborations, activation strategy — all brokered in one place.</p>
+        <div class="sb-tags">
+          <span class="sb-tag" style="--sb-c:#7DCDC7">Brand Partnerships</span>
+          <span class="sb-tag" style="--sb-c:#7DCDC7">Artist Collabs</span>
+          <span class="sb-tag" style="--sb-c:#7DCDC7">Activations</span>
+          <span class="sb-tag" style="--sb-c:#7DCDC7">Sponsorship</span>
+        </div>
+        <div class="sb-stat-row">
+          <div><div class="sb-stat-num" style="color:#7DCDC7">50+</div><div class="sb-stat-lbl">Global Brands</div></div>
+          <div><div class="sb-stat-num" style="color:#7DCDC7">€2M+</div><div class="sb-stat-lbl">Deals Brokered</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 CREATOR -->
+<section class="sb" id="creator" style="--sb-c:#4DA8A0">
+  <div class="sb-accent"></div>
+  <div class="c">
+    <div class="sb-inner flip">
+      <div class="sb-photo rv">
+        <img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=800&q=80&fit=crop" alt="Creator">
+        <div class="sb-photo-overlay"></div>
+        <div class="sb-tint" style="background:#4DA8A0"></div>
+      </div>
+      <div class="rv d1">
+        <div class="sb-num">04</div>
+        <span class="lbl" style="color:#4DA8A0">Meet Me</span>
+        <h2><span style="color:#4DA8A0">CREATOR</span></h2>
+        <p>The storytellers of the scene. Podcasters, filmmakers, content studios and social creators — the people capturing and amplifying electronic music culture. Live studios, real interviews, raw content from the hotel floor.</p>
+        <div class="sb-tags">
+          <span class="sb-tag" style="--sb-c:#4DA8A0">Podcast Studio</span>
+          <span class="sb-tag" style="--sb-c:#4DA8A0">Live Video</span>
+          <span class="sb-tag" style="--sb-c:#4DA8A0">Content Creation</span>
+          <span class="sb-tag" style="--sb-c:#4DA8A0">Social Media</span>
+        </div>
+        <div class="sb-stat-row">
+          <div><div class="sb-stat-num" style="color:#4DA8A0">40+</div><div class="sb-stat-lbl">Creators</div></div>
+          <div><div class="sb-stat-num" style="color:#4DA8A0">500K+</div><div class="sb-stat-lbl">Combined Reach</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 NETWORKING -->
+<section class="sb" id="networking" style="--sb-c:#2E7A74">
+  <div class="sb-accent"></div>
+  <div class="c">
+    <div class="sb-inner">
+      <div class="sb-photo rv">
+        <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=800&q=80&fit=crop" alt="Networking">
+        <div class="sb-photo-overlay"></div>
+        <div class="sb-tint" style="background:#2E7A74"></div>
+      </div>
+      <div class="rv d1">
+        <div class="sb-num">05</div>
+        <span class="lbl" style="color:#2E7A74">Meet Me</span>
+        <h2><span style="color:#2E7A74">NETWORKING</span></h2>
+        <p>Curated, intentional, efficient. Not the random mingling of most industry events — MMATH Networking is algorithm-assisted, human-curated and purpose-built for people who value their time.</p>
+        <div class="sb-tags">
+          <span class="sb-tag" style="--sb-c:#2E7A74">Pre-Matched Meetings</span>
+          <span class="sb-tag" style="--sb-c:#2E7A74">Curated Salons</span>
+          <span class="sb-tag" style="--sb-c:#2E7A74">Office Hours</span>
+          <span class="sb-tag" style="--sb-c:#2E7A74">Investor Sessions</span>
+        </div>
+        <div class="sb-stat-row">
+          <div><div class="sb-stat-num" style="color:#2E7A74">2,400+</div><div class="sb-stat-lbl">Meetings / Edition</div></div>
+          <div><div class="sb-stat-num" style="color:#2E7A74">89%</div><div class="sb-stat-lbl">Satisfaction</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 PODCAST -->
+<section class="sb" id="podcast" style="--sb-c:#B8E4E1">
+  <div class="sb-accent"></div>
+  <div class="c">
+    <div class="sb-inner flip">
+      <div class="sb-photo rv">
+        <img src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=800&q=80&fit=crop" alt="Podcast">
+        <div class="sb-photo-overlay"></div>
+        <div class="sb-tint" style="background:#B8E4E1"></div>
+      </div>
+      <div class="rv d1">
+        <div class="sb-num">06</div>
+        <span class="lbl" style="color:#B8E4E1">Meet Me</span>
+        <h2><span style="color:#B8E4E1">PODCAST</span></h2>
+        <p>The official voice of the MMATH Universe. Recorded live from the hotel during ADE week — interviews with the industry's biggest names, candid conversations that never happen on stage.</p>
+        <div class="sb-tags">
+          <span class="sb-tag" style="--sb-c:#B8E4E1">Live Recording</span>
+          <span class="sb-tag" style="--sb-c:#B8E4E1">Industry Interviews</span>
+          <span class="sb-tag" style="--sb-c:#B8E4E1">ADE Specials</span>
+          <span class="sb-tag" style="--sb-c:#B8E4E1">Video + Audio</span>
+        </div>
+        <div class="sb-stat-row">
+          <div><div class="sb-stat-num" style="color:#B8E4E1">60+</div><div class="sb-stat-lbl">Episodes</div></div>
+          <div><div class="sb-stat-num" style="color:#B8E4E1">250K+</div><div class="sb-stat-lbl">Listeners</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 FASHION LAB -->
+<section class="sb" id="fashion" style="--sb-c:#4DA8A0">
+  <div class="sb-accent"></div>
+  <div class="c">
+    <div class="sb-inner">
+      <div class="sb-photo rv">
+        <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=800&q=80&fit=crop" alt="Fashion Lab">
+        <div class="sb-photo-overlay"></div>
+        <div class="sb-tint" style="background:#4DA8A0"></div>
+      </div>
+      <div class="rv d1">
+        <div class="sb-num">07</div>
+        <span class="lbl" style="color:#4DA8A0">Meet Me</span>
+        <h2><span style="color:#4DA8A0">FASHION LAB</span></h2>
+        <p>Where music culture and fashion collide. Electronic music has always had its own aesthetic language. The Fashion Lab creates space to explore it — designers, artists, stylists and cultural voices in conversation.</p>
+        <div class="sb-tags">
+          <span class="sb-tag" style="--sb-c:#4DA8A0">Designer Collabs</span>
+          <span class="sb-tag" style="--sb-c:#4DA8A0">Culture Sessions</span>
+          <span class="sb-tag" style="--sb-c:#4DA8A0">Visual Art</span>
+          <span class="sb-tag" style="--sb-c:#4DA8A0">Style & Identity</span>
+        </div>
+        <div class="sb-stat-row">
+          <div><div class="sb-stat-num" style="color:#4DA8A0">New</div><div class="sb-stat-lbl">In 2026</div></div>
+          <div><div class="sb-stat-num" style="color:#4DA8A0">20+</div><div class="sb-stat-lbl">Creatives</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 EXPERIENCE -->
+<section class="sb" id="experience" style="--sb-c:#7DCDC7">
+  <div class="sb-accent"></div>
+  <div class="c">
+    <div class="sb-inner flip">
+      <div class="sb-photo rv">
+        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80&fit=crop" alt="Experience">
+        <div class="sb-photo-overlay"></div>
+        <div class="sb-tint" style="background:#7DCDC7"></div>
+      </div>
+      <div class="rv d1">
+        <div class="sb-num">08</div>
+        <span class="lbl" style="color:#7DCDC7">Meet Me</span>
+        <h2><span style="color:#7DCDC7">EXPERIENCE</span></h2>
+        <p>The moments that don't fit a stage. Private IJ canal cruises for 40. Curated industry dinners. Rooftop sessions. The unexpected activations that become the stories people tell for years. Limited, exclusive, unforgettable.</p>
+        <div class="sb-tags">
+          <span class="sb-tag" style="--sb-c:#7DCDC7">Boat Events</span>
+          <span class="sb-tag" style="--sb-c:#7DCDC7">Private Dinners</span>
+          <span class="sb-tag" style="--sb-c:#7DCDC7">Rooftop Sessions</span>
+          <span class="sb-tag" style="--sb-c:#7DCDC7">Limited Access</span>
+        </div>
+        <div class="sb-stat-row">
+          <div><div class="sb-stat-num" style="color:#7DCDC7">40</div><div class="sb-stat-lbl">Max Per Boat</div></div>
+          <div><div class="sb-stat-num" style="color:#7DCDC7">100%</div><div class="sb-stat-lbl">Sell Out Rate</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-block">
+  <div class="c">
+    <span class="lbl rv" style="text-align:center;display:block">ADE October 2026</span>
+    <h2 class="rv" style="text-align:center">Be part of<br><span style="color:var(--teal)">the universe.</span></h2>
+    <p class="rv d1">One hotel. Eight worlds. The global dance industry under one roof. ADE October 2026.</p>
+    <div class="rv d2" style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+      <a href="booking.html" class="btn bp">Book Your Stay</a>
+      <a href="partners.html" class="btn bo">Become a Partner</a>
+      <a href="networking.html" class="btn bo">Join the Network</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="ft">
+  <div class="c">
+    <div class="fg">
+      <div class="fb">
+        <img src="logo.png" alt="Meet Me at the Hotel" style="height:44px;width:auto;display:block;">
+        <p>The Global Hospitality Hub<br>of the Dance Industry.</p>
+        <p class="fadr">Room Mate Aitana Hotel · IJdok 6<br>Amsterdam · ADE October 2026</p>
+      </div>
+      <div class="fc"><p class="fct">Explore</p><a href="about.html">About</a><a href="programme.html">Programme</a><a href="universe.html">Universe</a><a href="networking.html">Networking</a></div>
+      <div class="fc"><p class="fct">Book</p><a href="booking.html">Hotel Rooms</a><a href="meeting-rooms.html">Meeting Rooms</a><a href="showcases.html">Showcases</a><a href="partners.html">Partnerships</a></div>
+      <div class="fc"><p class="fct">Connect</p><a href="contact.html">Contact</a><a href="#">Instagram</a><a href="#">LinkedIn</a><a href="#">TikTok</a></div>
+    </div>
+    <div class="fb2">
+      <p>© 2026 Meet Me at the Hotel · 5th Anniversary Edition</p>
+      <p><a href="#">Privacy</a> · <a href="#">Cookies</a> · <a href="#">Terms</a></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Subnav active state
+function setActive(el){
+  document.querySelectorAll('.subnav-item').forEach(i=>i.classList.remove('active'));
+  el.classList.add('active');
+}
+
+// Auto-highlight subnav on scroll
+const sections = ['industry','innovation','brand','creator','networking','podcast','fashion','experience'];
+const navItems = document.querySelectorAll('.subnav-item');
+const offset = 140;
+
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if(el && window.scrollY >= el.offsetTop - offset) current = id;
+  });
+  navItems.forEach(item => {
+    item.classList.remove('active');
+    if(item.getAttribute('href') === '#' + current) item.classList.add('active');
+  });
+});
+
+// Reveal
+const obs = new IntersectionObserver(es => es.forEach(e => {
+  if(e.isIntersecting){ e.target.classList.add('vis'); obs.unobserve(e.target); }
+}), {threshold:.08});
+document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
