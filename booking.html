@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About — Meet Me at the Hotel · ADE 2026</title>
+<title>Book Your Stay — Meet Me at the Hotel · ADE 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 :root{--teal:#4DA8A0;--deep:#2E7A74;--pool:#7DCDC7;--blk:#0A0A0A;--blkm:#111;--blkc:#161616;--blkb:#222;--wh:#F5F5F0;--wd:rgba(245,245,240,0.6);--wd2:rgba(245,245,240,0.12);--fd:'Bebas Neue',sans-serif;--fc:'Barlow Condensed',sans-serif;--fb:'Barlow',sans-serif;--nav:72px;--tr:0.35s cubic-bezier(.4,0,.2,1)}
@@ -19,12 +19,11 @@ h1,h2,h3,h4{font-family:var(--fd);line-height:.93;text-transform:uppercase;lette
 h1{font-size:clamp(64px,10vw,140px)}
 h2{font-size:clamp(40px,6vw,84px)}
 h3{font-size:clamp(22px,3vw,40px)}
-h4{font-size:clamp(18px,2vw,26px)}
 .teal{color:var(--teal)}
 .lbl{font-family:var(--fc);font-size:11px;font-weight:600;letter-spacing:.28em;color:var(--teal);text-transform:uppercase;display:block;margin-bottom:16px}
-.btn{display:inline-block;font-family:var(--fc);font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:15px 36px;transition:all var(--tr);cursor:pointer}
+.btn{display:inline-block;font-family:var(--fc);font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:15px 36px;transition:all var(--tr);cursor:pointer;border:none;text-align:center}
 .bp{background:var(--teal);color:var(--blk)}.bp:hover{background:var(--deep);color:var(--wh)}
-.bo{border:1px solid var(--teal);color:var(--teal)}.bo:hover{background:var(--teal);color:var(--blk)}
+.bo{border:1px solid var(--teal);color:var(--teal);background:transparent}.bo:hover{background:var(--teal);color:var(--blk)}
 
 /* NAV */
 .nav{position:fixed;top:0;left:0;right:0;height:var(--nav);display:flex;align-items:center;justify-content:space-between;padding:0 40px;z-index:1000;background:rgba(10,10,10,.95);border-bottom:1px solid var(--blkb);backdrop-filter:blur(16px)}
@@ -40,102 +39,119 @@ h4{font-size:clamp(18px,2vw,26px)}
   .nl a{font-size:20px}
 }
 
-/* PAGE HERO */
-.ph{
-  padding-top:calc(var(--nav) + 80px);padding-bottom:80px;
-  position:relative;overflow:hidden;
-  background:#0a1412;
-  border-bottom:1px solid var(--blkb);
-}
-.ph-img{
-  position:absolute;inset:0;
-  background-image:url('https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1920&q=80&fit=crop&crop=center');
-  background-size:cover;background-position:center;
-  opacity:0.15;
-}
+/* URGENCY */
+.urgency{background:var(--teal);padding:12px 40px;display:flex;align-items:center;justify-content:center;gap:16px;margin-top:var(--nav)}
+.urgency-dot{width:8px;height:8px;background:var(--blk);border-radius:50%;animation:blink 1.5s infinite;flex-shrink:0}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+.urgency span{font-family:var(--fc);font-size:12px;font-weight:600;letter-spacing:.2em;color:var(--blk);text-transform:uppercase}
+
+/* HERO */
+.ph{padding:80px 0;position:relative;overflow:hidden;background:#0a1412;border-bottom:1px solid var(--blkb)}
+.ph-img{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1920&q=80&fit=crop');background-size:cover;background-position:center;opacity:0.12}
 .ph-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(77,168,160,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(77,168,160,.04) 1px,transparent 1px);background-size:80px 80px}
-.ph-inner{position:relative;z-index:1}
-.ph h1{margin-bottom:20px}
-.ph-lead{font-family:var(--fc);font-size:clamp(16px,2vw,21px);font-weight:400;letter-spacing:.06em;color:var(--wd);max-width:620px;line-height:1.55;text-transform:uppercase;margin-top:16px}
+.ph-inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end}
+.ph-lead{font-family:var(--fc);font-size:clamp(14px,1.6vw,18px);font-weight:400;letter-spacing:.06em;color:var(--wd);max-width:520px;line-height:1.6;text-transform:uppercase;margin-top:20px}
+.ph-includes{display:flex;flex-direction:column;gap:10px}
+.ph-inc{display:flex;align-items:center;gap:14px;font-family:var(--fc);font-size:12px;letter-spacing:.12em;color:var(--wd);text-transform:uppercase}
+.ph-inc::before{content:'✓';color:var(--teal);font-size:14px;flex-shrink:0}
+@media(max-width:768px){.ph-inner{grid-template-columns:1fr;gap:40px}}
 
-/* MANIFESTO */
-.mani{padding:120px 0;border-bottom:1px solid var(--blkb)}
-.mani-text{font-family:var(--fd);font-size:clamp(26px,4vw,54px);line-height:1.05;max-width:960px;color:var(--wh)}
-.mani-text em{color:var(--teal);font-style:normal}
+/* ROOMS GRID */
+.rooms{padding:100px 0;border-bottom:1px solid var(--blkb)}
+.rooms-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:60px}
+.room{background:var(--blkc);border:1px solid var(--blkb);overflow:hidden;transition:border-color var(--tr);position:relative;display:flex;flex-direction:column}
+.room.featured{border-color:var(--teal)}
+.room.soldout{opacity:.6}
+.room:not(.soldout):hover{border-color:var(--teal)}
+.room-badge{position:absolute;top:14px;left:14px;z-index:2;font-family:var(--fc);font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;padding:5px 12px}
+.badge-popular{background:var(--teal);color:var(--blk)}
+.badge-sold{background:#e05555;color:var(--wh)}
+.room-photo{position:relative;overflow:hidden;aspect-ratio:16/10;flex-shrink:0}
+.room-photo img{width:100%;height:100%;object-fit:cover;filter:brightness(.8) saturate(.85);transition:transform .8s ease,filter .5s ease;display:block}
+.room:not(.soldout):hover .room-photo img{transform:scale(1.04);filter:brightness(.95) saturate(1)}
+.room-photo-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,10,.55) 0%,transparent 50%)}
+.room-body{padding:28px 28px 24px;flex:1;display:flex;flex-direction:column}
+.room-name{font-family:var(--fd);font-size:28px;margin-bottom:4px}
+.room-size{font-family:var(--fc);font-size:11px;letter-spacing:.18em;color:var(--wd);text-transform:uppercase;margin-bottom:12px}
+.room-desc{font-size:13px;color:var(--wd);line-height:1.65;margin-bottom:16px;font-weight:300;flex:1}
+.room-price-row{display:flex;align-items:baseline;gap:8px;padding:16px 0;border-top:1px solid var(--blkb);border-bottom:1px solid var(--blkb);margin-bottom:16px}
+.room-price{font-family:var(--fd);font-size:36px;color:var(--wh)}
+.room-per{font-family:var(--fc);font-size:11px;letter-spacing:.15em;color:var(--wd);text-transform:uppercase}
+.room-asterisk{font-family:var(--fc);font-size:10px;color:rgba(245,245,240,.3)}
+.btn-sold{background:#333;color:rgba(245,245,240,.3);font-family:var(--fc);font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:15px 36px;display:block;text-align:center;cursor:not-allowed}
+@media(max-width:900px){.rooms-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.rooms-grid{grid-template-columns:1fr}}
 
-/* TIMELINE */
-.tl{padding:100px 0;border-bottom:1px solid var(--blkb);background:var(--blkm)}
-.tl-grid{display:grid;grid-template-columns:repeat(5,1fr);margin-top:60px;border:1px solid var(--blkb)}
-.tl-item{padding:40px 28px;border-right:1px solid var(--blkb);transition:background var(--tr);position:relative}
-.tl-item:last-child{border-right:none}
-.tl-item:hover{background:var(--blkc)}
-.tl-item.now{background:var(--blkc);border-top:3px solid var(--teal)}
-.tl-year{font-family:var(--fd);font-size:56px;line-height:1;margin-bottom:14px}
-.tl-item h4{font-size:16px;margin-bottom:10px;color:var(--wh)}
-.tl-item p{font-size:13px;color:var(--wd);line-height:1.65}
-@media(max-width:900px){.tl-grid{grid-template-columns:1fr 1fr}.tl-item:nth-child(2){border-right:none}.tl-item{border-top:1px solid var(--blkb)}}
-@media(max-width:480px){.tl-grid{grid-template-columns:1fr}}
+/* PRICE NOTE */
+.price-note{margin-top:20px;font-family:var(--fc);font-size:11px;letter-spacing:.1em;color:rgba(245,245,240,.3);text-transform:uppercase}
 
-/* NUMBERS */
-.nums{padding:100px 0;border-bottom:1px solid var(--blkb)}
-.nums-grid{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--blkb);margin-top:60px}
-.num{padding:48px 32px;border-right:1px solid var(--blkb);text-align:center;transition:background var(--tr)}
-.num:nth-child(4n){border-right:none}
-.num:hover{background:var(--blkc)}
-.num-big{font-family:var(--fd);font-size:clamp(44px,5vw,72px);color:var(--teal);line-height:1}
-.num-lbl{font-family:var(--fc);font-size:11px;letter-spacing:.22em;color:var(--wd);text-transform:uppercase;margin-top:8px}
-@media(max-width:768px){.nums-grid{grid-template-columns:1fr 1fr}.num:nth-child(2n){border-right:none}.num{border-bottom:1px solid var(--blkb)}}
+/* AMENITIES */
+.amenities{padding:100px 0;border-bottom:1px solid var(--blkb);background:var(--blkm)}
+.am-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:60px}
+.am-item{background:var(--blkc);border:1px solid var(--blkb);padding:32px 24px;transition:border-color var(--tr)}
+.am-item:hover{border-color:var(--teal)}
+.am-icon{font-size:28px;margin-bottom:14px;display:block}
+.am-title{font-family:var(--fd);font-size:20px;margin-bottom:8px}
+.am-desc{font-size:12px;color:var(--wd);line-height:1.65}
+@media(max-width:768px){.am-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.am-grid{grid-template-columns:1fr}}
 
-/* PHOTO EDITORIAL */
-.editorial{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;border-top:1px solid var(--blkb);border-bottom:1px solid var(--blkb);height:480px}
-.ed-img{overflow:hidden;position:relative}
-.ed-img img{width:100%;height:100%;object-fit:cover;filter:brightness(.65) saturate(.75);transition:transform .8s ease,filter .5s ease}
-.ed-img:hover img{transform:scale(1.05);filter:brightness(.8) saturate(1)}
-.ed-teal{position:absolute;inset:0;background:linear-gradient(135deg,rgba(77,168,160,.12) 0%,transparent 60%);pointer-events:none}
-.ed-label{position:absolute;bottom:20px;left:20px;font-family:var(--fc);font-size:10px;font-weight:600;letter-spacing:.25em;color:var(--teal);text-transform:uppercase}
-@media(max-width:640px){.editorial{grid-template-columns:1fr;height:auto}.ed-img{height:220px}}
+/* INCLUDED */
+.included{padding:100px 0;border-bottom:1px solid var(--blkb)}
+.inc-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;margin-top:60px}
+.inc-list{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+.inc-item{background:var(--blkc);border:1px solid var(--blkb);padding:28px 24px;transition:border-color var(--tr)}
+.inc-item:hover{border-color:var(--teal)}
+.inc-icon{font-size:22px;margin-bottom:12px;display:block}
+.inc-title{font-family:var(--fd);font-size:20px;margin-bottom:6px}
+.inc-desc{font-size:12px;color:var(--wd);line-height:1.6}
+.inc-photo img{width:100%;aspect-ratio:4/5;object-fit:cover;filter:brightness(.7) saturate(.8);display:block}
+@media(max-width:768px){.inc-grid{grid-template-columns:1fr}.inc-list{grid-template-columns:1fr}}
 
-/* TEAM */
-.team{padding:100px 0;border-bottom:1px solid var(--blkb);background:var(--blkm)}
-.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:60px}
-.team-card{background:var(--blkc);border:1px solid var(--blkb);overflow:hidden;transition:border-color var(--tr)}
-.team-card:hover{border-color:var(--teal)}
-.team-photo{aspect-ratio:3/4;overflow:hidden;position:relative}
-.team-photo img{width:100%;height:100%;object-fit:cover;filter:brightness(.7) saturate(.8);transition:transform .7s ease}
-.team-card:hover .team-photo img{transform:scale(1.04)}
-.team-photo-ph{width:100%;height:100%;background:linear-gradient(160deg,#0f1e1c 0%,rgba(77,168,160,.2) 100%);display:flex;align-items:center;justify-content:center}
-.team-photo-init{font-family:var(--fd);font-size:72px;color:rgba(77,168,160,.2)}
-.team-info{padding:24px 28px}
-.team-name{font-family:var(--fd);font-size:28px;margin-bottom:4px}
-.team-role{font-family:var(--fc);font-size:11px;letter-spacing:.2em;color:var(--teal);text-transform:uppercase}
-.team-bio{font-size:13px;color:var(--wd);margin-top:12px;line-height:1.65;font-weight:300}
-@media(max-width:768px){.team-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:480px){.team-grid{grid-template-columns:1fr}}
+/* GROUP */
+.group{padding:80px 0;border-bottom:1px solid var(--blkb);background:var(--blkm)}
+.group-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.group-perks{list-style:none;display:flex;flex-direction:column;gap:10px;margin:24px 0 32px}
+.group-perks li{font-family:var(--fc);font-size:12px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase;padding:12px 0;border-bottom:1px solid var(--blkb);display:flex;align-items:center;gap:12px}
+.group-perks li::before{content:'→';color:var(--teal)}
+.group-visual{background:var(--blkc);border:1px solid var(--blkb);padding:48px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:300px}
+.group-num{font-family:var(--fd);font-size:120px;color:var(--teal);line-height:1;opacity:.3}
+.group-label{font-family:var(--fc);font-size:12px;letter-spacing:.2em;color:var(--wd);text-transform:uppercase}
+@media(max-width:768px){.group-inner{grid-template-columns:1fr}}
 
-/* VENUE */
-.venue{padding:100px 0;border-bottom:1px solid var(--blkb)}
-.venue-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;margin-top:60px}
-.venue-text p{font-size:15px;color:var(--wd);line-height:1.8;font-weight:300;margin-bottom:18px}
-.venue-specs{list-style:none;margin-top:32px}
-.venue-specs li{font-family:var(--fc);font-size:13px;letter-spacing:.08em;color:var(--wd);text-transform:uppercase;padding:12px 0;border-bottom:1px solid var(--blkb);display:flex;align-items:center;gap:12px}
-.venue-specs li::before{content:'→';color:var(--teal)}
-.venue-photo{position:relative;overflow:hidden}
-.venue-photo img{width:100%;aspect-ratio:4/3;object-fit:cover;filter:brightness(.75) saturate(.8);display:block}
-.venue-photo-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(77,168,160,.1) 0%,transparent 60%)}
-.venue-map{margin-top:2px;background:var(--blkc);border:1px solid var(--blkb);padding:32px;display:flex;flex-direction:column;align-items:flex-start;gap:12px}
-.venue-map span{font-family:var(--fc);font-size:12px;letter-spacing:.15em;color:var(--wd);text-transform:uppercase}
-@media(max-width:900px){.venue-inner{grid-template-columns:1fr;gap:48px}}
+/* FAQ */
+.faq{padding:100px 0;border-bottom:1px solid var(--blkb)}
+.faq-list{margin-top:60px;display:flex;flex-direction:column;gap:2px}
+.faq-item{background:var(--blkc);border:1px solid var(--blkb);overflow:hidden}
+.faq-item.open{border-color:var(--teal)}
+.faq-q{display:flex;justify-content:space-between;align-items:center;padding:24px 28px;cursor:pointer;gap:20px}
+.faq-q span{font-family:var(--fc);font-size:14px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--wh)}
+.faq-icon{font-family:var(--fd);font-size:28px;color:var(--teal);flex-shrink:0;transition:transform var(--tr);line-height:1}
+.faq-item.open .faq-icon{transform:rotate(45deg)}
+.faq-a{display:none;padding:0 28px 24px;font-size:14px;color:var(--wd);line-height:1.75;font-weight:300}
+.faq-item.open .faq-a{display:block}
 
-/* VISION */
-.vision{padding:100px 0;text-align:center;background:radial-gradient(ellipse 80% 100% at 50% 50%,rgba(77,168,160,.05) 0%,transparent 70%),var(--blk)}
-.vision-text{font-family:var(--fd);font-size:clamp(24px,4vw,52px);line-height:1.05;max-width:860px;margin:0 auto;color:var(--wh)}
-.vision-text em{color:var(--teal);font-style:normal}
+/* FORM */
+.book-form{padding:100px 0}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-top:60px}
+.form-text p{font-size:15px;color:var(--wd);line-height:1.8;font-weight:300;margin-bottom:12px}
+.form-note{font-family:var(--fc);font-size:11px;letter-spacing:.1em;color:rgba(245,245,240,.3);text-transform:uppercase;margin-top:20px;line-height:1.6}
+form{display:flex;flex-direction:column;gap:16px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-family:var(--fc);font-size:10px;font-weight:600;letter-spacing:.25em;color:var(--teal);text-transform:uppercase}
+.field input,.field select,.field textarea{background:transparent;border:none;border-bottom:1px solid rgba(77,168,160,.35);color:var(--wh);padding:12px 0;font-family:var(--fc);font-size:14px;letter-spacing:.08em;outline:none;transition:border-color var(--tr);-webkit-appearance:none}
+.field input:focus,.field select:focus,.field textarea:focus{border-bottom-color:var(--teal)}
+.field input::placeholder,.field textarea::placeholder{color:rgba(245,245,240,.2)}
+.field select option{background:var(--blkc);color:var(--wh)}
+.field textarea{resize:none;height:80px}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:768px){.form-grid{grid-template-columns:1fr}.field-row{grid-template-columns:1fr}}
 
 /* FOOTER */
 .ft{padding:80px 0 40px;background:var(--blkc);border-top:1px solid var(--blkb)}
 .fg{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:60px}
 .fb p{font-size:13px;color:var(--wd);margin-top:20px;line-height:1.75;font-weight:300}
-.fa{margin-top:10px;opacity:.4;font-size:12px}
+.fadr{margin-top:10px;opacity:.4;font-size:12px}
 .fc{display:flex;flex-direction:column;gap:12px}
 .fct{font-family:var(--fc);font-size:10px;font-weight:600;letter-spacing:.3em;color:var(--teal);text-transform:uppercase;margin-bottom:4px}
 .fc a{font-family:var(--fc);font-size:13px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase;transition:color var(--tr)}.fc a:hover{color:var(--teal)}
@@ -144,7 +160,6 @@ h4{font-size:clamp(18px,2vw,26px)}
 @media(max-width:900px){.fg{grid-template-columns:1fr 1fr;gap:40px}}
 @media(max-width:480px){.fg{grid-template-columns:1fr}.fb2{flex-direction:column;gap:12px}}
 
-/* REVEAL */
 .rv{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
 .rv.vis{opacity:1;transform:none}
 .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
@@ -152,218 +167,372 @@ h4{font-size:clamp(18px,2vw,26px)}
 </head>
 <body>
 
-<!-- NAV -->
 <nav class="nav">
   <a href="index.html" style="display:flex;align-items:center;">
     <img src="logo.png" alt="Meet Me at the Hotel" style="height:48px;width:auto;display:block;">
   </a>
   <div class="nl" id="nl">
-    <a href="about.html" style="color:var(--teal)">About</a>
+    <a href="about.html">About</a>
     <a href="programme.html">Programme</a>
     <a href="universe.html">Universe</a>
     <a href="networking.html">Networking</a>
     <a href="showcases.html">Showcases</a>
     <a href="partners.html">Partners</a>
-    <a href="booking.html" class="nc">Book Your Stay</a>
+    <a href="booking.html" class="nc" style="color:var(--blk)!important;">Book Your Stay</a>
   </div>
   <div class="hb" onclick="document.getElementById('nl').classList.toggle('open')">
     <span></span><span></span><span></span>
   </div>
 </nav>
 
-<!-- PAGE HERO -->
+<div class="urgency">
+  <div class="urgency-dot"></div>
+  <span>Limited availability — ADE October 2026 · Rooms filling fast · King Suite sold out</span>
+</div>
+
+<!-- HERO -->
 <section class="ph">
   <div class="ph-img"></div>
   <div class="ph-grid"></div>
   <div class="c ph-inner">
-    <span class="lbl">About MMATH</span>
-    <h1>
-      <span style="display:block;color:var(--wh)">FROM</span>
-      <span style="display:block;color:var(--wh)">GATHERING</span>
-      <span style="display:block;color:var(--teal)">TO PLATFORM.</span>
-    </h1>
-    <p class="ph-lead">Five years of building the infrastructure the dance industry didn't know it needed.</p>
-  </div>
-</section>
-
-<!-- MANIFESTO -->
-<section class="mani">
-  <div class="c">
-    <span class="lbl rv">Our Manifesto</span>
-    <div class="mani-text rv">
-      The most valuable conversations in the industry<br>
-      don't happen on stage.<br>
-      <em>They happen between sessions.</em><br>
-      Over coffee. At the bar. In a hotel corridor.<br><br>
-      MMATH makes that space <em>intentional.</em><br><br>
-      Not a conference. Not a club night.<br>
-      <em>Both. And more.</em><br><br>
-      We curate for quality, not for ego.<br>
-      We are selective <em>because it works.</em>
+    <div>
+      <span class="lbl">Room Mate Aitana Hotel · IJdok 6</span>
+      <h1>
+        <span style="display:block;color:var(--wh)">BOOK</span>
+        <span style="display:block;color:var(--teal)">YOUR STAY.</span>
+      </h1>
+      <p class="ph-lead">Your room is your base. Hotel guests get full MMATH hub access — no separate badge, no extra cost. Just check in and the industry opens up.</p>
+    </div>
+    <div class="ph-includes rv d1">
+      <span class="lbl">Every room includes</span>
+      <div class="ph-inc">Full MMATH Hub access all week</div>
+      <div class="ph-inc">Oscar Room day programme</div>
+      <div class="ph-inc">Matchmaking platform access</div>
+      <div class="ph-inc">Aitana Lounge Bar access</div>
+      <div class="ph-inc">Priority event registration</div>
+      <div class="ph-inc">Concierge & ADE planning support</div>
     </div>
   </div>
 </section>
 
-<!-- EDITORIAL PHOTOS -->
-<div class="editorial">
-  <div class="ed-img">
-    <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&q=80&fit=crop&crop=center" alt="Hotel">
-    <div class="ed-teal"></div>
-    <div class="ed-label">The Venue</div>
-  </div>
-  <div class="ed-img">
-    <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=600&q=80&fit=crop&crop=faces" alt="Networking">
-    <div class="ed-teal"></div>
-    <div class="ed-label">The Industry</div>
-  </div>
-  <div class="ed-img">
-    <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600&q=80&fit=crop" alt="Showcase">
-    <div class="ed-teal"></div>
-    <div class="ed-label">The Experience</div>
-  </div>
-</div>
-
-<!-- TIMELINE -->
-<section class="tl">
+<!-- ROOMS -->
+<section class="rooms">
   <div class="c">
-    <span class="lbl rv">Our Story</span>
-    <h2 class="rv">Five years.<br><span class="teal">One conviction.</span></h2>
-    <div class="tl-grid">
-      <div class="tl-item rv">
-        <div class="tl-year teal">2022</div>
-        <h4>THE BEGINNING</h4>
-        <p>First edition. A bold idea — concentrate the dance industry under one hotel roof during ADE. 400 guests. The vision proved right.</p>
+    <span class="lbl rv">Room Types · ADE 2026 Rates</span>
+    <h2 class="rv">Choose your<br><span class="teal">base camp.</span></h2>
+    <div class="rooms-grid">
+
+      <div class="room rv">
+        <div class="room-photo">
+          <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&q=80&fit=crop" alt="Superior Twin">
+          <div class="room-photo-overlay"></div>
+        </div>
+        <div class="room-body">
+          <div class="room-name">SUPERIOR ROOM</div>
+          <div class="room-size">Twin Bed · 30–33m²</div>
+          <div class="room-desc">Two single beds, modern design, city-facing. The smart base for solo professionals or colleagues sharing a room.</div>
+          <div class="room-price-row">
+            <div class="room-price">€285</div>
+            <div class="room-per">per night</div>
+            <div class="room-asterisk">*</div>
+          </div>
+          <a href="#inquiry" class="btn bo" style="display:block;">Inquire →</a>
+        </div>
       </div>
-      <div class="tl-item rv d1">
-        <div class="tl-year teal">2023</div>
-        <h4>GROWING UP</h4>
-        <p>700 industry guests. First branded showcases. The Oscar Room becomes the industry's most talked-about stage during ADE week.</p>
+
+      <div class="room rv d1">
+        <div class="room-photo">
+          <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=600&q=80&fit=crop" alt="Superior Double">
+          <div class="room-photo-overlay"></div>
+        </div>
+        <div class="room-body">
+          <div class="room-name">SUPERIOR ROOM</div>
+          <div class="room-size">Double Bed · 27–35m²</div>
+          <div class="room-desc">King double bed, sleek interiors. The most versatile room — work hard by day, rest well by night.</div>
+          <div class="room-price-row">
+            <div class="room-price">€285</div>
+            <div class="room-per">per night</div>
+            <div class="room-asterisk">*</div>
+          </div>
+          <a href="#inquiry" class="btn bo" style="display:block;">Inquire →</a>
+        </div>
       </div>
-      <div class="tl-item rv d2">
-        <div class="tl-year teal">2024</div>
-        <h4>SCALE</h4>
-        <p>1,000+ guests per day. Meet Me Universe launches. First international brand partners. MMATH becomes a fixture in the ADE calendar.</p>
+
+      <div class="room rv d2">
+        <div class="room-badge badge-popular">Best Views</div>
+        <div class="room-photo">
+          <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&q=80&fit=crop" alt="Superior City View">
+          <div class="room-photo-overlay"></div>
+        </div>
+        <div class="room-body">
+          <div class="room-name">SUPERIOR ROOM</div>
+          <div class="room-size">City View · 27–31m²</div>
+          <div class="room-desc">Elevated city views over Amsterdam. Start every ADE morning with a view that sets the tone for the day.</div>
+          <div class="room-price-row">
+            <div class="room-price">€300</div>
+            <div class="room-per">per night</div>
+            <div class="room-asterisk">*</div>
+          </div>
+          <a href="#inquiry" class="btn bo" style="display:block;">Inquire →</a>
+        </div>
       </div>
-      <div class="tl-item rv d3">
-        <div class="tl-year teal">2025</div>
-        <h4>INFRASTRUCTURE</h4>
-        <p>1,500+ daily guests. Matchmaking platform goes live. Industry Awards debut. MMATH is the largest B2B hospitality event at ADE.</p>
+
+      <div class="room featured rv">
+        <div class="room-badge badge-popular">Most Booked</div>
+        <div class="room-photo">
+          <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=600&q=80&fit=crop" alt="Executive Room">
+          <div class="room-photo-overlay"></div>
+        </div>
+        <div class="room-body">
+          <div class="room-name">EXECUTIVE ROOM</div>
+          <div class="room-size">33–44m²</div>
+          <div class="room-desc">Larger format rooms with premium finishes and extra working space. The professional's choice for a full ADE week.</div>
+          <div class="room-price-row">
+            <div class="room-price">€325</div>
+            <div class="room-per">per night</div>
+            <div class="room-asterisk">*</div>
+          </div>
+          <a href="#inquiry" class="btn bp" style="display:block;">Inquire →</a>
+        </div>
       </div>
-      <div class="tl-item now rv">
-        <div class="tl-year" style="color:var(--wh)">2026</div>
-        <h4 style="color:var(--teal)">5TH ANNIVERSARY</h4>
-        <p>The milestone edition. Biggest programme, most partners, most exclusive access tiers. <em style="color:var(--teal);font-style:normal">Five Years. One Hotel. The Industry.</em></p>
+
+      <div class="room rv d1">
+        <div class="room-photo">
+          <img src="https://images.unsplash.com/photo-1540518614846-7eded433c457?w=600&q=80&fit=crop" alt="Junior Suite">
+          <div class="room-photo-overlay"></div>
+        </div>
+        <div class="room-body">
+          <div class="room-name">JUNIOR SUITE</div>
+          <div class="room-size">50m²</div>
+          <div class="room-desc">Spacious suite with separate seating area. Perfect for hosting small informal meetings in your own space.</div>
+          <div class="room-price-row">
+            <div class="room-price">€365</div>
+            <div class="room-per">per night</div>
+            <div class="room-asterisk">*</div>
+          </div>
+          <a href="#inquiry" class="btn bo" style="display:block;">Inquire →</a>
+        </div>
+      </div>
+
+      <div class="room soldout rv d2">
+        <div class="room-badge badge-sold">Sold Out</div>
+        <div class="room-photo">
+          <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=600&q=80&fit=crop" alt="King Suite">
+          <div class="room-photo-overlay"></div>
+        </div>
+        <div class="room-body">
+          <div class="room-name">KING SUITE</div>
+          <div class="room-size">74–100m²</div>
+          <div class="room-desc">The flagship suite. Panoramic views, full living space, the ultimate MMATH experience. Join waitlist below.</div>
+          <div class="room-price-row">
+            <div class="room-price">€435</div>
+            <div class="room-per">per night</div>
+            <div class="room-asterisk">*</div>
+          </div>
+          <div class="btn-sold">Sold Out — Join Waitlist ↓</div>
+        </div>
+      </div>
+
+    </div>
+    <p class="price-note">* Prices per room per night · Subject to availability · ADE 2026 rates · Breakfast not included (available from €25pp)</p>
+  </div>
+</section>
+
+<!-- HOTEL AMENITIES -->
+<section class="amenities">
+  <div class="c">
+    <span class="lbl rv">Hotel Amenities</span>
+    <h2 class="rv">What guests<br><span class="teal">value most.</span></h2>
+    <div class="am-grid">
+      <div class="am-item rv">
+        <span class="am-icon">😊</span>
+        <div class="am-title">UNBEATABLE STAFF</div>
+        <div class="am-desc">Room Mate Aitana is known for its warm, attentive team. Available around the clock during ADE week.</div>
+      </div>
+      <div class="am-item rv d1">
+        <span class="am-icon">✨</span>
+        <div class="am-title">CLEANLINESS</div>
+        <div class="am-desc">Consistently rated top for cleanliness and tidiness. Daily servicing throughout your stay.</div>
+      </div>
+      <div class="am-item rv d2">
+        <span class="am-icon">🍳</span>
+        <div class="am-title">BREAKFAST</div>
+        <div class="am-desc">Hot breakfast served daily from 07:00 to 12:00. The best way to start an ADE day.</div>
+      </div>
+      <div class="am-item rv d3">
+        <span class="am-icon">📶</span>
+        <div class="am-title">FAST WIFI</div>
+        <div class="am-desc">Secure, high-speed internet throughout the hotel. Reliable connection for a full week of business.</div>
+      </div>
+      <div class="am-item rv">
+        <span class="am-icon">🌡️</span>
+        <div class="am-title">CLIMATE CONTROL</div>
+        <div class="am-desc">Individual heating and air conditioning in every room. Always set to perfect, whatever the October weather.</div>
+      </div>
+      <div class="am-item rv d1">
+        <span class="am-icon">🚗</span>
+        <div class="am-title">PARKING</div>
+        <div class="am-desc">Valet and self-parking available. €40 per 24 hours. Advance reservation recommended during ADE.</div>
+      </div>
+      <div class="am-item rv d2">
+        <span class="am-icon">🌊</span>
+        <div class="am-title">THE VIEWS</div>
+        <div class="am-desc">Overlooking the IJ waterfront and Amsterdam skyline. Select rooms offer panoramic marina views.</div>
+      </div>
+      <div class="am-item rv d3">
+        <span class="am-icon">📍</span>
+        <div class="am-title">LOCATION</div>
+        <div class="am-desc">IJdok 6, 5 min walk from Amsterdam Centraal. Everything ADE — and everything Amsterdam — on your doorstep.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- BY THE NUMBERS -->
-<section class="nums">
+<!-- WHAT'S INCLUDED WITH MMATH -->
+<section class="included">
   <div class="c">
-    <span class="lbl rv">By the Numbers</span>
-    <h2 class="rv">What five years<br><span class="teal">looks like.</span></h2>
-    <div class="nums-grid">
-      <div class="num rv"><div class="num-big">5</div><div class="num-lbl">Editions</div></div>
-      <div class="num rv d1"><div class="num-big">7K+</div><div class="num-lbl">Total Guests</div></div>
-      <div class="num rv d2"><div class="num-big">150+</div><div class="num-lbl">Industry Partners</div></div>
-      <div class="num rv d3"><div class="num-big">120+</div><div class="num-lbl">Showcases Hosted</div></div>
-      <div class="num rv"><div class="num-big">45</div><div class="num-lbl">Nationalities</div></div>
-      <div class="num rv d1"><div class="num-big">8</div><div class="num-lbl">Sub-Brands</div></div>
-      <div class="num rv d2"><div class="num-big">100%</div><div class="num-lbl">B2B Only</div></div>
-      <div class="num rv d3"><div class="num-big">1</div><div class="num-lbl">Hotel</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- TEAM -->
-<section class="team">
-  <div class="c">
-    <span class="lbl rv">The Team</span>
-    <h2 class="rv">The people who<br><span class="teal">make it happen.</span></h2>
-    <div class="team-grid">
-      <div class="team-card rv">
-        <div class="team-photo">
-          <div class="team-photo-ph"><div class="team-photo-init">TB</div></div>
+    <span class="lbl rv">MMATH Hub Access — Included with Every Room</span>
+    <h2 class="rv">More than<br><span class="teal">a hotel room.</span></h2>
+    <div class="inc-grid">
+      <div class="inc-list">
+        <div class="inc-item rv">
+          <span class="inc-icon">🎟️</span>
+          <div class="inc-title">HUB ACCESS</div>
+          <div class="inc-desc">Full MMATH day programme. All panels, talks, activations throughout ADE week.</div>
         </div>
-        <div class="team-info">
-          <div class="team-name">NAAM VOLGT</div>
-          <div class="team-role">Founder & Director</div>
-          <div class="team-bio">Teamfoto en bio worden aangeleverd door MMATH. Placeholder voor productie.</div>
+        <div class="inc-item rv d1">
+          <span class="inc-icon">🤝</span>
+          <div class="inc-title">MATCHMAKING</div>
+          <div class="inc-desc">Access to the MMATH networking platform. Pre-book meetings with industry decision-makers.</div>
+        </div>
+        <div class="inc-item rv d1">
+          <span class="inc-icon">🍸</span>
+          <div class="inc-title">LOUNGE ACCESS</div>
+          <div class="inc-desc">Aitana Lounge Bar all week. Where the best informal conversations happen.</div>
+        </div>
+        <div class="inc-item rv d2">
+          <span class="inc-icon">⭐</span>
+          <div class="inc-title">PRIORITY ACCESS</div>
+          <div class="inc-desc">First access to limited showcase tickets, boat events and invite-only sessions.</div>
+        </div>
+        <div class="inc-item rv d2">
+          <span class="inc-icon">🛎️</span>
+          <div class="inc-title">CONCIERGE</div>
+          <div class="inc-desc">Dedicated MMATH concierge. ADE planning, restaurant bookings, transport.</div>
+        </div>
+        <div class="inc-item rv d3">
+          <span class="inc-icon">🗓️</span>
+          <div class="inc-title">FULL WEEK</div>
+          <div class="inc-desc">Access valid for the full duration of ADE week — day one through to the final night.</div>
         </div>
       </div>
-      <div class="team-card rv d1">
-        <div class="team-photo">
-          <div class="team-photo-ph"><div class="team-photo-init">TB</div></div>
-        </div>
-        <div class="team-info">
-          <div class="team-name">NAAM VOLGT</div>
-          <div class="team-role">Head of Partnerships</div>
-          <div class="team-bio">Teamfoto en bio worden aangeleverd door MMATH. Placeholder voor productie.</div>
-        </div>
-      </div>
-      <div class="team-card rv d2">
-        <div class="team-photo">
-          <div class="team-photo-ph"><div class="team-photo-init">TB</div></div>
-        </div>
-        <div class="team-info">
-          <div class="team-name">NAAM VOLGT</div>
-          <div class="team-role">Head of Programming</div>
-          <div class="team-bio">Teamfoto en bio worden aangeleverd door MMATH. Placeholder voor productie.</div>
-        </div>
+      <div class="rv d1 inc-photo">
+        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=700&q=80&fit=crop" alt="Hotel">
       </div>
     </div>
   </div>
 </section>
 
-<!-- VENUE -->
-<section class="venue">
+<!-- GROUP -->
+<section class="group">
   <div class="c">
-    <span class="lbl rv">The Venue</span>
-    <h2 class="rv">Room Mate<br><span class="teal">Aitana Hotel.</span></h2>
-    <div class="venue-inner">
+    <div class="group-inner">
       <div class="rv">
-        <p>Located at IJdok 6, right on the IJ waterfront, Room Mate Aitana Hotel is one of Amsterdam's most distinctive design hotels. During ADE week, it becomes the nerve centre of the global dance industry.</p>
-        <p>Designed with bold aesthetics and a lively hospitality spirit, the hotel's architecture — from the Oscar Room's marina-view stage to the Aitana Lounge Bar — creates the perfect backdrop for the industry's most important conversations.</p>
-        <ul class="venue-specs">
-          <li>Oscar Room showcase venue — 132m², marina view</li>
-          <li>Aitana Lounge Bar — networking & evening events</li>
-          <li>3 dedicated meeting rooms</li>
-          <li>Marina-side boat departure point</li>
-          <li>IJdok 6 · Central Amsterdam</li>
-          <li>5 min walk from Amsterdam Centraal</li>
+        <span class="lbl">Group Bookings</span>
+        <h2>Bringing<br><span class="teal">your team?</span></h2>
+        <p style="font-size:15px;color:var(--wd);line-height:1.8;font-weight:300;margin-top:16px">Book 4 or more rooms and unlock dedicated group benefits. Perfect for labels, agencies and brand teams attending ADE together.</p>
+        <ul class="group-perks">
+          <li>Dedicated group check-in & coordination</li>
+          <li>Group meeting room allocation</li>
+          <li>Branded team lounge area (on request)</li>
+          <li>Group showcase & event tickets</li>
+          <li>Custom ADE week itinerary planning</li>
         </ul>
+        <a href="#inquiry" class="btn bp">Enquire About Groups →</a>
       </div>
-      <div class="rv d1">
-        <div class="venue-photo">
-          <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=700&q=80&fit=crop&crop=center" alt="Hotel exterior">
-          <div class="venue-photo-overlay"></div>
-        </div>
-        <div class="venue-map">
-          <span style="font-size:24px">📍</span>
-          <span>Room Mate Aitana Hotel</span>
-          <span>IJdok 6 · Amsterdam</span>
-          <a href="https://maps.google.com/?q=Room+Mate+Aitana+Hotel+Amsterdam" target="_blank" class="btn bo" style="font-size:12px;padding:10px 24px;margin-top:8px">Open in Google Maps →</a>
-        </div>
+      <div class="group-visual rv d1">
+        <div class="group-num">4+</div>
+        <div class="group-label">Rooms for group benefits</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- VISION 2026 -->
-<section class="vision">
+<!-- FAQ -->
+<section class="faq">
   <div class="c">
-    <span class="lbl rv" style="text-align:center">Vision 2026</span>
-    <div class="vision-text rv">
-      Five years in, we're no longer building an event.<br>
-      <em>We're building infrastructure.</em><br><br>
-      MMATH 2026 is the platform edition —<br>
-      where the dance industry's future gets decided.<br><br>
-      <em>Bold. Exclusive. Purposeful.</em>
+    <span class="lbl rv">FAQ</span>
+    <h2 class="rv">Good<br><span class="teal">questions.</span></h2>
+    <div class="faq-list">
+      <div class="faq-item rv"><div class="faq-q" onclick="toggleFaq(this)"><span>Do I need a separate ADE badge to access MMATH?</span><div class="faq-icon">+</div></div><div class="faq-a">No. Hotel guests receive full MMATH hub access automatically upon check-in. No separate badge, no additional cost.</div></div>
+      <div class="faq-item rv"><div class="faq-q" onclick="toggleFaq(this)"><span>Is breakfast included in the room rate?</span><div class="faq-icon">+</div></div><div class="faq-a">Breakfast is not included in the base rate but is available from €25 per person. Served daily from 07:00 to 12:00 at the hotel restaurant. Can be added to your booking on request.</div></div>
+      <div class="faq-item rv"><div class="faq-q" onclick="toggleFaq(this)"><span>When do ADE 2026 dates get confirmed?</span><div class="faq-icon">+</div></div><div class="faq-a">ADE traditionally takes place in the third or fourth week of October. Exact 2026 dates will be confirmed by ADE. Register your interest to be notified the moment bookings open.</div></div>
+      <div class="faq-item rv"><div class="faq-q" onclick="toggleFaq(this)"><span>Is parking available at the hotel?</span><div class="faq-icon">+</div></div><div class="faq-a">Yes. Parking is available at €40 per 24 hours. We strongly recommend booking in advance during ADE week as availability is limited. Mention it in your inquiry and we'll arrange it for you.</div></div>
+      <div class="faq-item rv"><div class="faq-q" onclick="toggleFaq(this)"><span>What is the cancellation policy?</span><div class="faq-icon">+</div></div><div class="faq-a">Full details provided at booking. MMATH works with Room Mate Aitana's standard cancellation policy with specific ADE booking terms. Flexible options available for early bookings — contact us directly.</div></div>
+      <div class="faq-item rv"><div class="faq-q" onclick="toggleFaq(this)"><span>Can I attend without staying at the hotel?</span><div class="faq-icon">+</div></div><div class="faq-a">Yes — day passes and evening showcase tickets are available for registered industry professionals. However, hotel guests receive priority access, full week programming and all included benefits that day pass holders do not.</div></div>
     </div>
-    <div style="margin-top:48px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap;" class="rv d1">
-      <a href="booking.html" class="btn bp">Book Your Stay</a>
-      <a href="partners.html" class="btn bo">Become a Partner</a>
+  </div>
+</section>
+
+<!-- BOOKING FORM -->
+<section class="book-form" id="inquiry">
+  <div class="c">
+    <span class="lbl rv">Room Inquiry</span>
+    <h2 class="rv">Reserve your<br><span class="teal">room now.</span></h2>
+    <div class="form-grid">
+      <div class="form-text rv">
+        <p>Fill in your details and we'll confirm availability and pricing for ADE October 2026. We respond within 24 hours.</p>
+        <p>For group bookings of 4+ rooms, mention this in your message for dedicated group pricing and benefits.</p>
+        <div style="margin-top:32px;padding:28px;background:var(--blkc);border:1px solid var(--blkb);border-left:3px solid var(--teal)">
+          <div class="lbl" style="margin-bottom:8px">Direct Contact</div>
+          <p style="font-family:var(--fc);font-size:13px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="026a676e6e6d426f6767766f676376766a676a6d76676e2c616d6f">[email&#160;protected]</a></p>
+          <p style="font-family:var(--fc);font-size:13px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase;margin-top:6px;">IJdok 6 · Amsterdam</p>
+        </div>
+        <p class="form-note">B2B industry professionals only · All inquiries treated with full confidentiality</p>
+      </div>
+      <form class="rv d1" onsubmit="submitForm(this,event)">
+        <div class="field-row">
+          <div class="field"><label>First Name</label><input type="text" placeholder="Your first name" required></div>
+          <div class="field"><label>Last Name</label><input type="text" placeholder="Your last name" required></div>
+        </div>
+        <div class="field"><label>Email Address</label><input type="email" placeholder="your@email.com" required></div>
+        <div class="field"><label>Company / Label / Agency</label><input type="text" placeholder="Your company" required></div>
+        <div class="field">
+          <label>Room Type</label>
+          <select required>
+            <option value="" disabled selected>Select room type</option>
+            <option>Superior Room — Twin Bed · €285/night</option>
+            <option>Superior Room — Double Bed · €285/night</option>
+            <option>Superior Room — City View · €300/night</option>
+            <option>Executive Room · €325/night</option>
+            <option>Junior Suite · €365/night</option>
+            <option>King Suite — Waitlist · €435/night</option>
+            <option>Group Booking (4+ rooms)</option>
+          </select>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label>Number of Nights</label>
+            <select>
+              <option>3 nights</option>
+              <option>4 nights</option>
+              <option selected>5 nights (full ADE week)</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Number of Rooms</label>
+            <select>
+              <option selected>1 room</option>
+              <option>2 rooms</option>
+              <option>3 rooms</option>
+              <option>4+ rooms (group)</option>
+            </select>
+          </div>
+        </div>
+        <div class="field"><label>Additional Notes</label><textarea placeholder="Special requests, parking, breakfast, group details..."></textarea></div>
+        <button type="submit" class="btn bp" style="width:100%;margin-top:8px;">Send Inquiry →</button>
+      </form>
     </div>
   </div>
 </section>
@@ -375,22 +544,20 @@ h4{font-size:clamp(18px,2vw,26px)}
       <div class="fb">
         <img src="logo.png" alt="Meet Me at the Hotel" style="height:44px;width:auto;display:block;">
         <p>The Global Hospitality Hub<br>of the Dance Industry.</p>
-        <p class="fa">Room Mate Aitana Hotel · IJdok 6<br>Amsterdam · ADE October 2026</p>
+        <p class="fadr">Room Mate Aitana Hotel · IJdok 6<br>Amsterdam · ADE October 2026</p>
       </div>
       <div class="fc"><p class="fct">Explore</p><a href="about.html">About</a><a href="programme.html">Programme</a><a href="universe.html">Universe</a><a href="networking.html">Networking</a></div>
       <div class="fc"><p class="fct">Book</p><a href="booking.html">Hotel Rooms</a><a href="meeting-rooms.html">Meeting Rooms</a><a href="showcases.html">Showcases</a><a href="partners.html">Partnerships</a></div>
       <div class="fc"><p class="fct">Connect</p><a href="contact.html">Contact</a><a href="#">Instagram</a><a href="#">LinkedIn</a><a href="#">TikTok</a></div>
     </div>
     <div class="fb2">
-      <p>© 2026 Meet Me at the Hotel · 5th Anniversary Edition · ADE October 2026</p>
+      <p>© 2026 Meet Me at the Hotel · 5th Anniversary Edition</p>
       <p><a href="#">Privacy</a> · <a href="#">Cookies</a> · <a href="#">Terms</a></p>
     </div>
   </div>
 </footer>
 
-<script>
-const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target)}}),{threshold:.08});
-document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
-</script>
-</body>
-</html>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+function toggleFaq(el){const item=el.parentElement;item.classList.toggle('open');}
+function submitForm(f,e){e.preventDefault();const b=f.querySelector('button');b.textContent='INQUIRY SENT ✓';b.style.background='#2E7A74';setTimeout(()=>{b.textContent='Send Inquiry →';b.style.background='';f.reset()},3500);}
+c
