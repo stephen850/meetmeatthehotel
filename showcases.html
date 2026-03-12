@@ -1,1 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Showcases — Meet Me at the Hotel · ADE 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--teal:#4DA8A0;--deep:#2E7A74;--pool:#7DCDC7;--blk:#0A0A0A;--blkm:#111;--blkc:#161616;--blkb:#222;--wh:#F5F5F0;--wd:rgba(245,245,240,0.6);--fd:'Bebas Neue',sans-serif;--fc:'Barlow Condensed',sans-serif;--fb:'Barlow',sans-serif;--nav:72px;--tr:0.35s cubic-bezier(.4,0,.2,1)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--blk);color:var(--wh);font-family:var(--fb);overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.c{max-width:1280px;margin:0 auto;padding:0 80px}
+@media(max-width:1024px){.c{padding:0 40px}}
+@media(max-width:640px){.c{padding:0 20px}}
+h1,h2,h3,h4{font-family:var(--fd);line-height:.93;text-transform:uppercase;letter-spacing:-.01em}
+h1{font-size:clamp(64px,10vw,140px)}
+h2{font-size:clamp(40px,6vw,84px)}
+h3{font-size:clamp(22px,3vw,40px)}
+.teal{color:var(--teal)}
+.lbl{font-family:var(--fc);font-size:11px;font-weight:600;letter-spacing:.28em;color:var(--teal);text-transform:uppercase;display:block;margin-bottom:16px}
+.btn{display:inline-block;font-family:var(--fc);font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:15px 36px;transition:all var(--tr);cursor:pointer;border:none;text-align:center}
+.bp{background:var(--teal);color:var(--blk)}.bp:hover{background:var(--deep);color:var(--wh)}
+.bo{border:1px solid var(--teal);color:var(--teal);background:transparent}.bo:hover{background:var(--teal);color:var(--blk)}
 
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;height:var(--nav);display:flex;align-items:center;justify-content:space-between;padding:0 40px;z-index:1000;background:rgba(10,10,10,.95);border-bottom:1px solid var(--blkb);backdrop-filter:blur(16px)}
+.nl{display:flex;align-items:center;gap:28px}
+.nl a{font-family:var(--fc);font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--wd);transition:color var(--tr)}.nl a:hover{color:var(--wh)}
+.nc{background:var(--teal);color:var(--blk)!important;padding:10px 20px}.nc:hover{background:var(--deep)!important;color:var(--wh)!important}
+.hb{display:none;flex-direction:column;gap:5px;cursor:pointer}
+.hb span{display:block;width:22px;height:1.5px;background:var(--wh)}
+@media(max-width:900px){
+  .hb{display:flex}
+  .nl{position:fixed;top:var(--nav);left:0;right:0;bottom:0;background:var(--blk);flex-direction:column;align-items:flex-start;padding:40px;gap:20px;transform:translateX(100%);transition:transform var(--tr)}
+  .nl.open{transform:none}
+  .nl a{font-size:20px}
+}
+
+/* FULL-BLEED HERO */
+.hero{min-height:100vh;position:relative;display:flex;align-items:flex-end;padding-bottom:80px;overflow:hidden;margin-top:var(--nav)}
+.hero-img{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1920&q=80&fit=crop');background-size:cover;background-position:center;filter:brightness(.5) saturate(.8)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,10,.2) 0%,rgba(10,10,10,.85) 80%,rgba(10,10,10,.98) 100%)}
+.hero-tint{position:absolute;inset:0;background:linear-gradient(135deg,rgba(77,168,160,.12) 0%,transparent 60%)}
+.hero-content{position:relative;z-index:2;width:100%;max-width:1280px;margin:0 auto;padding:0 80px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end}
+.hero-badge{display:inline-block;font-family:var(--fc);font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--teal);border:1px solid rgba(77,168,160,.5);padding:6px 16px;margin-bottom:24px;background:rgba(10,10,10,.4);backdrop-filter:blur(4px)}
+.hero h1{color:var(--wh);margin-bottom:16px}
+.hero-sub{font-family:var(--fc);font-size:14px;letter-spacing:.12em;color:var(--wd);text-transform:uppercase;line-height:1.6;margin-bottom:32px}
+.hero-specs{display:flex;gap:32px;padding-top:24px;border-top:1px solid rgba(255,255,255,.1)}
+.hero-spec-n{font-family:var(--fd);font-size:36px;color:var(--teal);line-height:1}
+.hero-spec-l{font-family:var(--fc);font-size:10px;letter-spacing:.2em;color:var(--wd);text-transform:uppercase;margin-top:4px}
+.hero-right{display:flex;flex-direction:column;gap:12px}
+.hero-feat{background:rgba(10,10,10,.6);border:1px solid rgba(77,168,160,.2);padding:16px 20px;backdrop-filter:blur(8px);display:flex;align-items:center;gap:14px}
+.hero-feat-icon{font-size:18px;flex-shrink:0}
+.hero-feat-text{font-family:var(--fc);font-size:12px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase}
+@media(max-width:900px){.hero-content{grid-template-columns:1fr;padding:0 40px}.hero-right{display:none}}
+@media(max-width:640px){.hero-content{padding:0 20px}}
+
+/* PACKAGES */
+.packages{padding:100px 0;border-bottom:1px solid var(--blkb)}
+.pkg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:60px}
+.pkg{background:var(--blkc);border:1px solid var(--blkb);display:flex;flex-direction:column;transition:border-color var(--tr);position:relative;overflow:hidden}
+.pkg::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--teal)}
+.pkg.featured{border-color:var(--teal);background:linear-gradient(160deg,rgba(77,168,160,.07) 0%,var(--blkc) 60%)}
+.pkg-badge{position:absolute;top:16px;right:16px;background:var(--teal);color:var(--blk);font-family:var(--fc);font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;padding:4px 12px}
+.pkg-head{padding:36px 32px 24px}
+.pkg-name{font-family:var(--fd);font-size:38px;line-height:.9;margin-bottom:8px}
+.pkg-price{font-family:var(--fd);font-size:28px;color:var(--teal);margin-bottom:16px}
+.pkg-price span{font-family:var(--fc);font-size:11px;color:var(--wd);letter-spacing:.1em;text-transform:uppercase}
+.pkg-desc{font-size:13px;color:var(--wd);line-height:1.65;font-weight:300;padding-bottom:24px;border-bottom:1px solid var(--blkb)}
+.pkg-body{padding:24px 32px;flex:1}
+.pkg-list{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:28px}
+.pkg-list li{font-size:13px;color:var(--wd);padding:7px 0;border-bottom:1px solid rgba(255,255,255,.04);display:flex;align-items:start;gap:10px;line-height:1.5}
+.pkg-list li::before{content:'✓';color:var(--teal);flex-shrink:0;font-family:var(--fc);font-weight:700}
+.pkg-cta{padding:0 32px 32px}
+@media(max-width:768px){.pkg-grid{grid-template-columns:1fr}}
+
+/* OSCAR ROOM DETAIL */
+.oscar{padding:100px 0;border-bottom:1px solid var(--blkb);background:var(--blkm)}
+.oscar-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;margin-top:60px}
+.oscar-photo{position:relative;overflow:hidden}
+.oscar-photo img{width:100%;aspect-ratio:16/10;object-fit:cover;filter:brightness(.75) saturate(.85);display:block;transition:transform .8s ease}
+.oscar:hover .oscar-photo img{transform:scale(1.03)}
+.oscar-photo-tint{position:absolute;inset:0;background:linear-gradient(135deg,rgba(77,168,160,.15) 0%,transparent 60%)}
+.oscar-specs{display:flex;flex-direction:column;gap:2px;margin:28px 0}
+.oscar-spec{background:var(--blkc);border:1px solid var(--blkb);padding:16px 20px;display:flex;justify-content:space-between;align-items:center;transition:border-color var(--tr)}
+.oscar-spec:hover{border-color:var(--teal)}
+.oscar-spec-label{font-family:var(--fc);font-size:11px;letter-spacing:.2em;color:var(--wd);text-transform:uppercase}
+.oscar-spec-val{font-family:var(--fd);font-size:22px;color:var(--teal)}
+.oscar-text p{font-size:15px;color:var(--wd);line-height:1.8;font-weight:300;margin-bottom:16px}
+@media(max-width:768px){.oscar-inner{grid-template-columns:1fr}}
+
+/* BOAT EVENTS */
+.boat{padding:100px 0;border-bottom:1px solid var(--blkb)}
+.boat-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;margin-top:60px}
+.boat-photo{position:relative;overflow:hidden}
+.boat-photo img{width:100%;aspect-ratio:4/3;object-fit:cover;filter:brightness(.7) saturate(.8);display:block}
+.boat-photo-tint{position:absolute;inset:0;background:linear-gradient(135deg,rgba(77,168,160,.15) 0%,transparent 60%)}
+.boat-text p{font-size:15px;color:var(--wd);line-height:1.8;font-weight:300;margin-bottom:16px}
+.boat-details{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin:28px 0}
+.bd{background:var(--blkc);border:1px solid var(--blkb);padding:20px;text-align:center;transition:border-color var(--tr)}
+.bd:hover{border-color:var(--teal)}
+.bd-n{font-family:var(--fd);font-size:32px;color:var(--teal)}
+.bd-l{font-family:var(--fc);font-size:10px;letter-spacing:.2em;color:var(--wd);text-transform:uppercase;margin-top:4px}
+@media(max-width:768px){.boat-inner{grid-template-columns:1fr}}
+
+/* NETWORK DRINKS */
+.drinks{padding:80px 0;border-bottom:1px solid var(--blkb);background:var(--blkm)}
+.drinks-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.drinks-photo img{width:100%;aspect-ratio:16/9;object-fit:cover;filter:brightness(.7) saturate(.8);display:block}
+.drinks-photo-tint{position:absolute;inset:0;background:linear-gradient(135deg,rgba(77,168,160,.12) 0%,transparent 60%)}
+.drinks-text p{font-size:15px;color:var(--wd);line-height:1.8;font-weight:300;margin-bottom:16px}
+@media(max-width:768px){.drinks-inner{grid-template-columns:1fr}}
+
+/* INQUIRY FORM */
+.inquiry{padding:100px 0}
+.inq-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-top:60px}
+.inq-text p{font-size:15px;color:var(--wd);line-height:1.8;font-weight:300;margin-bottom:16px}
+.contact-box{margin-top:32px;padding:28px;background:var(--blkc);border:1px solid var(--blkb);border-left:3px solid var(--teal)}
+form{display:flex;flex-direction:column;gap:16px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-family:var(--fc);font-size:10px;font-weight:600;letter-spacing:.25em;color:var(--teal);text-transform:uppercase}
+.field input,.field select,.field textarea{background:transparent;border:none;border-bottom:1px solid rgba(77,168,160,.35);color:var(--wh);padding:12px 0;font-family:var(--fc);font-size:14px;letter-spacing:.08em;outline:none;transition:border-color var(--tr);-webkit-appearance:none}
+.field input:focus,.field select:focus,.field textarea:focus{border-bottom-color:var(--teal)}
+.field input::placeholder,.field textarea::placeholder{color:rgba(245,245,240,.2)}
+.field select option{background:var(--blkc);color:var(--wh)}
+.field textarea{resize:none;height:90px}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:768px){.inq-grid{grid-template-columns:1fr}.field-row{grid-template-columns:1fr}}
+
+/* FOOTER */
+.ft{padding:80px 0 40px;background:var(--blkc);border-top:1px solid var(--blkb)}
+.fg{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:60px}
+.fb p{font-size:13px;color:var(--wd);margin-top:20px;line-height:1.75;font-weight:300}
+.fadr{margin-top:10px;opacity:.4;font-size:12px}
+.fc{display:flex;flex-direction:column;gap:12px}
+.fct{font-family:var(--fc);font-size:10px;font-weight:600;letter-spacing:.3em;color:var(--teal);text-transform:uppercase;margin-bottom:4px}
+.fc a{font-family:var(--fc);font-size:13px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase;transition:color var(--tr)}.fc a:hover{color:var(--teal)}
+.fb2{display:flex;justify-content:space-between;padding-top:32px;border-top:1px solid var(--blkb);font-family:var(--fc);font-size:11px;letter-spacing:.1em;color:rgba(245,245,240,.3);text-transform:uppercase}
+.fb2 a:hover{color:var(--teal)}
+@media(max-width:900px){.fg{grid-template-columns:1fr 1fr;gap:40px}}
+@media(max-width:480px){.fg{grid-template-columns:1fr}.fb2{flex-direction:column;gap:12px}}
+
+.rv{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+.rv.vis{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" style="display:flex;align-items:center;">
+    <img src="logo.png" alt="Meet Me at the Hotel" style="height:48px;width:auto;display:block;">
+  </a>
+  <div class="nl" id="nl">
+    <a href="about.html">About</a>
+    <a href="programme.html">Programme</a>
+    <a href="universe.html">Universe</a>
+    <a href="networking.html">Networking</a>
+    <a href="showcases.html" style="color:var(--teal)">Showcases</a>
+    <a href="partners.html">Partners</a>
+    <a href="booking.html" class="nc">Book Your Stay</a>
+  </div>
+  <div class="hb" onclick="document.getElementById('nl').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- FULL-BLEED HERO -->
+<section class="hero">
+  <div class="hero-img"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-tint"></div>
+  <div class="hero-content">
+    <div>
+      <div class="hero-badge">Oscar Room · IJdok 6 · Amsterdam</div>
+      <h1>
+        <span style="display:block">THE</span>
+        <span style="display:block;color:var(--teal)">OSCAR</span>
+        <span style="display:block">ROOM.</span>
+      </h1>
+      <p class="hero-sub">Amsterdam's most exclusive showcase venue during ADE week.<br>132m² · Marina view · Designed by 250K Studio.</p>
+      <div style="display:flex;gap:14px;flex-wrap:wrap;margin-bottom:40px;">
+        <a href="#inquiry" class="btn bp">Book a Showcase →</a>
+        <a href="#packages" class="btn bo">View Packages</a>
+      </div>
+      <div class="hero-specs">
+        <div><div class="hero-spec-n">132m²</div><div class="hero-spec-l">Venue Size</div></div>
+        <div><div class="hero-spec-n">300</div><div class="hero-spec-l">Capacity</div></div>
+        <div><div class="hero-spec-n">5★</div><div class="hero-spec-l">Marina View</div></div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-feat"><span class="hero-feat-icon">🎵</span><span class="hero-feat-text">Full professional sound system</span></div>
+      <div class="hero-feat"><span class="hero-feat-icon">💡</span><span class="hero-feat-text">Architectural lighting rig</span></div>
+      <div class="hero-feat"><span class="hero-feat-icon">🌊</span><span class="hero-feat-text">Floor-to-ceiling marina views</span></div>
+      <div class="hero-feat"><span class="hero-feat-icon">🎨</span><span class="hero-feat-text">Designed by 250K Studio</span></div>
+      <div class="hero-feat"><span class="hero-feat-icon">🍸</span><span class="hero-feat-text">Full bar & catering service</span></div>
+      <div class="hero-feat"><span class="hero-feat-icon">🎟️</span><span class="hero-feat-text">Industry-only guest list curation</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SHOWCASE PACKAGES -->
+<section class="packages" id="packages">
+  <div class="c">
+    <span class="lbl rv">Showcase Packages · ADE 2026</span>
+    <h2 class="rv">Your night.<br><span class="teal">Your stage.</span></h2>
+    <div class="pkg-grid">
+
+      <div class="pkg rv">
+        <div class="pkg-head">
+          <div class="pkg-name">SHOWCASE</div>
+          <div class="pkg-price">€8,000 <span>/ evening slot</span></div>
+          <div class="pkg-desc">A curated evening showcase slot in the Oscar Room. Perfect for labels presenting new artists, agencies hosting client nights or brands activating around music.</div>
+        </div>
+        <div class="pkg-body">
+          <ul class="pkg-list">
+            <li>Oscar Room from 20:00 – 23:00</li>
+            <li>Up to 3 artist sets</li>
+            <li>100 industry guest invitations</li>
+            <li>Basic branding placement</li>
+            <li>Bar & service included</li>
+            <li>MMATH social media mention</li>
+          </ul>
+        </div>
+        <div class="pkg-cta"><a href="#inquiry" class="btn bo" style="display:block">Enquire →</a></div>
+      </div>
+
+      <div class="pkg featured rv d1">
+        <div class="pkg-badge">Most Booked</div>
+        <div class="pkg-head">
+          <div class="pkg-name">FULL NIGHT</div>
+          <div class="pkg-price">€18,000 <span>/ full evening</span></div>
+          <div class="pkg-desc">The complete Oscar Room experience. Full evening takeover — your concept, your artists, your production. The definitive ADE showcase night.</div>
+        </div>
+        <div class="pkg-body">
+          <ul class="pkg-list">
+            <li>Oscar Room from 19:00 – 02:00</li>
+            <li>Unlimited artist programme</li>
+            <li>200 industry guest invitations</li>
+            <li>Full branding — room & digital</li>
+            <li>Dedicated bar & premium catering</li>
+            <li>Social media campaign (5 posts)</li>
+            <li>Press photography included</li>
+            <li>MMATH newsletter feature</li>
+          </ul>
+        </div>
+        <div class="pkg-cta"><a href="#inquiry" class="btn bp" style="display:block">Enquire →</a></div>
+      </div>
+
+      <div class="pkg rv d2">
+        <div class="pkg-head">
+          <div class="pkg-name">BRANDED LABEL NIGHT</div>
+          <div class="pkg-price">€32,000 <span>/ full production</span></div>
+          <div class="pkg-desc">Full co-production with the MMATH team. Custom stage design, production build, curated guest list and a 360° media campaign. The ultimate statement.</div>
+        </div>
+        <div class="pkg-body">
+          <ul class="pkg-list">
+            <li>Oscar Room full evening + day activation</li>
+            <li>Custom stage & set design</li>
+            <li>300 curated industry invitations</li>
+            <li>Full MMATH production team</li>
+            <li>360° media campaign</li>
+            <li>Live stream option</li>
+            <li>Behind-the-scenes content package</li>
+            <li>Post-event recap video</li>
+            <li>Press & media coordination</li>
+          </ul>
+        </div>
+        <div class="pkg-cta"><a href="#inquiry" class="btn bo" style="display:block">Enquire →</a></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- OSCAR ROOM DETAIL -->
+<section class="oscar">
+  <div class="c">
+    <span class="lbl rv">The Venue</span>
+    <h2 class="rv">The Oscar Room.<br><span class="teal">Nothing like it.</span></h2>
+    <div class="oscar-inner">
+      <div class="oscar-photo rv">
+        <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=800&q=80&fit=crop" alt="Oscar Room">
+        <div class="oscar-photo-tint"></div>
+      </div>
+      <div class="rv d1">
+        <p>The Oscar Room is the crown jewel of Room Mate Aitana Hotel — a purpose-designed event space with floor-to-ceiling windows overlooking the IJ marina. Designed by Amsterdam studio 250K, it's one of the most visually striking venues in the city.</p>
+        <p>During ADE week, it becomes the industry's most coveted showcase stage. Labels, agencies and brands compete for dates months in advance. Once you've performed or hosted here, you understand why.</p>
+        <div class="oscar-specs">
+          <div class="oscar-spec"><span class="oscar-spec-label">Total Area</span><span class="oscar-spec-val">132m²</span></div>
+          <div class="oscar-spec"><span class="oscar-spec-label">Capacity — Standing</span><span class="oscar-spec-val">300</span></div>
+          <div class="oscar-spec"><span class="oscar-spec-label">Capacity — Seated</span><span class="oscar-spec-val">120</span></div>
+          <div class="oscar-spec"><span class="oscar-spec-label">Design</span><span class="oscar-spec-val">250K Studio</span></div>
+          <div class="oscar-spec"><span class="oscar-spec-label">View</span><span class="oscar-spec-val">IJ Marina</span></div>
+          <div class="oscar-spec"><span class="oscar-spec-label">Sound System</span><span class="oscar-spec-val">Professional</span></div>
+        </div>
+        <a href="#inquiry" class="btn bp">Check Availability →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOAT EVENTS -->
+<section class="boat">
+  <div class="c">
+    <span class="lbl rv">Beyond the Hotel</span>
+    <h2 class="rv">Take it<br><span class="teal">on the water.</span></h2>
+    <div class="boat-inner">
+      <div class="rv">
+        <p>When the Oscar Room isn't enough — take the industry onto the IJ. Private canal cruises depart directly from the hotel's marina-side entrance, making the transition seamless.</p>
+        <p>40 guests maximum per boat. The intimacy forces real conversation. The setting makes it unforgettable. The sell-out rate makes it essential to book early.</p>
+        <div class="boat-details">
+          <div class="bd"><div class="bd-n">40</div><div class="bd-l">Max Guests</div></div>
+          <div class="bd"><div class="bd-n">€6,500+</div><div class="bd-l">Starting From</div></div>
+          <div class="bd"><div class="bd-n">3h</div><div class="bd-l">Typical Duration</div></div>
+          <div class="bd"><div class="bd-n">100%</div><div class="bd-l">Sell-out Rate</div></div>
+        </div>
+        <a href="#inquiry" class="btn bp">Book a Boat →</a>
+      </div>
+      <div class="boat-photo rv d1" style="position:relative;">
+        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80&fit=crop" alt="Amsterdam waterfront">
+        <div class="boat-photo-tint"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NETWORK DRINKS -->
+<section class="drinks">
+  <div class="c">
+    <div class="drinks-inner">
+      <div class="rv" style="position:relative;">
+        <div class="drinks-photo" style="position:relative;overflow:hidden;">
+          <img src="https://images.unsplash.com/photo-1551818255-e6e10975bc17?w=800&q=80&fit=crop" alt="Aitana Lounge">
+          <div class="drinks-photo-tint" style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(77,168,160,.12) 0%,transparent 60%);"></div>
+        </div>
+      </div>
+      <div class="rv d1">
+        <span class="lbl">Aitana Lounge Bar</span>
+        <h2>Network<br><span class="teal">Drinks.</span></h2>
+        <p style="margin-top:20px">The easiest way to bring people together. Host a branded Network Drinks evening in the Aitana Lounge Bar — the hotel's main social hub during ADE week.</p>
+        <p>From €4,000. Minimum 50 guests. Full bar package, branded signage and MMATH promotion included. The informal format that leads to the most natural conversations.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin:28px 0;">
+          <div style="background:var(--blkc);border:1px solid var(--blkb);padding:20px;text-align:center;"><div style="font-family:var(--fd);font-size:28px;color:var(--teal);">€4,000+</div><div style="font-family:var(--fc);font-size:10px;letter-spacing:.2em;color:var(--wd);text-transform:uppercase;margin-top:4px;">Starting From</div></div>
+          <div style="background:var(--blkc);border:1px solid var(--blkb);padding:20px;text-align:center;"><div style="font-family:var(--fd);font-size:28px;color:var(--teal);">50+</div><div style="font-family:var(--fc);font-size:10px;letter-spacing:.2em;color:var(--wd);text-transform:uppercase;margin-top:4px;">Min. Guests</div></div>
+        </div>
+        <a href="#inquiry" class="btn bp">Book Network Drinks →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INQUIRY FORM -->
+<section class="inquiry" id="inquiry">
+  <div class="c">
+    <span class="lbl rv">Showcase Inquiry</span>
+    <h2 class="rv">Book your<br><span class="teal">night now.</span></h2>
+    <div class="inq-grid">
+      <div class="rv">
+        <p>Showcase dates at the Oscar Room fill up months before ADE. Submit your inquiry early — we'll confirm availability and send a tailored proposal within 48 hours.</p>
+        <p>All formats available: Oscar Room showcases, boat events, network drinks and branded label nights.</p>
+        <div class="contact-box">
+          <span class="lbl">Direct Contact</span>
+          <p style="font-family:var(--fc);font-size:13px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e5968d8a928684968096a58880809188808491918d808d8a918089cb868a88">[email&#160;protected]</a></p>
+          <p style="font-family:var(--fc);font-size:13px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase;margin-top:6px;">Oscar Room · IJdok 6 · Amsterdam</p>
+        </div>
+      </div>
+      <form class="rv d1" onsubmit="sf(this,event)">
+        <div class="field-row">
+          <div class="field"><label>First Name</label><input type="text" placeholder="First name" required></div>
+          <div class="field"><label>Last Name</label><input type="text" placeholder="Last name" required></div>
+        </div>
+        <div class="field"><label>Email</label><input type="email" placeholder="your@email.com" required></div>
+        <div class="field"><label>Label / Company</label><input type="text" placeholder="Your label or company" required></div>
+        <div class="field">
+          <label>Event Type</label>
+          <select required>
+            <option value="" disabled selected>Select event type</option>
+            <option>Showcase — €8,000</option>
+            <option>Full Night — €18,000</option>
+            <option>Branded Label Night — €32,000</option>
+            <option>Boat Event — from €6,500</option>
+            <option>Network Drinks — from €4,000</option>
+            <option>Custom / Not sure yet</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Preferred Night</label>
+          <select>
+            <option value="" disabled selected>ADE week preference</option>
+            <option>Monday (ADE opening)</option>
+            <option>Tuesday</option>
+            <option>Wednesday</option>
+            <option>Thursday</option>
+            <option>Friday (ADE peak)</option>
+            <option>Flexible</option>
+          </select>
+        </div>
+        <div class="field"><label>Tell us about your event</label><textarea placeholder="Artists, concept, expected guests, any special requirements..."></textarea></div>
+        <button type="submit" class="btn bp" style="width:100%;margin-top:8px;">Send Showcase Inquiry →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="ft">
+  <div class="c">
+    <div class="fg">
+      <div class="fb">
+        <img src="logo.png" alt="Meet Me at the Hotel" style="height:44px;width:auto;display:block;">
+        <p>The Global Hospitality Hub<br>of the Dance Industry.</p>
+        <p class="fadr">Room Mate Aitana Hotel · IJdok 6<br>Amsterdam · ADE October 2026</p>
+      </div>
+      <div class="fc"><p class="fct">Explore</p><a href="about.html">About</a><a href="programme.html">Programme</a><a href="universe.html">Universe</a><a href="networking.html">Networking</a></div>
+      <div class="fc"><p class="fct">Book</p><a href="booking.html">Hotel Rooms</a><a href="meeting-rooms.html">Meeting Rooms</a><a href="showcases.html">Showcases</a><a href="partners.html">Partnerships</a></div>
+      <div class="fc"><p class="fct">Connect</p><a href="contact.html">Contact</a><a href="#">Instagram</a><a href="#">LinkedIn</a><a href="#">TikTok</a></div>
+    </div>
+    <div class="fb2">
+      <p>© 2026 Meet Me at the Hotel · 5th Anniversary Edition</p>
+      <p><a href="#">Privacy</a> · <a href="#">Cookies</a> · <a href="#">Terms</a></p>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+function sf(f,e){e.preventDefault();const b=f.querySelector('button');b.textContent='INQUIRY SENT ✓';b.style.background='#2E7A74';setTimeout(()=>{b.textContent='Send Showcase Inquiry →';b.style.background='';f.reset()},3500)
