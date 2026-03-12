@@ -1,1 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Networking — Meet Me at the Hotel · ADE 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--teal:#4DA8A0;--deep:#2E7A74;--pool:#7DCDC7;--blk:#0A0A0A;--blkm:#111;--blkc:#161616;--blkb:#222;--wh:#F5F5F0;--wd:rgba(245,245,240,0.6);--fd:'Bebas Neue',sans-serif;--fc:'Barlow Condensed',sans-serif;--fb:'Barlow',sans-serif;--nav:72px;--tr:0.35s cubic-bezier(.4,0,.2,1)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--blk);color:var(--wh);font-family:var(--fb);overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.c{max-width:1280px;margin:0 auto;padding:0 80px}
+@media(max-width:1024px){.c{padding:0 40px}}
+@media(max-width:640px){.c{padding:0 20px}}
+h1,h2,h3,h4{font-family:var(--fd);line-height:.93;text-transform:uppercase;letter-spacing:-.01em}
+h1{font-size:clamp(64px,10vw,140px)}
+h2{font-size:clamp(40px,6vw,84px)}
+h3{font-size:clamp(22px,3vw,40px)}
+.teal{color:var(--teal)}
+.lbl{font-family:var(--fc);font-size:11px;font-weight:600;letter-spacing:.28em;color:var(--teal);text-transform:uppercase;display:block;margin-bottom:16px}
+.btn{display:inline-block;font-family:var(--fc);font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:15px 36px;transition:all var(--tr);cursor:pointer;border:none;text-align:center}
+.bp{background:var(--teal);color:var(--blk)}.bp:hover{background:var(--deep);color:var(--wh)}
+.bo{border:1px solid var(--teal);color:var(--teal);background:transparent}.bo:hover{background:var(--teal);color:var(--blk)}
 
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;height:var(--nav);display:flex;align-items:center;justify-content:space-between;padding:0 40px;z-index:1000;background:rgba(10,10,10,.95);border-bottom:1px solid var(--blkb);backdrop-filter:blur(16px)}
+.nl{display:flex;align-items:center;gap:28px}
+.nl a{font-family:var(--fc);font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--wd);transition:color var(--tr)}.nl a:hover{color:var(--wh)}
+.nc{background:var(--teal);color:var(--blk)!important;padding:10px 20px}.nc:hover{background:var(--deep)!important;color:var(--wh)!important}
+.hb{display:none;flex-direction:column;gap:5px;cursor:pointer}
+.hb span{display:block;width:22px;height:1.5px;background:var(--wh)}
+@media(max-width:900px){
+  .hb{display:flex}
+  .nl{position:fixed;top:var(--nav);left:0;right:0;bottom:0;background:var(--blk);flex-direction:column;align-items:flex-start;padding:40px;gap:20px;transform:translateX(100%);transition:transform var(--tr)}
+  .nl.open{transform:none}
+  .nl a{font-size:20px}
+}
+
+/* HERO */
+.ph{padding-top:calc(var(--nav) + 80px);padding-bottom:80px;position:relative;overflow:hidden;background:#0a1412;border-bottom:1px solid var(--blkb)}
+.ph-img{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=1920&q=80&fit=crop&crop=faces');background-size:cover;background-position:center;opacity:0.12}
+.ph-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(77,168,160,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(77,168,160,.04) 1px,transparent 1px);background-size:80px 80px}
+.ph-inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end}
+.ph-lead{font-family:var(--fc);font-size:clamp(14px,1.6vw,18px);color:var(--wd);max-width:520px;line-height:1.6;text-transform:uppercase;letter-spacing:.06em;margin-top:20px}
+.ph-stats{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+.ph-stat{background:rgba(255,255,255,.04);border:1px solid var(--blkb);padding:24px 20px}
+.ph-stat-n{font-family:var(--fd);font-size:42px;color:var(--teal);line-height:1}
+.ph-stat-l{font-family:var(--fc);font-size:10px;letter-spacing:.22em;color:var(--wd);text-transform:uppercase;margin-top:4px}
+@media(max-width:768px){.ph-inner{grid-template-columns:1fr;gap:48px}}
+
+/* PHILOSOPHY */
+.phil{padding:100px 0;border-bottom:1px solid var(--blkb)}
+.phil-inner{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:center}
+.phil-quote{font-family:var(--fd);font-size:clamp(28px,4vw,52px);line-height:1.05;color:var(--wh)}
+.phil-quote em{color:var(--teal);font-style:normal}
+.phil-text p{font-size:15px;color:var(--wd);line-height:1.8;font-weight:300;margin-bottom:20px}
+@media(max-width:768px){.phil-inner{grid-template-columns:1fr;gap:48px}}
+
+/* HOW IT WORKS */
+.how{padding:100px 0;border-bottom:1px solid var(--blkb);background:var(--blkm)}
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;margin-top:60px}
+.step{background:var(--blkc);border:1px solid var(--blkb);padding:36px 28px;position:relative;transition:border-color var(--tr)}
+.step:hover{border-color:var(--teal)}
+.step-n{font-family:var(--fd);font-size:64px;color:var(--teal);opacity:.2;line-height:1;margin-bottom:16px}
+.step h4{font-family:var(--fd);font-size:22px;margin-bottom:10px}
+.step p{font-size:12px;color:var(--wd);line-height:1.65}
+.step-arrow{position:absolute;top:50%;right:-1px;transform:translateY(-50%);width:24px;height:24px;background:var(--teal);display:flex;align-items:center;justify-content:center;font-size:12px;z-index:1}
+.step:last-child .step-arrow{display:none}
+@media(max-width:900px){.steps{grid-template-columns:1fr 1fr}.step-arrow{display:none}}
+@media(max-width:480px){.steps{grid-template-columns:1fr}}
+
+/* ATTENDEE TYPES */
+.types{padding:100px 0;border-bottom:1px solid var(--blkb)}
+.types-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:60px}
+.atype{background:var(--blkc);border:1px solid var(--blkb);padding:36px 28px;transition:all var(--tr);position:relative;overflow:hidden}
+.atype::before{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--teal);transform:scaleX(0);transform-origin:left;transition:transform var(--tr)}
+.atype:hover::before{transform:scaleX(1)}
+.atype:hover{border-color:var(--teal)}
+.atype-icon{font-size:28px;margin-bottom:16px;display:block}
+.atype h4{font-family:var(--fd);font-size:26px;margin-bottom:10px}
+.atype p{font-size:13px;color:var(--wd);line-height:1.65;margin-bottom:16px}
+.atype-tags{display:flex;flex-wrap:wrap;gap:6px}
+.atype-tag{font-family:var(--fc);font-size:10px;letter-spacing:.15em;color:var(--teal);text-transform:uppercase;border:1px solid rgba(77,168,160,.25);padding:3px 8px}
+@media(max-width:768px){.types-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.types-grid{grid-template-columns:1fr}}
+
+/* PHOTO STRIP */
+.photo-strip{display:grid;grid-template-columns:1fr 1fr 1fr;height:360px;border-top:1px solid var(--blkb);border-bottom:1px solid var(--blkb)}
+.ps-img{overflow:hidden;position:relative}
+.ps-img img{width:100%;height:100%;object-fit:cover;filter:brightness(.65) saturate(.75);transition:transform .8s ease,filter .5s ease;display:block}
+.ps-img:hover img{transform:scale(1.05);filter:brightness(.8) saturate(1)}
+.ps-tint{position:absolute;inset:0;background:linear-gradient(135deg,rgba(77,168,160,.12) 0%,transparent 60%)}
+@media(max-width:640px){.photo-strip{grid-template-columns:1fr;height:auto}.ps-img{height:200px}}
+
+/* SALONS */
+.salons{padding:100px 0;border-bottom:1px solid var(--blkb);background:var(--blkm)}
+.salons-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:60px}
+.salon{background:var(--blkc);border:1px solid var(--blkb);padding:40px 36px;transition:border-color var(--tr);border-top:3px solid var(--teal)}
+.salon:hover{border-color:var(--teal)}
+.salon-badge{display:inline-block;font-family:var(--fc);font-size:10px;letter-spacing:.22em;color:var(--teal);text-transform:uppercase;border:1px solid rgba(77,168,160,.35);padding:4px 12px;margin-bottom:20px}
+.salon h3{font-size:32px;margin-bottom:12px}
+.salon p{font-size:13px;color:var(--wd);line-height:1.7;font-weight:300;margin-bottom:20px}
+.salon-detail{font-family:var(--fc);font-size:11px;letter-spacing:.15em;color:var(--pool);text-transform:uppercase}
+@media(max-width:640px){.salons-grid{grid-template-columns:1fr}}
+
+/* TESTIMONIALS */
+.testis{padding:100px 0;border-bottom:1px solid var(--blkb)}
+.testi-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:60px}
+.testi{background:var(--blkc);border:1px solid var(--blkb);padding:40px;transition:border-color var(--tr)}
+.testi:hover{border-color:var(--teal)}
+.tq{font-family:var(--fd);font-size:clamp(18px,2vw,24px);color:var(--wh);line-height:1.1;margin-bottom:28px}
+.ta{border-top:1px solid var(--blkb);padding-top:16px}
+.tn{font-family:var(--fc);font-size:12px;font-weight:600;letter-spacing:.18em;color:var(--teal);text-transform:uppercase}
+.tr{font-family:var(--fc);font-size:11px;letter-spacing:.12em;color:var(--wd);margin-top:4px;text-transform:uppercase}
+@media(max-width:640px){.testi-grid{grid-template-columns:1fr}}
+
+/* REGISTER FORM */
+.register{padding:100px 0}
+.reg-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-top:60px}
+.reg-text p{font-size:15px;color:var(--wd);line-height:1.8;font-weight:300;margin-bottom:16px}
+.reg-note{font-family:var(--fc);font-size:11px;letter-spacing:.1em;color:rgba(245,245,240,.3);text-transform:uppercase;margin-top:20px;line-height:1.6}
+.contact-box{margin-top:32px;padding:28px;background:var(--blkc);border:1px solid var(--blkb);border-left:3px solid var(--teal)}
+form{display:flex;flex-direction:column;gap:16px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-family:var(--fc);font-size:10px;font-weight:600;letter-spacing:.25em;color:var(--teal);text-transform:uppercase}
+.field input,.field select,.field textarea{background:transparent;border:none;border-bottom:1px solid rgba(77,168,160,.35);color:var(--wh);padding:12px 0;font-family:var(--fc);font-size:14px;letter-spacing:.08em;outline:none;transition:border-color var(--tr);-webkit-appearance:none}
+.field input:focus,.field select:focus,.field textarea:focus{border-bottom-color:var(--teal)}
+.field input::placeholder,.field textarea::placeholder{color:rgba(245,245,240,.2)}
+.field select option{background:var(--blkc);color:var(--wh)}
+.field textarea{resize:none;height:80px}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:768px){.reg-grid{grid-template-columns:1fr}.field-row{grid-template-columns:1fr}}
+
+/* FOOTER */
+.ft{padding:80px 0 40px;background:var(--blkc);border-top:1px solid var(--blkb)}
+.fg{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:60px}
+.fb p{font-size:13px;color:var(--wd);margin-top:20px;line-height:1.75;font-weight:300}
+.fadr{margin-top:10px;opacity:.4;font-size:12px}
+.fc{display:flex;flex-direction:column;gap:12px}
+.fct{font-family:var(--fc);font-size:10px;font-weight:600;letter-spacing:.3em;color:var(--teal);text-transform:uppercase;margin-bottom:4px}
+.fc a{font-family:var(--fc);font-size:13px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase;transition:color var(--tr)}.fc a:hover{color:var(--teal)}
+.fb2{display:flex;justify-content:space-between;padding-top:32px;border-top:1px solid var(--blkb);font-family:var(--fc);font-size:11px;letter-spacing:.1em;color:rgba(245,245,240,.3);text-transform:uppercase}
+.fb2 a:hover{color:var(--teal)}
+@media(max-width:900px){.fg{grid-template-columns:1fr 1fr;gap:40px}}
+@media(max-width:480px){.fg{grid-template-columns:1fr}.fb2{flex-direction:column;gap:12px}}
+
+.rv{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+.rv.vis{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" style="display:flex;align-items:center;">
+    <img src="logo.png" alt="Meet Me at the Hotel" style="height:48px;width:auto;display:block;">
+  </a>
+  <div class="nl" id="nl">
+    <a href="about.html">About</a>
+    <a href="programme.html">Programme</a>
+    <a href="universe.html">Universe</a>
+    <a href="networking.html" style="color:var(--teal)">Networking</a>
+    <a href="showcases.html">Showcases</a>
+    <a href="partners.html">Partners</a>
+    <a href="booking.html" class="nc">Book Your Stay</a>
+  </div>
+  <div class="hb" onclick="document.getElementById('nl').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="ph">
+  <div class="ph-img"></div>
+  <div class="ph-grid"></div>
+  <div class="c ph-inner">
+    <div>
+      <span class="lbl">Meet Me Networking · ADE 2026</span>
+      <h1>
+        <span style="display:block;color:var(--wh)">THE RIGHT</span>
+        <span style="display:block;color:var(--teal)">PEOPLE.</span>
+        <span style="display:block;color:var(--wh)">ALWAYS.</span>
+      </h1>
+      <p class="ph-lead">Curated, intentional, efficient. 2,400+ pre-matched meetings per edition. The most productive networking in the dance industry.</p>
+    </div>
+    <div class="ph-stats rv d1">
+      <div class="ph-stat"><div class="ph-stat-n">2,400+</div><div class="ph-stat-l">Meetings / Edition</div></div>
+      <div class="ph-stat"><div class="ph-stat-n">89%</div><div class="ph-stat-l">Satisfaction Rate</div></div>
+      <div class="ph-stat"><div class="ph-stat-n">62%</div><div class="ph-stat-l">Deal Follow-up Rate</div></div>
+      <div class="ph-stat"><div class="ph-stat-n">30min</div><div class="ph-stat-l">Avg. Meeting Length</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="phil">
+  <div class="c">
+    <div class="phil-inner">
+      <div class="phil-quote rv">
+        The most valuable<br>conversations<br>don't happen<br><em>on stage.</em><br><br>
+        We make them<br><em>inevitable.</em>
+      </div>
+      <div class="rv d1">
+        <span class="lbl">Our Philosophy</span>
+        <p>Most industry networking is accidental. You bump into someone at the bar, exchange cards, follow up three weeks later — maybe. MMATH Networking is the opposite.</p>
+        <p>We use a combination of intelligent matchmaking and human curation to put the right people in front of each other, at the right moment, in the right environment. The result: meetings that actually lead somewhere.</p>
+        <p>Not a speed-dating event. Not a badge-swapping exercise. A week of purposeful, productive, industry-moving conversations.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how">
+  <div class="c">
+    <span class="lbl rv">How It Works</span>
+    <h2 class="rv">Five steps to your<br><span class="teal">best ADE ever.</span></h2>
+    <div class="steps">
+      <div class="step rv">
+        <div class="step-n">01</div>
+        <h4>REGISTER</h4>
+        <p>Complete your industry profile. Role, company, goals for ADE 2026 and who you want to meet.</p>
+        <div class="step-arrow">→</div>
+      </div>
+      <div class="step rv d1">
+        <div class="step-n">02</div>
+        <h4>GET MATCHED</h4>
+        <p>Our algorithm + human curators review your profile and suggest your ideal meeting partners.</p>
+        <div class="step-arrow">→</div>
+      </div>
+      <div class="step rv d2">
+        <div class="step-n">03</div>
+        <h4>PRE-BOOK</h4>
+        <p>Browse your matches, send meeting requests and confirm your schedule before you arrive in Amsterdam.</p>
+        <div class="step-arrow">→</div>
+      </div>
+      <div class="step rv d1">
+        <div class="step-n">04</div>
+        <h4>SHOW UP</h4>
+        <p>Check in at the hotel, pick up your schedule and walk into a week where every conversation counts.</p>
+        <div class="step-arrow">→</div>
+      </div>
+      <div class="step rv d2">
+        <div class="step-n">05</div>
+        <h4>FOLLOW UP</h4>
+        <p>Post-ADE connection tools, shared contact details and meeting notes — built into the platform.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO ATTENDS -->
+<section class="types">
+  <div class="c">
+    <span class="lbl rv">Who You'll Meet</span>
+    <h2 class="rv">Six types.<br><span class="teal">All the right ones.</span></h2>
+    <div class="types-grid">
+      <div class="atype rv">
+        <span class="atype-icon">🎵</span>
+        <h4>LABELS & A&R</h4>
+        <p>Major and independent labels. A&R directors, label managers and signing decision-makers from across the globe.</p>
+        <div class="atype-tags"><span class="atype-tag">Major Labels</span><span class="atype-tag">Indie</span><span class="atype-tag">A&R</span></div>
+      </div>
+      <div class="atype rv d1">
+        <span class="atype-icon">🤵</span>
+        <h4>BOOKING AGENTS</h4>
+        <p>The people who fill calendars. Agents from the world's top agencies — actively looking to sign, trade and connect.</p>
+        <div class="atype-tags"><span class="atype-tag">Booking</span><span class="atype-tag">Touring</span><span class="atype-tag">Festivals</span></div>
+      </div>
+      <div class="atype rv d2">
+        <span class="atype-icon">⭐</span>
+        <h4>ARTIST MANAGERS</h4>
+        <p>Management across all levels — from emerging acts to global headliners. Strategic, deal-driven, always looking.</p>
+        <div class="atype-tags"><span class="atype-tag">Management</span><span class="atype-tag">Strategy</span></div>
+      </div>
+      <div class="atype rv">
+        <span class="atype-icon">🏢</span>
+        <h4>PROMOTERS</h4>
+        <p>Club promoters, festival organisers and event brands from across Europe and beyond. Buyers and builders.</p>
+        <div class="atype-tags"><span class="atype-tag">Clubs</span><span class="atype-tag">Festivals</span><span class="atype-tag">Events</span></div>
+      </div>
+      <div class="atype rv d1">
+        <span class="atype-icon">🌐</span>
+        <h4>BRANDS & TECH</h4>
+        <p>Global brands seeking music partnerships. Music tech founders with products to show. The commercial layer.</p>
+        <div class="atype-tags"><span class="atype-tag">Brand Partnerships</span><span class="atype-tag">Music Tech</span></div>
+      </div>
+      <div class="atype rv d2">
+        <span class="atype-icon">💰</span>
+        <h4>INVESTORS & MEDIA</h4>
+        <p>Music industry investors, VCs active in the space, and media from the leading dance music publications.</p>
+        <div class="atype-tags"><span class="atype-tag">Investment</span><span class="atype-tag">Media</span><span class="atype-tag">Press</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO STRIP -->
+<div class="photo-strip">
+  <div class="ps-img"><img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80&fit=crop" alt="Meeting"><div class="ps-tint"></div></div>
+  <div class="ps-img"><img src="https://images.unsplash.com/photo-1551818255-e6e10975bc17?w=600&q=80&fit=crop" alt="Networking drinks"><div class="ps-tint"></div></div>
+  <div class="ps-img"><img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=600&q=80&fit=crop" alt="Industry people"><div class="ps-tint"></div></div>
+</div>
+
+<!-- CURATED SALONS -->
+<section class="salons">
+  <div class="c">
+    <span class="lbl rv">Curated Salons</span>
+    <h2 class="rv">Deeper than<br><span class="teal">one-on-ones.</span></h2>
+    <div class="salons-grid">
+      <div class="salon rv">
+        <div class="salon-badge">Invite Only</div>
+        <h3>FUTURE OF SYNC</h3>
+        <p>Music supervisors, sync agents, composers and brand music directors in a closed-door session on where sync licensing is heading. 20 attendees max.</p>
+        <div class="salon-detail">Day Programme · 20 guests · Pre-application required</div>
+      </div>
+      <div class="salon rv d1">
+        <div class="salon-badge">Open to Registered</div>
+        <h3>LABEL OFFICE HOURS</h3>
+        <p>A&R directors from major and indie labels hold open 15-minute slots. Bring your roster, your pitch or your questions. First-come, pre-booked basis.</p>
+        <div class="salon-detail">Day Programme · Open registration · 15-min slots</div>
+      </div>
+      <div class="salon rv d1">
+        <div class="salon-badge">Open to Registered</div>
+        <h3>BOOKING AGENT DESK</h3>
+        <p>Top booking agents available for structured conversations. Whether you're an artist manager or a promoter, this is where bookings start.</p>
+        <div class="salon-detail">Day Programme · Open registration · 20-min slots</div>
+      </div>
+      <div class="salon rv d2">
+        <div class="salon-badge">Invite Only</div>
+        <h3>INVESTOR SESSION</h3>
+        <p>Music industry investors and VCs meet founders, label executives and rights holders. Structured introductions, closed room. Apply in advance.</p>
+        <div class="salon-detail">Day Programme · 16 guests · Application required</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testis">
+  <div class="c">
+    <span class="lbl rv">What They Say</span>
+    <h2 class="rv">Results that<br><span class="teal">speak for themselves.</span></h2>
+    <div class="testi-grid">
+      <div class="testi rv">
+        <div class="tq">"I had 14 pre-booked meetings and closed two deals before I even left the hotel. MMATH networking is unlike anything else at ADE."</div>
+        <div class="ta"><div class="tn">Sarah Mitchell</div><div class="tr">Booking Agent · Berlin</div></div>
+      </div>
+      <div class="testi rv d1">
+        <div class="tq">"The matchmaking quality is exceptional. Every meeting felt relevant. Zero wasted time — which at ADE is everything."</div>
+        <div class="ta"><div class="tn">Tom Eriksen</div><div class="tr">A&R Director · Stockholm</div></div>
+      </div>
+      <div class="testi rv d2">
+        <div class="tq">"We signed our biggest sync deal of the year from a 30-minute MMATH meeting. The ROI is impossible to argue with."</div>
+        <div class="ta"><div class="tn">Priya Nair</div><div class="tr">Music Supervisor · London</div></div>
+      </div>
+      <div class="testi rv d3">
+        <div class="tq">"The Investor Session was one of the best hours of my year. Focused, serious conversations with people who actually have capital to deploy."</div>
+        <div class="ta"><div class="tn">Marcus Bauer</div><div class="tr">Founder · Music Tech Startup</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REGISTER FORM -->
+<section class="register" id="register">
+  <div class="c">
+    <span class="lbl rv">Register for Networking</span>
+    <h2 class="rv">Start your<br><span class="teal">ADE 2026 here.</span></h2>
+    <div class="reg-grid">
+      <div class="rv">
+        <p>Complete your networking profile and we'll begin matching you with the most relevant attendees at MMATH ADE 2026. Registration opens the matchmaking platform.</p>
+        <p>Hotel guests are automatically enrolled. Day pass holders can register separately below.</p>
+        <div class="contact-box">
+          <span class="lbl">Questions?</span>
+          <p style="font-family:var(--fc);font-size:13px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b7d9d2c3c0d8c5dcded9d0f7dad2d2c3dad2d6c3c3dfd2dfd8c3d2db99d4d8da">[email&#160;protected]</a></p>
+        </div>
+        <p class="reg-note">B2B industry professionals only · All profiles are manually reviewed · Opens 3 months before ADE</p>
+      </div>
+      <form class="rv d1" onsubmit="sf(this,event)">
+        <div class="field-row">
+          <div class="field"><label>First Name</label><input type="text" placeholder="First name" required></div>
+          <div class="field"><label>Last Name</label><input type="text" placeholder="Last name" required></div>
+        </div>
+        <div class="field"><label>Email Address</label><input type="email" placeholder="your@email.com" required></div>
+        <div class="field"><label>Company</label><input type="text" placeholder="Your company or label" required></div>
+        <div class="field">
+          <label>Your Role</label>
+          <select required>
+            <option value="" disabled selected>Select your role</option>
+            <option>Label / A&R</option>
+            <option>Booking Agent</option>
+            <option>Artist Manager</option>
+            <option>Promoter / Festival</option>
+            <option>Brand / Marketing</option>
+            <option>Music Tech / Startup</option>
+            <option>Investor / VC</option>
+            <option>Media / Press</option>
+            <option>Other Industry</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Attendance Type</label>
+          <select>
+            <option>Hotel Guest (full week access)</option>
+            <option>Day Pass Holder</option>
+            <option>Not booked yet</option>
+          </select>
+        </div>
+        <div class="field"><label>Who are you looking to meet?</label><textarea placeholder="e.g. Booking agents for club touring, A&R at house music labels, festival promoters in Eastern Europe..."></textarea></div>
+        <button type="submit" class="btn bp" style="width:100%;margin-top:8px;">Register for Networking →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="ft">
+  <div class="c">
+    <div class="fg">
+      <div class="fb">
+        <img src="logo.png" alt="Meet Me at the Hotel" style="height:44px;width:auto;display:block;">
+        <p>The Global Hospitality Hub<br>of the Dance Industry.</p>
+        <p class="fadr">Room Mate Aitana Hotel · IJdok 6<br>Amsterdam · ADE October 2026</p>
+      </div>
+      <div class="fc"><p class="fct">Explore</p><a href="about.html">About</a><a href="programme.html">Programme</a><a href="universe.html">Universe</a><a href="networking.html">Networking</a></div>
+      <div class="fc"><p class="fct">Book</p><a href="booking.html">Hotel Rooms</a><a href="meeting-rooms.html">Meeting Rooms</a><a href="showcases.html">Showcases</a><a href="partners.html">Partnerships</a></div>
+      <div class="fc"><p class="fct">Connect</p><a href="contact.html">Contact</a><a href="#">Instagram</a><a href="#">LinkedIn</a><a href="#">TikTok</a></div>
+    </div>
+    <div class="fb2">
+      <p>© 2026 Meet Me at the Hotel · 5th Anniversary Edition</p>
+      <p><a href="#">Privacy</a> · <a href="#">Cookies</a> · <a href="#">Terms</a></p>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+function sf(f,e){e.preventDefault();const b=f.querySelector('button');b.textContent='REGISTERED ✓';b.style.background='#2E7A74';setTimeout(()=>{b.textContent='Register for Networking →';b.style.background='';f.reset()},3500
