@@ -140,7 +140,9 @@ form{display:flex;flex-direction:column;gap:16px}
 @media(max-width:900px){.fg{grid-template-columns:1fr 1fr;gap:40px}}
 @media(max-width:480px){.fg{grid-template-columns:1fr}.fb2{flex-direction:column;gap:12px}}
 
-.rv{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+.rv{opacity:1;transform:none}
+.js-loaded .rv{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+.js-loaded .rv.vis{opacity:1;transform:none}
 .rv.vis{opacity:1;transform:none}
 .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
 </style>
@@ -454,4 +456,4 @@ form{display:flex;flex-direction:column;gap:16px}
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-function sf(f,e){e.preventDefault();const b=f.querySelector('button');b.textContent='INQUIRY SENT ✓';b.style.background='#2E7A74';setTimeout(()=>{b.textContent='Send Partner Inquiry →';b.style.background='';f.reset()},3500);
+function sf(f,e){e.preventDefault();const b=f.querySelector('button');b.textContent='INQUIRY SENT ✓';b.style.background='#2E7A74';setTimeout(()=>{b.textContent='Send Partner Inquiry →';b.style.background='';f.reset()},3500);;document.body.classList.add("js-loaded");const ro=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("vis")}})},{threshold:0.12});document.querySelectorAll(".rv").forEach(el=>ro.observe(el));</script></body></html>
