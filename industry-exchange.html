@@ -1,1 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Industry Exchange — Meet Me at the Hotel · ADE 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --teal:#4DA8A0;--deep:#2E7A74;--pool:#7DCDC7;
+  --blk:#0A0A0A;--blkm:#111;--blkc:#161616;--blkb:#222;
+  --wh:#F5F5F0;--wd:rgba(245,245,240,0.6);--wd2:rgba(245,245,240,0.12);
+  --fd:'Bebas Neue',sans-serif;--fc:'Barlow Condensed',sans-serif;--fb:'Barlow',sans-serif;
+  --nav:72px;--tr:0.35s cubic-bezier(.4,0,.2,1)
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--blk);color:var(--wh);font-family:var(--fb);overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.c{max-width:1280px;margin:0 auto;padding:0 80px}
+@media(max-width:1024px){.c{padding:0 40px}}
+@media(max-width:640px){.c{padding:0 20px}}
+h1,h2,h3,h4{font-family:var(--fd);line-height:.93;text-transform:uppercase;letter-spacing:-.01em}
+h1{font-size:clamp(60px,9vw,130px)}
+h2{font-size:clamp(40px,6vw,84px)}
+h3{font-size:clamp(22px,3vw,40px)}
+.teal{color:var(--teal)}
+.lbl{font-family:var(--fc);font-size:11px;font-weight:600;letter-spacing:.28em;color:var(--teal);text-transform:uppercase;display:block;margin-bottom:16px}
+.btn{display:inline-block;font-family:var(--fc);font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:15px 36px;transition:all var(--tr);cursor:pointer;border:none;text-align:center}
+.bp{background:var(--teal);color:var(--blk)}.bp:hover{background:var(--deep);color:var(--wh)}
+.bo{border:1px solid var(--teal);color:var(--teal);background:transparent}.bo:hover{background:var(--teal);color:var(--blk)}
 
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;height:var(--nav);display:flex;align-items:center;justify-content:space-between;padding:0 40px;z-index:1000;background:rgba(10,10,10,.95);border-bottom:1px solid var(--blkb);backdrop-filter:blur(16px)}
+.nl{display:flex;align-items:center;gap:28px}
+.nl a{font-family:var(--fc);font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--wd);transition:color var(--tr)}.nl a:hover{color:var(--wh)}
+.nc{background:var(--teal);color:var(--blk)!important;padding:10px 20px}.nc:hover{background:var(--deep)!important;color:var(--wh)!important}
+.hb{display:none;flex-direction:column;gap:5px;cursor:pointer}
+.hb span{display:block;width:22px;height:1.5px;background:var(--wh)}
+@media(max-width:900px){
+  .hb{display:flex}
+  .nl{position:fixed;top:var(--nav);left:0;right:0;bottom:0;background:var(--blk);flex-direction:column;align-items:flex-start;padding:40px;gap:20px;transform:translateX(100%);transition:transform var(--tr)}
+  .nl.open{transform:none}
+  .nl a{font-size:20px}
+}
+
+/* PAGE HERO */
+.ph{
+  padding-top:calc(var(--nav) + 100px);
+  padding-bottom:100px;
+  position:relative;overflow:hidden;
+  background:#060d0c;
+  border-bottom:1px solid var(--blkb);
+}
+.ph-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(77,168,160,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(77,168,160,.05) 1px,transparent 1px);background-size:80px 80px}
+.ph-glow{position:absolute;top:-200px;right:-200px;width:700px;height:700px;background:radial-gradient(circle,rgba(77,168,160,.08) 0%,transparent 65%);pointer-events:none}
+.ph-inner{position:relative;z-index:1}
+.ph-kicker{display:inline-flex;align-items:center;gap:12px;margin-bottom:32px}
+.ph-kicker-line{width:40px;height:1px;background:var(--teal)}
+.ph-kicker-txt{font-family:var(--fc);font-size:11px;font-weight:600;letter-spacing:.3em;color:var(--teal);text-transform:uppercase}
+.ph h1{margin-bottom:0}
+.ph h1 .sub{display:block;font-size:clamp(20px,3vw,42px);color:var(--wd);letter-spacing:.04em;margin-top:8px;font-family:var(--fd)}
+.ph-desc{font-family:var(--fc);font-size:clamp(14px,1.6vw,18px);color:var(--wd);max-width:640px;line-height:1.65;letter-spacing:.05em;text-transform:uppercase;margin-top:32px}
+.ph-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:40px}
+
+/* WHAT IS IT — split layout */
+.what{padding:100px 0;border-bottom:1px solid var(--blkb)}
+.what-inner{display:grid;grid-template-columns:1fr 1fr;gap:120px;align-items:start}
+.what-headline{font-family:var(--fd);font-size:clamp(30px,4.5vw,60px);line-height:1;color:var(--wh);margin-bottom:0}
+.what-headline em{color:var(--teal);font-style:normal;display:block}
+.what-text p{font-size:15px;color:var(--wd);line-height:1.85;font-weight:300;margin-bottom:20px}
+.what-text p:last-child{margin-bottom:0}
+@media(max-width:768px){.what-inner{grid-template-columns:1fr;gap:48px}}
+
+/* HOW IT WORKS — 3 steps */
+.how{padding:100px 0;border-bottom:1px solid var(--blkb);background:var(--blkm)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:64px}
+.step{background:var(--blkc);border:1px solid var(--blkb);padding:48px 36px;position:relative;transition:border-color var(--tr)}
+.step:hover{border-color:var(--teal)}
+.step-num{font-family:var(--fd);font-size:88px;color:var(--teal);opacity:.15;line-height:1;margin-bottom:24px}
+.step h3{font-size:30px;margin-bottom:16px;color:var(--wh)}
+.step p{font-size:14px;color:var(--wd);line-height:1.75;font-weight:300}
+.step-connector{position:absolute;top:52px;right:-13px;z-index:2;width:24px;height:24px;background:var(--blkm);border:1px solid var(--teal);display:flex;align-items:center;justify-content:center}
+.step-connector span{font-family:var(--fc);font-size:14px;color:var(--teal);line-height:1}
+.step:last-child .step-connector{display:none}
+@media(max-width:768px){.steps{grid-template-columns:1fr}.step-connector{display:none}}
+
+/* LOUNGE — full-width feature */
+.lounge{padding:0;border-bottom:1px solid var(--blkb);position:relative;overflow:hidden;background:#080f0e}
+.lounge-inner{display:grid;grid-template-columns:1fr 1fr;min-height:560px}
+.lounge-img{position:relative;overflow:hidden}
+.lounge-img img{width:100%;height:100%;object-fit:cover;filter:brightness(.5) saturate(.7);display:block}
+.lounge-img-overlay{position:absolute;inset:0;background:linear-gradient(to right,transparent 60%,#080f0e 100%)}
+.lounge-tint{position:absolute;inset:0;background:linear-gradient(135deg,rgba(77,168,160,.1) 0%,transparent 50%)}
+.lounge-content{display:flex;flex-direction:column;justify-content:center;padding:80px 80px 80px 60px}
+.lounge-tag{display:inline-block;font-family:var(--fc);font-size:10px;font-weight:600;letter-spacing:.3em;color:var(--teal);text-transform:uppercase;border:1px solid rgba(77,168,160,.35);padding:5px 14px;margin-bottom:28px}
+.lounge-content h2{font-size:clamp(36px,5vw,72px);margin-bottom:24px}
+.lounge-content p{font-size:15px;color:var(--wd);line-height:1.8;font-weight:300;margin-bottom:16px;max-width:480px}
+.lounge-specs{margin-top:32px;display:flex;flex-direction:column;gap:0;border:1px solid var(--blkb)}
+.lounge-spec{display:flex;align-items:center;gap:16px;padding:14px 20px;border-bottom:1px solid var(--blkb);font-family:var(--fc);font-size:12px;letter-spacing:.12em;color:var(--wd);text-transform:uppercase}
+.lounge-spec:last-child{border-bottom:none}
+.lounge-spec::before{content:'→';color:var(--teal);flex-shrink:0}
+@media(max-width:900px){
+  .lounge-inner{grid-template-columns:1fr}
+  .lounge-img{height:300px}
+  .lounge-img-overlay{display:none}
+  .lounge-content{padding:60px 40px}
+}
+
+/* PARTICIPANTS */
+.participants{padding:100px 0;border-bottom:1px solid var(--blkb)}
+.part-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:64px}
+.part{background:var(--blkc);border:1px solid var(--blkb);padding:36px 28px;transition:all var(--tr);position:relative;overflow:hidden;cursor:default}
+.part::after{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--teal);transform:scaleY(0);transform-origin:top;transition:transform var(--tr)}
+.part:hover::after{transform:scaleY(1)}
+.part:hover{border-color:rgba(77,168,160,.4)}
+.part-icon{font-family:var(--fd);font-size:44px;color:var(--teal);opacity:.3;line-height:1;margin-bottom:20px}
+.part h4{font-family:var(--fd);font-size:28px;margin-bottom:10px;color:var(--wh)}
+.part p{font-size:13px;color:var(--wd);line-height:1.7;font-weight:300}
+@media(max-width:768px){.part-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.part-grid{grid-template-columns:1fr}}
+
+/* PARTNER CTA — dark feature block */
+.partner-cta{padding:100px 0;border-bottom:1px solid var(--blkb);background:var(--blkm)}
+.partner-cta-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.partner-cta h2{margin-bottom:24px}
+.partner-cta p{font-size:15px;color:var(--wd);line-height:1.8;font-weight:300;margin-bottom:20px}
+.partner-benefits{margin-top:36px;list-style:none;display:flex;flex-direction:column;gap:0;border:1px solid var(--blkb)}
+.partner-benefits li{padding:16px 24px;border-bottom:1px solid var(--blkb);font-family:var(--fc);font-size:12px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase;display:flex;gap:14px;align-items:center}
+.partner-benefits li:last-child{border-bottom:none}
+.partner-benefits li::before{content:'✓';color:var(--teal);flex-shrink:0;font-family:var(--fb);font-weight:600}
+.partner-cta-aside{background:var(--blkc);border:1px solid var(--blkb);border-top:3px solid var(--teal);padding:48px 40px}
+.partner-cta-aside .lbl{margin-bottom:20px}
+.partner-cta-aside p{font-size:14px;color:var(--wd);line-height:1.75;font-weight:300;margin-bottom:28px}
+.partner-cta-aside .cta-contact{font-family:var(--fc);font-size:12px;letter-spacing:.12em;color:var(--pool);text-transform:uppercase;margin-top:20px;display:block}
+@media(max-width:768px){.partner-cta-inner{grid-template-columns:1fr;gap:48px}}
+
+/* APPLY FORM */
+.apply{padding:100px 0;background:radial-gradient(ellipse 60% 80% at 50% 50%,rgba(77,168,160,.04) 0%,transparent 70%),var(--blk)}
+.apply-inner{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:start}
+.apply-text p{font-size:15px;color:var(--wd);line-height:1.8;font-weight:300;margin-bottom:20px}
+.apply-note{margin-top:32px;font-family:var(--fc);font-size:11px;letter-spacing:.1em;color:rgba(245,245,240,.3);text-transform:uppercase;line-height:1.7}
+form{display:flex;flex-direction:column;gap:20px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-family:var(--fc);font-size:10px;font-weight:600;letter-spacing:.25em;color:var(--teal);text-transform:uppercase}
+.field input,.field select,.field textarea{background:transparent;border:none;border-bottom:1px solid rgba(77,168,160,.3);color:var(--wh);padding:13px 0;font-family:var(--fc);font-size:14px;letter-spacing:.08em;outline:none;transition:border-color var(--tr);-webkit-appearance:none}
+.field input:focus,.field select:focus,.field textarea:focus{border-bottom-color:var(--teal)}
+.field input::placeholder,.field textarea::placeholder{color:rgba(245,245,240,.2)}
+.field select option{background:var(--blkc);color:var(--wh)}
+.field textarea{resize:none;height:90px}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+@media(max-width:768px){.apply-inner{grid-template-columns:1fr}.field-row{grid-template-columns:1fr}}
+
+/* FOOTER */
+.ft{padding:80px 0 40px;background:var(--blkc);border-top:1px solid var(--blkb)}
+.fg{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:60px}
+.fb p{font-size:13px;color:var(--wd);margin-top:20px;line-height:1.75;font-weight:300}
+.fadr{margin-top:10px;opacity:.4;font-size:12px}
+.fc{display:flex;flex-direction:column;gap:12px}
+.fct{font-family:var(--fc);font-size:10px;font-weight:600;letter-spacing:.3em;color:var(--teal);text-transform:uppercase;margin-bottom:4px}
+.fc a{font-family:var(--fc);font-size:13px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase;transition:color var(--tr)}.fc a:hover{color:var(--teal)}
+.fb2{display:flex;justify-content:space-between;padding-top:32px;border-top:1px solid var(--blkb);font-family:var(--fc);font-size:11px;letter-spacing:.1em;color:rgba(245,245,240,.3);text-transform:uppercase}
+.fb2 a:hover{color:var(--teal)}
+@media(max-width:900px){.fg{grid-template-columns:1fr 1fr;gap:40px}}
+@media(max-width:480px){.fg{grid-template-columns:1fr}.fb2{flex-direction:column;gap:12px}}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+.rv.vis{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" style="display:flex;align-items:center;">
+    <img src="logo.png" alt="Meet Me at the Hotel" style="height:48px;width:auto;display:block;">
+  </a>
+  <div class="nl" id="nl">
+    <a href="about.html">About</a>
+    <a href="program.html">Program</a>
+    <a href="universe.html">Universe</a>
+    <a href="networking.html">Networking</a>
+    <a href="industry-exchange.html" style="color:var(--teal)">Matchmaking</a>
+    <a href="showcases.html">Showcases</a>
+    <a href="partners.html">Partners</a>
+    <a href="booking.html" class="nc">Book Your Stay</a>
+  </div>
+  <div class="hb" onclick="document.getElementById('nl').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="ph">
+  <div class="ph-grid"></div>
+  <div class="ph-glow"></div>
+  <div class="c ph-inner">
+    <div class="ph-kicker rv">
+      <div class="ph-kicker-line"></div>
+      <span class="ph-kicker-txt">MeetMe Industry Exchange · ADE 2026</span>
+    </div>
+    <h1 class="rv">
+      CURATED<br>
+      <span class="teal">BUSINESS</span><br>
+      MEETINGS.
+      <span class="sub">The MMATH Business Lounge</span>
+    </h1>
+    <p class="ph-desc rv d1">Not random networking. Curated matchmaking connecting festivals, clubs, brands, agencies and technology partners inside the MMATH Business Lounge during ADE.</p>
+    <div class="ph-ctas rv d2">
+      <a href="#apply" class="btn bp">Apply for Meetings →</a>
+      <a href="#lounge" class="btn bo">About the Lounge</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT IS IT -->
+<section class="what">
+  <div class="c">
+    <div class="what-inner">
+      <div class="rv">
+        <span class="lbl">What is the Industry Exchange?</span>
+        <div class="what-headline">
+          The right<br>partners.<br><em>Guaranteed.</em>
+        </div>
+      </div>
+      <div class="rv d1">
+        <div class="what-text">
+          <p>During Amsterdam Dance Event, MeetMeAtTheHotel becomes a hub where industry professionals connect to explore partnerships and opportunities. The MeetMe Industry Exchange is a curated matchmaking program designed to facilitate meaningful introductions between relevant partners.</p>
+          <p>Instead of random networking, MMATH connects the right people in a focused business environment. You apply, we review, we match — and you walk into a week of meetings that actually matter.</p>
+          <p>Selected meetings take place in the MMATH Business Lounge, a premium, private meeting environment inside the hotel. No badges, no chaos, no wasted time.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how">
+  <div class="c">
+    <span class="lbl rv">How It Works</span>
+    <h2 class="rv">Three steps.<br><span class="teal">Purposeful meetings.</span></h2>
+    <div class="steps">
+      <div class="step rv">
+        <div class="step-num">01</div>
+        <h3>APPLY</h3>
+        <p>Companies share what they offer and which partners they want to meet. Tell us your goals, your sector and who would be most valuable to sit across from during ADE.</p>
+        <div class="step-connector"><span>→</span></div>
+      </div>
+      <div class="step rv d1">
+        <div class="step-num">02</div>
+        <h3>GET MATCHED</h3>
+        <p>The MMATH team reviews all applications and connects relevant participants. No algorithm — human curation to make sure every introduction has a genuine reason to happen.</p>
+        <div class="step-connector"><span>→</span></div>
+      </div>
+      <div class="step rv d2">
+        <div class="step-num">03</div>
+        <h3>MEET AT ADE</h3>
+        <p>Selected meetings take place in the MMATH Business Lounge during ADE — approximately 20 minutes each, at hosted tables in a focused business environment inside the hotel.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE LOUNGE -->
+<section class="lounge" id="lounge">
+  <div class="lounge-inner">
+    <div class="lounge-img">
+      <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=900&q=80&fit=crop&crop=center" alt="Business Lounge">
+      <div class="lounge-tint"></div>
+      <div class="lounge-img-overlay"></div>
+    </div>
+    <div class="lounge-content rv">
+      <div class="lounge-tag">MMATH Business Lounge</div>
+      <h2>The central<br>meeting space.</h2>
+      <p>The MMATH Business Lounge is the dedicated environment for all Industry Exchange meetings during ADE. Located inside Room Mate Aitana Hotel, the lounge provides a premium setting where participants meet industry professionals and explore new partnerships.</p>
+      <p>Meetings take place at hosted tables throughout the programme — structured, private, and purposeful.</p>
+      <ul class="lounge-specs">
+        <li class="lounge-spec">Located inside Room Mate Aitana Hotel · IJdok 6</li>
+        <li class="lounge-spec">~20 minutes per curated meeting</li>
+        <li class="lounge-spec">Hosted tables — dedicated meeting setup</li>
+        <li class="lounge-spec">Access to MMATH Business Lounge included</li>
+        <li class="lounge-spec">Programme runs throughout ADE week</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- WHO PARTICIPATES -->
+<section class="participants">
+  <div class="c">
+    <span class="lbl rv">Who Participates</span>
+    <h2 class="rv">Seven sectors.<br><span class="teal">All decision-makers.</span></h2>
+    <div class="part-grid">
+      <div class="part rv">
+        <div class="part-icon">01</div>
+        <h4>FESTIVALS & PROMOTERS</h4>
+        <p>Event organisers, festival brands and club promoters from across Europe and beyond. Buyers, builders and bookers actively seeking partnerships.</p>
+      </div>
+      <div class="part rv d1">
+        <div class="part-icon">02</div>
+        <h4>CLUBS & VENUES</h4>
+        <p>Venue operators, club programmers and residency coordinators. The people who decide what plays on their stages.</p>
+      </div>
+      <div class="part rv d2">
+        <div class="part-icon">03</div>
+        <h4>ARTIST AGENCIES & MANAGERS</h4>
+        <p>Booking agents, talent agencies and artist management — from emerging acts to global headliners. Strategic, deal-driven, always looking.</p>
+      </div>
+      <div class="part rv">
+        <div class="part-icon">04</div>
+        <h4>BRANDS & SPONSORS</h4>
+        <p>Global and regional brands seeking music partnerships, sponsorship opportunities and cultural alignment with the dance music world.</p>
+      </div>
+      <div class="part rv d1">
+        <div class="part-icon">05</div>
+        <h4>EVENT TECHNOLOGY</h4>
+        <p>Music tech founders, event technology companies and platform builders with products and solutions for the live entertainment industry.</p>
+      </div>
+      <div class="part rv d2">
+        <div class="part-icon">06</div>
+        <h4>HOSPITALITY GROUPS</h4>
+        <p>Hotel brands, venue operators and hospitality companies seeking partnerships within the dance music and events industry.</p>
+      </div>
+      <div class="part rv">
+        <div class="part-icon">07</div>
+        <h4>INDUSTRY INVESTORS</h4>
+        <p>Music industry investors, VCs active in the live entertainment space and rights holders exploring new partnerships and acquisitions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BECOME A PARTNER -->
+<section class="partner-cta">
+  <div class="c">
+    <div class="partner-cta-inner">
+      <div class="rv">
+        <span class="lbl">Become a Partner</span>
+        <h2>Support the<br><span class="teal">Lounge.</span></h2>
+        <p>The MMATH Business Lounge is supported by selected industry partners who help facilitate meaningful connections during ADE. Partners are embedded in the programme — not just logo sponsors.</p>
+        <p>If your brand wants to be part of the most productive B2B environment at ADE, this is where it happens.</p>
+        <ul class="partner-benefits">
+          <li>Brand visibility within the MMATH Business Lounge</li>
+          <li>Curated introductions to Industry Exchange participants</li>
+          <li>Access to industry professionals throughout ADE week</li>
+          <li>Co-branded presence in programme communications</li>
+          <li>Hosted table for your own curated meetings</li>
+        </ul>
+      </div>
+      <div class="partner-cta-aside rv d1">
+        <span class="lbl">Partnership Enquiries</span>
+        <p>We work with a limited number of lounge partners per edition to ensure the environment remains focused and the introductions remain meaningful.</p>
+        <p>To explore a partnership, reach out directly. We'll set up a call to discuss fit, availability and the right package for your brand.</p>
+        <a href="partners.html" class="btn bp" style="width:100%;display:block;text-align:center;margin-bottom:16px">Explore Partnership →</a>
+        <a href="contact.html" class="btn bo" style="width:100%;display:block;text-align:center">Get in Touch</a>
+        <span class="cta-contact">Partners · ADE 2026 · Limited availability</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPLY FORM -->
+<section class="apply" id="apply">
+  <div class="c">
+    <span class="lbl rv">Apply for Curated Meetings</span>
+    <h2 class="rv">Start your<br><span class="teal">application.</span></h2>
+    <div class="apply-inner" style="margin-top:64px">
+      <div class="rv">
+        <p>Companies interested in participating can apply to be matched with relevant partners during ADE. Tell us who you are, what you're looking for and who you want to meet.</p>
+        <p>All applications are reviewed by the MMATH team. Selected participants will receive curated business meetings, access to the MMATH Business Lounge and introductions to industry professionals.</p>
+        <p>Applications open three months before ADE. B2B industry organisations and companies only.</p>
+        <p class="apply-note">All applications are manually reviewed · B2B companies only · Selected participants contacted directly · Limited places available per sector</p>
+      </div>
+      <form class="rv d1" onsubmit="sf(this,event)">
+        <div class="field-row">
+          <div class="field"><label>First Name</label><input type="text" placeholder="First name" required></div>
+          <div class="field"><label>Last Name</label><input type="text" placeholder="Last name" required></div>
+        </div>
+        <div class="field"><label>Email Address</label><input type="email" placeholder="your@company.com" required></div>
+        <div class="field"><label>Company / Organisation</label><input type="text" placeholder="Your company name" required></div>
+        <div class="field">
+          <label>Sector</label>
+          <select required>
+            <option value="" disabled selected>Select your sector</option>
+            <option>Festival or Promoter</option>
+            <option>Club or Venue</option>
+            <option>Artist Agency or Management</option>
+            <option>Brand or Sponsor</option>
+            <option>Event Technology</option>
+            <option>Hospitality Group</option>
+            <option>Industry Investor</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>What are you looking to achieve at ADE 2026?</label>
+          <textarea placeholder="e.g. We're a mid-size festival looking to meet booking agents and emerging talent. Also open to brand sponsorship conversations..."></textarea>
+        </div>
+        <div class="field">
+          <label>Who would you most like to meet?</label>
+          <textarea placeholder="e.g. Festival promoters in Eastern Europe, brand partnerships for a DJ residency, music tech investment..."></textarea>
+        </div>
+        <button type="submit" class="btn bp" style="width:100%;margin-top:4px">Apply for Industry Exchange →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="ft">
+  <div class="c">
+    <div class="fg">
+      <div class="fb">
+        <img src="logo.png" alt="Meet Me at the Hotel" style="height:44px;width:auto;display:block;">
+        <p>The Global Hospitality Hub<br>of the Dance Industry.</p>
+        <p class="fadr">Room Mate Aitana Hotel · IJdok 6<br>Amsterdam · ADE October 2026</p>
+      </div>
+      <div class="fc"><p class="fct">Explore</p><a href="about.html">About</a><a href="program.html">Program</a><a href="universe.html">Universe</a><a href="networking.html">Networking</a><a href="industry-exchange.html" style="color:var(--teal)">Matchmaking</a></div>
+      <div class="fc"><p class="fct">Book</p><a href="booking.html">Hotel Rooms</a><a href="meeting-rooms.html">Meeting Rooms</a><a href="showcases.html">Showcases</a><a href="partners.html">Partnerships</a></div>
+      <div class="fc"><p class="fct">Connect</p><a href="contact.html">Contact</a><a href="#">Instagram</a><a href="#">LinkedIn</a><a href="#">TikTok</a></div>
+    </div>
+    <div class="fb2">
+      <p>© 2026 Meet Me at the Hotel · 5th Anniversary Edition · ADE October 2026</p>
+      <p><a href="#">Privacy</a> · <a href="#">Cookies</a> · <a href="#">Terms</a></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+const nav=document.querySelector('.nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('sc',scrollY>60));
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target)}}),{threshold:.08});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+function sf(f,e){
+  e.preventDefault();
+  const b=f.querySelector('button');
+  b.textContent='APPLICATION RECEIVED ✓';
+  b.style.background='#2E7A74';
+  setTimeout(()=>{b.textContent='Apply for Industry Exchange →';b.style.background='';f.reset()},3500)
+}
+</script>
+</body>
+</html>
