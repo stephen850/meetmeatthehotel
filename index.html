@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Meet Me at the Hotel — ADE 2026 · 5th Anniversary</title>
+<title>Meet Me at the Hotel — 5th Anniversary Edition</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 :root{--teal:#4DA8A0;--deep-teal:#2E7A74;--pool-teal:#7DCDC7;--black:#0A0A0A;--black-mid:#111;--black-card:#161616;--black-border:#222;--white:#F5F5F0;--wdim:rgba(245,245,240,0.6);--wdim2:rgba(245,245,240,0.12);--fd:'Bebas Neue',sans-serif;--fc:'Barlow Condensed',sans-serif;--fb:'Barlow',sans-serif;--nav:72px;--t:0.35s cubic-bezier(.4,0,.2,1)}
@@ -113,6 +113,23 @@ h3{font-size:clamp(24px,3vw,42px)}
 .ptxt{position:absolute;bottom:0;left:0;right:0;padding:36px}
 @media(max-width:768px){.psplit{grid-template-columns:1fr;min-height:auto}.pp{min-height:280px}}
 
+/* ===== ECOSYSTEM LAYERS ===== */
+.eco{padding:100px 0;background:var(--black);border-top:1px solid var(--black-border)}
+.eco-hd{padding:0 0 60px;display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:24px}
+.eco-layers{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+.eco-layer{background:var(--black-card);border:1px solid var(--black-border);padding:48px 40px;position:relative;overflow:hidden;cursor:pointer;transition:border-color var(--t),transform var(--t)}
+.eco-layer::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--lc,var(--teal));opacity:.6;transition:opacity var(--t)}
+.eco-layer:hover{border-color:var(--lc,var(--teal));transform:translateY(-4px)}.eco-layer:hover::before{opacity:1}
+.eco-num{font-family:var(--fd);font-size:80px;color:var(--lc,var(--teal));opacity:.12;line-height:1;position:absolute;top:20px;right:28px;pointer-events:none;transition:opacity var(--t)}
+.eco-layer:hover .eco-num{opacity:.22}
+.eco-tag{font-family:var(--fc);font-size:10px;letter-spacing:.3em;color:var(--lc,var(--teal));text-transform:uppercase;margin-bottom:16px;display:block}
+.eco-layer h3{font-size:clamp(22px,2.5vw,32px);color:var(--white);margin-bottom:12px;line-height:.95}
+.eco-layer p{font-size:13px;color:var(--wdim);line-height:1.65;margin-bottom:24px;max-width:380px}
+.eco-examples{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:24px}
+.eco-pill{font-family:var(--fc);font-size:10px;letter-spacing:.14em;color:var(--lc,var(--teal));border:1px solid rgba(77,168,160,.25);padding:4px 10px;text-transform:uppercase}
+.eco-arrow{font-family:var(--fc);font-size:12px;font-weight:600;letter-spacing:.18em;color:var(--lc,var(--teal));text-transform:uppercase;transition:letter-spacing var(--t)}.eco-layer:hover .eco-arrow{letter-spacing:.28em}
+@media(max-width:768px){.eco-layers{grid-template-columns:1fr}.eco-layer{padding:36px 28px}}
+
 /* UNIVERSE */
 .univ{padding:100px 0;background:var(--black-mid);border-top:1px solid var(--black-border)}
 .uh{padding:0 80px;margin-bottom:48px;display:flex;align-items:flex-end;justify-content:space-between}
@@ -182,9 +199,9 @@ h3{font-size:clamp(24px,3vw,42px)}
 .fg{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:60px}
 .fb p{font-size:13px;color:var(--wdim);margin-top:20px;line-height:1.75;font-weight:300}
 .fa{margin-top:10px;opacity:.4;font-size:12px}
-.fc{display:flex;flex-direction:column;gap:12px}
+.fcc{display:flex;flex-direction:column;gap:12px}
 .fct{font-family:var(--fc);font-size:10px;font-weight:600;letter-spacing:.3em;color:var(--teal);text-transform:uppercase;margin-bottom:4px}
-.fc a{font-family:var(--fc);font-size:13px;letter-spacing:.1em;color:var(--wdim);text-transform:uppercase;transition:color var(--t)}.fc a:hover{color:var(--teal)}
+.fcc a{font-family:var(--fc);font-size:13px;letter-spacing:.1em;color:var(--wdim);text-transform:uppercase;transition:color var(--t)}.fcc a:hover{color:var(--teal)}
 .fb2{display:flex;justify-content:space-between;padding-top:32px;border-top:1px solid var(--black-border);font-family:var(--fc);font-size:11px;letter-spacing:.1em;color:rgba(245,245,240,.3);text-transform:uppercase}
 .fb2 a:hover{color:var(--teal)}
 @media(max-width:900px){.fg{grid-template-columns:1fr 1fr;gap:40px}}
@@ -199,8 +216,8 @@ h3{font-size:clamp(24px,3vw,42px)}
 <body>
 
 <div class="ck" id="ck">
-  <span>We gebruiken cookies · Amsterdam event — GDPR van toepassing · <a href="#">Cookiebeleid</a></span>
-  <button onclick="document.getElementById('ck').remove()">Accepteer</button>
+  <span>We use cookies · International event — GDPR compliant · <a href="#">Cookie Policy</a></span>
+  <button onclick="document.getElementById('ck').remove()">Accept</button>
 </div>
 
 <nav class="nav" id="nav">
@@ -211,9 +228,9 @@ h3{font-size:clamp(24px,3vw,42px)}
     <a href="about.html">About</a>
     <a href="program.html">Program</a>
     <a href="universe.html">Universe</a>
-    <a href="networking.html">Networking</a>
-    <a href="industry-exchange.html">Matchmaking</a>
-    <a href="showcases.html">Showcases</a>
+    <a href="industry-hub.html">Industry Hub</a>
+    <a href="industry-exchange.html">Industry Exchange</a>
+    <a href="experiences.html">Experiences</a>
     <a href="partners.html">Partners</a>
     <a href="booking.html" class="nc">Book Your Stay</a>
   </div>
@@ -228,7 +245,7 @@ h3{font-size:clamp(24px,3vw,42px)}
   <div class="hov"></div>
   <div class="hgr"></div>
   <div class="hcont">
-    <div class="hbadge">5th Anniversary Edition · ADE October 2026</div>
+    <div class="hbadge">5th Anniversary Edition · October 2026 · Amsterdam</div>
     <h1 style="line-height:0.88;margin-bottom:20px;">
       <span style="display:block;color:var(--white)">WHERE THE</span>
       <span style="display:block;color:var(--teal)">INDUSTRY</span>
@@ -246,12 +263,12 @@ h3{font-size:clamp(24px,3vw,42px)}
   </div>
 </section>
 
-<!-- COUNTDOWN — Opening Night 20 Oktober 2026 -->
+<!-- COUNTDOWN — Opening Night 20 October 2026 -->
 <section class="cds">
   <div class="cd-scan"></div>
   <div class="cd-parts" id="cdp"></div>
   <div class="cd-inner">
-    <div class="cd-eye">Meet Me at the Hotel · Opening Night · ADE 2026</div>
+    <div class="cd-eye">Meet Me at the Hotel · Opening Night · October 2026</div>
     <div class="cd-clock">
       <div class="cd-unit">
         <div class="cd-digits">
@@ -287,7 +304,7 @@ h3{font-size:clamp(24px,3vw,42px)}
       </div>
     </div>
     <div class="cd-tag">Five Years. One Hotel. <span>The Industry.</span></div>
-    <div class="cd-date">Opening Night · 20 Oktober 2026 · Amsterdam · Room Mate Aitana</div>
+    <div class="cd-date">Opening Night · 20 October 2026 · Amsterdam · Room Mate Aitana</div>
     <div class="cd-cta"><a href="booking.html" class="btn bp">Secure Your Spot →</a></div>
   </div>
 </section>
@@ -331,12 +348,88 @@ h3{font-size:clamp(24px,3vw,42px)}
   </div>
 </div>
 
-<!-- UNIVERSE -->
+<!-- ECOSYSTEM — Four Layers -->
+<section class="eco">
+  <div class="c">
+    <div class="eco-hd rv">
+      <div>
+        <span class="lbl">The MMATH Ecosystem</span>
+        <h2>Four layers.<br><span class="teal">One platform.</span></h2>
+      </div>
+      <a href="about.html" class="btn bo" style="flex-shrink:0">About the Ecosystem →</a>
+    </div>
+    <div class="eco-layers">
+
+      <!-- Layer 1: Industry Hub -->
+      <a href="industry-hub.html" class="eco-layer rv" style="--lc:#4DA8A0">
+        <div class="eco-num">01</div>
+        <span class="eco-tag">Layer 01 · Open Networking</span>
+        <h3>Meet Me<br>Industry Hub</h3>
+        <p>The open networking ecosystem where professionals from across the global nightlife and electronic music industry meet naturally.</p>
+        <div class="eco-examples">
+          <span class="eco-pill">Informal Meetings</span>
+          <span class="eco-pill">Coffee Conversations</span>
+          <span class="eco-pill">Artist × Promoter</span>
+          <span class="eco-pill">Brand × Agency</span>
+        </div>
+        <span class="eco-arrow">Explore the Hub →</span>
+      </a>
+
+      <!-- Layer 2: Industry Exchange -->
+      <a href="industry-exchange.html" class="eco-layer rv d1" style="--lc:#2E7A74">
+        <div class="eco-num">02</div>
+        <span class="eco-tag">Layer 02 · Curated Meetings</span>
+        <h3>Meet Me<br>Industry Exchange</h3>
+        <p>The curated business meeting program. Apply to join, get matched with relevant partners, and meet in the dedicated Business Lounge.</p>
+        <div class="eco-examples">
+          <span class="eco-pill">Artist Bookings</span>
+          <span class="eco-pill">Partnerships</span>
+          <span class="eco-pill">Tech Adoption</span>
+          <span class="eco-pill">Brand Collabs</span>
+        </div>
+        <span class="eco-arrow">Join the Exchange →</span>
+      </a>
+
+      <!-- Layer 3: Universe -->
+      <a href="universe.html" class="eco-layer rv d2" style="--lc:#7DCDC7">
+        <div class="eco-num">03</div>
+        <span class="eco-tag">Layer 03 · Labels & Verticals</span>
+        <h3>Meet Me<br>Universe</h3>
+        <p>The umbrella structure for all Meet Me branded labels and vertical concepts — proprietary initiatives that expand the ecosystem beyond a single function.</p>
+        <div class="eco-examples">
+          <span class="eco-pill">Meet Me Tech</span>
+          <span class="eco-pill">Fashion Lab</span>
+          <span class="eco-pill">Creator Lab</span>
+          <span class="eco-pill">Future Culture</span>
+        </div>
+        <span class="eco-arrow">Enter the Universe →</span>
+      </a>
+
+      <!-- Layer 4: Programming & Experiences -->
+      <a href="experiences.html" class="eco-layer rv d3" style="--lc:#B8E4E1">
+        <div class="eco-num">04</div>
+        <span class="eco-tag">Layer 04 · Live Experiences</span>
+        <h3>Programming &<br>Experiences</h3>
+        <p>Live experiences and partner activations that strengthen community engagement and provide visibility for industry partners.</p>
+        <div class="eco-examples">
+          <span class="eco-pill">Partner Showcases</span>
+          <span class="eco-pill">Boat Events</span>
+          <span class="eco-pill">Curated Dinners</span>
+          <span class="eco-pill">Branded Activations</span>
+        </div>
+        <span class="eco-arrow">See the Program →</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- UNIVERSE VERTICALS -->
 <section class="univ">
   <div class="uh rv">
     <div>
       <span class="lbl">The Meet Me Universe</span>
-      <h2>One Hotel.<br><span class="teal">Eight Worlds.</span></h2>
+      <h2>Branded Labels.<br><span class="teal">Vertical Concepts.</span></h2>
     </div>
     <a href="universe.html" class="btn bo" style="flex-shrink:0">Explore the Universe →</a>
   </div>
@@ -345,11 +438,11 @@ h3{font-size:clamp(24px,3vw,42px)}
       <a href="universe.html#industry" class="uc" style="--ca:#4DA8A0"><div class="un">01</div><h3>MEET ME<br>INDUSTRY</h3><p>Executive meetings & CEO roundtables</p><span class="ua">→</span></a>
       <a href="universe.html#innovation" class="uc" style="--ca:#2E7A74"><div class="un">02</div><h3>MEET ME<br>INNOVATION</h3><p>Music tech, AI & Web3</p><span class="ua">→</span></a>
       <a href="universe.html#brand" class="uc" style="--ca:#7DCDC7"><div class="un">03</div><h3>MEET ME<br>BRAND</h3><p>Global brands × artists</p><span class="ua">→</span></a>
-      <a href="universe.html#creator" class="uc" style="--ca:#4DA8A0"><div class="un">04</div><h3>MEET ME<br>CREATOR</h3><p>Podcasts & livestreams</p><span class="ua">→</span></a>
+      <a href="universe.html#creator" class="uc" style="--ca:#4DA8A0"><div class="un">04</div><h3>MEET ME<br>CREATOR</h3><p>Content, podcasts & live video</p><span class="ua">→</span></a>
       <a href="universe.html#networking" class="uc" style="--ca:#2E7A74"><div class="un">05</div><h3>MEET ME<br>NETWORKING</h3><p>Curated matchmaking</p><span class="ua">→</span></a>
       <a href="universe.html#podcast" class="uc" style="--ca:#B8E4E1"><div class="un">06</div><h3>MEET ME<br>PODCAST</h3><p>The voice of the industry</p><span class="ua">→</span></a>
       <a href="universe.html#fashion" class="uc" style="--ca:#4DA8A0"><div class="un">07</div><h3>MEET ME<br>FASHION LAB</h3><p>Music & culture collide</p><span class="ua">→</span></a>
-      <a href="universe.html#experience" class="uc" style="--ca:#7DCDC7"><div class="un">08</div><h3>MEET ME<br>EXPERIENCE</h3><p>Boats & private dinners</p><span class="ua">→</span></a>
+      <a href="universe.html#experience" class="uc" style="--ca:#7DCDC7"><div class="un">08</div><h3>MEET ME<br>EXPERIENCE</h3><p>Boats, dinners & the unexpected</p><span class="ua">→</span></a>
     </div>
   </div>
 </section>
@@ -360,16 +453,14 @@ h3{font-size:clamp(24px,3vw,42px)}
     <span class="lbl rv">How It Works</span>
     <h2 class="rv">Three steps.<br><span class="teal">One unforgettable week.</span></h2>
     <div class="hs">
-      <div class="sp rv"><div class="spn">01</div><h3>BOOK YOUR ROOM</h3><p>Secure your base at Room Mate Aitana Hotel. Hotel guests receive full hub access — no badge required.</p><a href="booking.html" class="spl">Reserve now →</a></div>
+      <div class="sp rv"><div class="spn">01</div><h3>BOOK YOUR ROOM</h3><p>Secure your base at Room Mate Aitana Hotel. Hotel guests receive full Industry Hub access — no badge required.</p><a href="booking.html" class="spl">Reserve now →</a></div>
       <div class="sd"></div>
-      <div class="sp rv d1"><div class="spn">02</div><h3>ACCESS THE HUB</h3><p>The moment you check in, the industry opens up. Showcases, salons, innovation talks — all under your roof.</p><a href="program.html" class="spl">See program →</a></div>
+      <div class="sp rv d1"><div class="spn">02</div><h3>JOIN THE HUB</h3><p>The moment you check in, the industry opens up. Showcases, industry talks, networking — all under one roof.</p><a href="industry-hub.html" class="spl">Explore the Hub →</a></div>
       <div class="sd"></div>
-      <div class="sp rv d2"><div class="spn">03</div><h3>MAKE YOUR DEALS</h3><p>Pre-scheduled meetings, curated matchmaking, and the world's best decision-makers. The rest is on you.</p><a href="networking.html" class="spl">Start networking →</a></div>
+      <div class="sp rv d2"><div class="spn">03</div><h3>MAKE YOUR DEALS</h3><p>Apply for the Industry Exchange — pre-scheduled, curated meetings with the world's best decision-makers.</p><a href="industry-exchange.html" class="spl">Join the Exchange →</a></div>
     </div>
   </div>
 </section>
-
-
 
 <!-- TESTIMONIALS -->
 <section class="tsti">
@@ -379,8 +470,8 @@ h3{font-size:clamp(24px,3vw,42px)}
     <div class="tg">
       <div class="ti rv"><div class="tq">"MMATH is where deals get done. Every year I close more in three days here than in three months of follow-up emails."</div><div class="ta"><div class="tn">James Morrison</div><div class="tr">Label Director · Universal Music Group</div></div></div>
       <div class="ti rv d1"><div class="tq">"The signal-to-noise ratio is unmatched. Everyone in that hotel has a reason to be there."</div><div class="ta"><div class="tn">Sara Lindqvist</div><div class="tr">Artist Manager · Stockholm</div></div></div>
-      <div class="ti rv d2"><div class="tq">"We signed two brand partnerships and booked four shows. MMATH 2025 was our best ADE in five years."</div><div class="ta"><div class="tn">Alex Chen</div><div class="tr">Head of Music Marketing · Global Brand</div></div></div>
-      <div class="ti rv d3"><div class="tq">"Not a conference. Not a party. Something much more valuable. The only ADE event I book months in advance."</div><div class="ta"><div class="tn">Mikkel Hansen</div><div class="tr">Booking Agent · Copenhagen</div></div></div>
+      <div class="ti rv d2"><div class="tq">"We signed two brand partnerships and booked four shows. MMATH 2025 was our best year in five editions."</div><div class="ta"><div class="tn">Alex Chen</div><div class="tr">Head of Music Marketing · Global Brand</div></div></div>
+      <div class="ti rv d3"><div class="tq">"Not a conference. Not a party. Something much more valuable. The only event I book months in advance."</div><div class="ta"><div class="tn">Mikkel Hansen</div><div class="tr">Booking Agent · Copenhagen</div></div></div>
     </div>
   </div>
 </section>
@@ -399,7 +490,7 @@ h3{font-size:clamp(24px,3vw,42px)}
   <div class="c">
     <div class="nli">
       <div class="rv">
-        <span class="lbl">ADE October 2026</span>
+        <span class="lbl">October 2026 · Amsterdam</span>
         <h2>Get early access<br>to <span class="teal">MMATH 2026.</span></h2>
         <p style="font-size:15px;color:var(--wdim);line-height:1.8;font-weight:300;margin-top:20px">Room allocation is limited. Industry-only access. Be first in line when bookings open.</p>
       </div>
@@ -437,14 +528,34 @@ h3{font-size:clamp(24px,3vw,42px)}
       <div class="fb">
         <img src="logo.png" alt="Meet Me at the Hotel" style="height:52px;width:auto;display:block;">
         <p>The Global Hospitality Hub<br>of the Dance Industry.</p>
-        <p class="fa">Room Mate Aitana Hotel · IJdok 6<br>Amsterdam · ADE October 2026</p>
+        <p class="fa">Room Mate Aitana Hotel · IJdok 6<br>Amsterdam · October 2026</p>
       </div>
-      <div class="fc"><p class="fct">Explore</p><a href="about.html">About</a><a href="program.html">Program</a><a href="universe.html">Universe</a><a href="networking.html">Networking</a><a href="industry-exchange.html">Matchmaking</a></div>
-      <div class="fc"><p class="fct">Book</p><a href="booking.html">Hotel Rooms</a><a href="meeting-rooms.html">Meeting Rooms</a><a href="showcases.html">Showcases</a><a href="partners.html">Partnerships</a></div>
-      <div class="fc"><p class="fct">Connect</p><a href="contact.html">Contact</a><a href="#">Instagram</a><a href="#">LinkedIn</a><a href="#">TikTok</a></div>
+      <div class="fcc">
+        <p class="fct">Explore</p>
+        <a href="about.html">About</a>
+        <a href="program.html">Program</a>
+        <a href="universe.html">Universe</a>
+        <a href="industry-hub.html">Industry Hub</a>
+        <a href="industry-exchange.html">Industry Exchange</a>
+        <a href="experiences.html">Experiences</a>
+      </div>
+      <div class="fcc">
+        <p class="fct">Book</p>
+        <a href="booking.html">Hotel Rooms</a>
+        <a href="meeting-rooms.html">Meeting Rooms</a>
+        <a href="experiences.html">Showcases</a>
+        <a href="partners.html">Partnerships</a>
+      </div>
+      <div class="fcc">
+        <p class="fct">Connect</p>
+        <a href="contact.html">Contact</a>
+        <a href="#">Instagram</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">TikTok</a>
+      </div>
     </div>
     <div class="fb2">
-      <p>© 2026 Meet Me at the Hotel · 5th Anniversary Edition · ADE October 2026</p>
+      <p>© 2026 Meet Me at the Hotel · 5th Anniversary Edition · Amsterdam · October 2026</p>
       <p><a href="#">Privacy</a> · <a href="#">Cookies</a> · <a href="#">Terms</a></p>
     </div>
   </div>
@@ -462,7 +573,7 @@ document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
 /* Newsletter */
 function sf(f,e){e.preventDefault();const b=f.querySelector('button');b.textContent="YOU'RE IN →";b.style.background='#2E7A74';setTimeout(()=>{b.textContent='REGISTER INTEREST';b.style.background='';f.reset()},3000)}
 
-/* COUNTDOWN — Opening Night 20 Oktober 2026 20:00 Amsterdam */
+/* COUNTDOWN — Opening Night 20 October 2026 20:00 Amsterdam */
 (function(){
   const TARGET = new Date('2026-10-20T20:00:00+02:00').getTime();
   const prev = {};
