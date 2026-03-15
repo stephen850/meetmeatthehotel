@@ -23,8 +23,6 @@ h3{font-size:clamp(22px,3vw,40px)}
 .btn{display:inline-block;font-family:var(--fc);font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:15px 36px;transition:all var(--tr);cursor:pointer;border:none}
 .bp{background:var(--teal);color:var(--blk)}.bp:hover{background:var(--deep);color:var(--wh)}
 .bo{border:1px solid var(--teal);color:var(--teal);background:transparent}.bo:hover{background:var(--teal);color:var(--blk)}
-
-/* NAV */
 .nav{position:fixed;top:0;left:0;right:0;height:var(--nav);display:flex;align-items:center;justify-content:space-between;padding:0 40px;z-index:1000;background:rgba(10,10,10,.95);border-bottom:1px solid var(--blkb);backdrop-filter:blur(16px)}
 .nl{display:flex;align-items:center;gap:28px}
 .nl a{font-family:var(--fc);font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--wd);transition:color var(--tr)}.nl a:hover{color:var(--wh)}
@@ -37,23 +35,17 @@ h3{font-size:clamp(22px,3vw,40px)}
   .nl.open{transform:none}
   .nl a{font-size:20px}
 }
-
-/* STICKY SUB-NAV */
 .subnav{position:sticky;top:var(--nav);z-index:900;background:rgba(10,10,10,.97);border-bottom:1px solid var(--blkb);backdrop-filter:blur(16px);overflow-x:auto;scrollbar-width:none}
 .subnav::-webkit-scrollbar{display:none}
 .subnav-inner{display:flex;width:max-content;min-width:100%}
 .subnav-item{font-family:var(--fc);font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;padding:0 28px;height:var(--subnav);display:flex;align-items:center;color:var(--wd);border-right:1px solid var(--blkb);transition:all var(--tr);white-space:nowrap;cursor:pointer}
 .subnav-item:hover{color:var(--wh);background:rgba(255,255,255,.03)}
 .subnav-item.active{color:var(--sb-c,var(--teal));border-bottom:2px solid var(--sb-c,var(--teal))}
-
-/* HERO */
 .ph{padding-top:calc(var(--nav) + var(--subnav) + 80px);padding-bottom:80px;position:relative;overflow:hidden;background:#0a1412;border-bottom:1px solid var(--blkb)}
 .ph-img{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1920&q=80&fit=crop');background-size:cover;background-position:center;opacity:0.1}
 .ph-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(77,168,160,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(77,168,160,.04) 1px,transparent 1px);background-size:80px 80px}
 .ph-inner{position:relative;z-index:1}
 .ph-lead{font-family:var(--fc);font-size:clamp(14px,1.8vw,19px);font-weight:400;letter-spacing:.06em;color:var(--wd);max-width:640px;line-height:1.6;text-transform:uppercase;margin-top:20px}
-
-/* UNIVERSE OVERVIEW GRID */
 .overview{padding:80px 0;border-bottom:1px solid var(--blkb);background:var(--blkm)}
 .ov-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:48px}
 .ov-card{background:var(--blkc);border:1px solid var(--blkb);padding:28px 24px;transition:all var(--tr);cursor:pointer;position:relative;overflow:hidden}
@@ -65,8 +57,6 @@ h3{font-size:clamp(22px,3vw,40px)}
 .ov-arrow{font-family:var(--fc);font-size:14px;color:var(--sb-c);display:block;margin-top:16px;transition:transform var(--tr)}.ov-card:hover .ov-arrow{transform:translateX(5px)}
 @media(max-width:900px){.ov-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:480px){.ov-grid{grid-template-columns:1fr}}
-
-/* SUB-BRAND SECTIONS */
 .sb{padding:120px 0;border-bottom:1px solid var(--blkb);position:relative;overflow:hidden}
 .sb:nth-child(even){background:var(--blkm)}
 .sb-accent{position:absolute;top:0;left:0;right:0;height:3px;background:var(--sb-c,var(--teal))}
@@ -88,13 +78,9 @@ h3{font-size:clamp(22px,3vw,40px)}
 .sb-stat-num{font-family:var(--fd);font-size:36px;color:var(--sb-c,var(--teal));line-height:1}
 .sb-stat-lbl{font-family:var(--fc);font-size:10px;letter-spacing:.2em;color:var(--wd);text-transform:uppercase;margin-top:4px}
 @media(max-width:900px){.sb-inner,.sb-inner.flip{grid-template-columns:1fr;direction:ltr}}
-
-/* CTA BLOCK */
 .cta-block{padding:120px 0;text-align:center;background:radial-gradient(ellipse 80% 100% at 50% 50%,rgba(77,168,160,.06) 0%,transparent 70%),var(--blk)}
 .cta-block h2{margin-bottom:20px}
 .cta-block p{font-family:var(--fc);font-size:15px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase;max-width:560px;margin:0 auto 40px;line-height:1.7}
-
-/* FOOTER */
 .ft{padding:80px 0 40px;background:var(--blkc);border-top:1px solid var(--blkb)}
 .fg{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:60px}
 .fb p{font-size:13px;color:var(--wd);margin-top:20px;line-height:1.75;font-weight:300}
@@ -106,7 +92,6 @@ h3{font-size:clamp(22px,3vw,40px)}
 .fb2 a:hover{color:var(--teal)}
 @media(max-width:900px){.fg{grid-template-columns:1fr 1fr;gap:40px}}
 @media(max-width:480px){.fg{grid-template-columns:1fr}.fb2{flex-direction:column;gap:12px}}
-
 .rv{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
 .rv.vis{opacity:1;transform:none}
 .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
@@ -120,9 +105,10 @@ h3{font-size:clamp(22px,3vw,40px)}
   </a>
   <div class="nl" id="nl">
     <a href="about.html">About</a>
-    <a href="programme.html">Programme</a>
+    <a href="program.html">Program</a>
     <a href="universe.html" style="color:var(--teal)">Universe</a>
     <a href="networking.html">Networking</a>
+    <a href="industry-exchange.html">Matchmaking</a>
     <a href="showcases.html">Showcases</a>
     <a href="partners.html">Partners</a>
     <a href="booking.html" class="nc">Book Your Stay</a>
@@ -166,14 +152,14 @@ h3{font-size:clamp(22px,3vw,40px)}
     <span class="lbl rv">The Universe</span>
     <h2 class="rv" style="color:var(--wh)">All eight<br><span style="color:var(--teal)">worlds.</span></h2>
     <div class="ov-grid">
-      <a href="#industry" class="ov-card rv" style="--sb-c:#4DA8A0"><div class="ov-num">01</div><h4>MEET ME INDUSTRY</h4><p>Executive meetings & CEO roundtables</p><span class="ov-arrow">→</span></a>
-      <a href="#innovation" class="ov-card rv d1" style="--sb-c:#2E7A74"><div class="ov-num">02</div><h4>MEET ME INNOVATION</h4><p>Music tech, AI & Web3</p><span class="ov-arrow">→</span></a>
+      <a href="#industry" class="ov-card rv" style="--sb-c:#4DA8A0"><div class="ov-num">01</div><h4>MEET ME INDUSTRY</h4><p>Executive meetings &amp; CEO roundtables</p><span class="ov-arrow">→</span></a>
+      <a href="#innovation" class="ov-card rv d1" style="--sb-c:#2E7A74"><div class="ov-num">02</div><h4>MEET ME INNOVATION</h4><p>Music tech, AI &amp; Web3</p><span class="ov-arrow">→</span></a>
       <a href="#brand" class="ov-card rv d2" style="--sb-c:#7DCDC7"><div class="ov-num">03</div><h4>MEET ME BRAND</h4><p>Global brands × artists</p><span class="ov-arrow">→</span></a>
-      <a href="#creator" class="ov-card rv d3" style="--sb-c:#4DA8A0"><div class="ov-num">04</div><h4>MEET ME CREATOR</h4><p>Content, podcasts & live video</p><span class="ov-arrow">→</span></a>
+      <a href="#creator" class="ov-card rv d3" style="--sb-c:#4DA8A0"><div class="ov-num">04</div><h4>MEET ME CREATOR</h4><p>Content, podcasts &amp; live video</p><span class="ov-arrow">→</span></a>
       <a href="#networking" class="ov-card rv" style="--sb-c:#2E7A74"><div class="ov-num">05</div><h4>MEET ME NETWORKING</h4><p>Curated matchmaking</p><span class="ov-arrow">→</span></a>
       <a href="#podcast" class="ov-card rv d1" style="--sb-c:#B8E4E1"><div class="ov-num">06</div><h4>MEET ME PODCAST</h4><p>The voice of the industry</p><span class="ov-arrow">→</span></a>
-      <a href="#fashion" class="ov-card rv d2" style="--sb-c:#4DA8A0"><div class="ov-num">07</div><h4>MEET ME FASHION LAB</h4><p>Music & culture collide</p><span class="ov-arrow">→</span></a>
-      <a href="#experience" class="ov-card rv d3" style="--sb-c:#7DCDC7"><div class="ov-num">08</div><h4>MEET ME EXPERIENCE</h4><p>Boats, dinners & the unexpected</p><span class="ov-arrow">→</span></a>
+      <a href="#fashion" class="ov-card rv d2" style="--sb-c:#4DA8A0"><div class="ov-num">07</div><h4>MEET ME FASHION LAB</h4><p>Music &amp; culture collide</p><span class="ov-arrow">→</span></a>
+      <a href="#experience" class="ov-card rv d3" style="--sb-c:#7DCDC7"><div class="ov-num">08</div><h4>MEET ME EXPERIENCE</h4><p>Boats, dinners &amp; the unexpected</p><span class="ov-arrow">→</span></a>
     </div>
   </div>
 </section>
@@ -226,8 +212,8 @@ h3{font-size:clamp(22px,3vw,40px)}
         <p>The frontier of music technology. AI-generated music, blockchain rights management, Web3 distribution, immersive audio. The tools reshaping how music is made, owned and heard — demonstrated live at the hotel.</p>
         <div class="sb-tags">
           <span class="sb-tag" style="--sb-c:#2E7A74">Music Tech</span>
-          <span class="sb-tag" style="--sb-c:#2E7A74">AI & Generative</span>
-          <span class="sb-tag" style="--sb-c:#2E7A74">Web3 & NFT</span>
+          <span class="sb-tag" style="--sb-c:#2E7A74">AI &amp; Generative</span>
+          <span class="sb-tag" style="--sb-c:#2E7A74">Web3 &amp; NFT</span>
           <span class="sb-tag" style="--sb-c:#2E7A74">Live Demos</span>
         </div>
         <div class="sb-stat-row">
@@ -378,7 +364,7 @@ h3{font-size:clamp(22px,3vw,40px)}
           <span class="sb-tag" style="--sb-c:#4DA8A0">Designer Collabs</span>
           <span class="sb-tag" style="--sb-c:#4DA8A0">Culture Sessions</span>
           <span class="sb-tag" style="--sb-c:#4DA8A0">Visual Art</span>
-          <span class="sb-tag" style="--sb-c:#4DA8A0">Style & Identity</span>
+          <span class="sb-tag" style="--sb-c:#4DA8A0">Style &amp; Identity</span>
         </div>
         <div class="sb-stat-row">
           <div><div class="sb-stat-num" style="color:#4DA8A0">New</div><div class="sb-stat-lbl">In 2026</div></div>
@@ -442,7 +428,7 @@ h3{font-size:clamp(22px,3vw,40px)}
         <p>The Global Hospitality Hub<br>of the Dance Industry.</p>
         <p class="fadr">Room Mate Aitana Hotel · IJdok 6<br>Amsterdam · ADE October 2026</p>
       </div>
-      <div class="fc"><p class="fct">Explore</p><a href="about.html">About</a><a href="programme.html">Programme</a><a href="universe.html">Universe</a><a href="networking.html">Networking</a></div>
+      <div class="fc"><p class="fct">Explore</p><a href="about.html">About</a><a href="program.html">Program</a><a href="universe.html">Universe</a><a href="networking.html">Networking</a><a href="industry-exchange.html">Matchmaking</a></div>
       <div class="fc"><p class="fct">Book</p><a href="booking.html">Hotel Rooms</a><a href="meeting-rooms.html">Meeting Rooms</a><a href="showcases.html">Showcases</a><a href="partners.html">Partnerships</a></div>
       <div class="fc"><p class="fct">Connect</p><a href="contact.html">Contact</a><a href="#">Instagram</a><a href="#">LinkedIn</a><a href="#">TikTok</a></div>
     </div>
@@ -454,17 +440,13 @@ h3{font-size:clamp(22px,3vw,40px)}
 </footer>
 
 <script>
-// Subnav active state
 function setActive(el){
   document.querySelectorAll('.subnav-item').forEach(i=>i.classList.remove('active'));
   el.classList.add('active');
 }
-
-// Auto-highlight subnav on scroll
 const sections = ['industry','innovation','brand','creator','networking','podcast','fashion','experience'];
 const navItems = document.querySelectorAll('.subnav-item');
 const offset = 140;
-
 window.addEventListener('scroll', () => {
   let current = '';
   sections.forEach(id => {
@@ -476,8 +458,6 @@ window.addEventListener('scroll', () => {
     if(item.getAttribute('href') === '#' + current) item.classList.add('active');
   });
 });
-
-// Reveal
 const obs = new IntersectionObserver(es => es.forEach(e => {
   if(e.isIntersecting){ e.target.classList.add('vis'); obs.unobserve(e.target); }
 }), {threshold:.08});
