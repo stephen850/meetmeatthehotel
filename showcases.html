@@ -24,8 +24,6 @@ h3{font-size:clamp(22px,3vw,40px)}
 .btn{display:inline-block;font-family:var(--fc);font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:15px 36px;transition:all var(--tr);cursor:pointer;border:none;text-align:center}
 .bp{background:var(--teal);color:var(--blk)}.bp:hover{background:var(--deep);color:var(--wh)}
 .bo{border:1px solid var(--teal);color:var(--teal);background:transparent}.bo:hover{background:var(--teal);color:var(--blk)}
-
-/* NAV */
 .nav{position:fixed;top:0;left:0;right:0;height:var(--nav);display:flex;align-items:center;justify-content:space-between;padding:0 40px;z-index:1000;background:rgba(10,10,10,.95);border-bottom:1px solid var(--blkb);backdrop-filter:blur(16px)}
 .nl{display:flex;align-items:center;gap:28px}
 .nl a{font-family:var(--fc);font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--wd);transition:color var(--tr)}.nl a:hover{color:var(--wh)}
@@ -38,8 +36,6 @@ h3{font-size:clamp(22px,3vw,40px)}
   .nl.open{transform:none}
   .nl a{font-size:20px}
 }
-
-/* FULL-BLEED HERO */
 .hero{min-height:100vh;position:relative;display:flex;align-items:flex-end;padding-bottom:80px;overflow:hidden;margin-top:var(--nav)}
 .hero-img{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1920&q=80&fit=crop');background-size:cover;background-position:center;filter:brightness(.5) saturate(.8)}
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,10,.2) 0%,rgba(10,10,10,.85) 80%,rgba(10,10,10,.98) 100%)}
@@ -57,8 +53,6 @@ h3{font-size:clamp(22px,3vw,40px)}
 .hero-feat-text{font-family:var(--fc);font-size:12px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase}
 @media(max-width:900px){.hero-content{grid-template-columns:1fr;padding:0 40px}.hero-right{display:none}}
 @media(max-width:640px){.hero-content{padding:0 20px}}
-
-/* PACKAGES */
 .packages{padding:100px 0;border-bottom:1px solid var(--blkb)}
 .pkg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:60px}
 .pkg{background:var(--blkc);border:1px solid var(--blkb);display:flex;flex-direction:column;transition:border-color var(--tr);position:relative;overflow:hidden}
@@ -76,8 +70,6 @@ h3{font-size:clamp(22px,3vw,40px)}
 .pkg-list li::before{content:'✓';color:var(--teal);flex-shrink:0;font-family:var(--fc);font-weight:700}
 .pkg-cta{padding:0 32px 32px}
 @media(max-width:768px){.pkg-grid{grid-template-columns:1fr}}
-
-/* OSCAR ROOM DETAIL */
 .oscar{padding:100px 0;border-bottom:1px solid var(--blkb);background:var(--blkm)}
 .oscar-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;margin-top:60px}
 .oscar-photo{position:relative;overflow:hidden}
@@ -91,8 +83,6 @@ h3{font-size:clamp(22px,3vw,40px)}
 .oscar-spec-val{font-family:var(--fd);font-size:22px;color:var(--teal)}
 .oscar-text p{font-size:15px;color:var(--wd);line-height:1.8;font-weight:300;margin-bottom:16px}
 @media(max-width:768px){.oscar-inner{grid-template-columns:1fr}}
-
-/* BOAT EVENTS */
 .boat{padding:100px 0;border-bottom:1px solid var(--blkb)}
 .boat-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;margin-top:60px}
 .boat-photo{position:relative;overflow:hidden}
@@ -105,16 +95,11 @@ h3{font-size:clamp(22px,3vw,40px)}
 .bd-n{font-family:var(--fd);font-size:32px;color:var(--teal)}
 .bd-l{font-family:var(--fc);font-size:10px;letter-spacing:.2em;color:var(--wd);text-transform:uppercase;margin-top:4px}
 @media(max-width:768px){.boat-inner{grid-template-columns:1fr}}
-
-/* NETWORK DRINKS */
 .drinks{padding:80px 0;border-bottom:1px solid var(--blkb);background:var(--blkm)}
 .drinks-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
 .drinks-photo img{width:100%;aspect-ratio:16/9;object-fit:cover;filter:brightness(.7) saturate(.8);display:block}
-.drinks-photo-tint{position:absolute;inset:0;background:linear-gradient(135deg,rgba(77,168,160,.12) 0%,transparent 60%)}
 .drinks-text p{font-size:15px;color:var(--wd);line-height:1.8;font-weight:300;margin-bottom:16px}
 @media(max-width:768px){.drinks-inner{grid-template-columns:1fr}}
-
-/* INQUIRY FORM */
 .inquiry{padding:100px 0}
 .inq-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-top:60px}
 .inq-text p{font-size:15px;color:var(--wd);line-height:1.8;font-weight:300;margin-bottom:16px}
@@ -129,8 +114,6 @@ form{display:flex;flex-direction:column;gap:16px}
 .field textarea{resize:none;height:90px}
 .field-row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 @media(max-width:768px){.inq-grid{grid-template-columns:1fr}.field-row{grid-template-columns:1fr}}
-
-/* FOOTER */
 .ft{padding:80px 0 40px;background:var(--blkc);border-top:1px solid var(--blkb)}
 .fg{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:60px}
 .fb p{font-size:13px;color:var(--wd);margin-top:20px;line-height:1.75;font-weight:300}
@@ -142,10 +125,7 @@ form{display:flex;flex-direction:column;gap:16px}
 .fb2 a:hover{color:var(--teal)}
 @media(max-width:900px){.fg{grid-template-columns:1fr 1fr;gap:40px}}
 @media(max-width:480px){.fg{grid-template-columns:1fr}.fb2{flex-direction:column;gap:12px}}
-
-.rv{opacity:1;transform:none}
-.js-loaded .rv{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
-.js-loaded .rv.vis{opacity:1;transform:none}
+.rv{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
 .rv.vis{opacity:1;transform:none}
 .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
 </style>
@@ -158,9 +138,10 @@ form{display:flex;flex-direction:column;gap:16px}
   </a>
   <div class="nl" id="nl">
     <a href="about.html">About</a>
-    <a href="programme.html">Programme</a>
+    <a href="program.html">Program</a>
     <a href="universe.html">Universe</a>
     <a href="networking.html">Networking</a>
+    <a href="industry-exchange.html">Matchmaking</a>
     <a href="showcases.html" style="color:var(--teal)">Showcases</a>
     <a href="partners.html">Partners</a>
     <a href="booking.html" class="nc">Book Your Stay</a>
@@ -199,7 +180,7 @@ form{display:flex;flex-direction:column;gap:16px}
       <div class="hero-feat"><span class="hero-feat-icon">💡</span><span class="hero-feat-text">Architectural lighting rig</span></div>
       <div class="hero-feat"><span class="hero-feat-icon">🌊</span><span class="hero-feat-text">Floor-to-ceiling marina views</span></div>
       <div class="hero-feat"><span class="hero-feat-icon">🎨</span><span class="hero-feat-text">Designed by 250K Studio</span></div>
-      <div class="hero-feat"><span class="hero-feat-icon">🍸</span><span class="hero-feat-text">Full bar & catering service</span></div>
+      <div class="hero-feat"><span class="hero-feat-icon">🍸</span><span class="hero-feat-text">Full bar &amp; catering service</span></div>
       <div class="hero-feat"><span class="hero-feat-icon">🎟️</span><span class="hero-feat-text">Industry-only guest list curation</span></div>
     </div>
   </div>
@@ -211,7 +192,6 @@ form{display:flex;flex-direction:column;gap:16px}
     <span class="lbl rv">Showcase Packages · ADE 2026</span>
     <h2 class="rv">Your night.<br><span class="teal">Your stage.</span></h2>
     <div class="pkg-grid">
-
       <div class="pkg rv">
         <div class="pkg-head">
           <div class="pkg-name">SHOWCASE</div>
@@ -224,13 +204,12 @@ form{display:flex;flex-direction:column;gap:16px}
             <li>Up to 3 artist sets</li>
             <li>100 industry guest invitations</li>
             <li>Basic branding placement</li>
-            <li>Bar & service included</li>
+            <li>Bar &amp; service included</li>
             <li>MMATH social media mention</li>
           </ul>
         </div>
         <div class="pkg-cta"><a href="#inquiry" class="btn bo" style="display:block">Enquire →</a></div>
       </div>
-
       <div class="pkg featured rv d1">
         <div class="pkg-badge">Most Booked</div>
         <div class="pkg-head">
@@ -243,8 +222,8 @@ form{display:flex;flex-direction:column;gap:16px}
             <li>Oscar Room from 19:00 – 02:00</li>
             <li>Unlimited artist programme</li>
             <li>200 industry guest invitations</li>
-            <li>Full branding — room & digital</li>
-            <li>Dedicated bar & premium catering</li>
+            <li>Full branding — room &amp; digital</li>
+            <li>Dedicated bar &amp; premium catering</li>
             <li>Social media campaign (5 posts)</li>
             <li>Press photography included</li>
             <li>MMATH newsletter feature</li>
@@ -252,7 +231,6 @@ form{display:flex;flex-direction:column;gap:16px}
         </div>
         <div class="pkg-cta"><a href="#inquiry" class="btn bp" style="display:block">Enquire →</a></div>
       </div>
-
       <div class="pkg rv d2">
         <div class="pkg-head">
           <div class="pkg-name">BRANDED LABEL NIGHT</div>
@@ -262,19 +240,18 @@ form{display:flex;flex-direction:column;gap:16px}
         <div class="pkg-body">
           <ul class="pkg-list">
             <li>Oscar Room full evening + day activation</li>
-            <li>Custom stage & set design</li>
+            <li>Custom stage &amp; set design</li>
             <li>300 curated industry invitations</li>
             <li>Full MMATH production team</li>
             <li>360° media campaign</li>
             <li>Live stream option</li>
             <li>Behind-the-scenes content package</li>
             <li>Post-event recap video</li>
-            <li>Press & media coordination</li>
+            <li>Press &amp; media coordination</li>
           </ul>
         </div>
         <div class="pkg-cta"><a href="#inquiry" class="btn bo" style="display:block">Enquire →</a></div>
       </div>
-
     </div>
   </div>
 </section>
@@ -338,7 +315,7 @@ form{display:flex;flex-direction:column;gap:16px}
       <div class="rv" style="position:relative;">
         <div class="drinks-photo" style="position:relative;overflow:hidden;">
           <img src="https://images.unsplash.com/photo-1551818255-e6e10975bc17?w=800&q=80&fit=crop" alt="Aitana Lounge">
-          <div class="drinks-photo-tint" style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(77,168,160,.12) 0%,transparent 60%);"></div>
+          <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(77,168,160,.12) 0%,transparent 60%);"></div>
         </div>
       </div>
       <div class="rv d1">
@@ -367,7 +344,7 @@ form{display:flex;flex-direction:column;gap:16px}
         <p>All formats available: Oscar Room showcases, boat events, network drinks and branded label nights.</p>
         <div class="contact-box">
           <span class="lbl">Direct Contact</span>
-          <p style="font-family:var(--fc);font-size:13px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e5968d8a928684968096a58880809188808491918d808d8a918089cb868a88">[email&#160;protected]</a></p>
+          <p style="font-family:var(--fc);font-size:13px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase;">showcases@meetmeatthehotel.com</p>
           <p style="font-family:var(--fc);font-size:13px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase;margin-top:6px;">Oscar Room · IJdok 6 · Amsterdam</p>
         </div>
       </div>
@@ -418,7 +395,7 @@ form{display:flex;flex-direction:column;gap:16px}
         <p>The Global Hospitality Hub<br>of the Dance Industry.</p>
         <p class="fadr">Room Mate Aitana Hotel · IJdok 6<br>Amsterdam · ADE October 2026</p>
       </div>
-      <div class="fc"><p class="fct">Explore</p><a href="about.html">About</a><a href="programme.html">Programme</a><a href="universe.html">Universe</a><a href="networking.html">Networking</a></div>
+      <div class="fc"><p class="fct">Explore</p><a href="about.html">About</a><a href="program.html">Program</a><a href="universe.html">Universe</a><a href="networking.html">Networking</a><a href="industry-exchange.html">Matchmaking</a></div>
       <div class="fc"><p class="fct">Book</p><a href="booking.html">Hotel Rooms</a><a href="meeting-rooms.html">Meeting Rooms</a><a href="showcases.html">Showcases</a><a href="partners.html">Partnerships</a></div>
       <div class="fc"><p class="fct">Connect</p><a href="contact.html">Contact</a><a href="#">Instagram</a><a href="#">LinkedIn</a><a href="#">TikTok</a></div>
     </div>
@@ -429,5 +406,16 @@ form{display:flex;flex-direction:column;gap:16px}
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-function sf(f,e){e.preventDefault();const b=f.querySelector('button');b.textContent='INQUIRY SENT ✓';b.style.background='#2E7A74';setTimeout(()=>{b.textContent='Send Showcase Inquiry →';b.style.background='';f.reset()},3500);document.body.classList.add("js-loaded");const ro=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("vis")}})},{threshold:0.12});document.querySelectorAll(".rv").forEach(el=>ro.observe(el));</script></body></html>
+<script>
+function sf(f,e){
+  e.preventDefault();
+  const b=f.querySelector('button');
+  b.textContent='INQUIRY SENT ✓';
+  b.style.background='#2E7A74';
+  setTimeout(()=>{b.textContent='Send Showcase Inquiry →';b.style.background='';f.reset()},3500);
+}
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target)}}),{threshold:.08});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
