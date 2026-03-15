@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Networking — Meet Me at the Hotel · ADE 2026</title>
+<title>Industry Hub — Meet Me at the Hotel · 5th Anniversary Edition</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 :root{--teal:#4DA8A0;--deep:#2E7A74;--pool:#7DCDC7;--blk:#0A0A0A;--blkm:#111;--blkc:#161616;--blkb:#222;--wh:#F5F5F0;--wd:rgba(245,245,240,0.6);--fd:'Bebas Neue',sans-serif;--fc:'Barlow Condensed',sans-serif;--fb:'Barlow',sans-serif;--nav:72px;--tr:0.35s cubic-bezier(.4,0,.2,1)}
@@ -91,6 +91,17 @@ h3{font-size:clamp(22px,3vw,40px)}
 .salon p{font-size:13px;color:var(--wd);line-height:1.7;font-weight:300;margin-bottom:20px}
 .salon-detail{font-family:var(--fc);font-size:11px;letter-spacing:.15em;color:var(--pool);text-transform:uppercase}
 @media(max-width:640px){.salons-grid{grid-template-columns:1fr}}
+
+/* EXCHANGE CTA BLOCK */
+.exc-cta{padding:80px 0;border-bottom:1px solid var(--blkb);background:var(--blkc)}
+.exc-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.exc-text h2{margin-bottom:16px}
+.exc-text p{font-size:15px;color:var(--wd);line-height:1.8;font-weight:300;margin-bottom:28px;max-width:480px}
+.exc-features{list-style:none;display:flex;flex-direction:column;gap:10px}
+.exc-features li{font-family:var(--fc);font-size:13px;letter-spacing:.08em;color:var(--wd);text-transform:uppercase;padding:10px 14px;border:1px solid var(--blkb);display:flex;align-items:center;gap:12px}
+.exc-features li::before{content:'→';color:var(--teal);flex-shrink:0}
+@media(max-width:768px){.exc-inner{grid-template-columns:1fr}}
+
 .testis{padding:100px 0;border-bottom:1px solid var(--blkb)}
 .testi-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:60px}
 .testi{background:var(--blkc);border:1px solid var(--blkb);padding:40px;transition:border-color var(--tr)}
@@ -119,9 +130,9 @@ form{display:flex;flex-direction:column;gap:16px}
 .fg{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:60px}
 .fb p{font-size:13px;color:var(--wd);margin-top:20px;line-height:1.75;font-weight:300}
 .fadr{margin-top:10px;opacity:.4;font-size:12px}
-.fc{display:flex;flex-direction:column;gap:12px}
+.fcc{display:flex;flex-direction:column;gap:12px}
 .fct{font-family:var(--fc);font-size:10px;font-weight:600;letter-spacing:.3em;color:var(--teal);text-transform:uppercase;margin-bottom:4px}
-.fc a{font-family:var(--fc);font-size:13px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase;transition:color var(--tr)}.fc a:hover{color:var(--teal)}
+.fcc a{font-family:var(--fc);font-size:13px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase;transition:color var(--tr)}.fcc a:hover{color:var(--teal)}
 .fb2{display:flex;justify-content:space-between;padding-top:32px;border-top:1px solid var(--blkb);font-family:var(--fc);font-size:11px;letter-spacing:.1em;color:rgba(245,245,240,.3);text-transform:uppercase}
 .fb2 a:hover{color:var(--teal)}
 @media(max-width:900px){.fg{grid-template-columns:1fr 1fr;gap:40px}}
@@ -141,9 +152,9 @@ form{display:flex;flex-direction:column;gap:16px}
     <a href="about.html">About</a>
     <a href="program.html">Program</a>
     <a href="universe.html">Universe</a>
-    <a href="networking.html" style="color:var(--teal)">Networking</a>
-    <a href="industry-exchange.html">Matchmaking</a>
-    <a href="showcases.html">Showcases</a>
+    <a href="industry-hub.html" style="color:var(--teal)">Industry Hub</a>
+    <a href="industry-exchange.html">Industry Exchange</a>
+    <a href="experiences.html">Experiences</a>
     <a href="partners.html">Partners</a>
     <a href="booking.html" class="nc">Book Your Stay</a>
   </div>
@@ -158,19 +169,19 @@ form{display:flex;flex-direction:column;gap:16px}
   <div class="ph-grid"></div>
   <div class="c ph-inner">
     <div>
-      <span class="lbl">Meet Me Networking · ADE 2026</span>
+      <span class="lbl">Meet Me Industry Hub · Layer 01</span>
       <h1>
         <span style="display:block;color:var(--wh)">THE RIGHT</span>
         <span style="display:block;color:var(--teal)">PEOPLE.</span>
         <span style="display:block;color:var(--wh)">ALWAYS.</span>
       </h1>
-      <p class="ph-lead">Curated, intentional, efficient. 2,400+ pre-matched meetings per edition. The most productive networking in the dance industry.</p>
+      <p class="ph-lead">The open networking ecosystem of the MMATH platform. Where professionals from across the global nightlife and electronic music industry meet naturally.</p>
     </div>
     <div class="ph-stats rv d1">
       <div class="ph-stat"><div class="ph-stat-n">2,400+</div><div class="ph-stat-l">Meetings / Edition</div></div>
       <div class="ph-stat"><div class="ph-stat-n">89%</div><div class="ph-stat-l">Satisfaction Rate</div></div>
       <div class="ph-stat"><div class="ph-stat-n">62%</div><div class="ph-stat-l">Deal Follow-up Rate</div></div>
-      <div class="ph-stat"><div class="ph-stat-n">30min</div><div class="ph-stat-l">Avg. Meeting Length</div></div>
+      <div class="ph-stat"><div class="ph-stat-n">1,500+</div><div class="ph-stat-l">Guests / Day</div></div>
     </div>
   </div>
 </section>
@@ -184,10 +195,10 @@ form{display:flex;flex-direction:column;gap:16px}
         We make them<br><em>inevitable.</em>
       </div>
       <div class="rv d1">
-        <span class="lbl">Our Philosophy</span>
-        <p>Most industry networking is accidental. You bump into someone at the bar, exchange cards, follow up three weeks later — maybe. MMATH Networking is the opposite.</p>
-        <p>We use a combination of intelligent matchmaking and human curation to put the right people in front of each other, at the right moment, in the right environment. The result: meetings that actually lead somewhere.</p>
-        <p>Not a speed-dating event. Not a badge-swapping exercise. A week of purposeful, productive, industry-moving conversations.</p>
+        <span class="lbl">The Community Engine</span>
+        <p>The Industry Hub is the open networking ecosystem at the heart of MMATH. It's where professionals from across the global dance industry meet naturally — over coffee, at the bar, in a hotel corridor.</p>
+        <p>Informal meetings, introductions between artists and promoters, conversations between brands and agencies. No agenda. No badge-swapping. Just the right people in the right place.</p>
+        <p>The Hub is the community engine of the entire MMATH ecosystem — the layer that makes everything else possible.</p>
       </div>
     </div>
   </div>
@@ -197,18 +208,18 @@ form{display:flex;flex-direction:column;gap:16px}
 <section class="how">
   <div class="c">
     <span class="lbl rv">How It Works</span>
-    <h2 class="rv">Five steps to your<br><span class="teal">best ADE ever.</span></h2>
+    <h2 class="rv">Five steps to your<br><span class="teal">best week ever.</span></h2>
     <div class="steps">
       <div class="step rv">
         <div class="step-n">01</div>
         <h4>REGISTER</h4>
-        <p>Complete your industry profile. Role, company, goals for ADE 2026 and who you want to meet.</p>
+        <p>Complete your industry profile. Role, company, goals for October 2026 and who you want to meet.</p>
         <div class="step-arrow">→</div>
       </div>
       <div class="step rv d1">
         <div class="step-n">02</div>
         <h4>GET MATCHED</h4>
-        <p>Our algorithm + human curators review your profile and suggest your ideal meeting partners.</p>
+        <p>Our algorithm and human curators review your profile and suggest your ideal meeting partners.</p>
         <div class="step-arrow">→</div>
       </div>
       <div class="step rv d2">
@@ -226,7 +237,7 @@ form{display:flex;flex-direction:column;gap:16px}
       <div class="step rv d2">
         <div class="step-n">05</div>
         <h4>FOLLOW UP</h4>
-        <p>Post-ADE connection tools, shared contact details and meeting notes — built into the platform.</p>
+        <p>Post-event connection tools, shared contact details and meeting notes — built into the platform.</p>
       </div>
     </div>
   </div>
@@ -288,7 +299,7 @@ form{display:flex;flex-direction:column;gap:16px}
 <!-- CURATED SALONS -->
 <section class="salons">
   <div class="c">
-    <span class="lbl rv">Curated Salons</span>
+    <span class="lbl rv">Hub Programming</span>
     <h2 class="rv">Deeper than<br><span class="teal">one-on-ones.</span></h2>
     <div class="salons-grid">
       <div class="salon rv">
@@ -319,6 +330,28 @@ form{display:flex;flex-direction:column;gap:16px}
   </div>
 </section>
 
+<!-- INDUSTRY EXCHANGE CTA -->
+<section class="exc-cta">
+  <div class="c">
+    <div class="exc-inner">
+      <div class="rv">
+        <span class="lbl">Looking for curated meetings?</span>
+        <h2 class="teal">Meet Me<br>Industry Exchange.</h2>
+        <p>The Industry Hub is open networking. For structured, pre-matched 20-minute business meetings in our dedicated Business Lounge, apply for the Industry Exchange — Layer 02 of the MMATH ecosystem.</p>
+        <a href="industry-exchange.html" class="btn bp">Explore the Exchange →</a>
+      </div>
+      <ul class="exc-features rv d1">
+        <li>Pre-matched meetings — apply & get selected</li>
+        <li>20-minute structured sessions</li>
+        <li>Dedicated Business Lounge</li>
+        <li>Artist bookings, partnerships & brand collabs</li>
+        <li>Technology adoption introductions</li>
+        <li>Measurable business value per edition</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
 <!-- TESTIMONIALS -->
 <section class="testis">
   <div class="c">
@@ -326,11 +359,11 @@ form{display:flex;flex-direction:column;gap:16px}
     <h2 class="rv">Results that<br><span class="teal">speak for themselves.</span></h2>
     <div class="testi-grid">
       <div class="testi rv">
-        <div class="tq">"I had 14 pre-booked meetings and closed two deals before I even left the hotel. MMATH networking is unlike anything else at ADE."</div>
+        <div class="tq">"I had 14 pre-booked meetings and closed two deals before I even left the hotel. MMATH networking is unlike anything else."</div>
         <div class="ta"><div class="tn">Sarah Mitchell</div><div class="tr">Booking Agent · Berlin</div></div>
       </div>
       <div class="testi rv d1">
-        <div class="tq">"The matchmaking quality is exceptional. Every meeting felt relevant. Zero wasted time — which at ADE is everything."</div>
+        <div class="tq">"The matchmaking quality is exceptional. Every meeting felt relevant. Zero wasted time — which at any industry event is everything."</div>
         <div class="ta"><div class="tn">Tom Eriksen</div><div class="tr">A&amp;R Director · Stockholm</div></div>
       </div>
       <div class="testi rv d2">
@@ -348,17 +381,17 @@ form{display:flex;flex-direction:column;gap:16px}
 <!-- REGISTER FORM -->
 <section class="register" id="register">
   <div class="c">
-    <span class="lbl rv">Register for Networking</span>
-    <h2 class="rv">Start your<br><span class="teal">ADE 2026 here.</span></h2>
+    <span class="lbl rv">Join the Industry Hub</span>
+    <h2 class="rv">Start your<br><span class="teal">October 2026 here.</span></h2>
     <div class="reg-grid">
       <div class="rv">
-        <p>Complete your networking profile and we'll begin matching you with the most relevant attendees at MMATH ADE 2026. Registration opens the matchmaking platform.</p>
+        <p>Complete your profile and we'll begin matching you with the most relevant attendees at MMATH October 2026. Registration opens the networking platform and gives you access to the full Industry Hub.</p>
         <p>Hotel guests are automatically enrolled. Day pass holders can register separately below.</p>
         <div class="contact-box">
           <span class="lbl">Questions?</span>
-          <p style="font-family:var(--fc);font-size:13px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase;">networking@meetmeatthehotel.com</p>
+          <p style="font-family:var(--fc);font-size:13px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase;">hub@meetmeatthehotel.com</p>
         </div>
-        <p class="reg-note">B2B industry professionals only · All profiles are manually reviewed · Opens 3 months before ADE</p>
+        <p class="reg-note">B2B industry professionals only · All profiles are manually reviewed · Opens 3 months before the event</p>
       </div>
       <form class="rv d1" onsubmit="sf(this,event)">
         <div class="field-row">
@@ -391,7 +424,7 @@ form{display:flex;flex-direction:column;gap:16px}
           </select>
         </div>
         <div class="field"><label>Who are you looking to meet?</label><textarea placeholder="e.g. Booking agents for club touring, A&amp;R at house music labels, festival promoters in Eastern Europe..."></textarea></div>
-        <button type="submit" class="btn bp" style="width:100%;margin-top:8px;">Register for Networking →</button>
+        <button type="submit" class="btn bp" style="width:100%;margin-top:8px;">Join the Industry Hub →</button>
       </form>
     </div>
   </div>
@@ -404,21 +437,41 @@ form{display:flex;flex-direction:column;gap:16px}
       <div class="fb">
         <img src="logo.png" alt="Meet Me at the Hotel" style="height:44px;width:auto;display:block;">
         <p>The Global Hospitality Hub<br>of the Dance Industry.</p>
-        <p class="fadr">Room Mate Aitana Hotel · IJdok 6<br>Amsterdam · ADE October 2026</p>
+        <p class="fadr">Room Mate Aitana Hotel · IJdok 6<br>Amsterdam · October 2026</p>
       </div>
-      <div class="fc"><p class="fct">Explore</p><a href="about.html">About</a><a href="program.html">Program</a><a href="universe.html">Universe</a><a href="networking.html">Networking</a><a href="industry-exchange.html">Matchmaking</a></div>
-      <div class="fc"><p class="fct">Book</p><a href="booking.html">Hotel Rooms</a><a href="meeting-rooms.html">Meeting Rooms</a><a href="showcases.html">Showcases</a><a href="partners.html">Partnerships</a></div>
-      <div class="fc"><p class="fct">Connect</p><a href="contact.html">Contact</a><a href="#">Instagram</a><a href="#">LinkedIn</a><a href="#">TikTok</a></div>
+      <div class="fcc">
+        <p class="fct">Explore</p>
+        <a href="about.html">About</a>
+        <a href="program.html">Program</a>
+        <a href="universe.html">Universe</a>
+        <a href="industry-hub.html">Industry Hub</a>
+        <a href="industry-exchange.html">Industry Exchange</a>
+        <a href="experiences.html">Experiences</a>
+      </div>
+      <div class="fcc">
+        <p class="fct">Book</p>
+        <a href="booking.html">Hotel Rooms</a>
+        <a href="meeting-rooms.html">Meeting Rooms</a>
+        <a href="experiences.html">Showcases</a>
+        <a href="partners.html">Partnerships</a>
+      </div>
+      <div class="fcc">
+        <p class="fct">Connect</p>
+        <a href="contact.html">Contact</a>
+        <a href="#">Instagram</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">TikTok</a>
+      </div>
     </div>
     <div class="fb2">
-      <p>© 2026 Meet Me at the Hotel · 5th Anniversary Edition</p>
+      <p>© 2026 Meet Me at the Hotel · 5th Anniversary Edition · Amsterdam · October 2026</p>
       <p><a href="#">Privacy</a> · <a href="#">Cookies</a> · <a href="#">Terms</a></p>
     </div>
   </div>
 </footer>
 
 <script>
-function sf(f,e){e.preventDefault();const b=f.querySelector('button');b.textContent='REGISTERED ✓';b.style.background='#2E7A74';setTimeout(()=>{b.textContent='Register for Networking →';b.style.background='';f.reset()},3500)}
+function sf(f,e){e.preventDefault();const b=f.querySelector('button');b.textContent='REGISTERED ✓';b.style.background='#2E7A74';setTimeout(()=>{b.textContent='Join the Industry Hub →';b.style.background='';f.reset()},3500)}
 const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target)}}),{threshold:.12});
 document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
 </script>
