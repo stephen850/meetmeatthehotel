@@ -24,8 +24,6 @@ h3{font-size:clamp(22px,3vw,40px)}
 .btn{display:inline-block;font-family:var(--fc);font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:15px 36px;transition:all var(--tr);cursor:pointer;border:none;text-align:center}
 .bp{background:var(--teal);color:var(--blk)}.bp:hover{background:var(--deep);color:var(--wh)}
 .bo{border:1px solid var(--teal);color:var(--teal);background:transparent}.bo:hover{background:var(--teal);color:var(--blk)}
-
-/* NAV */
 .nav{position:fixed;top:0;left:0;right:0;height:var(--nav);display:flex;align-items:center;justify-content:space-between;padding:0 40px;z-index:1000;background:rgba(10,10,10,.95);border-bottom:1px solid var(--blkb);backdrop-filter:blur(16px)}
 .nl{display:flex;align-items:center;gap:28px}
 .nl a{font-family:var(--fc);font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--wd);transition:color var(--tr)}.nl a:hover{color:var(--wh)}
@@ -38,8 +36,6 @@ h3{font-size:clamp(22px,3vw,40px)}
   .nl.open{transform:none}
   .nl a{font-size:20px}
 }
-
-/* HERO */
 .ph{padding-top:calc(var(--nav) + 80px);padding-bottom:80px;position:relative;overflow:hidden;background:#0a1412;border-bottom:1px solid var(--blkb)}
 .ph-img{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=1920&q=80&fit=crop');background-size:cover;background-position:center;opacity:0.1}
 .ph-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(77,168,160,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(77,168,160,.04) 1px,transparent 1px);background-size:80px 80px}
@@ -50,8 +46,6 @@ h3{font-size:clamp(22px,3vw,40px)}
 .ph-stat-n{font-family:var(--fd);font-size:42px;color:var(--teal);line-height:1}
 .ph-stat-l{font-family:var(--fc);font-size:10px;letter-spacing:.22em;color:var(--wd);text-transform:uppercase;margin-top:4px}
 @media(max-width:768px){.ph-inner{grid-template-columns:1fr;gap:48px}}
-
-/* WHY PARTNER */
 .why{padding:100px 0;border-bottom:1px solid var(--blkb)}
 .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;margin-top:60px}
 .why-text p{font-size:15px;color:var(--wd);line-height:1.8;font-weight:300;margin-bottom:20px}
@@ -64,17 +58,15 @@ h3{font-size:clamp(22px,3vw,40px)}
 .why-photo img{width:100%;aspect-ratio:4/3;object-fit:cover;filter:brightness(.7) saturate(.8);display:block}
 .why-photo-tint{position:absolute;inset:0;background:linear-gradient(135deg,rgba(77,168,160,.15) 0%,transparent 60%)}
 @media(max-width:768px){.why-grid{grid-template-columns:1fr}}
-
-/* TIERS */
 .tiers{padding:100px 0;border-bottom:1px solid var(--blkb);background:var(--blkm)}
 .tiers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:60px}
 .tier{background:var(--blkc);border:1px solid var(--blkb);display:flex;flex-direction:column;transition:border-color var(--tr);position:relative;overflow:hidden}
 .tier::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--tc,var(--teal))}
 .tier.featured{border-color:var(--teal);background:linear-gradient(160deg,rgba(77,168,160,.07) 0%,var(--blkc) 60%)}
 .tier-head{padding:40px 36px 28px}
-.tier-badge{font-family:var(--fc);font-size:10px;font-weight:700;letter-spacing:.25em;color:var(--tc,var(--teal));text-transform:uppercase;margin-bottom:12px;display:block}
+.tier-badge{font-family:var(--fc);font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;margin-bottom:12px;display:block}
 .tier-name{font-family:var(--fd);font-size:44px;line-height:.9;margin-bottom:8px}
-.tier-price{font-family:var(--fd);font-size:32px;color:var(--tc,var(--teal));margin-bottom:16px}
+.tier-price{font-family:var(--fd);font-size:32px;margin-bottom:16px}
 .tier-price span{font-family:var(--fc);font-size:12px;color:var(--wd);letter-spacing:.1em;text-transform:uppercase}
 .tier-desc{font-size:13px;color:var(--wd);line-height:1.65;font-weight:300;padding-bottom:28px;border-bottom:1px solid var(--blkb)}
 .tier-body{padding:28px 36px;flex:1}
@@ -84,8 +76,6 @@ h3{font-size:clamp(22px,3vw,40px)}
 .tier-list li.no{color:rgba(245,245,240,.2)}.tier-list li.no::before{content:'—';color:rgba(245,245,240,.15)}
 .tier-cta{padding:0 36px 36px}
 @media(max-width:900px){.tiers-grid{grid-template-columns:1fr}}
-
-/* ACTIVATION INVENTORY */
 .inventory{padding:100px 0;border-bottom:1px solid var(--blkb)}
 .inv-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:60px}
 .inv-item{background:var(--blkc);border:1px solid var(--blkb);padding:28px 24px;transition:all var(--tr)}
@@ -96,20 +86,16 @@ h3{font-size:clamp(22px,3vw,40px)}
 .inv-tag{font-family:var(--fc);font-size:10px;letter-spacing:.2em;color:var(--teal);text-transform:uppercase;border:1px solid rgba(77,168,160,.3);padding:4px 10px;display:inline-block}
 @media(max-width:900px){.inv-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:480px){.inv-grid{grid-template-columns:1fr}}
-
-/* 5TH ANNIVERSARY PITCH */
 .anniv{padding:100px 0;border-bottom:1px solid var(--blkb);background:var(--blkm)}
 .anniv-inner{display:grid;grid-template-columns:auto 1fr;gap:80px;align-items:center}
 .anniv-num{font-family:var(--fd);font-size:clamp(140px,16vw,240px);color:transparent;-webkit-text-stroke:1px rgba(77,168,160,.2);line-height:.85;user-select:none}
 .anniv-text p{font-size:15px;color:var(--wd);line-height:1.8;font-weight:300;margin-bottom:20px}
 .anniv-highlights{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin:28px 0}
-.ah{background:var(--blkc);border:1px solid var(--blkb);padding:20px 20px;transition:border-color var(--tr)}
+.ah{background:var(--blkc);border:1px solid var(--blkb);padding:20px;transition:border-color var(--tr)}
 .ah:hover{border-color:var(--teal)}
 .ah-n{font-family:var(--fd);font-size:32px;color:var(--teal)}
 .ah-l{font-family:var(--fc);font-size:10px;letter-spacing:.2em;color:var(--wd);text-transform:uppercase;margin-top:4px}
 @media(max-width:768px){.anniv-inner{grid-template-columns:1fr}.anniv-num{display:none}}
-
-/* PARTNER INQUIRY FORM */
 .form-section{padding:100px 0}
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-top:60px}
 .form-text p{font-size:15px;color:var(--wd);line-height:1.8;font-weight:300;margin-bottom:16px}
@@ -126,8 +112,6 @@ form{display:flex;flex-direction:column;gap:16px}
 .field textarea{resize:none;height:90px}
 .field-row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 @media(max-width:768px){.form-grid{grid-template-columns:1fr}.field-row{grid-template-columns:1fr}}
-
-/* FOOTER */
 .ft{padding:80px 0 40px;background:var(--blkc);border-top:1px solid var(--blkb)}
 .fg{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:60px}
 .fb p{font-size:13px;color:var(--wd);margin-top:20px;line-height:1.75;font-weight:300}
@@ -139,10 +123,7 @@ form{display:flex;flex-direction:column;gap:16px}
 .fb2 a:hover{color:var(--teal)}
 @media(max-width:900px){.fg{grid-template-columns:1fr 1fr;gap:40px}}
 @media(max-width:480px){.fg{grid-template-columns:1fr}.fb2{flex-direction:column;gap:12px}}
-
-.rv{opacity:1;transform:none}
-.js-loaded .rv{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
-.js-loaded .rv.vis{opacity:1;transform:none}
+.rv{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
 .rv.vis{opacity:1;transform:none}
 .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
 </style>
@@ -155,9 +136,10 @@ form{display:flex;flex-direction:column;gap:16px}
   </a>
   <div class="nl" id="nl">
     <a href="about.html">About</a>
-    <a href="programme.html">Programme</a>
+    <a href="program.html">Program</a>
     <a href="universe.html">Universe</a>
     <a href="networking.html">Networking</a>
+    <a href="industry-exchange.html">Matchmaking</a>
     <a href="showcases.html">Showcases</a>
     <a href="partners.html" style="color:var(--teal)">Partners</a>
     <a href="booking.html" class="nc">Book Your Stay</a>
@@ -221,8 +203,6 @@ form{display:flex;flex-direction:column;gap:16px}
     <span class="lbl rv">Partnership Packages · ADE 2026</span>
     <h2 class="rv">Three tiers.<br><span class="teal">One clear fit.</span></h2>
     <div class="tiers-grid">
-
-      <!-- HUB PARTNER -->
       <div class="tier rv" style="--tc:#7DCDC7">
         <div class="tier-head">
           <span class="tier-badge" style="color:#7DCDC7">Entry Level</span>
@@ -232,7 +212,7 @@ form{display:flex;flex-direction:column;gap:16px}
         </div>
         <div class="tier-body">
           <ul class="tier-list">
-            <li>Logo placement — venue & digital</li>
+            <li>Logo placement — venue &amp; digital</li>
             <li>Brand activation space in lobby (2m²)</li>
             <li>5 industry guest passes (full week)</li>
             <li>Social media mention (3 posts)</li>
@@ -247,8 +227,6 @@ form{display:flex;flex-direction:column;gap:16px}
           <a href="#inquiry" class="btn bo" style="display:block;border-color:#7DCDC7;color:#7DCDC7;" onmouseover="this.style.background='#7DCDC7';this.style.color='#0A0A0A'" onmouseout="this.style.background='transparent';this.style.color='#7DCDC7'">Enquire →</a>
         </div>
       </div>
-
-      <!-- CORE PARTNER -->
       <div class="tier featured rv d1" style="--tc:#4DA8A0">
         <div class="tier-head">
           <span class="tier-badge" style="color:#4DA8A0">★ Most Popular</span>
@@ -273,8 +251,6 @@ form{display:flex;flex-direction:column;gap:16px}
           <a href="#inquiry" class="btn bp" style="display:block;">Enquire →</a>
         </div>
       </div>
-
-      <!-- FOUNDING PARTNER -->
       <div class="tier rv d2" style="--tc:#2E7A74">
         <div class="tier-head">
           <span class="tier-badge" style="color:#2E7A74">Premium · Limited</span>
@@ -299,7 +275,6 @@ form{display:flex;flex-direction:column;gap:16px}
           <a href="#inquiry" class="btn bo" style="display:block;border-color:#2E7A74;color:#2E7A74;" onmouseover="this.style.background='#2E7A74';this.style.color='#F5F5F0'" onmouseout="this.style.background='transparent';this.style.color='#2E7A74'">Enquire →</a>
         </div>
       </div>
-
     </div>
     <p style="font-family:var(--fc);font-size:11px;letter-spacing:.1em;color:rgba(245,245,240,.3);text-transform:uppercase;margin-top:20px">All packages subject to availability · Custom packages available on request · Prices excl. VAT</p>
   </div>
@@ -311,54 +286,14 @@ form{display:flex;flex-direction:column;gap:16px}
     <span class="lbl rv">Activation Inventory</span>
     <h2 class="rv">Build your<br><span class="teal">presence.</span></h2>
     <div class="inv-grid">
-      <div class="inv-item rv">
-        <span class="inv-icon">🏨</span>
-        <h4>LOBBY ACTIVATION</h4>
-        <p>Branded presence at the hotel's main flow point. Every guest, every day.</p>
-        <span class="inv-tag">All Tiers</span>
-      </div>
-      <div class="inv-item rv d1">
-        <span class="inv-icon">🎤</span>
-        <h4>BRANDED SESSION</h4>
-        <p>Co-branded panel, talk or roundtable on the Oscar Room stage.</p>
-        <span class="inv-tag">Core + Founding</span>
-      </div>
-      <div class="inv-item rv d2">
-        <span class="inv-icon">🎧</span>
-        <h4>SHOWCASE NIGHT</h4>
-        <p>Full evening in the Oscar Room — your brand, your artists, your night.</p>
-        <span class="inv-tag">Core + Founding</span>
-      </div>
-      <div class="inv-item rv d3">
-        <span class="inv-icon">🍽️</span>
-        <h4>INDUSTRY DINNER</h4>
-        <p>Seats at the most exclusive table of ADE. 200 leaders. Your brand present.</p>
-        <span class="inv-tag">Core + Founding</span>
-      </div>
-      <div class="inv-item rv">
-        <span class="inv-icon">🚢</span>
-        <h4>BRANDED BOAT EVENT</h4>
-        <p>Private IJ canal experience. 40 guests. Your brand, their memory.</p>
-        <span class="inv-tag">Add-on</span>
-      </div>
-      <div class="inv-item rv d1">
-        <span class="inv-icon">📱</span>
-        <h4>DIGITAL CAMPAIGN</h4>
-        <p>Social, newsletter, website — integrated campaign across MMATH channels.</p>
-        <span class="inv-tag">All Tiers</span>
-      </div>
-      <div class="inv-item rv d2">
-        <span class="inv-icon">🎙️</span>
-        <h4>PODCAST FEATURE</h4>
-        <p>Branded episode or segment on the Meet Me Podcast. 250K+ listeners.</p>
-        <span class="inv-tag">Add-on</span>
-      </div>
-      <div class="inv-item rv d3">
-        <span class="inv-icon">👑</span>
-        <h4>SUB-BRAND TITLE</h4>
-        <p>Become the title sponsor of one of the 8 Meet Me Universe sub-brands.</p>
-        <span class="inv-tag">Founding Only</span>
-      </div>
+      <div class="inv-item rv"><span class="inv-icon">🏨</span><h4>LOBBY ACTIVATION</h4><p>Branded presence at the hotel's main flow point. Every guest, every day.</p><span class="inv-tag">All Tiers</span></div>
+      <div class="inv-item rv d1"><span class="inv-icon">🎤</span><h4>BRANDED SESSION</h4><p>Co-branded panel, talk or roundtable on the Oscar Room stage.</p><span class="inv-tag">Core + Founding</span></div>
+      <div class="inv-item rv d2"><span class="inv-icon">🎧</span><h4>SHOWCASE NIGHT</h4><p>Full evening in the Oscar Room — your brand, your artists, your night.</p><span class="inv-tag">Core + Founding</span></div>
+      <div class="inv-item rv d3"><span class="inv-icon">🍽️</span><h4>INDUSTRY DINNER</h4><p>Seats at the most exclusive table of ADE. 200 leaders. Your brand present.</p><span class="inv-tag">Core + Founding</span></div>
+      <div class="inv-item rv"><span class="inv-icon">🚢</span><h4>BRANDED BOAT EVENT</h4><p>Private IJ canal experience. 40 guests. Your brand, their memory.</p><span class="inv-tag">Add-on</span></div>
+      <div class="inv-item rv d1"><span class="inv-icon">📱</span><h4>DIGITAL CAMPAIGN</h4><p>Social, newsletter, website — integrated campaign across MMATH channels.</p><span class="inv-tag">All Tiers</span></div>
+      <div class="inv-item rv d2"><span class="inv-icon">🎙️</span><h4>PODCAST FEATURE</h4><p>Branded episode or segment on the Meet Me Podcast. 250K+ listeners.</p><span class="inv-tag">Add-on</span></div>
+      <div class="inv-item rv d3"><span class="inv-icon">👑</span><h4>SUB-BRAND TITLE</h4><p>Become the title sponsor of one of the 8 Meet Me Universe sub-brands.</p><span class="inv-tag">Founding Only</span></div>
     </div>
   </div>
 </section>
@@ -396,7 +331,7 @@ form{display:flex;flex-direction:column;gap:16px}
         <p>All inquiries are treated with full confidentiality. Custom packages are always available.</p>
         <div class="contact-box">
           <span class="lbl">Direct Contact</span>
-          <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="03736271776d667170436e6666776e666277776b666b6c77666f2d606c6e">[email&#160;protected]</a></p>
+          <p>partners@meetmeatthehotel.com</p>
           <p>IJdok 6 · Amsterdam</p>
         </div>
       </div>
@@ -418,7 +353,8 @@ form{display:flex;flex-direction:column;gap:16px}
             <option>Custom / Not sure yet</option>
           </select>
         </div>
-        <div class="field"><label>Budget Range</label>
+        <div class="field">
+          <label>Budget Range</label>
           <select>
             <option value="" disabled selected>Approximate budget</option>
             <option>€10K – €20K</option>
@@ -444,7 +380,7 @@ form{display:flex;flex-direction:column;gap:16px}
         <p>The Global Hospitality Hub<br>of the Dance Industry.</p>
         <p class="fadr">Room Mate Aitana Hotel · IJdok 6<br>Amsterdam · ADE October 2026</p>
       </div>
-      <div class="fc"><p class="fct">Explore</p><a href="about.html">About</a><a href="programme.html">Programme</a><a href="universe.html">Universe</a><a href="networking.html">Networking</a></div>
+      <div class="fc"><p class="fct">Explore</p><a href="about.html">About</a><a href="program.html">Program</a><a href="universe.html">Universe</a><a href="networking.html">Networking</a><a href="industry-exchange.html">Matchmaking</a></div>
       <div class="fc"><p class="fct">Book</p><a href="booking.html">Hotel Rooms</a><a href="meeting-rooms.html">Meeting Rooms</a><a href="showcases.html">Showcases</a><a href="partners.html">Partnerships</a></div>
       <div class="fc"><p class="fct">Connect</p><a href="contact.html">Contact</a><a href="#">Instagram</a><a href="#">LinkedIn</a><a href="#">TikTok</a></div>
     </div>
@@ -455,5 +391,16 @@ form{display:flex;flex-direction:column;gap:16px}
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-function sf(f,e){e.preventDefault();const b=f.querySelector('button');b.textContent='INQUIRY SENT ✓';b.style.background='#2E7A74';setTimeout(()=>{b.textContent='Send Partner Inquiry →';b.style.background='';f.reset()},3500);;document.body.classList.add("js-loaded");const ro=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("vis")}})},{threshold:0.12});document.querySelectorAll(".rv").forEach(el=>ro.observe(el));</script></body></html>
+<script>
+function sf(f,e){
+  e.preventDefault();
+  const b=f.querySelector('button');
+  b.textContent='INQUIRY SENT ✓';
+  b.style.background='#2E7A74';
+  setTimeout(()=>{b.textContent='Send Partner Inquiry →';b.style.background='';f.reset()},3500);
+}
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target)}}),{threshold:.08});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
