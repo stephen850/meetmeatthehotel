@@ -33,10 +33,6 @@ h3{font-size:clamp(24px,3vw,42px)}
 /* NAV */
 .nav{position:fixed;top:0;left:0;right:0;height:var(--nav);display:flex;align-items:center;justify-content:space-between;padding:0 40px;z-index:1000;transition:background var(--t),border var(--t)}
 .nav.sc{background:rgba(10,10,10,.95);border-bottom:1px solid var(--black-border);backdrop-filter:blur(16px)}
-.logo{display:inline-flex;flex-direction:column;border:1px solid rgba(77,168,160,.35);background:rgba(10,10,10,.8);padding:7px 10px;gap:1px;position:relative}
-.lm{font-family:var(--fd);font-size:17px;line-height:1;color:var(--teal);letter-spacing:.02em}
-.la{font-family:var(--fd);font-size:12px;line-height:1.1;color:var(--white);letter-spacing:.02em}
-.lk{position:absolute;bottom:-9px;right:7px;font-size:15px}
 .nl{display:flex;align-items:center;gap:28px}
 .nl a{font-family:var(--fc);font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--wdim);transition:color var(--t)}
 .nl a:hover{color:var(--white)}
@@ -52,23 +48,13 @@ h3{font-size:clamp(24px,3vw,42px)}
 
 /* HERO */
 .hero{min-height:100vh;position:relative;display:flex;align-items:flex-end;padding-bottom:80px;overflow:hidden}
-.hbg{position:absolute;inset:0;
-  background-image:url('hero.jpg');
-  background-size:cover;background-position:center 40%;
-  background-color:#0f1a19;
-}
-.hbg::after{
-  content:'';position:absolute;inset:0;
-  background:
-    radial-gradient(ellipse 70% 80% at 65% 35%, rgba(77,168,160,0.18) 0%, transparent 65%),
-    radial-gradient(ellipse 40% 60% at 20% 70%, rgba(46,122,116,0.12) 0%, transparent 55%);
-}
+.hbg{position:absolute;inset:0;background-image:url('hero.jpg');background-size:cover;background-position:center 40%;background-color:#0f1a19}
+.hbg::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 65% 35%,rgba(77,168,160,0.18) 0%,transparent 65%),radial-gradient(ellipse 40% 60% at 20% 70%,rgba(46,122,116,0.12) 0%,transparent 55%)}
 .hov{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,10,.35) 0%,rgba(10,10,10,.2) 30%,rgba(10,10,10,.75) 70%,rgba(10,10,10,.97) 100%)}
 .hgr{position:absolute;inset:0;background-image:linear-gradient(rgba(77,168,160,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(77,168,160,.04) 1px,transparent 1px);background-size:80px 80px}
 .hcont{position:relative;z-index:2;width:100%;max-width:1280px;margin:0 auto;padding:0 80px}
 .hbadge{display:inline-block;font-family:var(--fc);font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--teal);border:1px solid rgba(77,168,160,.5);padding:6px 16px;margin-bottom:28px;backdrop-filter:blur(4px);background:rgba(10,10,10,.3)}
 .hero h1{color:var(--white);margin-bottom:20px}
-.hl{color:var(--teal);display:block}
 .hsub{font-family:var(--fc);font-size:15px;font-weight:400;letter-spacing:.12em;color:var(--wdim);margin-bottom:40px;text-transform:uppercase;line-height:1.7}
 .hctas{display:flex;gap:14px;flex-wrap:wrap}
 .hscr{position:absolute;right:80px;bottom:40px;z-index:2;display:flex;flex-direction:column;align-items:center;gap:12px}
@@ -76,6 +62,36 @@ h3{font-size:clamp(24px,3vw,42px)}
 .sline{width:1px;height:60px;background:linear-gradient(to bottom,var(--teal),transparent);animation:plse 2s infinite}
 @keyframes plse{0%,100%{opacity:.3}50%{opacity:1}}
 @media(max-width:640px){.hcont{padding:0 20px}.hscr{display:none}.hctas{flex-direction:column}}
+
+/* ===== COUNTDOWN ===== */
+.cds{position:relative;background:#0A0A08;border-bottom:1px solid var(--black-border);overflow:hidden;padding:72px 0}
+.cds::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(77,168,160,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(77,168,160,.04) 1px,transparent 1px);background-size:64px 64px;pointer-events:none}
+@keyframes cdscan{0%{top:-20%}100%{top:110%}}
+@keyframes cdfadeup{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes cdblink{0%,100%{opacity:1}50%{opacity:.15}}
+@keyframes cdtick{0%{transform:translateY(-8px);opacity:0}15%{transform:translateY(0);opacity:1}85%{transform:translateY(0);opacity:1}100%{transform:translateY(8px);opacity:0}}
+@keyframes cdpulse{0%,100%{box-shadow:0 0 0 0 rgba(77,168,160,0)}50%{box-shadow:0 0 20px 4px rgba(77,168,160,.15)}}
+@keyframes cdpart{0%{transform:translateY(0) translateX(0);opacity:.7}100%{transform:translateY(-90px) translateX(var(--pdx));opacity:0}}
+.cd-scan{position:absolute;left:0;right:0;height:48px;background:linear-gradient(transparent,rgba(77,168,160,.05),transparent);animation:cdscan 7s linear infinite;pointer-events:none}
+.cd-parts{position:absolute;inset:0;pointer-events:none}
+.cd-p{position:absolute;width:2px;height:2px;background:var(--teal);border-radius:50%;bottom:8%;opacity:0;animation:cdpart 3s ease-out infinite}
+.cd-inner{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center}
+.cd-eye{font-family:var(--fc);font-size:11px;font-weight:600;letter-spacing:.28em;color:var(--teal);text-transform:uppercase;margin-bottom:28px;animation:cdfadeup .6s ease forwards;opacity:0}
+.cd-clock{display:flex;align-items:flex-start;gap:10px;animation:cdfadeup .6s ease .15s forwards;opacity:0}
+.cd-unit{display:flex;flex-direction:column;align-items:center;gap:6px}
+.cd-digits{display:flex;gap:4px}
+.cd-box{width:60px;height:80px;background:#0f0f0e;border:1px solid rgba(77,168,160,.18);border-radius:4px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;animation:cdpulse 4s ease-in-out infinite}
+.cd-box::after{content:'';position:absolute;left:0;right:0;top:50%;height:1px;background:rgba(77,168,160,.1)}
+.cd-digit{font-family:var(--fd);font-size:58px;line-height:1;color:var(--white);user-select:none}
+.cd-digit.tick{animation:cdtick .32s ease}
+.cd-ulbl{font-family:var(--fc);font-size:10px;font-weight:600;letter-spacing:.22em;color:rgba(245,245,240,.3);text-transform:uppercase}
+.cd-sep{font-family:var(--fd);font-size:58px;color:var(--teal);line-height:1;margin-top:2px;animation:cdblink 1s step-end infinite;user-select:none}
+.cd-tag{margin-top:32px;font-family:var(--fd);font-size:clamp(20px,3.5vw,38px);color:var(--white);letter-spacing:.04em;text-transform:uppercase;animation:cdfadeup .6s ease .35s forwards;opacity:0;text-align:center}
+.cd-tag span{color:var(--teal)}
+.cd-date{margin-top:10px;font-family:var(--fc);font-size:12px;letter-spacing:.16em;color:rgba(245,245,240,.35);text-transform:uppercase;animation:cdfadeup .6s ease .5s forwards;opacity:0;text-align:center}
+.cd-cta{margin-top:28px;animation:cdfadeup .6s ease .65s forwards;opacity:0}
+@media(max-width:640px){.cd-box{width:44px;height:60px}.cd-digit{font-size:42px}.cd-sep{font-size:42px}.cd-clock{gap:6px}.cd-digits{gap:3px}}
+/* ===== END COUNTDOWN ===== */
 
 /* STATS */
 .stats{padding:100px 0;border-top:1px solid var(--black-border)}
@@ -213,10 +229,10 @@ h3{font-size:clamp(24px,3vw,42px)}
   <div class="hcont">
     <div class="hbadge">5th Anniversary Edition · ADE October 2026</div>
     <h1 style="line-height:0.88;margin-bottom:20px;">
-  <span style="display:block;color:var(--white)">WHERE THE</span>
-  <span style="display:block;color:var(--teal)">INDUSTRY</span>
-  <span style="display:block;color:var(--white)">MEETS.</span>
-</h1>
+      <span style="display:block;color:var(--white)">WHERE THE</span>
+      <span style="display:block;color:var(--teal)">INDUSTRY</span>
+      <span style="display:block;color:var(--white)">MEETS.</span>
+    </h1>
     <p class="hsub">Room Mate Aitana Hotel · IJdok 6 · Amsterdam<br>The global hospitality hub of the dance industry.</p>
     <div class="hctas">
       <a href="booking.html" class="btn bp">Book Your Stay</a>
@@ -226,6 +242,52 @@ h3{font-size:clamp(24px,3vw,42px)}
   <div class="hscr">
     <span>Scroll</span>
     <div class="sline"></div>
+  </div>
+</section>
+
+<!-- COUNTDOWN — Opening Night 20 Oktober 2026 -->
+<section class="cds">
+  <div class="cd-scan"></div>
+  <div class="cd-parts" id="cdp"></div>
+  <div class="cd-inner">
+    <div class="cd-eye">Meet Me at the Hotel · Opening Night · ADE 2026</div>
+    <div class="cd-clock">
+      <div class="cd-unit">
+        <div class="cd-digits">
+          <div class="cd-box"><span class="cd-digit" id="cd0">0</span></div>
+          <div class="cd-box"><span class="cd-digit" id="cd1">0</span></div>
+          <div class="cd-box"><span class="cd-digit" id="cd2">0</span></div>
+        </div>
+        <div class="cd-ulbl">Days</div>
+      </div>
+      <div class="cd-sep">:</div>
+      <div class="cd-unit">
+        <div class="cd-digits">
+          <div class="cd-box"><span class="cd-digit" id="ch0">0</span></div>
+          <div class="cd-box"><span class="cd-digit" id="ch1">0</span></div>
+        </div>
+        <div class="cd-ulbl">Hours</div>
+      </div>
+      <div class="cd-sep">:</div>
+      <div class="cd-unit">
+        <div class="cd-digits">
+          <div class="cd-box"><span class="cd-digit" id="cm0">0</span></div>
+          <div class="cd-box"><span class="cd-digit" id="cm1">0</span></div>
+        </div>
+        <div class="cd-ulbl">Min</div>
+      </div>
+      <div class="cd-sep">:</div>
+      <div class="cd-unit">
+        <div class="cd-digits">
+          <div class="cd-box"><span class="cd-digit" id="cs0">0</span></div>
+          <div class="cd-box"><span class="cd-digit" id="cs1">0</span></div>
+        </div>
+        <div class="cd-ulbl">Sec</div>
+      </div>
+    </div>
+    <div class="cd-tag">Five Years. One Hotel. <span>The Industry.</span></div>
+    <div class="cd-date">Opening Night · 20 Oktober 2026 · Amsterdam · Room Mate Aitana</div>
+    <div class="cd-cta"><a href="booking.html" class="btn bp">Secure Your Spot →</a></div>
   </div>
 </section>
 
@@ -395,11 +457,46 @@ h3{font-size:clamp(24px,3vw,42px)}
 </footer>
 
 <script>
+/* NAV */
 const nav=document.getElementById('nav');
 window.addEventListener('scroll',()=>nav.classList.toggle('sc',scrollY>60));
+
+/* Reveal */
 const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target)}}),{threshold:.08});
 document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+
+/* Newsletter */
 function sf(f,e){e.preventDefault();const b=f.querySelector('button');b.textContent="YOU'RE IN →";b.style.background='#2E7A74';setTimeout(()=>{b.textContent='REGISTER INTEREST';b.style.background='';f.reset()},3000)}
+
+/* COUNTDOWN — Opening Night 20 Oktober 2026 20:00 Amsterdam */
+(function(){
+  const TARGET = new Date('2026-10-20T20:00:00+02:00').getTime();
+  const prev = {};
+  function set(id,val){
+    const el=document.getElementById(id);
+    if(!el)return;
+    if(prev[id]!==val){el.classList.remove('tick');void el.offsetWidth;el.classList.add('tick');el.textContent=val;prev[id]=val}
+  }
+  function pad(n,l){return String(n).padStart(l,'0')}
+  function tick(){
+    const diff=Math.max(0,TARGET-Date.now());
+    const ts=Math.floor(diff/1000);
+    const d=Math.floor(ts/86400),h=Math.floor((ts%86400)/3600),m=Math.floor((ts%3600)/60),s=ts%60;
+    const ds=pad(d,3),hs=pad(h,2),ms=pad(m,2),ss=pad(s,2);
+    set('cd0',ds[0]);set('cd1',ds[1]);set('cd2',ds[2]);
+    set('ch0',hs[0]);set('ch1',hs[1]);
+    set('cm0',ms[0]);set('cm1',ms[1]);
+    set('cs0',ss[0]);set('cs1',ss[1]);
+  }
+  /* particles */
+  const pc=document.getElementById('cdp');
+  for(let i=0;i<16;i++){
+    const p=document.createElement('div');p.className='cd-p';
+    p.style.cssText=`left:${5+Math.random()*90}%;--pdx:${(Math.random()-.5)*70}px;animation-delay:${Math.random()*3}s;animation-duration:${2.5+Math.random()*2.5}s`;
+    pc.appendChild(p);
+  }
+  tick();setInterval(tick,1000);
+})();
 </script>
 </body>
 </html>
