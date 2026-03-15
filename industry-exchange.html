@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Industry Exchange — Meet Me at the Hotel · ADE 2026</title>
+<title>Industry Exchange — Meet Me at the Hotel · 5th Anniversary Edition</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -46,13 +46,7 @@ h3{font-size:clamp(22px,3vw,40px)}
 }
 
 /* PAGE HERO */
-.ph{
-  padding-top:calc(var(--nav) + 100px);
-  padding-bottom:100px;
-  position:relative;overflow:hidden;
-  background:#060d0c;
-  border-bottom:1px solid var(--blkb);
-}
+.ph{padding-top:calc(var(--nav) + 100px);padding-bottom:100px;position:relative;overflow:hidden;background:#060d0c;border-bottom:1px solid var(--blkb)}
 .ph-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(77,168,160,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(77,168,160,.05) 1px,transparent 1px);background-size:80px 80px}
 .ph-glow{position:absolute;top:-200px;right:-200px;width:700px;height:700px;background:radial-gradient(circle,rgba(77,168,160,.08) 0%,transparent 65%);pointer-events:none}
 .ph-inner{position:relative;z-index:1}
@@ -64,7 +58,7 @@ h3{font-size:clamp(22px,3vw,40px)}
 .ph-desc{font-family:var(--fc);font-size:clamp(14px,1.6vw,18px);color:var(--wd);max-width:640px;line-height:1.65;letter-spacing:.05em;text-transform:uppercase;margin-top:32px}
 .ph-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:40px}
 
-/* WHAT IS IT — split layout */
+/* WHAT IS IT */
 .what{padding:100px 0;border-bottom:1px solid var(--blkb)}
 .what-inner{display:grid;grid-template-columns:1fr 1fr;gap:120px;align-items:start}
 .what-headline{font-family:var(--fd);font-size:clamp(30px,4.5vw,60px);line-height:1;color:var(--wh);margin-bottom:0}
@@ -73,7 +67,7 @@ h3{font-size:clamp(22px,3vw,40px)}
 .what-text p:last-child{margin-bottom:0}
 @media(max-width:768px){.what-inner{grid-template-columns:1fr;gap:48px}}
 
-/* HOW IT WORKS — 3 steps */
+/* HOW IT WORKS */
 .how{padding:100px 0;border-bottom:1px solid var(--blkb);background:var(--blkm)}
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:64px}
 .step{background:var(--blkc);border:1px solid var(--blkb);padding:48px 36px;position:relative;transition:border-color var(--tr)}
@@ -86,7 +80,7 @@ h3{font-size:clamp(22px,3vw,40px)}
 .step:last-child .step-connector{display:none}
 @media(max-width:768px){.steps{grid-template-columns:1fr}.step-connector{display:none}}
 
-/* LOUNGE — full-width feature */
+/* LOUNGE */
 .lounge{padding:0;border-bottom:1px solid var(--blkb);position:relative;overflow:hidden;background:#080f0e}
 .lounge-inner{display:grid;grid-template-columns:1fr 1fr;min-height:560px}
 .lounge-img{position:relative;overflow:hidden}
@@ -101,12 +95,7 @@ h3{font-size:clamp(22px,3vw,40px)}
 .lounge-spec{display:flex;align-items:center;gap:16px;padding:14px 20px;border-bottom:1px solid var(--blkb);font-family:var(--fc);font-size:12px;letter-spacing:.12em;color:var(--wd);text-transform:uppercase}
 .lounge-spec:last-child{border-bottom:none}
 .lounge-spec::before{content:'→';color:var(--teal);flex-shrink:0}
-@media(max-width:900px){
-  .lounge-inner{grid-template-columns:1fr}
-  .lounge-img{height:300px}
-  .lounge-img-overlay{display:none}
-  .lounge-content{padding:60px 40px}
-}
+@media(max-width:900px){.lounge-inner{grid-template-columns:1fr}.lounge-img{height:300px}.lounge-img-overlay{display:none}.lounge-content{padding:60px 40px}}
 
 /* PARTICIPANTS */
 .participants{padding:100px 0;border-bottom:1px solid var(--blkb)}
@@ -121,7 +110,7 @@ h3{font-size:clamp(22px,3vw,40px)}
 @media(max-width:768px){.part-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:480px){.part-grid{grid-template-columns:1fr}}
 
-/* PARTNER CTA — dark feature block */
+/* PARTNER CTA */
 .partner-cta{padding:100px 0;border-bottom:1px solid var(--blkb);background:var(--blkm)}
 .partner-cta-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
 .partner-cta h2{margin-bottom:24px}
@@ -157,9 +146,9 @@ form{display:flex;flex-direction:column;gap:20px}
 .fg{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:60px}
 .fb p{font-size:13px;color:var(--wd);margin-top:20px;line-height:1.75;font-weight:300}
 .fadr{margin-top:10px;opacity:.4;font-size:12px}
-.fc{display:flex;flex-direction:column;gap:12px}
+.fcc{display:flex;flex-direction:column;gap:12px}
 .fct{font-family:var(--fc);font-size:10px;font-weight:600;letter-spacing:.3em;color:var(--teal);text-transform:uppercase;margin-bottom:4px}
-.fc a{font-family:var(--fc);font-size:13px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase;transition:color var(--tr)}.fc a:hover{color:var(--teal)}
+.fcc a{font-family:var(--fc);font-size:13px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase;transition:color var(--tr)}.fcc a:hover{color:var(--teal)}
 .fb2{display:flex;justify-content:space-between;padding-top:32px;border-top:1px solid var(--blkb);font-family:var(--fc);font-size:11px;letter-spacing:.1em;color:rgba(245,245,240,.3);text-transform:uppercase}
 .fb2 a:hover{color:var(--teal)}
 @media(max-width:900px){.fg{grid-template-columns:1fr 1fr;gap:40px}}
@@ -181,9 +170,9 @@ form{display:flex;flex-direction:column;gap:20px}
     <a href="about.html">About</a>
     <a href="program.html">Program</a>
     <a href="universe.html">Universe</a>
-    <a href="networking.html">Networking</a>
-    <a href="industry-exchange.html" style="color:var(--teal)">Matchmaking</a>
-    <a href="showcases.html">Showcases</a>
+    <a href="industry-hub.html">Industry Hub</a>
+    <a href="industry-exchange.html" style="color:var(--teal)">Industry Exchange</a>
+    <a href="experiences.html">Experiences</a>
     <a href="partners.html">Partners</a>
     <a href="booking.html" class="nc">Book Your Stay</a>
   </div>
@@ -199,7 +188,7 @@ form{display:flex;flex-direction:column;gap:20px}
   <div class="c ph-inner">
     <div class="ph-kicker rv">
       <div class="ph-kicker-line"></div>
-      <span class="ph-kicker-txt">MeetMe Industry Exchange · ADE 2026</span>
+      <span class="ph-kicker-txt">Meet Me Industry Exchange · Layer 02 · October 2026</span>
     </div>
     <h1 class="rv">
       CURATED<br>
@@ -207,7 +196,7 @@ form{display:flex;flex-direction:column;gap:20px}
       MEETINGS.
       <span class="sub">The MMATH Business Lounge</span>
     </h1>
-    <p class="ph-desc rv d1">Not random networking. Curated matchmaking connecting festivals, clubs, brands, agencies and technology partners inside the MMATH Business Lounge during ADE.</p>
+    <p class="ph-desc rv d1">Not random networking. The curated meetings program of the MMATH ecosystem — connecting festivals, clubs, brands, agencies and technology partners inside the dedicated Business Lounge.</p>
     <div class="ph-ctas rv d2">
       <a href="#apply" class="btn bp">Apply for Meetings →</a>
       <a href="#lounge" class="btn bo">About the Lounge</a>
@@ -227,9 +216,9 @@ form{display:flex;flex-direction:column;gap:20px}
       </div>
       <div class="rv d1">
         <div class="what-text">
-          <p>During Amsterdam Dance Event, MeetMeAtTheHotel becomes a hub where industry professionals connect to explore partnerships and opportunities. The MeetMe Industry Exchange is a curated matchmaking program designed to facilitate meaningful introductions between relevant partners.</p>
-          <p>Instead of random networking, MMATH connects the right people in a focused business environment. You apply, we review, we match — and you walk into a week of meetings that actually matter.</p>
-          <p>Selected meetings take place in the MMATH Business Lounge, a premium, private meeting environment inside the hotel. No badges, no chaos, no wasted time.</p>
+          <p>The Meet Me Industry Exchange is Layer 02 of the MMATH ecosystem — the curated business meeting program. Participants apply to join and are matched with relevant partners based on their business objectives.</p>
+          <p>Instead of random networking, the Exchange connects the right people in a focused business environment. You apply, we review, we match — and you walk into a week of meetings that actually matter.</p>
+          <p>Selected meetings take place in the MMATH Business Lounge inside Room Mate Aitana Hotel. Approximately 20 minutes per meeting. No badges, no chaos, no wasted time. Measurable business value per edition.</p>
         </div>
       </div>
     </div>
@@ -245,19 +234,19 @@ form{display:flex;flex-direction:column;gap:20px}
       <div class="step rv">
         <div class="step-num">01</div>
         <h3>APPLY</h3>
-        <p>Companies share what they offer and which partners they want to meet. Tell us your goals, your sector and who would be most valuable to sit across from during ADE.</p>
+        <p>Companies share what they offer and which partners they want to meet. Tell us your goals, your sector and who would be most valuable to sit across from during the week.</p>
         <div class="step-connector"><span>→</span></div>
       </div>
       <div class="step rv d1">
         <div class="step-num">02</div>
         <h3>GET MATCHED</h3>
-        <p>The MMATH team reviews all applications and connects relevant participants. No algorithm — human curation to make sure every introduction has a genuine reason to happen.</p>
+        <p>The MMATH team reviews all applications and connects relevant participants. Human curation to make sure every introduction has a genuine reason to happen.</p>
         <div class="step-connector"><span>→</span></div>
       </div>
       <div class="step rv d2">
         <div class="step-num">03</div>
-        <h3>MEET AT ADE</h3>
-        <p>Selected meetings take place in the MMATH Business Lounge during ADE — approximately 20 minutes each, at hosted tables in a focused business environment inside the hotel.</p>
+        <h3>MEET IN THE LOUNGE</h3>
+        <p>Selected meetings take place in the MMATH Business Lounge during October — approximately 20 minutes each, at hosted tables in a focused business environment inside the hotel.</p>
       </div>
     </div>
   </div>
@@ -274,14 +263,14 @@ form{display:flex;flex-direction:column;gap:20px}
     <div class="lounge-content rv">
       <div class="lounge-tag">MMATH Business Lounge</div>
       <h2>The central<br>meeting space.</h2>
-      <p>The MMATH Business Lounge is the dedicated environment for all Industry Exchange meetings during ADE. Located inside Room Mate Aitana Hotel, the lounge provides a premium setting where participants meet industry professionals and explore new partnerships.</p>
+      <p>The MMATH Business Lounge is the dedicated environment for all Industry Exchange meetings. Located inside Room Mate Aitana Hotel, the lounge provides a premium setting where participants meet industry professionals and explore new partnerships.</p>
       <p>Meetings take place at hosted tables throughout the programme — structured, private, and purposeful.</p>
       <ul class="lounge-specs">
         <li class="lounge-spec">Located inside Room Mate Aitana Hotel · IJdok 6</li>
         <li class="lounge-spec">~20 minutes per curated meeting</li>
         <li class="lounge-spec">Hosted tables — dedicated meeting setup</li>
         <li class="lounge-spec">Access to MMATH Business Lounge included</li>
-        <li class="lounge-spec">Programme runs throughout ADE week</li>
+        <li class="lounge-spec">Programme runs throughout October week</li>
       </ul>
     </div>
   </div>
@@ -339,12 +328,12 @@ form{display:flex;flex-direction:column;gap:20px}
       <div class="rv">
         <span class="lbl">Become a Partner</span>
         <h2>Support the<br><span class="teal">Lounge.</span></h2>
-        <p>The MMATH Business Lounge is supported by selected industry partners who help facilitate meaningful connections during ADE. Partners are embedded in the programme — not just logo sponsors.</p>
-        <p>If your brand wants to be part of the most productive B2B environment at ADE, this is where it happens.</p>
+        <p>The MMATH Business Lounge is supported by selected industry partners who help facilitate meaningful connections. Partners are embedded in the programme — not just logo sponsors.</p>
+        <p>If your brand wants to be part of the most productive B2B environment of the week, this is where it happens.</p>
         <ul class="partner-benefits">
           <li>Brand visibility within the MMATH Business Lounge</li>
           <li>Curated introductions to Industry Exchange participants</li>
-          <li>Access to industry professionals throughout ADE week</li>
+          <li>Access to industry professionals throughout the week</li>
           <li>Co-branded presence in programme communications</li>
           <li>Hosted table for your own curated meetings</li>
         </ul>
@@ -355,7 +344,7 @@ form{display:flex;flex-direction:column;gap:20px}
         <p>To explore a partnership, reach out directly. We'll set up a call to discuss fit, availability and the right package for your brand.</p>
         <a href="partners.html" class="btn bp" style="width:100%;display:block;text-align:center;margin-bottom:16px">Explore Partnership →</a>
         <a href="contact.html" class="btn bo" style="width:100%;display:block;text-align:center">Get in Touch</a>
-        <span class="cta-contact">Partners · ADE 2026 · Limited availability</span>
+        <span class="cta-contact">Partners · October 2026 · Limited availability</span>
       </div>
     </div>
   </div>
@@ -368,9 +357,9 @@ form{display:flex;flex-direction:column;gap:20px}
     <h2 class="rv">Start your<br><span class="teal">application.</span></h2>
     <div class="apply-inner" style="margin-top:64px">
       <div class="rv">
-        <p>Companies interested in participating can apply to be matched with relevant partners during ADE. Tell us who you are, what you're looking for and who you want to meet.</p>
+        <p>Companies interested in participating can apply to be matched with relevant partners. Tell us who you are, what you're looking for and who you want to meet.</p>
         <p>All applications are reviewed by the MMATH team. Selected participants will receive curated business meetings, access to the MMATH Business Lounge and introductions to industry professionals.</p>
-        <p>Applications open three months before ADE. B2B industry organisations and companies only.</p>
+        <p>Applications open three months before the event. B2B industry organisations and companies only.</p>
         <p class="apply-note">All applications are manually reviewed · B2B companies only · Selected participants contacted directly · Limited places available per sector</p>
       </div>
       <form class="rv d1" onsubmit="sf(this,event)">
@@ -395,7 +384,7 @@ form{display:flex;flex-direction:column;gap:20px}
           </select>
         </div>
         <div class="field">
-          <label>What are you looking to achieve at ADE 2026?</label>
+          <label>What are you looking to achieve?</label>
           <textarea placeholder="e.g. We're a mid-size festival looking to meet booking agents and emerging talent. Also open to brand sponsorship conversations..."></textarea>
         </div>
         <div class="field">
@@ -415,22 +404,40 @@ form{display:flex;flex-direction:column;gap:20px}
       <div class="fb">
         <img src="logo.png" alt="Meet Me at the Hotel" style="height:44px;width:auto;display:block;">
         <p>The Global Hospitality Hub<br>of the Dance Industry.</p>
-        <p class="fadr">Room Mate Aitana Hotel · IJdok 6<br>Amsterdam · ADE October 2026</p>
+        <p class="fadr">Room Mate Aitana Hotel · IJdok 6<br>Amsterdam · October 2026</p>
       </div>
-      <div class="fc"><p class="fct">Explore</p><a href="about.html">About</a><a href="program.html">Program</a><a href="universe.html">Universe</a><a href="networking.html">Networking</a><a href="industry-exchange.html" style="color:var(--teal)">Matchmaking</a></div>
-      <div class="fc"><p class="fct">Book</p><a href="booking.html">Hotel Rooms</a><a href="meeting-rooms.html">Meeting Rooms</a><a href="showcases.html">Showcases</a><a href="partners.html">Partnerships</a></div>
-      <div class="fc"><p class="fct">Connect</p><a href="contact.html">Contact</a><a href="#">Instagram</a><a href="#">LinkedIn</a><a href="#">TikTok</a></div>
+      <div class="fcc">
+        <p class="fct">Explore</p>
+        <a href="about.html">About</a>
+        <a href="program.html">Program</a>
+        <a href="universe.html">Universe</a>
+        <a href="industry-hub.html">Industry Hub</a>
+        <a href="industry-exchange.html">Industry Exchange</a>
+        <a href="experiences.html">Experiences</a>
+      </div>
+      <div class="fcc">
+        <p class="fct">Book</p>
+        <a href="booking.html">Hotel Rooms</a>
+        <a href="meeting-rooms.html">Meeting Rooms</a>
+        <a href="experiences.html">Showcases</a>
+        <a href="partners.html">Partnerships</a>
+      </div>
+      <div class="fcc">
+        <p class="fct">Connect</p>
+        <a href="contact.html">Contact</a>
+        <a href="#">Instagram</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">TikTok</a>
+      </div>
     </div>
     <div class="fb2">
-      <p>© 2026 Meet Me at the Hotel · 5th Anniversary Edition · ADE October 2026</p>
+      <p>© 2026 Meet Me at the Hotel · 5th Anniversary Edition · Amsterdam · October 2026</p>
       <p><a href="#">Privacy</a> · <a href="#">Cookies</a> · <a href="#">Terms</a></p>
     </div>
   </div>
 </footer>
 
 <script>
-const nav=document.querySelector('.nav');
-window.addEventListener('scroll',()=>nav.classList.toggle('sc',scrollY>60));
 const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target)}}),{threshold:.08});
 document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
 function sf(f,e){
