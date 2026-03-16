@@ -39,7 +39,7 @@ h4{font-size:clamp(18px,2vw,26px)}
 }
 
 /* HERO */
-.ph{padding-top:calc(var(--nav) + 100px);padding-bottom:100px;position:relative;overflow:hidden;background:#08100f;border-bottom:1px solid var(--blkb)}
+.ph{min-height:80vh;padding-top:calc(var(--nav) + 120px);padding-bottom:120px;position:relative;overflow:hidden;background:#08100f;border-bottom:1px solid var(--blkb);display:flex;align-items:center}
 .ph-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(77,168,160,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(77,168,160,.04) 1px,transparent 1px);background-size:80px 80px}
 .ph-glow{position:absolute;top:-200px;left:-100px;width:600px;height:600px;background:radial-gradient(circle,rgba(77,168,160,.06) 0%,transparent 65%);pointer-events:none}
 .ph-inner{position:relative;z-index:1;max-width:900px}
@@ -151,8 +151,8 @@ h4{font-size:clamp(18px,2vw,26px)}
 
 <!-- HERO -->
 <section class="ph">
-  <div class="ph-img" style="position:absolute;inset:0;background-image:url('about-hero.jpg');background-size:cover;background-position:center 60%;opacity:0.35;z-index:0"></div>
-  <div class="ph-overlay" style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,10,.5) 0%,rgba(10,10,10,.3) 40%,rgba(10,10,10,.85) 80%,rgba(10,10,10,1) 100%);z-index:1"></div>
+  <div class="ph-img" style="position:absolute;inset:0;background-image:url('about-hero.jpg');background-size:cover;background-position:center 50%;opacity:0.55;z-index:0"></div>
+  <div class="ph-overlay" style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,10,.3) 0%,rgba(10,10,10,.15) 30%,rgba(10,10,10,.7) 75%,rgba(10,10,10,1) 100%);z-index:1"></div>
   <div class="ph-grid" style="position:relative;z-index:2"></div>
   <div class="ph-glow" style="position:relative;z-index:2"></div>
   <div class="c ph-inner" style="position:relative;z-index:3">
