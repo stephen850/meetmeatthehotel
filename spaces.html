@@ -1,1 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spaces — Meet Me at the Hotel · 5th Anniversary Edition</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--teal:#4DA8A0;--deep:#2E7A74;--pool:#7DCDC7;--blk:#0A0A0A;--blkm:#111;--blkc:#161616;--blkb:#222;--wh:#F5F5F0;--wd:rgba(245,245,240,0.6);--wd2:rgba(245,245,240,0.12);--fd:'Bebas Neue',sans-serif;--fc:'Barlow Condensed',sans-serif;--fb:'Barlow',sans-serif;--nav:72px;--tr:0.35s cubic-bezier(.4,0,.2,1)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--blk);color:var(--wh);font-family:var(--fb);overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.c{max-width:1280px;margin:0 auto;padding:0 80px}
+@media(max-width:1024px){.c{padding:0 40px}}
+@media(max-width:640px){.c{padding:0 20px}}
+h1,h2,h3,h4{font-family:var(--fd);line-height:.93;text-transform:uppercase;letter-spacing:-.01em}
+h1{font-size:clamp(64px,10vw,140px)}
+h2{font-size:clamp(40px,6vw,84px)}
+h3{font-size:clamp(22px,3vw,40px)}
+.teal{color:var(--teal)}
+.lbl{font-family:var(--fc);font-size:11px;font-weight:600;letter-spacing:.28em;color:var(--teal);text-transform:uppercase;display:block;margin-bottom:16px}
+.btn{display:inline-block;font-family:var(--fc);font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:15px 36px;transition:all var(--tr);cursor:pointer;border:none;text-align:center}
+.bp{background:var(--teal);color:var(--blk)}.bp:hover{background:var(--deep);color:var(--wh)}
+.bo{border:1px solid var(--teal);color:var(--teal);background:transparent}.bo:hover{background:var(--teal);color:var(--blk)}
 
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;height:var(--nav);display:flex;align-items:center;justify-content:space-between;padding:0 40px;z-index:1000;background:rgba(10,10,10,.95);border-bottom:1px solid var(--blkb);backdrop-filter:blur(16px)}
+.nl{display:flex;align-items:center;gap:28px}
+.nl a{font-family:var(--fc);font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--wd);transition:color var(--tr)}.nl a:hover{color:var(--wh)}
+.nc{background:var(--teal);color:var(--blk)!important;padding:10px 20px}.nc:hover{background:var(--deep)!important;color:var(--wh)!important}
+.hb{display:none;flex-direction:column;gap:5px;cursor:pointer}
+.hb span{display:block;width:22px;height:1.5px;background:var(--wh)}
+@media(max-width:900px){
+  .hb{display:flex}
+  .nl{position:fixed;top:var(--nav);left:0;right:0;bottom:0;background:var(--blk);flex-direction:column;align-items:flex-start;padding:40px;gap:20px;transform:translateX(100%);transition:transform var(--tr)}
+  .nl.open{transform:none}
+  .nl a{font-size:20px}
+}
+
+/* HERO */
+.ph{padding-top:calc(var(--nav) + 80px);padding-bottom:80px;position:relative;overflow:hidden;background:#0a1412;border-bottom:1px solid var(--blkb)}
+.ph-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(77,168,160,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(77,168,160,.04) 1px,transparent 1px);background-size:80px 80px}
+.ph-glow{position:absolute;top:-100px;right:-100px;width:600px;height:600px;background:radial-gradient(circle,rgba(77,168,160,.06) 0%,transparent 65%);pointer-events:none}
+.ph-inner{position:relative;z-index:1;max-width:860px}
+.ph-lead{font-size:16px;color:var(--wd);line-height:1.85;font-weight:300;margin-top:28px;max-width:680px}
+
+/* INTRO */
+.intro{padding:100px 0;border-bottom:1px solid var(--blkb);background:var(--blkm)}
+.intro-inner{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:start}
+.intro-text p{font-size:16px;color:var(--wd);line-height:1.85;font-weight:300;margin-bottom:20px}
+.use-list{list-style:none;display:flex;flex-direction:column;gap:2px;margin-top:32px}
+.use-item{background:var(--blkc);border:1px solid var(--blkb);padding:14px 20px;font-family:var(--fc);font-size:12px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase;display:flex;align-items:center;gap:12px;transition:border-color var(--tr)}
+.use-item:hover{border-color:var(--teal)}
+.use-item::before{content:'→';color:var(--teal);flex-shrink:0}
+@media(max-width:768px){.intro-inner{grid-template-columns:1fr;gap:48px}}
+
+/* SPACE TYPE CARDS */
+.types{padding:100px 0;border-bottom:1px solid var(--blkb)}
+.types-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:60px}
+.type-card{background:var(--blkc);border:1px solid var(--blkb);padding:36px 28px;display:flex;flex-direction:column;transition:all var(--tr);position:relative;overflow:hidden}
+.type-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--teal);transform:scaleX(0);transform-origin:left;transition:transform var(--tr)}
+.type-card:hover{border-color:var(--teal);background:var(--blk)}
+.type-card:hover::before{transform:scaleX(1)}
+.type-num{font-family:var(--fd);font-size:72px;color:var(--teal);opacity:.07;line-height:1;margin-bottom:-8px}
+.type-name{font-family:var(--fd);font-size:28px;margin-bottom:8px;color:var(--wh)}
+.type-desc{font-size:13px;color:var(--wd);line-height:1.7;margin-bottom:20px;flex:1}
+.type-uses{list-style:none;display:flex;flex-direction:column;gap:6px}
+.type-uses li{font-family:var(--fc);font-size:11px;letter-spacing:.08em;color:var(--wd);text-transform:uppercase;display:flex;align-items:center;gap:8px}
+.type-uses li::before{content:'·';color:var(--teal);font-size:16px}
+@media(max-width:900px){.types-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.types-grid{grid-template-columns:1fr}}
+
+/* SPACE DETAIL SECTIONS */
+.space-section{padding:100px 0;border-bottom:1px solid var(--blkb)}
+.space-section.dark{background:var(--blkm)}
+.space-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;margin-top:60px}
+.space-inner.flip{direction:rtl}.space-inner.flip>*{direction:ltr}
+.space-photo{position:relative;overflow:hidden}
+.space-photo img{width:100%;aspect-ratio:4/3;object-fit:cover;filter:brightness(.7) saturate(.8);display:block;transition:transform .8s ease}
+.space-photo:hover img{transform:scale(1.03)}
+.space-tint{position:absolute;inset:0;background:linear-gradient(135deg,rgba(77,168,160,.12) 0%,transparent 60%)}
+.space-text p{font-size:15px;color:var(--wd);line-height:1.8;font-weight:300;margin-bottom:16px}
+.space-list{list-style:none;margin:24px 0}
+.space-list li{font-family:var(--fc);font-size:12px;letter-spacing:.08em;color:var(--wd);text-transform:uppercase;padding:11px 0;border-bottom:1px solid var(--blkb);display:flex;align-items:center;gap:12px}
+.space-list li::before{content:'→';color:var(--teal);flex-shrink:0}
+@media(max-width:900px){.space-inner,.space-inner.flip{grid-template-columns:1fr;direction:ltr}}
+
+/* FORM */
+.request{padding:100px 0;background:var(--blkm);border-top:1px solid var(--blkb)}
+.request-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-top:60px}
+.request-text p{font-size:15px;color:var(--wd);line-height:1.8;font-weight:300;margin-bottom:16px}
+.request-note{margin-top:32px;padding:24px;background:var(--blkc);border:1px solid var(--blkb);border-left:3px solid var(--teal)}
+.request-note p{font-family:var(--fc);font-size:12px;letter-spacing:.08em;color:var(--wd);text-transform:uppercase;line-height:1.7;margin:0}
+form{display:flex;flex-direction:column;gap:20px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-family:var(--fc);font-size:10px;font-weight:600;letter-spacing:.25em;color:var(--teal);text-transform:uppercase}
+.field input,.field select,.field textarea{background:transparent;border:none;border-bottom:1px solid rgba(77,168,160,.3);color:var(--wh);padding:12px 0;font-family:var(--fc);font-size:14px;letter-spacing:.06em;outline:none;transition:border-color var(--tr);-webkit-appearance:none;width:100%}
+.field input:focus,.field select:focus,.field textarea:focus{border-bottom-color:var(--teal)}
+.field input::placeholder,.field textarea::placeholder{color:rgba(245,245,240,.2)}
+.field select option{background:var(--blkc);color:var(--wh)}
+.field textarea{resize:none;height:100px;font-family:var(--fb);font-size:14px;letter-spacing:normal}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:768px){.request-inner{grid-template-columns:1fr}.field-row{grid-template-columns:1fr}}
+
+/* FOOTER */
+.ft{padding:80px 0 40px;background:var(--blkc);border-top:1px solid var(--blkb)}
+.fg{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:60px}
+.fb p{font-size:13px;color:var(--wd);margin-top:20px;line-height:1.75;font-weight:300}
+.fadr{margin-top:10px;opacity:.4;font-size:12px}
+.fcc{display:flex;flex-direction:column;gap:12px}
+.fct{font-family:var(--fc);font-size:10px;font-weight:600;letter-spacing:.3em;color:var(--teal);text-transform:uppercase;margin-bottom:4px}
+.fcc a{font-family:var(--fc);font-size:13px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase;transition:color var(--tr)}.fcc a:hover{color:var(--teal)}
+.fb2{display:flex;justify-content:space-between;padding-top:32px;border-top:1px solid var(--blkb);font-family:var(--fc);font-size:11px;letter-spacing:.1em;color:rgba(245,245,240,.3);text-transform:uppercase}
+.fb2 a:hover{color:var(--teal)}
+@media(max-width:900px){.fg{grid-template-columns:1fr 1fr;gap:40px}}
+@media(max-width:480px){.fg{grid-template-columns:1fr}.fb2{flex-direction:column;gap:12px}}
+
+.rv{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+.rv.vis{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" style="display:flex;align-items:center;">
+    <img src="logo.png" alt="Meet Me at the Hotel" style="height:48px;width:auto;display:block;">
+  </a>
+  <div class="nl" id="nl">
+    <a href="about.html">About</a>
+    <a href="program.html">Program</a>
+    <a href="universe.html">Universe</a>
+    <a href="industry-hub.html">Industry Hub</a>
+    <a href="industry-exchange.html">Industry Exchange</a>
+    <a href="experiences.html">Experiences</a>
+    <a href="spaces.html" style="color:var(--teal)">Spaces</a>
+    <a href="partners.html">Partners</a>
+    <a href="booking.html" class="nc">Book Your Stay</a>
+  </div>
+  <div class="hb" onclick="document.getElementById('nl').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="ph">
+  <div class="ph-grid"></div>
+  <div class="ph-glow"></div>
+  <div class="c ph-inner">
+    <span class="lbl">Private Spaces · October 2026</span>
+    <h1>SPACES AT<br><span class="teal">MMATH.</span></h1>
+    <p class="ph-lead">In addition to the main event environments, MeetMeAtTheHotel offers a range of private meeting spaces and offices for industry professionals, delegations and partners. These rooms provide a focused environment for meetings, business discussions and private sessions during the week.</p>
+    <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:36px">
+      <a href="#request" class="btn bp">Submit Space Request →</a>
+      <a href="experiences.html" class="btn bo">View Experiences</a>
+    </div>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="intro">
+  <div class="c">
+    <div class="intro-inner">
+      <div class="rv">
+        <span class="lbl">The Environment</span>
+        <h2>Inside the<br><span class="teal">MMATH venue.</span></h2>
+        <div class="intro-text" style="margin-top:32px">
+          <p>MeetMeAtTheHotel takes place inside Room Mate Aitana, a waterfront hotel located in the heart of Amsterdam. Beyond the main event spaces, the venue includes several private rooms that can be used for focused business interactions throughout the week.</p>
+          <p>These spaces allow partners to combine public presence with private business activity — all within the MMATH environment.</p>
+        </div>
+      </div>
+      <div class="rv d1">
+        <span class="lbl">Typical Uses</span>
+        <ul class="use-list">
+          <li>Label offices & headquarters</li>
+          <li>Brand meetings & presentations</li>
+          <li>Artist management sessions</li>
+          <li>Private networking & discussions</li>
+          <li>Industry Exchange meetings</li>
+          <li>Delegation headquarters</li>
+          <li>Media interviews & press sessions</li>
+          <li>Partnership negotiations</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPACE TYPE OVERVIEW -->
+<section class="types">
+  <div class="c">
+    <span class="lbl rv">Space Types</span>
+    <h2 class="rv">Four types.<br><span class="teal">One environment.</span></h2>
+    <div class="types-grid">
+      <div class="type-card rv">
+        <div class="type-num">01</div>
+        <div class="type-name">PRIVATE OFFICES</div>
+        <p class="type-desc">Dedicated spaces for agencies, labels and brand teams needing a base inside the MMATH environment throughout the week.</p>
+        <ul class="type-uses">
+          <li>Label headquarters</li>
+          <li>Agency coordination</li>
+          <li>Brand operations</li>
+          <li>Artist management</li>
+        </ul>
+      </div>
+      <div class="type-card rv d1">
+        <div class="type-num">02</div>
+        <div class="type-name">MEETING ROOMS</div>
+        <p class="type-desc">Private meeting rooms for individual sessions, presentations and focused industry conversations throughout the day.</p>
+        <ul class="type-uses">
+          <li>Artist meetings</li>
+          <li>Brand presentations</li>
+          <li>Label discussions</li>
+          <li>Partnership sessions</li>
+        </ul>
+      </div>
+      <div class="type-card rv d2">
+        <div class="type-num">03</div>
+        <div class="type-name">BOARDROOMS</div>
+        <p class="type-desc">Intimate executive settings configured for senior-level conversations, small roundtables and closed-door strategy sessions.</p>
+        <ul class="type-uses">
+          <li>Leadership meetings</li>
+          <li>Investor conversations</li>
+          <li>Strategy discussions</li>
+          <li>Executive roundtables</li>
+        </ul>
+      </div>
+      <div class="type-card rv d3">
+        <div class="type-num">04</div>
+        <div class="type-name">DELEGATION SPACES</div>
+        <p class="type-desc">Private rooms for international delegations, media platforms and partner organisations needing a coordinated base during the week.</p>
+        <ul class="type-uses">
+          <li>Delegation headquarters</li>
+          <li>Media & press rooms</li>
+          <li>Partner coordination</li>
+          <li>Interview spaces</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRIVATE OFFICES -->
+<section class="space-section">
+  <div class="c">
+    <span class="lbl rv">Space Type · 01</span>
+    <h2 class="rv">Private<br><span class="teal">Offices.</span></h2>
+    <p style="font-family:var(--fc);font-size:13px;letter-spacing:.15em;color:var(--teal);text-transform:uppercase;margin-top:8px" class="rv">A dedicated base inside MMATH</p>
+    <div class="space-inner">
+      <div class="space-photo rv">
+        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80&fit=crop" alt="Private Office">
+        <div class="space-tint"></div>
+      </div>
+      <div class="rv d1">
+        <div class="space-text">
+          <p>Several rooms within the venue can be configured as temporary offices for agencies, labels and brand teams during MeetMeAtTheHotel. These spaces provide a quiet environment where teams can work, host meetings and coordinate activities throughout the week.</p>
+          <p>Private offices are ideal for partners who want a dedicated operational base inside the MMATH environment — combining visibility with focus.</p>
+        </div>
+        <ul class="space-list">
+          <li>Label headquarters & operations</li>
+          <li>Agency coordination spaces</li>
+          <li>Artist management offices</li>
+          <li>Brand operations rooms</li>
+          <li>Available for full-week or single-day use</li>
+        </ul>
+        <a href="#request" class="btn bp">Request a Private Office →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MEETING ROOMS -->
+<section class="space-section dark">
+  <div class="c">
+    <span class="lbl rv">Space Type · 02</span>
+    <h2 class="rv">Meeting<br><span class="teal">Rooms.</span></h2>
+    <p style="font-family:var(--fc);font-size:13px;letter-spacing:.15em;color:var(--teal);text-transform:uppercase;margin-top:8px" class="rv">Focused industry sessions</p>
+    <div class="space-inner flip">
+      <div class="space-photo rv">
+        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80&fit=crop" alt="Meeting Room">
+        <div class="space-tint"></div>
+      </div>
+      <div class="rv d1">
+        <div class="space-text">
+          <p>Room Mate Aitana features multiple meeting rooms that can be used for private meetings and industry sessions throughout the week. Several rooms can be combined to accommodate larger meetings or presentations.</p>
+          <p>These rooms sit directly within the MMATH environment — allowing partners to move seamlessly between private sessions and the broader platform activity.</p>
+        </div>
+        <ul class="space-list">
+          <li>Artist meetings & management sessions</li>
+          <li>Brand presentations & briefings</li>
+          <li>Label meetings & A&R sessions</li>
+          <li>Partnership negotiations</li>
+          <li>Industry Exchange overflow sessions</li>
+        </ul>
+        <a href="#request" class="btn bp">Request a Meeting Room →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOARDROOMS -->
+<section class="space-section">
+  <div class="c">
+    <span class="lbl rv">Space Type · 03</span>
+    <h2 class="rv">Boardroom<br><span class="teal">Sessions.</span></h2>
+    <p style="font-family:var(--fc);font-size:13px;letter-spacing:.15em;color:var(--teal);text-transform:uppercase;margin-top:8px" class="rv">Executive & senior-level conversations</p>
+    <div class="space-inner">
+      <div class="space-photo rv">
+        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=80&fit=crop" alt="Boardroom">
+        <div class="space-tint"></div>
+      </div>
+      <div class="rv d1">
+        <div class="space-text">
+          <p>Some of the meeting rooms can be configured as boardrooms for small executive sessions. The more intimate setting makes them particularly suitable for senior-level conversations that require discretion and focus.</p>
+          <p>These rooms are positioned away from the main event flow, providing the right atmosphere for high-level dialogue within a professional environment.</p>
+        </div>
+        <ul class="space-list">
+          <li>Leadership & executive meetings</li>
+          <li>Investor conversations</li>
+          <li>Strategy & planning discussions</li>
+          <li>Small-group roundtables</li>
+          <li>Closed-door industry sessions</li>
+        </ul>
+        <a href="#request" class="btn bp">Request a Boardroom →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DELEGATION SPACES -->
+<section class="space-section dark">
+  <div class="c">
+    <span class="lbl rv">Space Type · 04</span>
+    <h2 class="rv">Delegation<br><span class="teal">Spaces.</span></h2>
+    <p style="font-family:var(--fc);font-size:13px;letter-spacing:.15em;color:var(--teal);text-transform:uppercase;margin-top:8px" class="rv">A coordinated base for your team</p>
+    <div class="space-inner flip">
+      <div class="space-photo rv">
+        <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=800&q=80&fit=crop" alt="Delegation Space">
+        <div class="space-tint"></div>
+      </div>
+      <div class="rv d1">
+        <div class="space-text">
+          <p>International delegations, media platforms and partner organisations often use private rooms as their operational base during MeetMeAtTheHotel. These rooms allow teams to remain close to the MMATH environment while maintaining a private working space.</p>
+          <p>Delegation spaces are particularly suited to organisations bringing multiple team members to the platform who need a shared coordination point during the week.</p>
+        </div>
+        <ul class="space-list">
+          <li>Private meetings & partner sessions</li>
+          <li>Schedule coordination</li>
+          <li>Media interviews & press activity</li>
+          <li>Team briefings & debriefs</li>
+          <li>Available for full-week use</li>
+        </ul>
+        <a href="#request" class="btn bp">Request a Delegation Space →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REQUEST FORM -->
+<section class="request" id="request">
+  <div class="c">
+    <span class="lbl rv">Request a Space</span>
+    <h2 class="rv">Submit your<br><span class="teal">request.</span></h2>
+    <div class="request-inner">
+      <div class="rv">
+        <div class="space-text">
+          <p>Partners, agencies and organisations interested in reserving a private room or office during MeetMeAtTheHotel can submit a request below.</p>
+          <p>The MMATH team will review your request and confirm availability. Space is limited — early requests are recommended.</p>
+        </div>
+        <div class="request-note">
+          <p>All space requests are reviewed by the MMATH team. We will respond within 5 working days. Availability is subject to the program schedule.</p>
+        </div>
+      </div>
+      <form class="rv d1" onsubmit="sf(this,event)">
+        <div class="field-row">
+          <div class="field"><label>Name</label><input type="text" placeholder="Your name" required></div>
+          <div class="field"><label>Company / Organisation</label><input type="text" placeholder="Your company" required></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label>Email</label><input type="email" placeholder="your@email.com" required></div>
+          <div class="field"><label>Phone (optional)</label><input type="tel" placeholder="+00 000 000 000"></div>
+        </div>
+        <div class="field">
+          <label>Type of Space</label>
+          <select required>
+            <option value="" disabled selected>Select space type</option>
+            <option>Private Office</option>
+            <option>Meeting Room</option>
+            <option>Boardroom</option>
+            <option>Delegation Space</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Estimated Number of People</label>
+          <input type="text" placeholder="e.g. 4–6 people">
+        </div>
+        <div class="field">
+          <label>Preferred Dates</label>
+          <select>
+            <option value="" disabled selected>Select preferred dates</option>
+            <option>Monday only</option>
+            <option>Tuesday only</option>
+            <option>Wednesday only</option>
+            <option>Thursday only</option>
+            <option>Friday only</option>
+            <option>Full week</option>
+            <option>Multiple days — flexible</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Intended Use</label>
+          <textarea placeholder="Briefly describe how you plan to use the space..."></textarea>
+        </div>
+        <button type="submit" class="btn bp" style="width:100%;margin-top:8px">Submit Space Request →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="ft">
+  <div class="c">
+    <div class="fg">
+      <div class="fb">
+        <img src="logo.png" alt="Meet Me at the Hotel" style="height:44px;width:auto;display:block;">
+        <p>The Global Hospitality Hub<br>of the Dance Industry.</p>
+        <p class="fadr">Room Mate Aitana Hotel · IJdok 6<br>Amsterdam · October 2026</p>
+      </div>
+      <div class="fcc">
+        <p class="fct">Explore</p>
+        <a href="about.html">About</a>
+        <a href="program.html">Program</a>
+        <a href="universe.html">Universe</a>
+        <a href="industry-hub.html">Industry Hub</a>
+        <a href="industry-exchange.html">Industry Exchange</a>
+        <a href="experiences.html">Experiences</a>
+        <a href="spaces.html">Spaces</a>
+      </div>
+      <div class="fcc">
+        <p class="fct">Book</p>
+        <a href="booking.html">Hotel Rooms</a>
+        <a href="spaces.html">Meeting Rooms</a>
+        <a href="experiences.html">Showcases</a>
+        <a href="partners.html">Partnerships</a>
+      </div>
+      <div class="fcc">
+        <p class="fct">Connect</p>
+        <a href="contact.html">Contact</a>
+        <a href="#">Instagram</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">TikTok</a>
+      </div>
+    </div>
+    <div class="fb2">
+      <p>© 2026 Meet Me at the Hotel · 5th Anniversary Edition · Amsterdam · October 2026</p>
+      <p><a href="#">Privacy</a> · <a href="#">Cookies</a> · <a href="#">Terms</a></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+function sf(f,e){
+  e.preventDefault();
+  const b=f.querySelector('button');
+  b.textContent='REQUEST SUBMITTED ✓';
+  b.style.background='#2E7A74';
+  setTimeout(()=>{b.textContent='Submit Space Request →';b.style.background='';f.reset()},3500);
+}
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target)}}),{threshold:.08});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
