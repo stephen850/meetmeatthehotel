@@ -6,7 +6,7 @@
 <title>Experiences — Meet Me at the Hotel · 5th Anniversary Edition</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--teal:#4DA8A0;--deep:#2E7A74;--pool:#7DCDC7;--blk:#0A0A0A;--blkm:#111;--blkc:#161616;--blkb:#222;--wh:#F5F5F0;--wd:rgba(245,245,240,0.6);--fd:'Bebas Neue',sans-serif;--fc:'Barlow Condensed',sans-serif;--fb:'Barlow',sans-serif;--nav:72px;--tr:0.35s cubic-bezier(.4,0,.2,1)}
+:root{--teal:#4DA8A0;--deep:#2E7A74;--pool:#7DCDC7;--blk:#0A0A0A;--blkm:#111;--blkc:#161616;--blkb:#222;--wh:#F5F5F0;--wd:rgba(245,245,240,0.6);--wd2:rgba(245,245,240,0.12);--fd:'Bebas Neue',sans-serif;--fc:'Barlow Condensed',sans-serif;--fb:'Barlow',sans-serif;--nav:72px;--tr:0.35s cubic-bezier(.4,0,.2,1)}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:var(--blk);color:var(--wh);font-family:var(--fb);overflow-x:hidden}
@@ -24,6 +24,8 @@ h3{font-size:clamp(22px,3vw,40px)}
 .btn{display:inline-block;font-family:var(--fc);font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:15px 36px;transition:all var(--tr);cursor:pointer;border:none;text-align:center}
 .bp{background:var(--teal);color:var(--blk)}.bp:hover{background:var(--deep);color:var(--wh)}
 .bo{border:1px solid var(--teal);color:var(--teal);background:transparent}.bo:hover{background:var(--teal);color:var(--blk)}
+
+/* NAV */
 .nav{position:fixed;top:0;left:0;right:0;height:var(--nav);display:flex;align-items:center;justify-content:space-between;padding:0 40px;z-index:1000;background:rgba(10,10,10,.95);border-bottom:1px solid var(--blkb);backdrop-filter:blur(16px)}
 .nl{display:flex;align-items:center;gap:28px}
 .nl a{font-family:var(--fc);font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--wd);transition:color var(--tr)}.nl a:hover{color:var(--wh)}
@@ -36,104 +38,65 @@ h3{font-size:clamp(22px,3vw,40px)}
   .nl.open{transform:none}
   .nl a{font-size:20px}
 }
-.hero{min-height:100vh;position:relative;display:flex;align-items:flex-end;padding-bottom:80px;overflow:hidden;margin-top:var(--nav)}
-.hero-img{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1920&q=80&fit=crop');background-size:cover;background-position:center;filter:brightness(.5) saturate(.8)}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,10,.2) 0%,rgba(10,10,10,.85) 80%,rgba(10,10,10,.98) 100%)}
-.hero-tint{position:absolute;inset:0;background:linear-gradient(135deg,rgba(77,168,160,.12) 0%,transparent 60%)}
-.hero-content{position:relative;z-index:2;width:100%;max-width:1280px;margin:0 auto;padding:0 80px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end}
-.hero-badge{display:inline-block;font-family:var(--fc);font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--teal);border:1px solid rgba(77,168,160,.5);padding:6px 16px;margin-bottom:24px;background:rgba(10,10,10,.4);backdrop-filter:blur(4px)}
-.hero h1{color:var(--wh);margin-bottom:16px}
-.hero-sub{font-family:var(--fc);font-size:14px;letter-spacing:.12em;color:var(--wd);text-transform:uppercase;line-height:1.6;margin-bottom:32px}
-.hero-specs{display:flex;gap:32px;padding-top:24px;border-top:1px solid rgba(255,255,255,.1)}
-.hero-spec-n{font-family:var(--fd);font-size:36px;color:var(--teal);line-height:1}
-.hero-spec-l{font-family:var(--fc);font-size:10px;letter-spacing:.2em;color:var(--wd);text-transform:uppercase;margin-top:4px}
-.hero-right{display:flex;flex-direction:column;gap:12px}
-.hero-feat{background:rgba(10,10,10,.6);border:1px solid rgba(77,168,160,.2);padding:16px 20px;backdrop-filter:blur(8px);display:flex;align-items:center;gap:14px}
-.hero-feat-icon{font-size:18px;flex-shrink:0}
-.hero-feat-text{font-family:var(--fc);font-size:12px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase}
-@media(max-width:900px){.hero-content{grid-template-columns:1fr;padding:0 40px}.hero-right{display:none}}
-@media(max-width:640px){.hero-content{padding:0 20px}}
 
-/* FORMATS OVERVIEW */
-.formats-overview{padding:80px 0;border-bottom:1px solid var(--blkb);background:var(--blkm)}
-.fo-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:48px}
-.fo-card{background:var(--blkc);border:1px solid var(--blkb);padding:28px 24px;transition:all var(--tr);cursor:pointer;position:relative;overflow:hidden}
-.fo-card::before{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--teal);transform:scaleX(0);transform-origin:left;transition:transform var(--tr)}
-.fo-card:hover::before{transform:scaleX(1)}
-.fo-card:hover{border-color:var(--teal)}
-.fo-icon{font-size:26px;margin-bottom:14px;display:block}
-.fo-card h4{font-family:var(--fd);font-size:22px;margin-bottom:8px;color:var(--wh)}
-.fo-card p{font-size:12px;color:var(--wd);line-height:1.55}
-.fo-arrow{font-family:var(--fc);font-size:13px;color:var(--teal);display:block;margin-top:14px;transition:transform var(--tr)}.fo-card:hover .fo-arrow{transform:translateX(5px)}
-@media(max-width:900px){.fo-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:480px){.fo-grid{grid-template-columns:1fr}}
+/* HERO */
+.ph{padding-top:calc(var(--nav) + 80px);padding-bottom:80px;position:relative;overflow:hidden;background:#0a1412;border-bottom:1px solid var(--blkb)}
+.ph-img{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1920&q=80&fit=crop');background-size:cover;background-position:center;opacity:0.15}
+.ph-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(77,168,160,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(77,168,160,.04) 1px,transparent 1px);background-size:80px 80px}
+.ph-inner{position:relative;z-index:1;max-width:860px}
+.ph-lead{font-size:16px;color:var(--wd);line-height:1.85;font-weight:300;margin-top:28px;max-width:680px}
 
-.packages{padding:100px 0;border-bottom:1px solid var(--blkb)}
-.pkg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:60px}
-.pkg{background:var(--blkc);border:1px solid var(--blkb);display:flex;flex-direction:column;transition:border-color var(--tr);position:relative;overflow:hidden}
-.pkg::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--teal)}
-.pkg.featured{border-color:var(--teal);background:linear-gradient(160deg,rgba(77,168,160,.07) 0%,var(--blkc) 60%)}
-.pkg-badge{position:absolute;top:16px;right:16px;background:var(--teal);color:var(--blk);font-family:var(--fc);font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;padding:4px 12px}
-.pkg-head{padding:36px 32px 24px}
-.pkg-name{font-family:var(--fd);font-size:38px;line-height:.9;margin-bottom:8px}
-.pkg-price{font-family:var(--fd);font-size:28px;color:var(--teal);margin-bottom:16px}
-.pkg-price span{font-family:var(--fc);font-size:11px;color:var(--wd);letter-spacing:.1em;text-transform:uppercase}
-.pkg-desc{font-size:13px;color:var(--wd);line-height:1.65;font-weight:300;padding-bottom:24px;border-bottom:1px solid var(--blkb)}
-.pkg-body{padding:24px 32px;flex:1}
-.pkg-list{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:28px}
-.pkg-list li{font-size:13px;color:var(--wd);padding:7px 0;border-bottom:1px solid rgba(255,255,255,.04);display:flex;align-items:start;gap:10px;line-height:1.5}
-.pkg-list li::before{content:'✓';color:var(--teal);flex-shrink:0;font-family:var(--fc);font-weight:700}
-.pkg-cta{padding:0 32px 32px}
-@media(max-width:768px){.pkg-grid{grid-template-columns:1fr}}
+/* FORMATS */
+.formats{padding:80px 0;border-bottom:1px solid var(--blkb);background:var(--blkm)}
+.formats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:48px}
+.format{background:var(--blkc);border:1px solid var(--blkb);padding:32px 24px;transition:all var(--tr);position:relative;overflow:hidden}
+.format::before{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--teal);transform:scaleX(0);transform-origin:left;transition:transform var(--tr)}
+.format:hover::before{transform:scaleX(1)}
+.format:hover{border-color:var(--teal)}
+.format-icon{font-size:26px;margin-bottom:14px;display:block}
+.format h4{font-family:var(--fd);font-size:22px;margin-bottom:8px}
+.format p{font-size:12px;color:var(--wd);line-height:1.65;margin-bottom:12px}
+.format-venue{font-family:var(--fc);font-size:10px;letter-spacing:.2em;color:var(--teal);text-transform:uppercase;border:1px solid rgba(77,168,160,.3);padding:4px 10px;display:inline-block}
+@media(max-width:900px){.formats-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.formats-grid{grid-template-columns:1fr}}
 
-.oscar{padding:100px 0;border-bottom:1px solid var(--blkb);background:var(--blkm)}
-.oscar-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;margin-top:60px}
-.oscar-photo{position:relative;overflow:hidden}
-.oscar-photo img{width:100%;aspect-ratio:16/10;object-fit:cover;filter:brightness(.75) saturate(.85);display:block;transition:transform .8s ease}
-.oscar:hover .oscar-photo img{transform:scale(1.03)}
-.oscar-photo-tint{position:absolute;inset:0;background:linear-gradient(135deg,rgba(77,168,160,.15) 0%,transparent 60%)}
-.oscar-specs{display:flex;flex-direction:column;gap:2px;margin:28px 0}
-.oscar-spec{background:var(--blkc);border:1px solid var(--blkb);padding:16px 20px;display:flex;justify-content:space-between;align-items:center;transition:border-color var(--tr)}
-.oscar-spec:hover{border-color:var(--teal)}
-.oscar-spec-label{font-family:var(--fc);font-size:11px;letter-spacing:.2em;color:var(--wd);text-transform:uppercase}
-.oscar-spec-val{font-family:var(--fd);font-size:22px;color:var(--teal)}
-.oscar-text p{font-size:15px;color:var(--wd);line-height:1.8;font-weight:300;margin-bottom:16px}
-@media(max-width:768px){.oscar-inner{grid-template-columns:1fr}}
+/* VENUE SECTIONS */
+.venue-section{padding:100px 0;border-bottom:1px solid var(--blkb)}
+.venue-section.dark{background:var(--blkm)}
+.venue-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;margin-top:60px}
+.venue-inner.flip{direction:rtl}.venue-inner.flip>*{direction:ltr}
+.venue-photo{position:relative;overflow:hidden}
+.venue-photo img{width:100%;aspect-ratio:4/3;object-fit:cover;filter:brightness(.7) saturate(.8);display:block;transition:transform .8s ease}
+.venue-photo:hover img{transform:scale(1.03)}
+.venue-tint{position:absolute;inset:0;background:linear-gradient(135deg,rgba(77,168,160,.12) 0%,transparent 60%)}
+.venue-text p{font-size:15px;color:var(--wd);line-height:1.8;font-weight:300;margin-bottom:16px}
+.venue-specs{list-style:none;margin:24px 0}
+.venue-specs li{font-family:var(--fc);font-size:12px;letter-spacing:.08em;color:var(--wd);text-transform:uppercase;padding:11px 0;border-bottom:1px solid var(--blkb);display:flex;align-items:center;gap:12px}
+.venue-specs li::before{content:'→';color:var(--teal);flex-shrink:0}
+.venue-stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin:24px 0}
+.vs{background:var(--blkc);border:1px solid var(--blkb);padding:18px;text-align:center}
+.vs-n{font-family:var(--fd);font-size:32px;color:var(--teal);line-height:1}
+.vs-l{font-family:var(--fc);font-size:9px;letter-spacing:.2em;color:var(--wd);text-transform:uppercase;margin-top:4px}
+@media(max-width:900px){.venue-inner,.venue-inner.flip{grid-template-columns:1fr;direction:ltr}}
 
-.boat{padding:100px 0;border-bottom:1px solid var(--blkb)}
-.boat-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;margin-top:60px}
-.boat-photo{position:relative;overflow:hidden}
-.boat-photo img{width:100%;aspect-ratio:4/3;object-fit:cover;filter:brightness(.7) saturate(.8);display:block}
-.boat-photo-tint{position:absolute;inset:0;background:linear-gradient(135deg,rgba(77,168,160,.15) 0%,transparent 60%)}
-.boat-text p{font-size:15px;color:var(--wd);line-height:1.8;font-weight:300;margin-bottom:16px}
-.boat-details{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin:28px 0}
-.bd{background:var(--blkc);border:1px solid var(--blkb);padding:20px;text-align:center;transition:border-color var(--tr)}
-.bd:hover{border-color:var(--teal)}
-.bd-n{font-family:var(--fd);font-size:32px;color:var(--teal)}
-.bd-l{font-family:var(--fc);font-size:10px;letter-spacing:.2em;color:var(--wd);text-transform:uppercase;margin-top:4px}
-@media(max-width:768px){.boat-inner{grid-template-columns:1fr}}
-
-.drinks{padding:80px 0;border-bottom:1px solid var(--blkb);background:var(--blkm)}
-.drinks-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
-.drinks-photo img{width:100%;aspect-ratio:16/9;object-fit:cover;filter:brightness(.7) saturate(.8);display:block}
-.drinks-text p{font-size:15px;color:var(--wd);line-height:1.8;font-weight:300;margin-bottom:16px}
-@media(max-width:768px){.drinks-inner{grid-template-columns:1fr}}
-
-.inquiry{padding:100px 0}
-.inq-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-top:60px}
-.inq-text p{font-size:15px;color:var(--wd);line-height:1.8;font-weight:300;margin-bottom:16px}
-.contact-box{margin-top:32px;padding:28px;background:var(--blkc);border:1px solid var(--blkb);border-left:3px solid var(--teal)}
-form{display:flex;flex-direction:column;gap:16px}
+/* APPLICATION FORM */
+.apply{padding:100px 0;background:var(--blkm);border-top:1px solid var(--blkb)}
+.apply-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-top:60px}
+.apply-text p{font-size:15px;color:var(--wd);line-height:1.8;font-weight:300;margin-bottom:16px}
+.apply-note{margin-top:32px;padding:24px;background:var(--blkc);border:1px solid var(--blkb);border-left:3px solid var(--teal)}
+.apply-note p{font-family:var(--fc);font-size:12px;letter-spacing:.08em;color:var(--wd);text-transform:uppercase;line-height:1.7;margin:0}
+form{display:flex;flex-direction:column;gap:20px}
 .field{display:flex;flex-direction:column;gap:6px}
 .field label{font-family:var(--fc);font-size:10px;font-weight:600;letter-spacing:.25em;color:var(--teal);text-transform:uppercase}
-.field input,.field select,.field textarea{background:transparent;border:none;border-bottom:1px solid rgba(77,168,160,.35);color:var(--wh);padding:12px 0;font-family:var(--fc);font-size:14px;letter-spacing:.08em;outline:none;transition:border-color var(--tr);-webkit-appearance:none}
+.field input,.field select,.field textarea{background:transparent;border:none;border-bottom:1px solid rgba(77,168,160,.3);color:var(--wh);padding:12px 0;font-family:var(--fc);font-size:14px;letter-spacing:.06em;outline:none;transition:border-color var(--tr);-webkit-appearance:none;width:100%}
 .field input:focus,.field select:focus,.field textarea:focus{border-bottom-color:var(--teal)}
 .field input::placeholder,.field textarea::placeholder{color:rgba(245,245,240,.2)}
 .field select option{background:var(--blkc);color:var(--wh)}
-.field textarea{resize:none;height:90px}
+.field textarea{resize:none;height:100px;font-family:var(--fb);font-size:14px;letter-spacing:normal}
 .field-row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-@media(max-width:768px){.inq-grid{grid-template-columns:1fr}.field-row{grid-template-columns:1fr}}
+@media(max-width:768px){.apply-inner{grid-template-columns:1fr}.field-row{grid-template-columns:1fr}}
 
+/* FOOTER */
 .ft{padding:80px 0 40px;background:var(--blkc);border-top:1px solid var(--blkb)}
 .fg{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:60px}
 .fb p{font-size:13px;color:var(--wd);margin-top:20px;line-height:1.75;font-weight:300}
@@ -172,271 +135,281 @@ form{display:flex;flex-direction:column;gap:16px}
   </div>
 </nav>
 
-<!-- FULL-BLEED HERO -->
-<section class="hero">
-  <div class="hero-img"></div>
-  <div class="hero-overlay"></div>
-  <div class="hero-tint"></div>
-  <div class="hero-content">
-    <div>
-      <div class="hero-badge">Programming & Experiences · Layer 04</div>
-      <h1>
-        <span style="display:block">THE</span>
-        <span style="display:block;color:var(--teal)">OSCAR</span>
-        <span style="display:block">ROOM.</span>
-      </h1>
-      <p class="hero-sub">Amsterdam's most exclusive showcase venue during October week.<br>132m² · Marina view · Designed by 250K Studio.</p>
-      <div style="display:flex;gap:14px;flex-wrap:wrap;margin-bottom:40px;">
-        <a href="#inquiry" class="btn bp">Book an Experience →</a>
-        <a href="#packages" class="btn bo">View Packages</a>
-      </div>
-      <div class="hero-specs">
-        <div><div class="hero-spec-n">132m²</div><div class="hero-spec-l">Venue Size</div></div>
-        <div><div class="hero-spec-n">300</div><div class="hero-spec-l">Capacity</div></div>
-        <div><div class="hero-spec-n">5★</div><div class="hero-spec-l">Marina View</div></div>
-      </div>
-    </div>
-    <div class="hero-right">
-      <div class="hero-feat"><span class="hero-feat-icon">🎵</span><span class="hero-feat-text">Full professional sound system</span></div>
-      <div class="hero-feat"><span class="hero-feat-icon">💡</span><span class="hero-feat-text">Architectural lighting rig</span></div>
-      <div class="hero-feat"><span class="hero-feat-icon">🌊</span><span class="hero-feat-text">Floor-to-ceiling marina views</span></div>
-      <div class="hero-feat"><span class="hero-feat-icon">🎨</span><span class="hero-feat-text">Designed by 250K Studio</span></div>
-      <div class="hero-feat"><span class="hero-feat-icon">🍸</span><span class="hero-feat-text">Full bar &amp; catering service</span></div>
-      <div class="hero-feat"><span class="hero-feat-icon">🎟️</span><span class="hero-feat-text">Industry-only guest list curation</span></div>
+<!-- HERO -->
+<section class="ph">
+  <div class="ph-img"></div>
+  <div class="ph-grid"></div>
+  <div class="c ph-inner">
+    <span class="lbl">Partner Activations · October 2026</span>
+    <h1>HOST AN<br><span class="teal">EXPERIENCE.</span></h1>
+    <p class="ph-lead">MeetMeAtTheHotel offers partners the opportunity to create curated experiences within a unique hospitality environment in the heart of Amsterdam. From artist showcases and networking receptions to industry dinners and waterfront moments, the platform provides several distinctive environments for meaningful activations during the week.</p>
+    <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:36px">
+      <a href="#apply" class="btn bp">Submit Experience Request →</a>
+      <a href="#spaces" class="btn bo">View the Spaces</a>
     </div>
   </div>
 </section>
 
-<!-- FORMATS OVERVIEW -->
-<section class="formats-overview">
+<!-- EXPERIENCE FORMATS -->
+<section class="formats">
   <div class="c">
-    <span class="lbl rv">Programming & Experiences · Layer 04</span>
-    <h2 class="rv">Four formats.<br><span class="teal">All under one roof.</span></h2>
-    <div class="fo-grid">
-      <a href="#packages" class="fo-card rv">
-        <span class="fo-icon">🎧</span>
-        <h4>PARTNER SHOWCASES</h4>
-        <p>Oscar Room evening showcases. Label nights, artist debuts and branded events for industry guests.</p>
-        <span class="fo-arrow">→</span>
-      </a>
-      <a href="#boat" class="fo-card rv d1">
-        <span class="fo-icon">🚢</span>
-        <h4>BOAT EVENTS</h4>
-        <p>Private IJ canal cruises. 40 guests max. The most intimate MMATH experience — departs from the hotel.</p>
-        <span class="fo-arrow">→</span>
-      </a>
-      <a href="#drinks" class="fo-card rv d2">
-        <span class="fo-icon">🥂</span>
-        <h4>PARTNER GATHERINGS</h4>
-        <p>Networking receptions and branded activations in the Aitana Lounge Bar. The informal format that leads to real conversations.</p>
-        <span class="fo-arrow">→</span>
-      </a>
-      <a href="#inquiry" class="fo-card rv d3">
-        <span class="fo-icon">🍽️</span>
-        <h4>CURATED DINNERS</h4>
-        <p>Invite-only hospitality moments. Seated dinners for decision-makers with curated guest lists and structured conversation.</p>
-        <span class="fo-arrow">→</span>
-      </a>
+    <span class="lbl rv">Experience Formats</span>
+    <h2 class="rv">What you<br><span class="teal">can host.</span></h2>
+    <div class="formats-grid">
+      <div class="format rv">
+        <span class="format-icon">🎧</span>
+        <h4>SHOWCASES</h4>
+        <p>Artist showcases, label nights and curated performances for industry guests.</p>
+        <span class="format-venue">Oscar Room</span>
+      </div>
+      <div class="format rv d1">
+        <span class="format-icon">🥂</span>
+        <h4>NETWORKING & HOSPITALITY</h4>
+        <p>Industry receptions, brand gatherings and curated hospitality moments.</p>
+        <span class="format-venue">Aitana Lounge</span>
+      </div>
+      <div class="format rv d2">
+        <span class="format-icon">🍽️</span>
+        <h4>INDUSTRY DINNERS</h4>
+        <p>Seated dinners bringing together artists, executives and partners.</p>
+        <span class="format-venue">I-Dock</span>
+      </div>
+      <div class="format rv d3">
+        <span class="format-icon">🚢</span>
+        <h4>WATERFRONT EXPERIENCES</h4>
+        <p>Private boat gatherings departing directly from the IJdok marina.</p>
+        <span class="format-venue">IJdok Marina</span>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- SHOWCASE PACKAGES -->
-<section class="packages" id="packages">
-  <div class="c">
-    <span class="lbl rv">Partner Showcases · October 2026</span>
-    <h2 class="rv">Your night.<br><span class="teal">Your stage.</span></h2>
-    <div class="pkg-grid">
-      <div class="pkg rv">
-        <div class="pkg-head">
-          <div class="pkg-name">SHOWCASE</div>
-          <div class="pkg-price">€8,000 <span>/ evening slot</span></div>
-          <div class="pkg-desc">A curated evening showcase slot in the Oscar Room. Perfect for labels presenting new artists, agencies hosting client nights or brands activating around music.</div>
+<!-- SPACES -->
+<section id="spaces">
+
+  <!-- OSCAR ROOM -->
+  <div class="venue-section">
+    <div class="c">
+      <span class="lbl rv">Activation Space · 01</span>
+      <h2 class="rv">The Oscar<br><span class="teal">Room.</span></h2>
+      <p style="font-family:var(--fc);font-size:13px;letter-spacing:.15em;color:var(--teal);text-transform:uppercase;margin-top:8px" class="rv">The showcase stage of MMATH</p>
+      <div class="venue-inner">
+        <div class="venue-photo rv">
+          <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=800&q=80&fit=crop" alt="Oscar Room">
+          <div class="venue-tint"></div>
         </div>
-        <div class="pkg-body">
-          <ul class="pkg-list">
-            <li>Oscar Room from 20:00 – 23:00</li>
-            <li>Up to 3 artist sets</li>
-            <li>100 industry guest invitations</li>
-            <li>Basic branding placement</li>
-            <li>Bar &amp; service included</li>
-            <li>MMATH social media mention</li>
+        <div class="rv d1">
+          <div class="venue-text">
+            <p>The Oscar Room serves as the primary stage of MeetMeAtTheHotel and hosts many of the platform's partner showcases and evening activations.</p>
+            <p>Located at ground level with panoramic views over the IJdok marina, the space combines natural daylight with professional event production. Floor-to-ceiling windows, LED video wall and professional sound and lighting capabilities.</p>
+            <p>The Oscar Room has hosted numerous industry showcases and gatherings during MeetMeAtTheHotel, bringing together artists, labels, media platforms and nightlife professionals.</p>
+          </div>
+          <div class="venue-stat-row">
+            <div class="vs"><div class="vs-n">300</div><div class="vs-l">Capacity</div></div>
+            <div class="vs"><div class="vs-n">132m²</div><div class="vs-l">Surface</div></div>
+            <div class="vs"><div class="vs-n">IJ</div><div class="vs-l">Marina View</div></div>
+          </div>
+          <ul class="venue-specs">
+            <li>LED video wall for visual production</li>
+            <li>Professional sound and lighting capabilities</li>
+            <li>Floor-to-ceiling windows overlooking the marina</li>
+            <li>Flexible layout for showcases, talks and events</li>
           </ul>
+          <a href="#apply" class="btn bp">Request this Space →</a>
         </div>
-        <div class="pkg-cta"><a href="#inquiry" class="btn bo" style="display:block">Enquire →</a></div>
-      </div>
-      <div class="pkg featured rv d1">
-        <div class="pkg-badge">Most Booked</div>
-        <div class="pkg-head">
-          <div class="pkg-name">FULL NIGHT</div>
-          <div class="pkg-price">€18,000 <span>/ full evening</span></div>
-          <div class="pkg-desc">The complete Oscar Room experience. Full evening takeover — your concept, your artists, your production. The definitive showcase night of the week.</div>
-        </div>
-        <div class="pkg-body">
-          <ul class="pkg-list">
-            <li>Oscar Room from 19:00 – 02:00</li>
-            <li>Unlimited artist programme</li>
-            <li>200 industry guest invitations</li>
-            <li>Full branding — room &amp; digital</li>
-            <li>Dedicated bar &amp; premium catering</li>
-            <li>Social media campaign (5 posts)</li>
-            <li>Press photography included</li>
-            <li>MMATH newsletter feature</li>
-          </ul>
-        </div>
-        <div class="pkg-cta"><a href="#inquiry" class="btn bp" style="display:block">Enquire →</a></div>
-      </div>
-      <div class="pkg rv d2">
-        <div class="pkg-head">
-          <div class="pkg-name">BRANDED LABEL NIGHT</div>
-          <div class="pkg-price">€32,000 <span>/ full production</span></div>
-          <div class="pkg-desc">Full co-production with the MMATH team. Custom stage design, production build, curated guest list and a 360° media campaign. The ultimate statement.</div>
-        </div>
-        <div class="pkg-body">
-          <ul class="pkg-list">
-            <li>Oscar Room full evening + day activation</li>
-            <li>Custom stage &amp; set design</li>
-            <li>300 curated industry invitations</li>
-            <li>Full MMATH production team</li>
-            <li>360° media campaign</li>
-            <li>Live stream option</li>
-            <li>Behind-the-scenes content package</li>
-            <li>Post-event recap video</li>
-            <li>Press &amp; media coordination</li>
-          </ul>
-        </div>
-        <div class="pkg-cta"><a href="#inquiry" class="btn bo" style="display:block">Enquire →</a></div>
       </div>
     </div>
   </div>
-</section>
 
-<!-- OSCAR ROOM DETAIL -->
-<section class="oscar">
-  <div class="c">
-    <span class="lbl rv">The Venue</span>
-    <h2 class="rv">The Oscar Room.<br><span class="teal">Nothing like it.</span></h2>
-    <div class="oscar-inner">
-      <div class="oscar-photo rv">
-        <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=800&q=80&fit=crop" alt="Oscar Room">
-        <div class="oscar-photo-tint"></div>
-      </div>
-      <div class="rv d1">
-        <p>The Oscar Room is the crown jewel of Room Mate Aitana Hotel — a purpose-designed event space with floor-to-ceiling windows overlooking the IJ marina. Designed by Amsterdam studio 250K, it's one of the most visually striking venues in the city.</p>
-        <p>During October week, it becomes the industry's most coveted showcase stage. Labels, agencies and brands compete for dates months in advance. Once you've performed or hosted here, you understand why.</p>
-        <div class="oscar-specs">
-          <div class="oscar-spec"><span class="oscar-spec-label">Total Area</span><span class="oscar-spec-val">132m²</span></div>
-          <div class="oscar-spec"><span class="oscar-spec-label">Capacity — Standing</span><span class="oscar-spec-val">300</span></div>
-          <div class="oscar-spec"><span class="oscar-spec-label">Capacity — Seated</span><span class="oscar-spec-val">120</span></div>
-          <div class="oscar-spec"><span class="oscar-spec-label">Design</span><span class="oscar-spec-val">250K Studio</span></div>
-          <div class="oscar-spec"><span class="oscar-spec-label">View</span><span class="oscar-spec-val">IJ Marina</span></div>
-          <div class="oscar-spec"><span class="oscar-spec-label">Sound System</span><span class="oscar-spec-val">Professional</span></div>
-        </div>
-        <a href="#inquiry" class="btn bp">Check Availability →</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- BOAT EVENTS -->
-<section class="boat" id="boat">
-  <div class="c">
-    <span class="lbl rv">Boat Events</span>
-    <h2 class="rv">Take it<br><span class="teal">on the water.</span></h2>
-    <div class="boat-inner">
-      <div class="rv">
-        <p>When the Oscar Room isn't enough — take the industry onto the IJ. Private canal cruises depart directly from the hotel's marina-side entrance, making the transition seamless.</p>
-        <p>40 guests maximum per boat. The intimacy forces real conversation. The setting makes it unforgettable. The sell-out rate makes it essential to book early.</p>
-        <div class="boat-details">
-          <div class="bd"><div class="bd-n">40</div><div class="bd-l">Max Guests</div></div>
-          <div class="bd"><div class="bd-n">€6,500+</div><div class="bd-l">Starting From</div></div>
-          <div class="bd"><div class="bd-n">3h</div><div class="bd-l">Typical Duration</div></div>
-          <div class="bd"><div class="bd-n">100%</div><div class="bd-l">Sell-out Rate</div></div>
-        </div>
-        <a href="#inquiry" class="btn bp">Book a Boat →</a>
-      </div>
-      <div class="boat-photo rv d1" style="position:relative;">
-        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80&fit=crop" alt="Amsterdam waterfront">
-        <div class="boat-photo-tint"></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PARTNER GATHERINGS / NETWORK DRINKS -->
-<section class="drinks" id="drinks">
-  <div class="c">
-    <div class="drinks-inner">
-      <div class="rv" style="position:relative;">
-        <div class="drinks-photo" style="position:relative;overflow:hidden;">
+  <!-- AITANA LOUNGE -->
+  <div class="venue-section dark">
+    <div class="c">
+      <span class="lbl rv">Activation Space · 02</span>
+      <h2 class="rv">Aitana<br><span class="teal">Lounge.</span></h2>
+      <p style="font-family:var(--fc);font-size:13px;letter-spacing:.15em;color:var(--teal);text-transform:uppercase;margin-top:8px" class="rv">The networking hub</p>
+      <div class="venue-inner flip">
+        <div class="venue-photo rv">
           <img src="https://images.unsplash.com/photo-1551818255-e6e10975bc17?w=800&q=80&fit=crop" alt="Aitana Lounge">
-          <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(77,168,160,.12) 0%,transparent 60%);"></div>
+          <div class="venue-tint"></div>
         </div>
-      </div>
-      <div class="rv d1">
-        <span class="lbl">Aitana Lounge Bar</span>
-        <h2>Partner<br><span class="teal">Gatherings.</span></h2>
-        <p style="margin-top:20px">Host a branded partner gathering or networking reception in the Aitana Lounge Bar — the hotel's main social hub during October week.</p>
-        <p>From €4,000. Minimum 50 guests. Full bar package, branded signage and MMATH promotion included. The informal format that leads to the most natural conversations and lasting partnerships.</p>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin:28px 0;">
-          <div style="background:var(--blkc);border:1px solid var(--blkb);padding:20px;text-align:center;"><div style="font-family:var(--fd);font-size:28px;color:var(--teal);">€4,000+</div><div style="font-family:var(--fc);font-size:10px;letter-spacing:.2em;color:var(--wd);text-transform:uppercase;margin-top:4px;">Starting From</div></div>
-          <div style="background:var(--blkc);border:1px solid var(--blkb);padding:20px;text-align:center;"><div style="font-family:var(--fd);font-size:28px;color:var(--teal);">50+</div><div style="font-family:var(--fc);font-size:10px;letter-spacing:.2em;color:var(--wd);text-transform:uppercase;margin-top:4px;">Min. Guests</div></div>
+        <div class="rv d1">
+          <div class="venue-text">
+            <p>Overlooking the IJdok harbour, the Aitana Lounge is one of the central social spaces within the MMATH environment. The lounge offers a relaxed hospitality setting where artists, agencies, promoters and brands naturally connect throughout the week.</p>
+            <p>The space is well suited for networking receptions, brand hospitality moments, product launches, media interviews and informal industry gatherings.</p>
+          </div>
+          <ul class="venue-specs">
+            <li>Networking receptions & brand hospitality</li>
+            <li>Product launches & media interviews</li>
+            <li>Informal industry gatherings</li>
+            <li>Harbour views · Central hotel location</li>
+          </ul>
+          <a href="#apply" class="btn bp">Request this Space →</a>
         </div>
-        <a href="#inquiry" class="btn bp">Book a Gathering →</a>
       </div>
     </div>
   </div>
+
+  <!-- I-DOCK -->
+  <div class="venue-section">
+    <div class="c">
+      <span class="lbl rv">Activation Space · 03</span>
+      <h2 class="rv">I-Dock.<span class="teal"></span></h2>
+      <p style="font-family:var(--fc);font-size:13px;letter-spacing:.15em;color:var(--teal);text-transform:uppercase;margin-top:8px" class="rv">Industry dinners & large hospitality events</p>
+      <div class="venue-inner">
+        <div class="venue-photo rv">
+          <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80&fit=crop" alt="I-Dock">
+          <div class="venue-tint"></div>
+        </div>
+        <div class="rv d1">
+          <div class="venue-text">
+            <p>Located within the same waterfront complex as the hotel, I-Dock offers a spacious environment for curated hospitality events and industry dinners. The venue overlooks the IJdok marina and can accommodate both seated dinners and standing receptions.</p>
+            <p>During MeetMeAtTheHotel the space is used for industry dinners, partner hospitality events, brand gatherings, curated networking moments and closing celebrations.</p>
+          </div>
+          <div class="venue-stat-row">
+            <div class="vs"><div class="vs-n">200</div><div class="vs-l">Seated</div></div>
+            <div class="vs"><div class="vs-n">300</div><div class="vs-l">Standing</div></div>
+            <div class="vs"><div class="vs-n">IJ</div><div class="vs-l">Marina View</div></div>
+          </div>
+          <ul class="venue-specs">
+            <li>Industry dinners & partner hospitality events</li>
+            <li>Brand gatherings & curated networking</li>
+            <li>Closing celebrations</li>
+          </ul>
+          <a href="#apply" class="btn bp">Request this Space →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MEETING ROOMS -->
+  <div class="venue-section dark">
+    <div class="c">
+      <span class="lbl rv">Activation Space · 04</span>
+      <h2 class="rv">Industry Meeting<br><span class="teal">Rooms.</span></h2>
+      <p style="font-family:var(--fc);font-size:13px;letter-spacing:.15em;color:var(--teal);text-transform:uppercase;margin-top:8px" class="rv">Private sessions & curated meetings</p>
+      <div class="venue-inner flip">
+        <div class="venue-photo rv">
+          <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80&fit=crop" alt="Meeting Rooms">
+          <div class="venue-tint"></div>
+        </div>
+        <div class="rv d1">
+          <div class="venue-text">
+            <p>In addition to the main activation areas, the venue includes several meeting rooms used for more focused industry interactions. These spaces support the Industry Exchange meetings, label meetings, brand discussions and artist management sessions.</p>
+            <p>Private, professional and directly within the MMATH environment — the right setting for conversations that matter.</p>
+          </div>
+          <ul class="venue-specs">
+            <li>Industry Exchange meetings</li>
+            <li>Label meetings & brand discussions</li>
+            <li>Artist management sessions</li>
+            <li>Private sessions · Closed door</li>
+          </ul>
+          <a href="#apply" class="btn bp">Request this Space →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- IJDOK MARINA -->
+  <div class="venue-section">
+    <div class="c">
+      <span class="lbl rv">Activation Space · 05</span>
+      <h2 class="rv">IJdok<br><span class="teal">Marina.</span></h2>
+      <p style="font-family:var(--fc);font-size:13px;letter-spacing:.15em;color:var(--teal);text-transform:uppercase;margin-top:8px" class="rv">Waterfront experiences</p>
+      <div class="venue-inner">
+        <div class="venue-photo rv">
+          <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80&fit=crop" alt="IJdok Marina">
+          <div class="venue-tint"></div>
+        </div>
+        <div class="rv d1">
+          <div class="venue-text">
+            <p>MeetMeAtTheHotel takes place directly on the IJdok marina, creating opportunities for curated boat experiences and waterfront activations departing from the harbour.</p>
+            <p>These smaller experiences provide a unique setting for hospitality moments and intimate industry gatherings. 40 guests maximum. 100% sell-out rate across previous editions.</p>
+          </div>
+          <div class="venue-stat-row">
+            <div class="vs"><div class="vs-n">40</div><div class="vs-l">Max Guests</div></div>
+            <div class="vs"><div class="vs-n">3h</div><div class="vs-l">Duration</div></div>
+            <div class="vs"><div class="vs-n">100%</div><div class="vs-l">Sell-out</div></div>
+          </div>
+          <ul class="venue-specs">
+            <li>Private boat gatherings from the marina</li>
+            <li>Intimate hospitality moments on the water</li>
+            <li>Departs directly from the hotel entrance</li>
+          </ul>
+          <a href="#apply" class="btn bp">Request this Experience →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </section>
 
-<!-- INQUIRY FORM -->
-<section class="inquiry" id="inquiry">
+<!-- APPLICATION FORM -->
+<section class="apply" id="apply">
   <div class="c">
-    <span class="lbl rv">Experience Inquiry</span>
-    <h2 class="rv">Book your<br><span class="teal">experience now.</span></h2>
-    <div class="inq-grid">
+    <span class="lbl rv">Create Your Experience</span>
+    <h2 class="rv">Submit your<br><span class="teal">request.</span></h2>
+    <div class="apply-inner">
       <div class="rv">
-        <p>Experience dates fill up months in advance. Submit your inquiry early — we'll confirm availability and send a tailored proposal within 48 hours.</p>
-        <p>All formats available: Oscar Room showcases, boat events, partner gatherings, curated dinners and branded activations.</p>
-        <div class="contact-box">
-          <span class="lbl">Direct Contact</span>
-          <p style="font-family:var(--fc);font-size:13px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase;">experiences@meetmeatthehotel.com</p>
-          <p style="font-family:var(--fc);font-size:13px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase;margin-top:6px;">Oscar Room · IJdok 6 · Amsterdam</p>
+        <div class="venue-text">
+          <p>MeetMeAtTheHotel welcomes collaborations with industry partners, brands, labels and media platforms looking to host curated experiences during the week.</p>
+          <p>Submit your request and the MMATH team will review possibilities for your activation.</p>
+        </div>
+        <div class="apply-note">
+          <p>All experience requests are reviewed by the MMATH team. Availability is limited — we recommend submitting early. We will respond within 5 working days.</p>
         </div>
       </div>
       <form class="rv d1" onsubmit="sf(this,event)">
         <div class="field-row">
-          <div class="field"><label>First Name</label><input type="text" placeholder="First name" required></div>
-          <div class="field"><label>Last Name</label><input type="text" placeholder="Last name" required></div>
+          <div class="field"><label>Name</label><input type="text" placeholder="Your name" required></div>
+          <div class="field"><label>Company / Organisation</label><input type="text" placeholder="Your company" required></div>
         </div>
-        <div class="field"><label>Email</label><input type="email" placeholder="your@email.com" required></div>
-        <div class="field"><label>Label / Company</label><input type="text" placeholder="Your label or company" required></div>
+        <div class="field-row">
+          <div class="field"><label>Email</label><input type="email" placeholder="your@email.com" required></div>
+          <div class="field"><label>Phone (optional)</label><input type="tel" placeholder="+00 000 000 000"></div>
+        </div>
         <div class="field">
-          <label>Experience Type</label>
+          <label>Type of Experience</label>
           <select required>
             <option value="" disabled selected>Select experience type</option>
-            <option>Partner Showcase — €8,000</option>
-            <option>Full Night — €18,000</option>
-            <option>Branded Label Night — €32,000</option>
-            <option>Boat Event — from €6,500</option>
-            <option>Partner Gathering — from €4,000</option>
-            <option>Curated Dinner — invite only</option>
-            <option>Custom / Not sure yet</option>
+            <option>Showcase</option>
+            <option>Networking Event</option>
+            <option>Industry Dinner</option>
+            <option>Boat Experience</option>
+            <option>Other</option>
           </select>
         </div>
         <div class="field">
-          <label>Preferred Night</label>
+          <label>Preferred Space</label>
+          <select required>
+            <option value="" disabled selected>Select preferred space</option>
+            <option>Oscar Room</option>
+            <option>Aitana Lounge</option>
+            <option>I-Dock / Eindhuis</option>
+            <option>Boat Experience</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Estimated Number of Guests</label>
+          <input type="text" placeholder="e.g. 80–120 guests">
+        </div>
+        <div class="field">
+          <label>Description of Proposed Activation</label>
+          <textarea placeholder="Tell us about your concept, artists, brand or organisation..."></textarea>
+        </div>
+        <div class="field">
+          <label>Preferred Date During the Week</label>
           <select>
-            <option value="" disabled selected>October week preference</option>
-            <option>Monday (opening night)</option>
+            <option value="" disabled selected>Select preferred date</option>
+            <option>Monday</option>
             <option>Tuesday</option>
             <option>Wednesday</option>
             <option>Thursday</option>
-            <option>Friday (peak night)</option>
+            <option>Friday</option>
             <option>Flexible</option>
           </select>
         </div>
-        <div class="field"><label>Tell us about your experience</label><textarea placeholder="Artists, concept, expected guests, any special requirements..."></textarea></div>
-        <button type="submit" class="btn bp" style="width:100%;margin-top:8px;">Send Experience Inquiry →</button>
+        <button type="submit" class="btn bp" style="width:100%;margin-top:8px">Submit Experience Request →</button>
       </form>
     </div>
   </div>
@@ -486,9 +459,9 @@ form{display:flex;flex-direction:column;gap:16px}
 function sf(f,e){
   e.preventDefault();
   const b=f.querySelector('button');
-  b.textContent='INQUIRY SENT ✓';
+  b.textContent='REQUEST SUBMITTED ✓';
   b.style.background='#2E7A74';
-  setTimeout(()=>{b.textContent='Send Experience Inquiry →';b.style.background='';f.reset()},3500);
+  setTimeout(()=>{b.textContent='Submit Experience Request →';b.style.background='';f.reset()},3500);
 }
 const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target)}}),{threshold:.08});
 document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
