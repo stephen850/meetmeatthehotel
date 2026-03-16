@@ -25,8 +25,6 @@ h4{font-size:clamp(16px,2vw,24px)}
 .btn{display:inline-block;font-family:var(--fc);font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:15px 36px;transition:all var(--tr);cursor:pointer;border:none}
 .bp{background:var(--teal);color:var(--blk)}.bp:hover{background:var(--deep);color:var(--wh)}
 .bo{border:1px solid var(--teal);color:var(--teal);background:transparent}.bo:hover{background:var(--teal);color:var(--blk)}
-
-/* NAV */
 .nav{position:fixed;top:0;left:0;right:0;height:var(--nav);display:flex;align-items:center;justify-content:space-between;padding:0 40px;z-index:1000;background:rgba(10,10,10,.95);border-bottom:1px solid var(--blkb);backdrop-filter:blur(16px)}
 .nl{display:flex;align-items:center;gap:28px}
 .nl a{font-family:var(--fc);font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--wd);transition:color var(--tr)}.nl a:hover{color:var(--wh)}
@@ -46,11 +44,15 @@ h4{font-size:clamp(16px,2vw,24px)}
 .ph-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(77,168,160,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(77,168,160,.04) 1px,transparent 1px);background-size:80px 80px}
 .ph-inner{position:relative;z-index:1}
 .ph-lead{font-family:var(--fc);font-size:clamp(15px,1.8vw,20px);font-weight:400;letter-spacing:.06em;color:var(--wd);max-width:680px;line-height:1.6;text-transform:uppercase;margin-top:20px}
+.ph-note{font-family:var(--fc);font-size:13px;letter-spacing:.08em;color:var(--wd);max-width:640px;line-height:1.7;margin-top:20px;padding:16px 20px;border-left:2px solid var(--teal);background:rgba(77,168,160,.05)}
 
 /* STRUCTURE TABS */
 .structure{padding:80px 0;border-bottom:1px solid var(--blkb);background:var(--blkm)}
 .tabs{display:flex;gap:2px;margin-bottom:2px}
-.tab{flex:1;padding:20px 24px;background:var(--blkc);border:1px solid var(--blkb);cursor:pointer;transition:all var(--tr);text-align:center}
+.tab{flex:1;padding:20px 24px;background:var(--blkc);border:1px solid var(--blkb);cursor:pointer;transition:all var(--tr);text-align:center;position:relative}
+.tab::after{content:'↑';position:absolute;bottom:8px;right:12px;font-family:var(--fc);font-size:10px;color:rgba(77,168,160,.4);letter-spacing:.1em;transition:color var(--tr)}
+.tab.active::after{display:none}
+.tab:not(.active):hover::after{color:var(--teal)}
 .tab.active{background:var(--teal);border-color:var(--teal)}
 .tab-title{font-family:var(--fd);font-size:22px;line-height:1;display:block}
 .tab.active .tab-title{color:var(--blk)}
@@ -73,30 +75,38 @@ h4{font-size:clamp(16px,2vw,24px)}
 .panel-features li::before{content:'→';color:var(--teal);flex-shrink:0}
 @media(max-width:768px){.tabs{flex-direction:column}.tab-panel.active{grid-template-columns:1fr}}
 
-/* 5 PILLARS */
-.pillars{padding:100px 0;border-bottom:1px solid var(--blkb)}
-.pillars-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;margin-top:60px}
-.pillar{background:var(--blkc);border:1px solid var(--blkb);padding:36px 24px;transition:all var(--tr);position:relative;overflow:hidden}
-.pillar::before{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--teal);transform:scaleX(0);transform-origin:left;transition:transform var(--tr)}
-.pillar:hover::before{transform:scaleX(1)}
-.pillar:hover{border-color:var(--teal)}
-.pillar-n{font-family:var(--fd);font-size:60px;color:var(--teal);opacity:.2;line-height:1;margin-bottom:16px}
-.pillar h4{font-size:20px;margin-bottom:12px;color:var(--wh)}
-.pillar p{font-size:12px;color:var(--wd);line-height:1.65}
-@media(max-width:900px){.pillars-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:480px){.pillars-grid{grid-template-columns:1fr}}
+/* PROGRAM CATEGORIES */
+.prog-cat{padding:100px 0;border-bottom:1px solid var(--blkb)}
+.prog-cat.dark{background:var(--blkm)}
+.prog-cat-num{font-family:var(--fd);font-size:100px;color:var(--teal);opacity:.06;line-height:1;margin-bottom:-16px}
+.prog-cat-desc{font-size:15px;color:var(--wd);line-height:1.8;font-weight:300;max-width:680px;margin-bottom:48px}
 
-/* FORMATS GRID */
-.formats{padding:100px 0;border-bottom:1px solid var(--blkb);background:var(--blkm)}
-.formats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:60px}
-.format{background:var(--blkc);border:1px solid var(--blkb);padding:32px 24px;transition:all var(--tr);cursor:default}
+/* FORMAT CARDS */
+.formats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
+.formats-grid.cols-3{grid-template-columns:repeat(3,1fr)}
+.format{background:var(--blkc);border:1px solid var(--blkb);padding:32px 24px;transition:all var(--tr)}
 .format:hover{border-color:var(--teal);background:var(--blk)}
 .format-icon{font-size:28px;margin-bottom:16px;display:block}
 .format h4{font-size:18px;margin-bottom:10px}
 .format p{font-size:12px;color:var(--wd);line-height:1.65}
 .format-tag{display:inline-block;font-family:var(--fc);font-size:10px;letter-spacing:.2em;color:var(--teal);text-transform:uppercase;margin-top:14px;border:1px solid rgba(77,168,160,.3);padding:4px 10px}
-@media(max-width:900px){.formats-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:480px){.formats-grid{grid-template-columns:1fr}}
+@media(max-width:900px){.formats-grid,.formats-grid.cols-3{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.formats-grid,.formats-grid.cols-3{grid-template-columns:1fr}}
+
+/* EXCHANGE BLOCK */
+.exchange-block{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.exchange-text p{font-size:15px;color:var(--wd);line-height:1.8;font-weight:300;margin-bottom:20px}
+.exchange-highlights{display:flex;flex-direction:column;gap:2px;margin:28px 0}
+.exh{background:var(--blkc);border:1px solid var(--blkb);padding:16px 20px;display:flex;align-items:center;gap:14px;font-family:var(--fc);font-size:12px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase;transition:border-color var(--tr)}
+.exh:hover{border-color:var(--teal)}
+.exh::before{content:'→';color:var(--teal);flex-shrink:0}
+.exchange-visual{background:var(--blkc);border:1px solid var(--blkb);padding:48px 40px;border-top:3px solid var(--teal)}
+.exchange-visual-tag{font-family:var(--fc);font-size:10px;font-weight:600;letter-spacing:.3em;color:var(--teal);text-transform:uppercase;border:1px solid rgba(77,168,160,.3);padding:5px 14px;display:inline-block;margin-bottom:32px}
+.exchange-stat{margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid var(--blkb)}
+.exchange-stat:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.exchange-stat-n{font-family:var(--fd);font-size:52px;color:var(--teal);line-height:1}
+.exchange-stat-l{font-family:var(--fc);font-size:10px;letter-spacing:.22em;color:var(--wd);text-transform:uppercase;margin-top:4px}
+@media(max-width:900px){.exchange-block{grid-template-columns:1fr}}
 
 /* ANNIVERSARY SPECIALS */
 .specials{padding:100px 0;border-bottom:1px solid var(--blkb)}
@@ -113,20 +123,25 @@ h4{font-size:clamp(16px,2vw,24px)}
 .special-detail{font-family:var(--fc);font-size:11px;letter-spacing:.15em;color:var(--pool);text-transform:uppercase}
 @media(max-width:768px){.specials-grid{grid-template-columns:1fr}.specials-hero-text{padding:32px}}
 
-/* ACCESS TIERS */
+/* HOW ACCESS WORKS */
 .access{padding:100px 0;border-bottom:1px solid var(--blkb);background:var(--blkm)}
-.access-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:60px}
-.tier{background:var(--blkc);border:1px solid var(--blkb);padding:36px 28px;transition:all var(--tr);position:relative}
-.tier.featured{border-color:var(--teal);background:linear-gradient(160deg,rgba(77,168,160,.08) 0%,var(--blkc) 50%)}
-.tier-badge{position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--teal);color:var(--blk);font-family:var(--fc);font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;padding:4px 14px;white-space:nowrap}
-.tier-name{font-family:var(--fd);font-size:32px;margin-bottom:6px}
-.tier-sub{font-family:var(--fc);font-size:11px;letter-spacing:.2em;color:var(--teal);text-transform:uppercase;margin-bottom:24px}
-.tier-list{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
-.tier-list li{font-size:13px;color:var(--wd);padding:8px 0;border-bottom:1px solid var(--blkb);display:flex;align-items:start;gap:10px;line-height:1.5}
-.tier-list li::before{content:'✓';color:var(--teal);flex-shrink:0;font-family:var(--fc)}
-.tier-list li.no{color:rgba(245,245,240,.25)}.tier-list li.no::before{content:'—';color:rgba(245,245,240,.2)}
-@media(max-width:900px){.access-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:480px){.access-grid{grid-template-columns:1fr}}
+.access-note{font-family:var(--fc);font-size:13px;letter-spacing:.08em;color:var(--wd);max-width:720px;line-height:1.75;margin-top:20px;margin-bottom:60px;padding:20px 24px;border:1px solid var(--blkb);border-left:3px solid var(--teal);background:rgba(77,168,160,.04)}
+.access-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:2px}
+.pathway{background:var(--blkc);border:1px solid var(--blkb);padding:32px 24px;display:flex;flex-direction:column;transition:border-color var(--tr);position:relative}
+.pathway:hover{border-color:var(--teal)}
+.pathway-type{font-family:var(--fc);font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;margin-bottom:20px;display:inline-block;padding:4px 10px;border:1px solid rgba(77,168,160,.3)}
+.pathway-type.rsvp{color:#7DCDC7;border-color:rgba(125,205,199,.4)}
+.pathway-type.apply{color:var(--teal);border-color:rgba(77,168,160,.4)}
+.pathway-type.book{color:var(--wd);border-color:var(--blkb)}
+.pathway-type.invite{color:var(--wd);border-color:var(--blkb)}
+.pathway-name{font-family:var(--fd);font-size:26px;margin-bottom:8px;line-height:.95}
+.pathway-sub{font-family:var(--fc);font-size:11px;letter-spacing:.15em;color:var(--teal);text-transform:uppercase;margin-bottom:20px}
+.pathway-steps{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:24px;flex:1}
+.pathway-steps li{font-size:12px;color:var(--wd);padding:7px 0;border-bottom:1px solid var(--blkb);display:flex;align-items:start;gap:8px;line-height:1.5}
+.pathway-steps li::before{content:'→';color:var(--teal);flex-shrink:0;font-family:var(--fc);font-size:11px}
+@media(max-width:1100px){.access-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:640px){.access-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:400px){.access-grid{grid-template-columns:1fr}}
 
 /* ALERT */
 .alert{padding:60px 0;background:var(--teal)}
@@ -147,8 +162,6 @@ h4{font-size:clamp(16px,2vw,24px)}
 .fb2 a:hover{color:var(--teal)}
 @media(max-width:900px){.fg{grid-template-columns:1fr 1fr;gap:40px}}
 @media(max-width:480px){.fg{grid-template-columns:1fr}.fb2{flex-direction:column;gap:12px}}
-
-/* REVEAL */
 .rv{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
 .rv.vis{opacity:1;transform:none}
 .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
@@ -156,7 +169,6 @@ h4{font-size:clamp(16px,2vw,24px)}
 </head>
 <body>
 
-<!-- NAV -->
 <nav class="nav">
   <a href="index.html" style="display:flex;align-items:center;">
     <img src="logo.png" alt="Meet Me at the Hotel" style="height:48px;width:auto;display:block;">
@@ -183,32 +195,34 @@ h4{font-size:clamp(16px,2vw,24px)}
   <div class="c ph-inner">
     <span class="lbl">October 2026 · Amsterdam</span>
     <h1>
-      <span style="display:block;color:var(--wh)">THE</span>
+      <span style="display:block;color:var(--wh)">THE MMATH</span>
       <span style="display:block;color:var(--teal)">PROGRAM.</span>
     </h1>
-    <p class="ph-lead">Five days. Three formats. Eight worlds. One hotel. The full experience — curated exclusively for the dance industry.</p>
+    <p class="ph-lead">How the global nightlife industry connects throughout the week.</p>
+    <p class="ph-note">Access to MMATH is curated. Some parts of the program require RSVP approval, while others require a formal application.</p>
   </div>
 </section>
 
-<!-- STRUCTURE: DAY / EVENING / INVITE -->
+<!-- STRUCTURE: DAY / EVENING / PRIVATE ACCESS -->
 <section class="structure">
   <div class="c">
     <span class="lbl rv">Program Structure</span>
-    <h2 class="rv">Day. Evening.<br><span class="teal">Invite Only.</span></h2>
+    <h2 class="rv">Day. Night.<br><span class="teal">Private Access.</span></h2>
   </div>
   <div class="c" style="margin-top:48px;">
+    <p style="font-family:var(--fc);font-size:11px;letter-spacing:.2em;color:var(--wd);text-transform:uppercase;margin-bottom:16px" class="rv">Select a program layer below</p>
     <div class="tabs">
       <div class="tab active" onclick="switchTab(0)">
         <span class="tab-title">DAY</span>
-        <span class="tab-sub">09:00 – 18:00</span>
+        <span class="tab-sub">09:00 – 18:00 · Click to view</span>
       </div>
       <div class="tab" onclick="switchTab(1)">
-        <span class="tab-title">EVENING</span>
-        <span class="tab-sub">18:00 – 02:00</span>
+        <span class="tab-title">NIGHT</span>
+        <span class="tab-sub">18:00 – late · Click to view</span>
       </div>
       <div class="tab" onclick="switchTab(2)">
-        <span class="tab-title">INVITE ONLY</span>
-        <span class="tab-sub">Select Guests</span>
+        <span class="tab-title">PRIVATE ACCESS</span>
+        <span class="tab-sub">Select guests · Click to view</span>
       </div>
     </div>
     <div class="tab-panels">
@@ -219,50 +233,47 @@ h4{font-size:clamp(16px,2vw,24px)}
         </div>
         <div class="panel-text">
           <h3>The <span class="teal">Day Program</span></h3>
-          <p>The hotel transforms into the industry's busiest meeting place from 9am. Industry panels, innovation talks, brand sessions and curated networking — all accessible to hotel guests and registered day pass holders.</p>
+          <p>Industry conversations, meetings, networking and creator activity across the hotel. Open to approved hotel guests and verified day pass holders.</p>
           <ul class="panel-features">
-            <li>Industry panels & keynotes in the Oscar Room</li>
-            <li>Innovation & AI sessions — Meet Me Innovation stage</li>
-            <li>Brand activations throughout the lobby</li>
+            <li>Industry conversations & keynotes — Oscar Room</li>
+            <li>Innovation sessions — Meet Me Innovation stage</li>
+            <li>Brand activations throughout the hotel</li>
             <li>Industry Exchange meetings — pre-booked via the Exchange</li>
-            <li>Creator studio sessions — live podcast & video</li>
-            <li>Coffee & networking — Aitana Lounge · Industry Hub</li>
+            <li>Creator sessions — live podcast & video from the hotel floor</li>
+            <li>Open networking — Aitana Lounge · Industry Hub</li>
           </ul>
         </div>
       </div>
       <div class="tab-panel" id="panel-1">
         <div class="panel-img">
-          <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&q=80&fit=crop" alt="Evening program">
+          <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&q=80&fit=crop" alt="Night program">
           <div class="panel-img-overlay"></div>
         </div>
         <div class="panel-text">
-          <h3>The <span class="teal">Evening Program</span></h3>
-          <p>As the sun sets over the IJ, the energy shifts. The Oscar Room becomes Amsterdam's most exclusive showcase stage. Label nights, artist debuts and branded events run until the early hours — industry access only.</p>
+          <h3>The <span class="teal">Night Program</span></h3>
+          <p>Partner activations and curated experiences spread across all hotel venues. RSVP-based access — screened and approved by the MMATH team.</p>
           <ul class="panel-features">
-            <li>Oscar Room showcases — 132m², marina views</li>
-            <li>Label nights & branded showcase evenings</li>
-            <li>Aitana Lounge Bar — network drinks from 18:00</li>
-            <li>Boat events — private IJ canal experiences</li>
-            <li>Industry dinner series — invite only</li>
-            <li>After-sessions til 02:00</li>
+            <li><strong style="color:var(--wh);font-family:var(--fc);letter-spacing:.1em">OSCAR ROOM</strong> — Partner showcases, label nights & branded evenings · 132m² marina stage</li>
+            <li><strong style="color:var(--wh);font-family:var(--fc);letter-spacing:.1em">AITANA LOUNGE</strong> — Networking receptions, partner gatherings & branded activations from 18:00</li>
+            <li><strong style="color:var(--wh);font-family:var(--fc);letter-spacing:.1em">HOTEL SUITES</strong> — Private industry meetings, hosted conversations & closed-door sessions</li>
+            <li><strong style="color:var(--wh);font-family:var(--fc);letter-spacing:.1em">IJDOK</strong> — Boat events departing from the marina · 40 guests max · Private IJ canal experiences</li>
           </ul>
         </div>
       </div>
       <div class="tab-panel" id="panel-2">
         <div class="panel-img">
-          <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&q=80&fit=crop&crop=center" alt="Invite only">
+          <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&q=80&fit=crop&crop=center" alt="Private access">
           <div class="panel-img-overlay"></div>
         </div>
         <div class="panel-text">
-          <h3>The <span class="teal">Invite Only</span></h3>
-          <p>A curated layer of programming accessible only to select guests. CEOs, label heads, investors and senior creatives. Smaller rooms. Deeper conversations. No cameras, no stage.</p>
+          <h3>The <span class="teal">Private Access</span></h3>
+          <p>Closed-door sessions, executive roundtables, invite-only dinners and private conversations for senior industry professionals. Smaller groups, deeper dialogue.</p>
           <ul class="panel-features">
-            <li>CEO & Executive roundtables — 12 person max</li>
+            <li>Executive roundtables — 12 person max</li>
             <li>Investor sessions — closed door</li>
             <li>Industry Dinner — 200 leaders, 5th anniversary</li>
             <li>Label Office Hours — booking agent desk</li>
-            <li>Future of Dance Summit</li>
-            <li>Access via Hub Partner or Founding Partner tier</li>
+            <li>By partnership agreement or invitation</li>
           </ul>
         </div>
       </div>
@@ -270,95 +281,74 @@ h4{font-size:clamp(16px,2vw,24px)}
   </div>
 </section>
 
-<!-- 5 PILLARS -->
-<section class="pillars">
+<!-- HOW ACCESS WORKS — moved to prominent position after program structure -->
+<section class="access">
   <div class="c">
-    <span class="lbl rv">Program Pillars</span>
-    <h2 class="rv">Five pillars.<br><span class="teal">One week.</span></h2>
-    <div class="pillars-grid">
-      <div class="pillar rv">
-        <div class="pillar-n">01</div>
-        <h4>INDUSTRY HUB</h4>
-        <p>The open networking ecosystem. Informal meetings, coffee conversations, introductions — the community engine of the entire platform.</p>
-      </div>
-      <div class="pillar rv d1">
-        <div class="pillar-n">02</div>
-        <h4>INDUSTRY EXCHANGE</h4>
-        <p>Curated business meetings in the dedicated Business Lounge. Apply, get matched, and meet the right partners for bookings, deals and collaborations.</p>
-      </div>
-      <div class="pillar rv d2">
-        <div class="pillar-n">03</div>
-        <h4>UNIVERSE</h4>
-        <p>Meet Me Tech, Fashion Lab, Creator Lab, Future Culture — the branded verticals that expand the ecosystem across industry segments.</p>
-      </div>
-      <div class="pillar rv d1">
-        <div class="pillar-n">04</div>
-        <h4>SHOWCASES</h4>
-        <p>Live music in the Oscar Room. Label nights, artist debuts and branded evenings — the cultural heartbeat of the week.</p>
-      </div>
-      <div class="pillar rv d2">
-        <div class="pillar-n">05</div>
-        <h4>EXPERIENCES</h4>
-        <p>Boat events, partner gatherings, curated dinners and branded activations — experiential programming that deepens community and partner visibility.</p>
-      </div>
-    </div>
-  </div>
-</section>
+    <span class="lbl rv">How Access Works</span>
+    <h2 class="rv">Access<br><span class="teal">pathways.</span></h2>
+    <p class="access-note rv">MMATH is a curated platform for professionals in the global nightlife ecosystem. All RSVPs and applications are reviewed to ensure a relevant and high-quality environment.</p>
+    <div class="access-grid">
 
-<!-- PROGRAM FORMATS INDUSTRY HUB -->
-<section class="formats">
-  <div class="c">
-    <span class="lbl rv">Event Formats</span>
-    <h2 class="rv">Eight formats.<br><span class="teal"> One Industry.</span></h2>
-    <div class="formats-grid">
-      <div class="format rv">
-        <span class="format-icon">🎤</span>
-        <h4>KEYNOTES</h4>
-        <p>Industry leaders on the Oscar Room stage. The most important voices. The clearest thinking.</p>
-        <span class="format-tag">Oscar Room</span>
+      <div class="pathway rv">
+        <span class="pathway-type book">Hotel Guest</span>
+        <div class="pathway-name">HOTEL GUEST</div>
+        <div class="pathway-sub">Direct proximity</div>
+        <ul class="pathway-steps">
+          <li>Book a room at Room Mate Aitana Hotel</li>
+          <li>Receive proximity access to the MMATH environment</li>
+          <li>Program access subject to approval level</li>
+        </ul>
+        <a href="booking.html" class="btn bo" style="font-size:12px;padding:12px 24px;display:block;text-align:center">Book Your Stay →</a>
       </div>
-      <div class="format rv d1">
-        <span class="format-icon">🔵</span>
-        <h4>ROUNDTABLES</h4>
-        <p>12 people. One topic. Real conversation — no presentations, no pitching.</p>
-        <span class="format-tag">Invite Only</span>
+
+      <div class="pathway rv d1">
+        <span class="pathway-type rsvp">RSVP</span>
+        <div class="pathway-name">INDUSTRY HUB</div>
+        <div class="pathway-sub">Day access</div>
+        <ul class="pathway-steps">
+          <li>Submit RSVP as a verified industry professional</li>
+          <li>Reviewed by the MMATH team</li>
+          <li>Approved guests receive access confirmation</li>
+        </ul>
+        <a href="industry-hub.html#register" class="btn bp" style="font-size:12px;padding:12px 24px;display:block;text-align:center">RSVP for Hub Access →</a>
       </div>
-      <div class="format rv d2">
-        <span class="format-icon">🎧</span>
-        <h4>SHOWCASES</h4>
-        <p>Live music in the Oscar Room. Label nights, artist presentations, branded showcase evenings.</p>
-        <span class="format-tag">Evening</span>
+
+      <div class="pathway rv d2">
+        <span class="pathway-type rsvp">RSVP</span>
+        <div class="pathway-name">EVENING ACCESS</div>
+        <div class="pathway-sub">Showcases & activations</div>
+        <ul class="pathway-steps">
+          <li>RSVP for evening showcases and partner activations</li>
+          <li>Screened by the MMATH team</li>
+          <li>Approved guests receive evening confirmation</li>
+        </ul>
+        <a href="experiences.html" class="btn bo" style="font-size:12px;padding:12px 24px;display:block;text-align:center">RSVP for Evening Access →</a>
       </div>
-      <div class="format rv d3">
-        <span class="format-icon">🤝</span>
-        <h4>INDUSTRY EXCHANGE</h4>
-        <p>Pre-scheduled 20-min meetings in the Business Lounge. Apply to join, get matched, close deals.</p>
-        <span class="format-tag">Day · Pre-booked</span>
+
+      <div class="pathway rv d1">
+        <span class="pathway-type apply">Apply</span>
+        <div class="pathway-name">INDUSTRY EXCHANGE</div>
+        <div class="pathway-sub">Curated meetings</div>
+        <ul class="pathway-steps">
+          <li>Apply with your business objectives</li>
+          <li>Reviewed and matched by the MMATH team</li>
+          <li>Selected participants receive a curated meeting schedule</li>
+        </ul>
+        <a href="industry-exchange.html" class="btn bp" style="font-size:12px;padding:12px 24px;display:block;text-align:center">Apply for Exchange →</a>
       </div>
-      <div class="format rv">
-        <span class="format-icon">🎙️</span>
-        <h4>PODCAST STUDIO</h4>
-        <p>Live recordings from the hotel floor. The Creator Lab — open to registered creators.</p>
-        <span class="format-tag">Day</span>
+
+      <div class="pathway rv d2">
+        <span class="pathway-type invite">By Invitation</span>
+        <div class="pathway-name">PARTNER ACCESS</div>
+        <div class="pathway-sub">Full + private access</div>
+        <ul class="pathway-steps">
+          <li>By partnership agreement or invitation</li>
+          <li>Full program access including private events</li>
+          <li>Industry Dinner, roundtables and exclusive activations</li>
+        </ul>
+        <a href="partners.html" class="btn bo" style="font-size:12px;padding:12px 24px;display:block;text-align:center">Become a Partner →</a>
       </div>
-      <div class="format rv d1">
-        <span class="format-icon">⚡</span>
-        <h4>INNOVATION TALKS</h4>
-        <p>Music tech demos, AI in the studio, distribution futures. Short, sharp, forward-looking.</p>
-        <span class="format-tag">Day</span>
-      </div>
-      <div class="format rv d2">
-        <span class="format-icon">🚢</span>
-        <h4>BOAT EVENTS</h4>
-        <p>Private IJ canal cruises. 40 guests max. The most intimate MMATH experience.</p>
-        <span class="format-tag">Evening · Limited</span>
-      </div>
-      <div class="format rv d3">
-        <span class="format-icon">🍽️</span>
-        <h4>INDUSTRY DINNERS</h4>
-        <p>Seated dinners for decision-makers. Curated guest lists, structured conversation, exceptional food.</p>
-        <span class="format-tag">Invite Only</span>
-      </div>
+
     </div>
   </div>
 </section>
@@ -378,87 +368,18 @@ h4{font-size:clamp(16px,2vw,24px)}
         <h2 style="font-size:clamp(36px,6vw,80px);max-width:600px;">The milestone edition.</h2>
       </div>
     </div>
-    <div class="specials-grid">
+    <div class="specials-grid" style="grid-template-columns:1fr 1fr">
       <div class="special rv">
         <div class="special-badge">Anniversary Special</div>
         <h3>INDUSTRY DINNER</h3>
-        <p>200 of the dance industry's most influential leaders. One table. One night. Invite only — the defining evening of October 2026.</p>
-        <div class="special-detail">Invite Only · 200 Guests · Evening</div>
+        <p>200 of the dance industry's most influential leaders. One table. One night. The defining hospitality moment of October 2026.</p>
+        <div class="special-detail">Private Access · 200 Guests · Evening</div>
       </div>
       <div class="special rv d1">
         <div class="special-badge">Anniversary Special</div>
         <h3>INDUSTRY AWARDS</h3>
         <p>The first MMATH Industry Awards. Recognising the people and projects that shaped electronic music in 2026. Community-voted, industry-celebrated.</p>
-        <div class="special-detail">Oscar Room · Evening · All Guests</div>
-      </div>
-      <div class="special rv d2">
-        <div class="special-badge">Anniversary Special</div>
-        <h3>FUTURE OF DANCE SUMMIT</h3>
-        <p>A half-day summit on where electronic music goes next. The most forward-thinking voices in the room. Panels, provocations, and hard questions.</p>
-        <div class="special-detail">Day · Oscar Room · Registered Guests</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ACCESS TIERS -->
-<section class="access">
-  <div class="c">
-    <span class="lbl rv">Access Tiers</span>
-    <h2 class="rv">Your level.<br><span class="teal">Your access.</span></h2>
-    <div class="access-grid">
-      <div class="tier rv">
-        <div class="tier-name">HOTEL GUEST</div>
-        <div class="tier-sub">Full Hub Access</div>
-        <ul class="tier-list">
-          <li>Oscar Room day program</li>
-          <li>All day sessions & panels</li>
-          <li>Industry Hub — open networking</li>
-          <li>Aitana Lounge access</li>
-          <li class="no">Evening showcases (ticketed)</li>
-          <li class="no">Invite-only events</li>
-        </ul>
-        <a href="booking.html" class="btn bo" style="font-size:12px;padding:12px 24px;">Book a Room →</a>
-      </div>
-      <div class="tier featured rv d1">
-        <div class="tier-badge">Most Popular</div>
-        <div class="tier-name">DAY PASS</div>
-        <div class="tier-sub">Registered Industry</div>
-        <ul class="tier-list">
-          <li>Full day program access</li>
-          <li>All panels & talks</li>
-          <li>Industry Exchange — apply to join</li>
-          <li>Aitana Lounge access</li>
-          <li class="no">Evening showcases (ticketed)</li>
-          <li class="no">Invite-only events</li>
-        </ul>
-        <a href="industry-hub.html#register" class="btn bp" style="font-size:12px;padding:12px 24px;">Register →</a>
-      </div>
-      <div class="tier rv d2">
-        <div class="tier-name">SHOWCASE</div>
-        <div class="tier-sub">Evening Access</div>
-        <ul class="tier-list">
-          <li>Oscar Room evening access</li>
-          <li>Specific showcase events</li>
-          <li>Aitana Lounge evening</li>
-          <li class="no">Day program</li>
-          <li class="no">Industry Exchange</li>
-          <li class="no">Invite-only events</li>
-        </ul>
-        <a href="experiences.html" class="btn bo" style="font-size:12px;padding:12px 24px;">View Showcases →</a>
-      </div>
-      <div class="tier rv d3">
-        <div class="tier-name">PARTNER</div>
-        <div class="tier-sub">Full + Invite Only</div>
-        <ul class="tier-list">
-          <li>Full program access</li>
-          <li>Evening showcases included</li>
-          <li>Invite-only events</li>
-          <li>Industry Dinner access</li>
-          <li>Dedicated meeting room time</li>
-          <li>Brand activation space</li>
-        </ul>
-        <a href="partners.html" class="btn bo" style="font-size:12px;padding:12px 24px;">Become a Partner →</a>
+        <div class="special-detail">Oscar Room · Evening · Approved Guests</div>
       </div>
     </div>
   </div>
