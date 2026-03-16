@@ -151,9 +151,11 @@ h4{font-size:clamp(18px,2vw,26px)}
 
 <!-- HERO -->
 <section class="ph">
-  <div class="ph-grid"></div>
-  <div class="ph-glow"></div>
-  <div class="c ph-inner">
+  <div class="ph-img" style="position:absolute;inset:0;background-image:url('about-hero.jpg');background-size:cover;background-position:center 60%;opacity:0.35;z-index:0"></div>
+  <div class="ph-overlay" style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,10,.5) 0%,rgba(10,10,10,.3) 40%,rgba(10,10,10,.85) 80%,rgba(10,10,10,1) 100%);z-index:1"></div>
+  <div class="ph-grid" style="position:relative;z-index:2"></div>
+  <div class="ph-glow" style="position:relative;z-index:2"></div>
+  <div class="c ph-inner" style="position:relative;z-index:3">
     <span class="lbl">About MeetMeAtTheHotel</span>
     <h1>
       <span style="display:block;color:var(--wh)">THE STORY</span>
@@ -381,7 +383,7 @@ h4{font-size:clamp(18px,2vw,26px)}
     <div class="fg">
       <div class="fb">
         <img src="logo.png" alt="Meet Me at the Hotel" style="height:44px;width:auto;display:block;">
-        <p>The Global Hospitality Hub<br>of the Dance Industry.</p>
+        <p>MeetMeAtTheHotel is an international platform where the global music industry connects with culture, technology and creators.</p>
         <p class="fa">Room Mate Aitana Hotel · IJdok 6<br>Amsterdam · October 2026</p>
       </div>
       <div class="fcc">
