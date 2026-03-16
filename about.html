@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About — Meet Me at the Hotel · 5th Anniversary Edition</title>
+<title>Program — Meet Me at the Hotel · 5th Anniversary Edition</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 :root{--teal:#4DA8A0;--deep:#2E7A74;--pool:#7DCDC7;--blk:#0A0A0A;--blkm:#111;--blkc:#161616;--blkb:#222;--wh:#F5F5F0;--wd:rgba(245,245,240,0.6);--wd2:rgba(245,245,240,0.12);--fd:'Bebas Neue',sans-serif;--fc:'Barlow Condensed',sans-serif;--fb:'Barlow',sans-serif;--nav:72px;--tr:0.35s cubic-bezier(.4,0,.2,1)}
@@ -19,12 +19,12 @@ h1,h2,h3,h4{font-family:var(--fd);line-height:.93;text-transform:uppercase;lette
 h1{font-size:clamp(64px,10vw,140px)}
 h2{font-size:clamp(40px,6vw,84px)}
 h3{font-size:clamp(22px,3vw,40px)}
-h4{font-size:clamp(18px,2vw,26px)}
+h4{font-size:clamp(16px,2vw,24px)}
 .teal{color:var(--teal)}
 .lbl{font-family:var(--fc);font-size:11px;font-weight:600;letter-spacing:.28em;color:var(--teal);text-transform:uppercase;display:block;margin-bottom:16px}
-.btn{display:inline-block;font-family:var(--fc);font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:15px 36px;transition:all var(--tr);cursor:pointer}
+.btn{display:inline-block;font-family:var(--fc);font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:15px 36px;transition:all var(--tr);cursor:pointer;border:none}
 .bp{background:var(--teal);color:var(--blk)}.bp:hover{background:var(--deep);color:var(--wh)}
-.bo{border:1px solid var(--teal);color:var(--teal)}.bo:hover{background:var(--teal);color:var(--blk)}
+.bo{border:1px solid var(--teal);color:var(--teal);background:transparent}.bo:hover{background:var(--teal);color:var(--blk)}
 .nav{position:fixed;top:0;left:0;right:0;height:var(--nav);display:flex;align-items:center;justify-content:space-between;padding:0 40px;z-index:1000;background:rgba(10,10,10,.95);border-bottom:1px solid var(--blkb);backdrop-filter:blur(16px)}
 .nl{display:flex;align-items:center;gap:28px}
 .nl a{font-family:var(--fc);font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--wd);transition:color var(--tr)}.nl a:hover{color:var(--wh)}
@@ -38,84 +38,123 @@ h4{font-size:clamp(18px,2vw,26px)}
   .nl a{font-size:20px}
 }
 
-/* HERO */
-.ph{padding-top:calc(var(--nav) + 80px);padding-bottom:80px;position:relative;overflow:hidden;background:#0a1412;border-bottom:1px solid var(--blkb)}
-.ph-img{position:absolute;inset:0;background-image:url('about-hero.jpg');background-size:cover;background-position:center 50%;opacity:0.25}
+/* PAGE HERO */
+.ph{padding-top:calc(var(--nav) + 80px);padding-bottom:80px;min-height:70vh;display:flex;align-items:center;position:relative;overflow:hidden;background:#0a1412;border-bottom:1px solid var(--blkb)}
+.ph-img{position:absolute;inset:0;background-image:url('program-hero.jpg');background-size:cover;background-position:center 25%;opacity:0.45}
 .ph-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(77,168,160,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(77,168,160,.04) 1px,transparent 1px);background-size:80px 80px}
-.ph-glow{position:absolute;top:-200px;left:-100px;width:600px;height:600px;background:radial-gradient(circle,rgba(77,168,160,.06) 0%,transparent 65%);pointer-events:none}
-.ph-inner{position:relative;z-index:1;max-width:900px}
+.ph-inner{position:relative;z-index:1}
 .ph-lead{font-family:var(--fc);font-size:clamp(15px,1.8vw,20px);font-weight:400;letter-spacing:.06em;color:var(--wd);max-width:680px;line-height:1.6;text-transform:uppercase;margin-top:20px}
+.ph-note{font-family:var(--fc);font-size:13px;letter-spacing:.08em;color:var(--wd);max-width:640px;line-height:1.7;margin-top:20px;padding:16px 20px;border-left:2px solid var(--teal);background:rgba(77,168,160,.05)}
 
-/* MANIFESTO */
-.manifesto{padding:120px 0;border-bottom:1px solid var(--blkb)}
-.manifesto-inner{display:grid;grid-template-columns:1fr 2fr;gap:100px;align-items:start}
-.manifesto-label{padding-top:12px}
-.manifesto-label p{font-size:13px;color:var(--wd);line-height:1.75;font-weight:300;margin-top:16px}
-.manifesto-text{font-family:var(--fd);font-size:clamp(28px,4vw,52px);line-height:1.08;color:var(--wh)}
-.manifesto-text em{color:var(--teal);font-style:normal}
-@media(max-width:768px){.manifesto-inner{grid-template-columns:1fr;gap:40px}}
+/* STRUCTURE TABS */
+.structure{padding:80px 0;border-bottom:1px solid var(--blkb);background:var(--blkm)}
+.tabs{display:flex;gap:2px;margin-bottom:2px}
+.tab{flex:1;padding:20px 24px;background:var(--blkc);border:1px solid var(--blkb);cursor:pointer;transition:all var(--tr);text-align:center;position:relative}
+.tab::after{content:'↑';position:absolute;bottom:8px;right:12px;font-family:var(--fc);font-size:10px;color:rgba(77,168,160,.4);letter-spacing:.1em;transition:color var(--tr)}
+.tab.active::after{display:none}
+.tab:not(.active):hover::after{color:var(--teal)}
+.tab.active{background:var(--teal);border-color:var(--teal)}
+.tab-title{font-family:var(--fd);font-size:22px;line-height:1;display:block}
+.tab.active .tab-title{color:var(--blk)}
+.tab:not(.active) .tab-title{color:var(--wh)}
+.tab-sub{font-family:var(--fc);font-size:10px;letter-spacing:.22em;text-transform:uppercase;margin-top:6px;display:block}
+.tab.active .tab-sub{color:rgba(10,10,10,.6)}
+.tab:not(.active) .tab-sub{color:var(--wd)}
+.tab:not(.active):hover{background:var(--blk);border-color:var(--teal)}
+.tab-panels{border:1px solid var(--blkb);border-top:none}
+.tab-panel{display:none;padding:48px}
+.tab-panel.active{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.panel-img{position:relative;overflow:hidden}
+.panel-img img{width:100%;aspect-ratio:16/10;object-fit:cover;filter:brightness(.7) saturate(.8);display:block}
+.panel-img-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(77,168,160,.15) 0%,transparent 60%)}
+.panel-text h3{font-size:36px;margin-bottom:16px}
+.panel-text p{font-size:14px;color:var(--wd);line-height:1.8;margin-bottom:24px;font-weight:300}
+.panel-features{list-style:none;display:flex;flex-direction:column;gap:12px}
+.panel-features li{font-family:var(--fc);font-size:13px;letter-spacing:.08em;color:var(--wd);text-transform:uppercase;padding:12px 16px;border:1px solid var(--blkb);display:flex;align-items:center;gap:12px;transition:border-color var(--tr)}
+.panel-features li:hover{border-color:var(--teal)}
+.panel-features li::before{content:'→';color:var(--teal);flex-shrink:0}
+@media(max-width:768px){.tabs{flex-direction:column}.tab-panel.active{grid-template-columns:1fr}}
 
-/* STORY SECTIONS */
-.story{padding:100px 0;border-bottom:1px solid var(--blkb)}
-.story.dark{background:var(--blkm)}
-.story-inner{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:start}
-.story-inner.flip{direction:rtl}.story-inner.flip>*{direction:ltr}
-.story-num{font-family:var(--fd);font-size:120px;color:var(--teal);opacity:.06;line-height:1;margin-bottom:-20px}
-.story-text p{font-size:16px;color:var(--wd);line-height:1.85;font-weight:300;margin-bottom:24px}
-.story-text p:last-child{margin-bottom:0}
-.story-visual{position:relative;overflow:hidden}
-.story-visual img{width:100%;object-fit:cover;filter:brightness(.7) saturate(.8);display:block;transition:transform .8s ease}
-.story-visual:hover img{transform:scale(1.03)}
-.story-tint{position:absolute;inset:0;background:linear-gradient(135deg,rgba(77,168,160,.12) 0%,transparent 60%)}
-.story-aside{background:var(--blkc);border:1px solid var(--blkb);border-left:3px solid var(--teal);padding:32px}
-.story-aside-lbl{font-family:var(--fc);font-size:10px;font-weight:600;letter-spacing:.28em;color:var(--teal);text-transform:uppercase;display:block;margin-bottom:14px}
-.story-aside p{font-size:14px;color:var(--wd);line-height:1.75;font-weight:300}
-@media(max-width:900px){.story-inner,.story-inner.flip{grid-template-columns:1fr;direction:ltr}}
+/* PROGRAM CATEGORIES */
+.prog-cat{padding:100px 0;border-bottom:1px solid var(--blkb)}
+.prog-cat.dark{background:var(--blkm)}
+.prog-cat-num{font-family:var(--fd);font-size:100px;color:var(--teal);opacity:.06;line-height:1;margin-bottom:-16px}
+.prog-cat-desc{font-size:15px;color:var(--wd);line-height:1.8;font-weight:300;max-width:680px;margin-bottom:48px}
 
-/* STATS ROW */
-.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:40px}
-.sr{background:var(--blkc);border:1px solid var(--blkb);padding:24px;text-align:center;transition:border-color var(--tr)}
-.sr:hover{border-color:var(--teal)}
-.sr-n{font-family:var(--fd);font-size:40px;color:var(--teal);line-height:1}
-.sr-l{font-family:var(--fc);font-size:10px;letter-spacing:.2em;color:var(--wd);text-transform:uppercase;margin-top:6px}
+/* FORMAT CARDS */
+.formats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
+.formats-grid.cols-3{grid-template-columns:repeat(3,1fr)}
+.format{background:var(--blkc);border:1px solid var(--blkb);padding:32px 24px;transition:all var(--tr)}
+.format:hover{border-color:var(--teal);background:var(--blk)}
+.format-icon{font-size:28px;margin-bottom:16px;display:block}
+.format h4{font-size:18px;margin-bottom:10px}
+.format p{font-size:12px;color:var(--wd);line-height:1.65}
+.format-tag{display:inline-block;font-family:var(--fc);font-size:10px;letter-spacing:.2em;color:var(--teal);text-transform:uppercase;margin-top:14px;border:1px solid rgba(77,168,160,.3);padding:4px 10px}
+@media(max-width:900px){.formats-grid,.formats-grid.cols-3{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.formats-grid,.formats-grid.cols-3{grid-template-columns:1fr}}
 
-/* TIMELINE */
-.tl{padding:100px 0;border-bottom:1px solid var(--blkb)}
-.tl-grid{display:grid;grid-template-columns:repeat(5,1fr);margin-top:60px;border:1px solid var(--blkb)}
-.tl-item{padding:40px 28px;border-right:1px solid var(--blkb);transition:background var(--tr);position:relative}
-.tl-item:last-child{border-right:none}
-.tl-item:hover{background:var(--blkc)}
-.tl-item.now{background:var(--blkc);border-top:3px solid var(--teal)}
-.tl-year{font-family:var(--fd);font-size:56px;line-height:1;margin-bottom:14px}
-.tl-item h4{font-size:16px;margin-bottom:10px;color:var(--wh)}
-.tl-item p{font-size:13px;color:var(--wd);line-height:1.65}
-@media(max-width:900px){.tl-grid{grid-template-columns:1fr 1fr}.tl-item:nth-child(2){border-right:none}.tl-item{border-top:1px solid var(--blkb)}}
-@media(max-width:480px){.tl-grid{grid-template-columns:1fr}}
+/* EXCHANGE BLOCK */
+.exchange-block{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.exchange-text p{font-size:15px;color:var(--wd);line-height:1.8;font-weight:300;margin-bottom:20px}
+.exchange-highlights{display:flex;flex-direction:column;gap:2px;margin:28px 0}
+.exh{background:var(--blkc);border:1px solid var(--blkb);padding:16px 20px;display:flex;align-items:center;gap:14px;font-family:var(--fc);font-size:12px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase;transition:border-color var(--tr)}
+.exh:hover{border-color:var(--teal)}
+.exh::before{content:'→';color:var(--teal);flex-shrink:0}
+.exchange-visual{background:var(--blkc);border:1px solid var(--blkb);padding:48px 40px;border-top:3px solid var(--teal)}
+.exchange-visual-tag{font-family:var(--fc);font-size:10px;font-weight:600;letter-spacing:.3em;color:var(--teal);text-transform:uppercase;border:1px solid rgba(77,168,160,.3);padding:5px 14px;display:inline-block;margin-bottom:32px}
+.exchange-stat{margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid var(--blkb)}
+.exchange-stat:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.exchange-stat-n{font-family:var(--fd);font-size:52px;color:var(--teal);line-height:1}
+.exchange-stat-l{font-family:var(--fc);font-size:10px;letter-spacing:.22em;color:var(--wd);text-transform:uppercase;margin-top:4px}
+@media(max-width:900px){.exchange-block{grid-template-columns:1fr}}
 
-/* VENUE */
-.venue{padding:100px 0;border-bottom:1px solid var(--blkb);background:var(--blkm)}
-.venue-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;margin-top:60px}
-.venue-text p{font-size:15px;color:var(--wd);line-height:1.8;font-weight:300;margin-bottom:18px}
-.venue-specs{list-style:none;margin-top:28px}
-.venue-specs li{font-family:var(--fc);font-size:13px;letter-spacing:.08em;color:var(--wd);text-transform:uppercase;padding:12px 0;border-bottom:1px solid var(--blkb);display:flex;align-items:center;gap:12px}
-.venue-specs li::before{content:'→';color:var(--teal)}
-.venue-photo{position:relative;overflow:hidden}
-.venue-photo img{width:100%;aspect-ratio:4/3;object-fit:cover;filter:brightness(.75) saturate(.8);display:block}
-.venue-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(77,168,160,.1) 0%,transparent 60%)}
-.venue-map{margin-top:2px;background:var(--blkc);border:1px solid var(--blkb);padding:28px;display:flex;flex-direction:column;align-items:flex-start;gap:10px}
-.venue-map span{font-family:var(--fc);font-size:12px;letter-spacing:.15em;color:var(--wd);text-transform:uppercase}
-@media(max-width:900px){.venue-inner{grid-template-columns:1fr;gap:48px}}
+/* ANNIVERSARY SPECIALS */
+.specials{padding:100px 0;border-bottom:1px solid var(--blkb)}
+.specials-hero{position:relative;overflow:hidden;margin-bottom:2px}
+.specials-hero img{width:100%;height:400px;object-fit:cover;filter:brightness(.5) saturate(.7);display:block}
+.specials-hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(10,10,10,.9) 0%,rgba(10,10,10,.3) 100%)}
+.specials-hero-text{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:60px}
+.specials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.special{background:var(--blkc);border:1px solid var(--blkb);padding:40px 32px;border-top:3px solid var(--teal);transition:background var(--tr)}
+.special:hover{background:var(--blk)}
+.special-badge{display:inline-block;font-family:var(--fc);font-size:10px;letter-spacing:.22em;color:var(--teal);text-transform:uppercase;border:1px solid rgba(77,168,160,.4);padding:4px 12px;margin-bottom:20px}
+.special h3{font-size:28px;margin-bottom:12px}
+.special p{font-size:13px;color:var(--wd);line-height:1.7;margin-bottom:20px;font-weight:300}
+.special-detail{font-family:var(--fc);font-size:11px;letter-spacing:.15em;color:var(--pool);text-transform:uppercase}
+@media(max-width:768px){.specials-grid{grid-template-columns:1fr}.specials-hero-text{padding:32px}}
 
-/* VISION */
-.vision{padding:120px 0;text-align:center;background:radial-gradient(ellipse 80% 100% at 50% 50%,rgba(77,168,160,.05) 0%,transparent 70%),var(--blk)}
-.vision-text{font-family:var(--fd);font-size:clamp(24px,4vw,52px);line-height:1.08;max-width:860px;margin:0 auto;color:var(--wh)}
-.vision-text em{color:var(--teal);font-style:normal}
+/* HOW ACCESS WORKS */
+.access{padding:100px 0;border-bottom:1px solid var(--blkb);background:var(--blkm)}
+.access-note{font-family:var(--fc);font-size:13px;letter-spacing:.08em;color:var(--wd);max-width:720px;line-height:1.75;margin-top:20px;margin-bottom:60px;padding:20px 24px;border:1px solid var(--blkb);border-left:3px solid var(--teal);background:rgba(77,168,160,.04)}
+.access-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:2px}
+.pathway{background:var(--blkc);border:1px solid var(--blkb);padding:32px 24px;display:flex;flex-direction:column;transition:border-color var(--tr);position:relative}
+.pathway:hover{border-color:var(--teal)}
+.pathway-type{font-family:var(--fc);font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;margin-bottom:20px;display:inline-block;padding:4px 10px;border:1px solid rgba(77,168,160,.3)}
+.pathway-type.rsvp{color:#7DCDC7;border-color:rgba(125,205,199,.4)}
+.pathway-type.apply{color:var(--teal);border-color:rgba(77,168,160,.4)}
+.pathway-type.book{color:var(--wd);border-color:var(--blkb)}
+.pathway-type.invite{color:var(--wd);border-color:var(--blkb)}
+.pathway-name{font-family:var(--fd);font-size:26px;margin-bottom:8px;line-height:.95}
+.pathway-sub{font-family:var(--fc);font-size:11px;letter-spacing:.15em;color:var(--teal);text-transform:uppercase;margin-bottom:20px}
+.pathway-steps{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:24px;flex:1}
+.pathway-steps li{font-size:12px;color:var(--wd);padding:7px 0;border-bottom:1px solid var(--blkb);display:flex;align-items:start;gap:8px;line-height:1.5}
+.pathway-steps li::before{content:'→';color:var(--teal);flex-shrink:0;font-family:var(--fc);font-size:11px}
+@media(max-width:1100px){.access-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:640px){.access-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:400px){.access-grid{grid-template-columns:1fr}}
+
+/* ALERT */
+.alert{padding:60px 0;background:var(--teal)}
+.alert-inner{display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
+.alert h3{font-size:clamp(28px,4vw,52px);color:var(--blk)}
+.alert p{font-family:var(--fc);font-size:14px;letter-spacing:.1em;color:rgba(10,10,10,.65);text-transform:uppercase;margin-top:8px}
+.btn-blk{background:var(--blk);color:var(--wh);font-family:var(--fc);font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:15px 36px;transition:all var(--tr);display:inline-block}.btn-blk:hover{background:#1a1a1a}
 
 /* FOOTER */
 .ft{padding:80px 0 40px;background:var(--blkc);border-top:1px solid var(--blkb)}
 .fg{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:60px}
 .fb p{font-size:13px;color:var(--wd);margin-top:20px;line-height:1.75;font-weight:300}
-.fa{margin-top:10px;opacity:.4;font-size:12px}
+.fadr{margin-top:10px;opacity:.4;font-size:12px}
 .fcc{display:flex;flex-direction:column;gap:12px}
 .fct{font-family:var(--fc);font-size:10px;font-weight:600;letter-spacing:.3em;color:var(--teal);text-transform:uppercase;margin-bottom:4px}
 .fcc a{font-family:var(--fc);font-size:13px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase;transition:color var(--tr)}.fcc a:hover{color:var(--teal)}
@@ -135,8 +174,8 @@ h4{font-size:clamp(18px,2vw,26px)}
     <img src="logo.png" alt="Meet Me at the Hotel" style="height:48px;width:auto;display:block;">
   </a>
   <div class="nl" id="nl">
-    <a href="about.html" style="color:var(--teal)">About</a>
-    <a href="program.html">Program</a>
+    <a href="about.html">About</a>
+    <a href="program.html" style="color:var(--teal)">Program</a>
     <a href="universe.html">Universe</a>
     <a href="industry-hub.html">Industry Hub</a>
     <a href="industry-exchange.html">Industry Exchange</a>
@@ -150,229 +189,212 @@ h4{font-size:clamp(18px,2vw,26px)}
   </div>
 </nav>
 
-<!-- HERO -->
+<!-- PAGE HERO -->
 <section class="ph">
   <div class="ph-img"></div>
   <div class="ph-grid"></div>
-  <div class="ph-glow"></div>
   <div class="c ph-inner">
-    <span class="lbl">About MeetMeAtTheHotel</span>
+    <span class="lbl">October 2026 · Amsterdam</span>
     <h1>
-      <span style="display:block;color:var(--wh)">THE STORY</span>
-      <span style="display:block;color:var(--teal)">BEHIND THE</span>
-      <span style="display:block;color:var(--wh)">PLATFORM.</span>
+      <span style="display:block;color:var(--wh)">THE MMATH</span>
+      <span style="display:block;color:var(--teal)">PROGRAM.</span>
     </h1>
-    <p class="ph-lead">MeetMeAtTheHotel is an international platform where the global music industry connects with culture, technology and creators. This is where it came from, what it stands for, and where it is going.</p>
+    <p class="ph-lead">How the global music industry connects throughout the week.</p>
+    <p class="ph-note">Access to MMATH is curated. Some parts of the program require RSVP approval, while others require a formal application.</p>
   </div>
 </section>
 
-<!-- MANIFESTO -->
-<section class="manifesto">
+<!-- STRUCTURE: DAY / EVENING / PRIVATE ACCESS -->
+<section class="structure">
   <div class="c">
-    <div class="manifesto-inner">
-      <div class="manifesto-label rv">
-        <span class="lbl">The Idea</span>
-        <p>The conviction that the best industry moments happen outside the conference room — and that the right environment changes everything.</p>
+    <span class="lbl rv">Program Structure</span>
+    <h2 class="rv">Day. Night.<br><span class="teal">Private Access.</span></h2>
+  </div>
+  <div class="c" style="margin-top:48px;">
+    <p style="font-family:var(--fc);font-size:11px;letter-spacing:.2em;color:var(--wd);text-transform:uppercase;margin-bottom:16px" class="rv">Select a program layer below</p>
+    <div class="tabs">
+      <div class="tab active" onclick="switchTab(0)">
+        <span class="tab-title">DAY</span>
+        <span class="tab-sub">09:00 – 18:00 · Click to view</span>
       </div>
-      <div class="manifesto-text rv d1">
-        The most valuable conversations<br>
-        in the industry<br>
-        don't happen on stage.<br>
-        <em>They happen between sessions.</em><br><br>
-        Over coffee. At the bar.<br>
-        In a hotel corridor.<br><br>
-        MMATH makes that space<br>
-        <em>intentional.</em>
+      <div class="tab" onclick="switchTab(1)">
+        <span class="tab-title">NIGHT</span>
+        <span class="tab-sub">18:00 – late · Click to view</span>
+      </div>
+      <div class="tab" onclick="switchTab(2)">
+        <span class="tab-title">PRIVATE ACCESS</span>
+        <span class="tab-sub">Select guests · Click to view</span>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- 1. WHY IT EXISTS -->
-<section class="story">
-  <div class="c">
-    <div class="story-inner">
-      <div class="rv">
-        <div class="story-num">01</div>
-        <span class="lbl">The Idea Behind MeetMeAtTheHotel</span>
-        <h2>Why it<br><span class="teal">exists.</span></h2>
-      </div>
-      <div class="rv d1">
-        <div class="story-text">
-          <p>The global music industry brings together artists, agencies, clubs, festivals, brands and innovators from around the world. While these communities regularly meet at events and performances, there are few environments specifically designed for meaningful industry interaction.</p>
-          <p>MeetMeAtTheHotel was created to provide such an environment — a place where professionals can meet, exchange ideas and develop collaborations within a hospitality-driven setting.</p>
-          <p>The concept is simple: concentrate the right people in one place, give them the right environment, and let the industry do what it does best.</p>
+    <div class="tab-panels">
+      <div class="tab-panel active" id="panel-0">
+        <div class="panel-img">
+          <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80&fit=crop" alt="Day program">
+          <div class="panel-img-overlay"></div>
         </div>
-        <div class="story-aside" style="margin-top:40px">
-          <span class="story-aside-lbl">Founded</span>
-          <p>MeetMeAtTheHotel launched its first edition in 2022. What began as a focused gathering of industry professionals has grown into an international platform with participants from over 45 countries.</p>
+        <div class="panel-text">
+          <h3>The <span class="teal">Day Program</span></h3>
+          <p>Industry conversations, meetings, networking and creator activity across the hotel. Open to approved hotel guests and verified day pass holders.</p>
+          <ul class="panel-features">
+            <li>Industry conversations & keynotes — Oscar Room</li>
+            <li>Innovation sessions — Meet Me Innovation stage</li>
+            <li>Brand activations throughout the hotel</li>
+            <li>Industry Exchange meetings — pre-booked via the Exchange</li>
+            <li>Creator sessions — live podcast & video from the hotel floor</li>
+            <li>Open networking — Aitana Lounge · Industry Hub</li>
+          </ul>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- 2. A DIFFERENT KIND OF ENVIRONMENT -->
-<section class="story dark">
-  <div class="c">
-    <div class="story-inner flip">
-      <div class="story-visual rv">
-        <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&q=80&fit=crop&crop=center" alt="Hotel environment" style="aspect-ratio:4/3">
-        <div class="story-tint"></div>
-      </div>
-      <div class="rv d1">
-        <div class="story-num">02</div>
-        <span class="lbl">A Different Kind of Industry Environment</span>
-        <h2>Not a typical<br><span class="teal">conference.</span></h2>
-        <div class="story-text" style="margin-top:24px">
-          <p>Unlike traditional conferences or trade shows, MeetMeAtTheHotel takes place in a hospitality-driven environment. This setting encourages natural conversations, informal meetings and spontaneous collaborations between industry professionals.</p>
-          <p>While the platform may host talks, discussions or curated conversations, the atmosphere remains fundamentally different from a conventional conference environment.</p>
-          <p>By combining hospitality with industry interaction, MeetMeAtTheHotel creates a unique setting where relationships develop naturally — beyond the formality of conference halls, the intensity of festivals or the pressure of a traditional trade floor.</p>
-          <p>Not a conference. Not a club night. Something in between — and something much more valuable.</p>
+      <div class="tab-panel" id="panel-1">
+        <div class="panel-img">
+          <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&q=80&fit=crop" alt="Night program">
+          <div class="panel-img-overlay"></div>
+        </div>
+        <div class="panel-text">
+          <h3>The <span class="teal">Night Program</span></h3>
+          <p>Partner activations and curated experiences spread across all hotel venues. RSVP-based access — screened and approved by the MMATH team.</p>
+          <ul class="panel-features">
+            <li><strong style="color:var(--wh);font-family:var(--fc);letter-spacing:.1em">OSCAR ROOM</strong> — Partner showcases, label nights & branded evenings · 132m² marina stage</li>
+            <li><strong style="color:var(--wh);font-family:var(--fc);letter-spacing:.1em">AITANA LOUNGE</strong> — Networking receptions, partner gatherings & branded activations from 18:00</li>
+            <li><strong style="color:var(--wh);font-family:var(--fc);letter-spacing:.1em">HOTEL SUITES</strong> — Private industry meetings, hosted conversations & closed-door sessions</li>
+            <li><strong style="color:var(--wh);font-family:var(--fc);letter-spacing:.1em">IJDOK</strong> — Boat events departing from the marina · 40 guests max · Private IJ canal experiences</li>
+          </ul>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- 3. GLOBAL COMMUNITY -->
-<section class="story">
-  <div class="c">
-    <div class="story-inner">
-      <div class="rv">
-        <div class="story-num">03</div>
-        <span class="lbl">A Global Industry Community</span>
-        <h2>Who is<br><span class="teal">in the room.</span></h2>
-      </div>
-      <div class="rv d1">
-        <div class="story-text">
-          <p>Each edition brings together a diverse group of professionals from across the global music industry. Participants include artists, booking agencies, festival organizers, club operators, brands, media platforms and technology innovators who all contribute to shaping the future of music culture.</p>
-          <p>The platform is international by design. With participants from over 45 countries, conversations at MeetMeAtTheHotel reflect the truly global nature of the dance music industry — and the opportunities that come with it.</p>
+      <div class="tab-panel" id="panel-2">
+        <div class="panel-img">
+          <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&q=80&fit=crop&crop=center" alt="Private access">
+          <div class="panel-img-overlay"></div>
         </div>
-        <div class="stats-row">
-          <div class="sr"><div class="sr-n">45+</div><div class="sr-l">Nationalities</div></div>
-          <div class="sr"><div class="sr-n">7K+</div><div class="sr-l">Total Guests</div></div>
-          <div class="sr"><div class="sr-n">100%</div><div class="sr-l">B2B Only</div></div>
+        <div class="panel-text">
+          <h3>The <span class="teal">Private Access</span></h3>
+          <p>Closed-door sessions, executive roundtables, invite-only dinners and private conversations for senior industry professionals. Smaller groups, deeper dialogue.</p>
+          <ul class="panel-features">
+            <li>Executive roundtables — 12 person max</li>
+            <li>Investor sessions — closed door</li>
+            <li>Industry Dinner — 200 leaders, 5th anniversary</li>
+            <li>Label Office Hours — booking agent desk</li>
+            <li>By partnership agreement or invitation</li>
+          </ul>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 4. THE TEAM -->
-<section class="story dark">
+<!-- HOW ACCESS WORKS — moved to prominent position after program structure -->
+<section class="access">
   <div class="c">
-    <div class="story-inner flip">
-      <div class="story-visual rv">
-        <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=800&q=80&fit=crop&crop=faces" alt="Team" style="aspect-ratio:4/3">
-        <div class="story-tint"></div>
-      </div>
-      <div class="rv d1">
-        <div class="story-num">04</div>
-        <span class="lbl">The People Behind the Platform</span>
-        <h2>Built by<br><span class="teal">industry.</span></h2>
-        <div class="story-text" style="margin-top:24px">
-          <p>MeetMeAtTheHotel is driven by a team of industry professionals with more than 26 years of combined experience across festivals, event production, artist management, bookings and multiple sectors of the global music industry.</p>
-          <p>Their combined experience helps shape a platform that understands both the creative and business dynamics of the ecosystem — and why the right environment matters as much as the right guest list.</p>
-        </div>
-        <div class="story-aside" style="margin-top:32px">
-          <span class="story-aside-lbl">Team credentials</span>
-          <p>Festival production · Artist management · International bookings · Brand partnerships · Event strategy · Content & media</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    <span class="lbl rv">How Access Works</span>
+    <h2 class="rv">Access<br><span class="teal">pathways.</span></h2>
+    <p class="access-note rv">MMATH is a curated platform for professionals in the global music industry. All RSVPs and applications are reviewed to ensure a relevant and high-quality environment.</p>
+    <div class="access-grid">
 
-<!-- TIMELINE -->
-<section class="tl">
-  <div class="c">
-    <span class="lbl rv">Five Years</span>
-    <h2 class="rv">From gathering<br><span class="teal">to platform.</span></h2>
-    <div class="tl-grid">
-      <div class="tl-item rv">
-        <div class="tl-year teal">2022</div>
-        <h4>THE BEGINNING</h4>
-        <p>First edition. A bold idea — concentrate the dance industry under one hotel roof. 400 guests. The vision proved right.</p>
-      </div>
-      <div class="tl-item rv d1">
-        <div class="tl-year teal">2023</div>
-        <h4>GROWING UP</h4>
-        <p>700 industry guests. First branded showcases. The Oscar Room becomes the industry's most talked-about stage during the week.</p>
-      </div>
-      <div class="tl-item rv d2">
-        <div class="tl-year teal">2024</div>
-        <h4>SCALE</h4>
-        <p>1,000+ guests per day. Meet Me Universe launches. First international brand partners. MMATH becomes a fixture in the October calendar.</p>
-      </div>
-      <div class="tl-item rv d3">
-        <div class="tl-year teal">2025</div>
-        <h4>INFRASTRUCTURE</h4>
-        <p>1,500+ daily guests. Industry Exchange goes live. Industry Awards debut. MMATH is the largest B2B hospitality platform of the week.</p>
-      </div>
-      <div class="tl-item now rv">
-        <div class="tl-year" style="color:var(--wh)">2026</div>
-        <h4 style="color:var(--teal)">5TH ANNIVERSARY</h4>
-        <p>The milestone edition. Biggest program, most partners, most exclusive access tiers. <em style="color:var(--teal);font-style:normal">Five Years. One Hotel. The Industry.</em></p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- VENUE -->
-<section class="venue">
-  <div class="c">
-    <span class="lbl rv">The Venue</span>
-    <h2 class="rv">Room Mate<br><span class="teal">Aitana Hotel.</span></h2>
-    <div class="venue-inner">
-      <div class="rv">
-        <p>Located at IJdok 6, right on the IJ waterfront, Room Mate Aitana Hotel is one of Amsterdam's most distinctive design hotels. During October week, it becomes the nerve centre of the global dance industry.</p>
-        <p>The hotel's architecture — from the Oscar Room's marina-view stage to the Aitana Lounge Bar — creates the perfect backdrop for the industry's most important conversations. The venue is not incidental to the platform. It is part of it.</p>
-        <ul class="venue-specs">
-          <li>Oscar Room showcase venue — 132m², marina view</li>
-          <li>Aitana Lounge Bar — networking & evening events</li>
-          <li>3 dedicated meeting rooms</li>
-          <li>Marina-side boat departure point</li>
-          <li>IJdok 6 · Central Amsterdam</li>
-          <li>5 min walk from Amsterdam Centraal</li>
+      <div class="pathway rv">
+        <span class="pathway-type book">Hotel Guest</span>
+        <div class="pathway-name">HOTEL GUEST</div>
+        <div class="pathway-sub">Direct proximity</div>
+        <ul class="pathway-steps">
+          <li>Book a room at Room Mate Aitana Hotel</li>
+          <li>Receive proximity access to the MMATH environment</li>
+          <li>Program access subject to approval level</li>
         </ul>
+        <a href="booking.html" class="btn bo" style="font-size:12px;padding:12px 24px;display:block;text-align:center">Book Your Stay →</a>
       </div>
-      <div class="rv d1">
-        <div class="venue-photo">
-          <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=700&q=80&fit=crop&crop=center" alt="Hotel exterior">
-          <div class="venue-overlay"></div>
-        </div>
-        <div class="venue-map">
-          <span style="font-size:24px">📍</span>
-          <span>Room Mate Aitana Hotel</span>
-          <span>IJdok 6 · Amsterdam</span>
-          <a href="https://maps.google.com/?q=Room+Mate+Aitana+Hotel+Amsterdam" target="_blank" class="btn bo" style="font-size:12px;padding:10px 24px;margin-top:8px">Open in Google Maps →</a>
-        </div>
+
+      <div class="pathway rv d1">
+        <span class="pathway-type rsvp">RSVP</span>
+        <div class="pathway-name">INDUSTRY HUB</div>
+        <div class="pathway-sub">Day access</div>
+        <ul class="pathway-steps">
+          <li>Submit RSVP as a verified industry professional</li>
+          <li>Reviewed by the MMATH team</li>
+          <li>Approved guests receive access confirmation</li>
+        </ul>
+        <a href="industry-hub.html#register" class="btn bp" style="font-size:12px;padding:12px 24px;display:block;text-align:center">RSVP for Hub Access →</a>
+      </div>
+
+      <div class="pathway rv d2">
+        <span class="pathway-type rsvp">RSVP</span>
+        <div class="pathway-name">EVENING ACCESS</div>
+        <div class="pathway-sub">Showcases & activations</div>
+        <ul class="pathway-steps">
+          <li>RSVP for evening showcases and partner activations</li>
+          <li>Screened by the MMATH team</li>
+          <li>Approved guests receive evening confirmation</li>
+        </ul>
+        <a href="experiences.html" class="btn bo" style="font-size:12px;padding:12px 24px;display:block;text-align:center">RSVP for Evening Access →</a>
+      </div>
+
+      <div class="pathway rv d1">
+        <span class="pathway-type apply">Apply</span>
+        <div class="pathway-name">INDUSTRY EXCHANGE</div>
+        <div class="pathway-sub">Curated meetings</div>
+        <ul class="pathway-steps">
+          <li>Apply with your business objectives</li>
+          <li>Reviewed and matched by the MMATH team</li>
+          <li>Selected participants receive a curated meeting schedule</li>
+        </ul>
+        <a href="industry-exchange.html" class="btn bp" style="font-size:12px;padding:12px 24px;display:block;text-align:center">Apply for Exchange →</a>
+      </div>
+
+      <div class="pathway rv d2">
+        <span class="pathway-type invite">By Invitation</span>
+        <div class="pathway-name">PARTNER ACCESS</div>
+        <div class="pathway-sub">Full + private access</div>
+        <ul class="pathway-steps">
+          <li>By partnership agreement or invitation</li>
+          <li>Full program access including private events</li>
+          <li>Industry Dinner, roundtables and exclusive activations</li>
+        </ul>
+        <a href="partners.html" class="btn bo" style="font-size:12px;padding:12px 24px;display:block;text-align:center">Become a Partner →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 5TH ANNIVERSARY SPECIALS -->
+<section class="specials">
+  <div class="c">
+    <span class="lbl rv">5th Anniversary Edition</span>
+    <h2 class="rv">Bigger than<br><span class="teal">ever before.</span></h2>
+  </div>
+  <div style="margin-top:48px;">
+    <div class="specials-hero">
+      <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=1600&q=80&fit=crop" alt="Anniversary">
+      <div class="specials-hero-overlay"></div>
+      <div class="specials-hero-text">
+        <span class="lbl">5 Years · 2022 – 2026</span>
+        <h2 style="font-size:clamp(36px,6vw,80px);max-width:600px;">The milestone edition.</h2>
+      </div>
+    </div>
+    <div class="specials-grid" style="grid-template-columns:1fr 1fr">
+      <div class="special rv">
+        <div class="special-badge">Anniversary Special</div>
+        <h3>INDUSTRY DINNER</h3>
+        <p>200 of the dance industry's most influential leaders. One table. One night. The defining hospitality moment of October 2026.</p>
+        <div class="special-detail">Private Access · 200 Guests · Evening</div>
+      </div>
+      <div class="special rv d1">
+        <div class="special-badge">Anniversary Special</div>
+        <h3>INDUSTRY AWARDS</h3>
+        <p>The first MMATH Industry Awards. Recognising the people and projects that shaped electronic music in 2026. Community-voted, industry-celebrated.</p>
+        <div class="special-detail">Oscar Room · Evening · Approved Guests</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- LOOKING FORWARD -->
-<section class="vision">
+<!-- TIMETABLE ALERT -->
+<section class="alert">
   <div class="c">
-    <span class="lbl rv" style="text-align:center">Looking Forward</span>
-    <div class="vision-text rv">
-      As the global music industry<br>
-      continues to evolve,<br>
-      MeetMeAtTheHotel aims to grow<br>
-      as a platform where<br>
-      <em>ideas, partnerships and<br>
-      collaborations can emerge.</em><br><br>
-      The goal is simple: to create<br>
-      an environment where the people<br>
-      shaping music culture can<br>
-      <em>meet, connect and build<br>
-      new opportunities together.</em>
-    </div>
-    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:56px" class="rv d1">
-      <a href="industry-hub.html#register" class="btn bp">Apply for Industry Access</a>
-      <a href="partners.html" class="btn bo">Become a Partner</a>
+    <div class="alert-inner">
+      <div>
+        <h3>Full timetable<br>coming soon.</h3>
+        <p>Register for early access — October 2026 · Amsterdam</p>
+      </div>
+      <a href="industry-hub.html#register" class="btn-blk">RSVP for Industry Hub Access →</a>
     </div>
   </div>
 </section>
@@ -384,7 +406,7 @@ h4{font-size:clamp(18px,2vw,26px)}
       <div class="fb">
         <img src="logo.png" alt="Meet Me at the Hotel" style="height:44px;width:auto;display:block;">
         <p>MeetMeAtTheHotel is an international platform where the global music industry connects with culture, technology and creators.</p>
-        <p class="fa">Room Mate Aitana Hotel · IJdok 6<br>Amsterdam · October 2026</p>
+        <p class="fadr">Room Mate Aitana Hotel · IJdok 6<br>Amsterdam · October 2026</p>
       </div>
       <div class="fcc">
         <p class="fct">Explore</p>
@@ -418,6 +440,10 @@ h4{font-size:clamp(18px,2vw,26px)}
 </footer>
 
 <script>
+function switchTab(i){
+  document.querySelectorAll('.tab').forEach((t,idx)=>t.classList.toggle('active',idx===i));
+  document.querySelectorAll('.tab-panel').forEach((p,idx)=>p.classList.toggle('active',idx===i));
+}
 const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target)}}),{threshold:.08});
 document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
 </script>
