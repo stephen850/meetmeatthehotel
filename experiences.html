@@ -34,7 +34,7 @@ h3{font-size:clamp(22px,3vw,40px)}
 .hb span{display:block;width:22px;height:1.5px;background:var(--wh)}
 @media(max-width:900px){
   .hb{display:flex}
-  .nl{position:fixed;top:var(--nav);left:0;right:0;bottom:0;background:var(--blk);flex-direction:column;align-items:flex-start;padding:40px;gap:20px;transform:translateX(100%);transition:transform var(--tr);z-index:1999}
+  .nl{position:fixed;top:var(--nav);left:0;right:0;bottom:0;background:#0A0A0A;flex-direction:column;align-items:flex-start;padding:40px;gap:20px;transform:translateX(100%);transition:transform var(--tr);z-index:1999}
   .nl.open{transform:none}
   .nl a{font-size:20px}
 }
@@ -44,7 +44,7 @@ h3{font-size:clamp(22px,3vw,40px)}
 .ph-img{position:absolute;inset:0;background-image:url('experiences-hero.jpg');background-size:cover;background-position:center 20%;opacity:0.3}
 .ph-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(77,168,160,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(77,168,160,.04) 1px,transparent 1px);background-size:80px 80px}
 .ph-inner{position:relative;z-index:1;max-width:860px}
-.ph-lead{font-size:16px;color:var(--wd);line-height:1.85;font-weight:300;margin-top:28px;max-width:680px}
+.ph-lead{font-family:var(--fc);font-size:clamp(15px,1.8vw,20px);font-weight:400;letter-spacing:.06em;color:var(--wd);max-width:680px;line-height:1.6;text-transform:uppercase;margin-top:20px}
 
 /* FORMATS */
 .formats{padding:80px 0;border-bottom:1px solid var(--blkb);background:var(--blkm)}
