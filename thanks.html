@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thank You — Meet Me at the Hotel</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--teal:#4DA8A0;--deep:#2E7A74;--blk:#0A0A0A;--blkm:#111;--blkc:#161616;--blkb:#222;--wh:#F5F5F0;--wd:rgba(245,245,240,0.6);--fd:'Bebas Neue',sans-serif;--fc:'Barlow Condensed',sans-serif;--fb:'Barlow',sans-serif;--nav:72px;--tr:0.35s cubic-bezier(.4,0,.2,1)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--blk);color:var(--wh);font-family:var(--fb);overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.c{max-width:1280px;margin:0 auto;padding:0 80px}
+@media(max-width:640px){.c{padding:0 20px}}
+h1,h2{font-family:var(--fd);line-height:.93;text-transform:uppercase;letter-spacing:-.01em}
+h1{font-size:clamp(60px,9vw,130px)}
+.btn{display:inline-block;font-family:var(--fc);font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:15px 36px;transition:all var(--tr)}
+.bp{background:var(--teal);color:var(--blk)}.bp:hover{background:var(--deep);color:var(--wh)}
+.bo{border:1px solid var(--teal);color:var(--teal);background:transparent}.bo:hover{background:var(--teal);color:var(--blk)}
+.lbl{font-family:var(--fc);font-size:11px;font-weight:600;letter-spacing:.28em;color:var(--teal);text-transform:uppercase;display:block;margin-bottom:16px}
+
+.nav{position:fixed;top:0;left:0;right:0;height:var(--nav);display:flex;align-items:center;justify-content:space-between;padding:0 40px;z-index:2000;background:rgba(10,10,10,.98);border-bottom:1px solid var(--blkb);backdrop-filter:blur(16px)}
+.nl{display:flex;align-items:center;gap:28px}
+.nl a{font-family:var(--fc);font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--wd);transition:color var(--tr)}.nl a:hover{color:var(--wh)}
+.nc{background:var(--teal);color:var(--blk)!important;padding:10px 20px}
+.hb{display:none;flex-direction:column;gap:5px;cursor:pointer}
+.hb span{display:block;width:22px;height:1.5px;background:var(--wh)}
+@media(max-width:900px){
+  .hb{display:flex}
+  .nl{position:fixed;top:var(--nav);left:0;right:0;bottom:0;background:#0A0A0A;flex-direction:column;align-items:flex-start;padding:40px;gap:20px;transform:translateX(100%);transition:transform var(--tr);z-index:1999}
+  .nl.open{transform:none}
+  .nl a{font-size:20px}
+}
+
+.main{flex:1;display:flex;align-items:center;padding-top:var(--nav)}
+.inner{padding:100px 0;max-width:700px}
+.check{width:64px;height:64px;border:2px solid var(--teal);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:40px}
+.check::after{content:'✓';font-family:var(--fc);font-size:28px;color:var(--teal)}
+.what-next{margin-top:48px;padding:32px;background:var(--blkc);border:1px solid var(--blkb);border-left:3px solid var(--teal)}
+.what-next p{font-family:var(--fc);font-size:12px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase;line-height:1.9}
+.btns{display:flex;gap:14px;flex-wrap:wrap;margin-top:40px}
+
+.ft{background:var(--blkm);border-top:1px solid var(--blkb);padding:32px 0}
+.fb2{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.fb2 p,.fb2 a{font-family:var(--fc);font-size:11px;letter-spacing:.1em;color:rgba(245,245,240,.35);text-transform:uppercase}
+.fb2 a:hover{color:var(--teal)}
+</style>
+</head>
+<body>
+
+<div id="nav-overlay" style="display:none;position:fixed;inset:0;background:#0A0A0A;z-index:1998"></div>
+<nav class="nav">
+  <a href="index.html" style="display:flex;align-items:center;">
+    <img src="logo.png" alt="Meet Me at the Hotel" style="height:48px;width:auto;display:block;">
+  </a>
+  <div class="nl" id="nl">
+    <a href="about.html">About</a>
+    <a href="program.html">Program</a>
+    <a href="universe.html">Universe</a>
+    <a href="industry-hub.html">Industry Hub</a>
+    <a href="industry-exchange.html">Industry Exchange</a>
+    <a href="experiences.html">Experiences</a>
+    <a href="spaces.html">Spaces</a>
+    <a href="partners.html">Partners</a>
+    <a href="booking.html" class="nc">Book Your Stay</a>
+  </div>
+  <div class="hb" onclick="var nl=document.getElementById('nl');var ov=document.getElementById('nav-overlay');nl.classList.toggle('open');ov.style.display=nl.classList.contains('open')?'block':'none'">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<main class="main">
+  <div class="c">
+    <div class="inner">
+      <div class="check"></div>
+      <span class="lbl">Received</span>
+      <h1>
+        <span style="display:block;color:var(--wh)">THANK</span>
+        <span style="display:block;color:var(--teal)">YOU.</span>
+      </h1>
+      <p style="font-family:var(--fc);font-size:clamp(15px,1.8vw,20px);font-weight:400;letter-spacing:.06em;color:var(--wd);line-height:1.6;text-transform:uppercase;margin-top:20px">Your submission has been received. We will be in touch within 48 hours.</p>
+      <div class="what-next">
+        <p>
+          Questions in the meantime? Contact us directly at<br>
+          info@meetmeatthehotel.com
+        </p>
+      </div>
+      <div class="btns">
+        <a href="index.html" class="btn bp">Back to Homepage →</a>
+        <a href="program.html" class="btn bo">View the Program</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="ft">
+  <div class="c">
+    <div class="fb2">
+      <p>© 2026 Meet Me at the Hotel · 5th Anniversary Edition · Amsterdam · October 2026</p>
+      <p><a href="#">Privacy</a> · <a href="#">Cookies</a> · <a href="#">Terms</a></p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
