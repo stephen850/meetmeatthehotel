@@ -78,12 +78,12 @@ h3{font-size:clamp(22px,3vw,40px)}
 .atype-tag{font-family:var(--fc);font-size:10px;letter-spacing:.15em;color:var(--teal);text-transform:uppercase;border:1px solid rgba(77,168,160,.25);padding:3px 8px}
 @media(max-width:768px){.types-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:480px){.types-grid{grid-template-columns:1fr}}
-.photo-strip{display:grid;grid-template-columns:1fr 1fr 1fr;height:360px;border-top:1px solid var(--blkb);border-bottom:1px solid var(--blkb)}
+.photo-strip{display:grid;grid-template-columns:1fr 1fr 1fr;height:400px;border-top:1px solid var(--blkb);border-bottom:1px solid var(--blkb)}
 .ps-img{overflow:hidden;position:relative}
 .ps-img img{width:100%;height:100%;object-fit:cover;filter:brightness(.65) saturate(.75);transition:transform .8s ease,filter .5s ease;display:block}
 .ps-img:hover img{transform:scale(1.05);filter:brightness(.8) saturate(1)}
 .ps-tint{position:absolute;inset:0;background:linear-gradient(135deg,rgba(77,168,160,.12) 0%,transparent 60%)}
-@media(max-width:640px){.photo-strip{grid-template-columns:1fr;height:auto}.ps-img{height:200px}}
+@media(max-width:640px){.photo-strip{grid-template-columns:1fr;height:auto}.ps-img{height:220px}}
 .salons{padding:100px 0;border-bottom:1px solid var(--blkb);background:var(--blkm)}
 .salons-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:60px}
 .salon{background:var(--blkc);border:1px solid var(--blkb);padding:40px 36px;transition:border-color var(--tr);border-top:3px solid var(--teal)}
@@ -93,8 +93,6 @@ h3{font-size:clamp(22px,3vw,40px)}
 .salon p{font-size:13px;color:var(--wd);line-height:1.7;font-weight:300;margin-bottom:20px}
 .salon-detail{font-family:var(--fc);font-size:11px;letter-spacing:.15em;color:var(--pool);text-transform:uppercase}
 @media(max-width:640px){.salons-grid{grid-template-columns:1fr}}
-
-/* EXCHANGE CTA BLOCK */
 .exc-cta{padding:80px 0;border-bottom:1px solid var(--blkb);background:var(--blkc)}
 .exc-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
 .exc-text h2{margin-bottom:16px}
@@ -103,7 +101,6 @@ h3{font-size:clamp(22px,3vw,40px)}
 .exc-features li{font-family:var(--fc);font-size:13px;letter-spacing:.08em;color:var(--wd);text-transform:uppercase;padding:10px 14px;border:1px solid var(--blkb);display:flex;align-items:center;gap:12px}
 .exc-features li::before{content:'→';color:var(--teal);flex-shrink:0}
 @media(max-width:768px){.exc-inner{grid-template-columns:1fr}}
-
 .testis{padding:100px 0;border-bottom:1px solid var(--blkb)}
 .testi-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:60px}
 .testi{background:var(--blkc);border:1px solid var(--blkb);padding:40px;transition:border-color var(--tr)}
@@ -252,9 +249,9 @@ form{display:flex;flex-direction:column;gap:16px}
 
 <!-- PHOTO STRIP -->
 <div class="photo-strip">
-  <div class="ps-img"><img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80&fit=crop" alt="Meeting"><div class="ps-tint"></div></div>
-  <div class="ps-img"><img src="https://images.unsplash.com/photo-1551818255-e6e10975bc17?w=600&q=80&fit=crop" alt="Networking drinks"><div class="ps-tint"></div></div>
-  <div class="ps-img"><img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=600&q=80&fit=crop" alt="Industry people"><div class="ps-tint"></div></div>
+  <div class="ps-img"><img src="hub-strip-1.jpg" alt="LabelWorx Bass Station Amsterdam"><div class="ps-tint"></div></div>
+  <div class="ps-img"><img src="hub-strip-2.jpg" alt="Industry Hub crowd"><div class="ps-tint"></div></div>
+  <div class="ps-img"><img src="hub-strip-3.jpg" alt="Oscar Room night"><div class="ps-tint"></div></div>
 </div>
 
 <!-- TESTIMONIALS -->
@@ -375,7 +372,6 @@ form{display:flex;flex-direction:column;gap:16px}
 </footer>
 
 <script>
-function sf(f,e){e.preventDefault();const b=f.querySelector('button');b.textContent='REGISTERED ✓';b.style.background='#2E7A74';setTimeout(()=>{b.textContent='Join the Industry Hub →';b.style.background='';f.reset()},3500)}
 const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target)}}),{threshold:.12});
 document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
 </script>
