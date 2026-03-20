@@ -65,8 +65,8 @@ h4{font-size:clamp(18px,2vw,26px)}
 .story-num{font-family:var(--fd);font-size:120px;color:var(--teal);opacity:.06;line-height:1;margin-bottom:-20px}
 .story-text p{font-size:16px;color:var(--wd);line-height:1.85;font-weight:300;margin-bottom:24px}
 .story-text p:last-child{margin-bottom:0}
-.story-visual{position:relative;overflow:hidden}
-.story-visual img{width:100%;object-fit:cover;filter:brightness(.7) saturate(.8);display:block;transition:transform .8s ease}
+.story-visual{position:relative;overflow:hidden;aspect-ratio:4/3}
+.story-visual img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.7) saturate(.8);display:block;transition:transform .8s ease}
 .story-visual:hover img{transform:scale(1.03)}
 .story-tint{position:absolute;inset:0;background:linear-gradient(135deg,rgba(77,168,160,.12) 0%,transparent 60%)}
 .story-aside{background:var(--blkc);border:1px solid var(--blkb);border-left:3px solid var(--teal);padding:32px}
@@ -221,7 +221,7 @@ h4{font-size:clamp(18px,2vw,26px)}
   <div class="c">
     <div class="story-inner flip">
       <div class="story-visual rv">
-        <img src="about-conference.jpg" alt="Demo Drop — Meet Me at the Hotel" style="aspect-ratio:4/3">
+        <img src="about-conference.jpg" alt="Demo Drop — Meet Me at the Hotel" style="width:100%;height:100%;object-fit:cover;aspect-ratio:4/3">
         <div class="story-tint"></div>
       </div>
       <div class="rv d1">
@@ -268,7 +268,7 @@ h4{font-size:clamp(18px,2vw,26px)}
   <div class="c">
     <div class="story-inner flip">
       <div class="story-visual rv">
-        <img src="about-team.jpg" alt="Industry gathering — Meet Me at the Hotel" style="aspect-ratio:4/3">
+        <img src="about-team.jpg" alt="Industry gathering — Meet Me at the Hotel" style="width:100%;height:100%;object-fit:cover;aspect-ratio:4/3">
         <div class="story-tint"></div>
       </div>
       <div class="rv d1">
