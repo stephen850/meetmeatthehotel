@@ -378,18 +378,18 @@ form{display:flex;flex-direction:column;gap:20px}
           <p>All space requests are reviewed by the MMATH team. We will respond within 5 working days. Availability is subject to the program schedule.</p>
         </div>
       </div>
-      <form class="rv d1" onsubmit="sf(this,event)">
+      <form class="rv d1" action="https://formspree.io/f/mbdzboea" method="POST">
         <div class="field-row">
-          <div class="field"><label>Name</label><input type="text" placeholder="Your name" required></div>
-          <div class="field"><label>Company / Organisation</label><input type="text" placeholder="Your company" required></div>
+          <div class="field"><label>Name</label><input type="text" name="name" placeholder="Your name" required></div>
+          <div class="field"><label>Company / Organisation</label><input type="text" name="company" placeholder="Your company" required></div>
         </div>
         <div class="field-row">
-          <div class="field"><label>Email</label><input type="email" placeholder="your@email.com" required></div>
-          <div class="field"><label>Phone (optional)</label><input type="tel" placeholder="+00 000 000 000"></div>
+          <div class="field"><label>Email</label><input type="email" name="email" placeholder="your@email.com" required></div>
+          <div class="field"><label>Phone (optional)</label><input type="tel" name="phone" placeholder="+00 000 000 000"></div>
         </div>
         <div class="field">
           <label>Type of Space</label>
-          <select required>
+          <select name="space_type" required>
             <option value="" disabled selected>Select space type</option>
             <option>Private Office</option>
             <option>Meeting Room</option>
@@ -399,11 +399,11 @@ form{display:flex;flex-direction:column;gap:20px}
         </div>
         <div class="field">
           <label>Estimated Number of People</label>
-          <input type="text" placeholder="e.g. 4–6 people">
+          <input type="text" name="people_count" placeholder="e.g. 4–6 people">
         </div>
         <div class="field">
           <label>Preferred Dates</label>
-          <select>
+          <select name="preferred_dates">
             <option value="" disabled selected>Select preferred dates</option>
             <option>Monday only</option>
             <option>Tuesday only</option>
@@ -416,7 +416,7 @@ form{display:flex;flex-direction:column;gap:20px}
         </div>
         <div class="field">
           <label>Intended Use</label>
-          <textarea placeholder="Briefly describe how you plan to use the space..."></textarea>
+          <textarea name="intended_use" placeholder="Briefly describe how you plan to use the space..."></textarea>
         </div>
         <button type="submit" class="btn bp" style="width:100%;margin-top:8px">Submit Space Request →</button>
       </form>
