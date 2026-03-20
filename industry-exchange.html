@@ -364,8 +364,7 @@ form{display:flex;flex-direction:column;gap:14px}
           <p style="font-family:var(--fc);font-size:13px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase">stephen@meetmeatthehotel.com</p>
         </div>
       </div>
-      <form class="rv d1" action="https://formspree.io/f/xojkbdkj" method="POST">
-        <input type="hidden" name="_next" value="https://stephen850.github.io/meetmeatthehotel/thanks.html">
+      <form class="rv d1" data-formspree="https://formspree.io/f/xojkbdkj" onsubmit="submitFS(this,event)">
         <div class="field">
           <label>Full Name</label>
           <input type="text" name="full_name" placeholder="Your full name" required>
@@ -457,6 +456,20 @@ function sf(f,e){
   b.textContent='APPLICATION RECEIVED ✓';
   b.style.background='#2E7A74';
   setTimeout(()=>{b.textContent='Submit Application →';b.style.background='';f.reset()},3500);
+}
+</script>
+<script>
+async function submitFS(f,e){
+  e.preventDefault();
+  const btn=f.querySelector('button[type=submit]');
+  const orig=btn.textContent;
+  btn.textContent='SENDING...';
+  btn.disabled=true;
+  try{
+    const res=await fetch(f.dataset.formspree,{method:'POST',body:new FormData(f),headers:{Accept:'application/json'}});
+    if(res.ok){window.location.href='https://stephen850.github.io/meetmeatthehotel/thanks.html';}
+    else{btn.textContent='ERROR — TRY AGAIN';btn.disabled=false;}
+  }catch(err){btn.textContent='ERROR — TRY AGAIN';btn.disabled=false;}
 }
 </script>
 </body>

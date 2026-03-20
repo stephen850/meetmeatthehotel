@@ -298,8 +298,7 @@ form{display:flex;flex-direction:column;gap:16px}
         </div>
         <p class="reg-note">B2B industry professionals only · All profiles are manually reviewed · Opens 3 months before the event</p>
       </div>
-      <form class="rv d1" action="https://formspree.io/f/xdawjglj" method="POST">
-        <input type="hidden" name="_next" value="https://stephen850.github.io/meetmeatthehotel/thanks.html">
+      <form class="rv d1" data-formspree="https://formspree.io/f/xdawjglj" onsubmit="submitFS(this,event)">
         <div class="field-row">
           <div class="field"><label>First Name</label><input type="text" name="first_name" placeholder="First name" required></div>
           <div class="field"><label>Last Name</label><input type="text" name="last_name" placeholder="Last name" required></div>
@@ -379,6 +378,20 @@ form{display:flex;flex-direction:column;gap:16px}
 function sf(f,e){e.preventDefault();const b=f.querySelector('button');b.textContent='REGISTERED ✓';b.style.background='#2E7A74';setTimeout(()=>{b.textContent='Join the Industry Hub →';b.style.background='';f.reset()},3500)}
 const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target)}}),{threshold:.12});
 document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+</script>
+<script>
+async function submitFS(f,e){
+  e.preventDefault();
+  const btn=f.querySelector('button[type=submit]');
+  const orig=btn.textContent;
+  btn.textContent='SENDING...';
+  btn.disabled=true;
+  try{
+    const res=await fetch(f.dataset.formspree,{method:'POST',body:new FormData(f),headers:{Accept:'application/json'}});
+    if(res.ok){window.location.href='https://stephen850.github.io/meetmeatthehotel/thanks.html';}
+    else{btn.textContent='ERROR — TRY AGAIN';btn.disabled=false;}
+  }catch(err){btn.textContent='ERROR — TRY AGAIN';btn.disabled=false;}
+}
 </script>
 </body>
 </html>

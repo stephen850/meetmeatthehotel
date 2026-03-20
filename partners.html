@@ -424,8 +424,7 @@ form{display:flex;flex-direction:column;gap:20px}
           <p style="font-family:var(--fc);font-size:12px;letter-spacing:.08em;color:var(--wd);text-transform:uppercase;line-height:1.7;margin:0">Partner enquiries — partners@meetmeatthehotel.com</p>
         </div>
       </div>
-      <form class="rv d1" action="https://formspree.io/f/mreydqyy" method="POST">
-        <input type="hidden" name="_next" value="https://stephen850.github.io/meetmeatthehotel/thanks.html">
+      <form class="rv d1" data-formspree="https://formspree.io/f/mreydqyy" onsubmit="submitFS(this,event)">
         <div class="field-row">
           <div class="field"><label>Name</label><input type="text" name="name" placeholder="Your name" required></div>
           <div class="field"><label>Company</label><input type="text" name="company" placeholder="Your company" required></div>
@@ -505,6 +504,20 @@ function sf(f,e){
 }
 const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target)}}),{threshold:.08});
 document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+</script>
+<script>
+async function submitFS(f,e){
+  e.preventDefault();
+  const btn=f.querySelector('button[type=submit]');
+  const orig=btn.textContent;
+  btn.textContent='SENDING...';
+  btn.disabled=true;
+  try{
+    const res=await fetch(f.dataset.formspree,{method:'POST',body:new FormData(f),headers:{Accept:'application/json'}});
+    if(res.ok){window.location.href='https://stephen850.github.io/meetmeatthehotel/thanks.html';}
+    else{btn.textContent='ERROR — TRY AGAIN';btn.disabled=false;}
+  }catch(err){btn.textContent='ERROR — TRY AGAIN';btn.disabled=false;}
+}
 </script>
 </body>
 </html>
