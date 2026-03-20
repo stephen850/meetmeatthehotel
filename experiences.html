@@ -394,18 +394,18 @@ form{display:flex;flex-direction:column;gap:20px}
           <p>All experience requests are reviewed by the MMATH team. Availability is limited — we recommend submitting early. We will respond within 5 working days.</p>
         </div>
       </div>
-      <form class="rv d1" onsubmit="sf(this,event)">
+      <form class="rv d1" action="https://formspree.io/f/xkoqeraj" method="POST">
         <div class="field-row">
-          <div class="field"><label>Name</label><input type="text" placeholder="Your name" required></div>
-          <div class="field"><label>Company / Organisation</label><input type="text" placeholder="Your company" required></div>
+          <div class="field"><label>Name</label><input type="text" name="name" placeholder="Your name" required></div>
+          <div class="field"><label>Company / Organisation</label><input type="text" name="company" placeholder="Your company" required></div>
         </div>
         <div class="field-row">
-          <div class="field"><label>Email</label><input type="email" placeholder="your@email.com" required></div>
-          <div class="field"><label>Phone (optional)</label><input type="tel" placeholder="+00 000 000 000"></div>
+          <div class="field"><label>Email</label><input type="email" name="email" placeholder="your@email.com" required></div>
+          <div class="field"><label>Phone (optional)</label><input type="tel" name="phone" placeholder="+00 000 000 000"></div>
         </div>
         <div class="field">
           <label>Type of Experience</label>
-          <select required>
+          <select name="experience_type" required>
             <option value="" disabled selected>Select experience type</option>
             <option>Showcase</option>
             <option>Networking Event</option>
@@ -416,7 +416,7 @@ form{display:flex;flex-direction:column;gap:20px}
         </div>
         <div class="field">
           <label>Preferred Space</label>
-          <select required>
+          <select name="preferred_space" required>
             <option value="" disabled selected>Select preferred space</option>
             <option>Oscar Room</option>
             <option>Aitana Lounge</option>
@@ -427,15 +427,15 @@ form{display:flex;flex-direction:column;gap:20px}
         </div>
         <div class="field">
           <label>Estimated Number of Guests</label>
-          <input type="text" placeholder="e.g. 80–120 guests">
+          <input type="text" name="guest_count" placeholder="e.g. 80–120 guests">
         </div>
         <div class="field">
           <label>Description of Proposed Activation</label>
-          <textarea placeholder="Tell us about your concept, artists, brand or organisation..."></textarea>
+          <textarea name="description" placeholder="Tell us about your concept, artists, brand or organisation..."></textarea>
         </div>
         <div class="field">
           <label>Preferred Date During the Week</label>
-          <select>
+          <select name="preferred_date">
             <option value="" disabled selected>Select preferred date</option>
             <option>Monday</option>
             <option>Tuesday</option>
