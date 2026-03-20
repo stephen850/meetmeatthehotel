@@ -298,16 +298,16 @@ form{display:flex;flex-direction:column;gap:16px}
         </div>
         <p class="reg-note">B2B industry professionals only · All profiles are manually reviewed · Opens 3 months before the event</p>
       </div>
-      <form class="rv d1" onsubmit="sf(this,event)">
+      <form class="rv d1" action="https://formspree.io/f/xdawjglj" method="POST">
         <div class="field-row">
-          <div class="field"><label>First Name</label><input type="text" placeholder="First name" required></div>
-          <div class="field"><label>Last Name</label><input type="text" placeholder="Last name" required></div>
+          <div class="field"><label>First Name</label><input type="text" name="first_name" placeholder="First name" required></div>
+          <div class="field"><label>Last Name</label><input type="text" name="last_name" placeholder="Last name" required></div>
         </div>
-        <div class="field"><label>Email Address</label><input type="email" placeholder="your@email.com" required></div>
-        <div class="field"><label>Company</label><input type="text" placeholder="Your company or label" required></div>
+        <div class="field"><label>Email Address</label><input type="email" name="email" placeholder="your@email.com" required></div>
+        <div class="field"><label>Company</label><input type="text" name="company" placeholder="Your company or label" required></div>
         <div class="field">
           <label>Your Role</label>
-          <select required>
+          <select name="role" required>
             <option value="" disabled selected>Select your role</option>
             <option>Label / A&amp;R</option>
             <option>Booking Agent</option>
@@ -322,12 +322,12 @@ form{display:flex;flex-direction:column;gap:16px}
         </div>
         <div class="field">
           <label>Attendance Type</label>
-          <select>
+          <select name="attendance">
             <option>Hotel Guest (full week access)</option>
             <option>Not booked yet</option>
           </select>
         </div>
-        <div class="field"><label>Message (optional)</label><textarea placeholder="Anything you'd like us to know about your participation at MMATH October 2026..."></textarea></div>
+        <div class="field"><label>Message (optional)</label><textarea name="message" placeholder="Anything you'd like us to know about your participation at MMATH October 2026..."></textarea></div>
         <button type="submit" class="btn bp" style="width:100%;margin-top:8px;">RSVP for Industry Hub Access →</button>
       </form>
     </div>
