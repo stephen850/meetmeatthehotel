@@ -206,7 +206,7 @@ form{display:flex;flex-direction:column;gap:14px}
         <div class="sbar-value">Room Mate Aitana · Amsterdam</div>
       </div>
       <div class="sbar-item">
-        <div class="sbar-label">Price</div>
+        <div class="sbar-label">Investment</div>
         <div class="sbar-value">€850 p.p.</div>
       </div>
       <div class="sbar-item">
@@ -364,26 +364,26 @@ form{display:flex;flex-direction:column;gap:14px}
           <p style="font-family:var(--fc);font-size:13px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase">stephen@meetmeatthehotel.com</p>
         </div>
       </div>
-      <form class="rv d1" onsubmit="sf(this,event)">
+      <form class="rv d1" action="https://formspree.io/f/xojkbdkj" method="POST">
         <div class="field">
           <label>Full Name</label>
-          <input type="text" placeholder="Your full name" required>
+          <input type="text" name="full_name" placeholder="Your full name" required>
         </div>
         <div class="field">
           <label>Title / Position</label>
-          <input type="text" placeholder="e.g. CEO, Founder, CMO" required>
+          <input type="text" name="title" placeholder="e.g. CEO, Founder, CMO" required>
         </div>
         <div class="field">
           <label>Company</label>
-          <input type="text" placeholder="Your company or organisation" required>
+          <input type="text" name="company" placeholder="Your company or organisation" required>
         </div>
         <div class="field">
           <label>Email Address</label>
-          <input type="email" placeholder="your@email.com" required>
+          <input type="email" name="email" placeholder="your@email.com" required>
         </div>
         <div class="field">
           <label>Sector</label>
-          <select required>
+          <select name="sector" required>
             <option value="" disabled selected>Select your sector</option>
             <option>Label / Music Group</option>
             <option>Booking Agency</option>
@@ -398,7 +398,7 @@ form{display:flex;flex-direction:column;gap:14px}
         </div>
         <div class="field">
           <label>Why do you want to attend?</label>
-          <textarea placeholder="Tell us briefly what you are looking to get from the session and who you would like to connect with..." required></textarea>
+          <textarea name="motivation" placeholder="Tell us briefly what you are looking to get from the session and who you would like to connect with..." required></textarea>
         </div>
         <button type="submit" class="btn bp" style="width:100%;margin-top:8px">Submit Application →</button>
         <p style="font-family:var(--fc);font-size:10px;letter-spacing:.12em;color:var(--wd);text-transform:uppercase;text-align:center;margin-top:12px">All applications are reviewed · Confirmation within 5 working days</p>
