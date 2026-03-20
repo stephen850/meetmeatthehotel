@@ -424,15 +424,15 @@ form{display:flex;flex-direction:column;gap:20px}
           <p style="font-family:var(--fc);font-size:12px;letter-spacing:.08em;color:var(--wd);text-transform:uppercase;line-height:1.7;margin:0">Partner enquiries — partners@meetmeatthehotel.com</p>
         </div>
       </div>
-      <form class="rv d1" onsubmit="sf(this,event)">
+      <form class="rv d1" action="https://formspree.io/f/mreydqyy" method="POST">
         <div class="field-row">
-          <div class="field"><label>Name</label><input type="text" placeholder="Your name" required></div>
-          <div class="field"><label>Company</label><input type="text" placeholder="Your company" required></div>
+          <div class="field"><label>Name</label><input type="text" name="name" placeholder="Your name" required></div>
+          <div class="field"><label>Company</label><input type="text" name="company" placeholder="Your company" required></div>
         </div>
-        <div class="field"><label>Email</label><input type="email" placeholder="your@email.com" required></div>
+        <div class="field"><label>Email</label><input type="email" name="email" placeholder="your@email.com" required></div>
         <div class="field">
           <label>Type of Organisation</label>
-          <select required>
+          <select name="organisation_type" required>
             <option value="" disabled selected>Select organisation type</option>
             <option>Brand</option>
             <option>Media Platform</option>
@@ -445,7 +445,7 @@ form{display:flex;flex-direction:column;gap:20px}
         </div>
         <div class="field">
           <label>Partnership Interest</label>
-          <textarea placeholder="Tell us about your organisation and what kind of collaboration you have in mind..."></textarea>
+          <textarea name="message" placeholder="Tell us about your organisation and what kind of collaboration you have in mind..."></textarea>
         </div>
         <button type="submit" class="btn bp" style="width:100%;margin-top:8px">Request Partnership Information →</button>
       </form>
