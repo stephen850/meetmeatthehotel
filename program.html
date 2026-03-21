@@ -67,7 +67,7 @@ h4{font-size:clamp(16px,2vw,24px)}
 .tab-panel{display:none;padding:48px}
 .tab-panel.active{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
 .panel-img{position:relative;overflow:hidden}
-.panel-img img{width:100%;aspect-ratio:16/10;object-fit:cover;filter:brightness(.7) saturate(.8);display:block}
+.panel-img img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:center top;filter:brightness(.7) saturate(.8);display:block}
 .panel-img-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(77,168,160,.15) 0%,transparent 60%)}
 .panel-text h3{font-size:36px;margin-bottom:16px}
 .panel-text p{font-size:14px;color:var(--wd);line-height:1.8;margin-bottom:24px;font-weight:300}
@@ -185,7 +185,6 @@ h4{font-size:clamp(16px,2vw,24px)}
     <a href="experiences.html">Experiences</a>
     <a href="spaces.html">Spaces</a>
     <a href="partners.html">Partners</a>
-    <a href="merch.html">Merch</a>
     <a href="booking.html" class="nc">Book Your Stay</a>
   </div>
   <div class="hb" onclick="var nl=document.getElementById('nl');var ov=document.getElementById('nav-overlay');nl.classList.toggle('open');ov.style.display=nl.classList.contains('open')?'block':'none'">
@@ -234,7 +233,7 @@ h4{font-size:clamp(16px,2vw,24px)}
     <div class="tab-panels">
       <div class="tab-panel active" id="panel-0">
         <div class="panel-img">
-          <img src="program-day.jpg" alt="Day program — Meet Me at the Hotel">
+          <img src="program-day.jpg" alt="Day program — Meet Me at the Hotel" style="aspect-ratio:3/4;object-position:center center">
           <div class="panel-img-overlay"></div>
         </div>
         <div class="panel-text">
