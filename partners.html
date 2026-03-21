@@ -144,6 +144,7 @@ form{display:flex;flex-direction:column;gap:20px}
     <a href="experiences.html">Experiences</a>
     <a href="spaces.html">Spaces</a>
     <a href="partners.html" style="color:var(--teal)">Partners</a>
+    <a href="merch.html">Merch</a>
     <a href="booking.html" class="nc">Book Your Stay</a>
   </div>
   <div class="hb" onclick="var nl=document.getElementById('nl');var ov=document.getElementById('nav-overlay');nl.classList.toggle('open');ov.style.display=nl.classList.contains('open')?'block':'none'">
@@ -421,7 +422,7 @@ form{display:flex;flex-direction:column;gap:20px}
         <p style="font-size:15px;color:var(--wd);line-height:1.8;font-weight:300;margin-bottom:16px">Submit your details and the MMATH team will be in touch to discuss possible collaboration formats for October 2026.</p>
         <p style="font-size:15px;color:var(--wd);line-height:1.8;font-weight:300">All conversations are confidential. We look forward to hearing from you.</p>
         <div style="margin-top:32px;padding:24px;background:var(--blkc);border:1px solid var(--blkb);border-left:3px solid var(--teal)">
-          <p style="font-family:var(--fc);font-size:12px;letter-spacing:.08em;color:var(--wd);text-transform:uppercase;line-height:1.7;margin:0">Partner enquiries — info@meetmeatthehotel.com</p>
+          <p style="font-family:var(--fc);font-size:12px;letter-spacing:.08em;color:var(--wd);text-transform:uppercase;line-height:1.7;margin:0">Partner enquiries — <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f990979f96b9949c9c8d949c988d8d919c91968d9c95d79a9694">[email&#160;protected]</a></p>
         </div>
       </div>
       <form class="rv d1" data-formspree="https://formspree.io/f/mreydqyy" onsubmit="submitFS(this,event)">
@@ -494,7 +495,7 @@ form{display:flex;flex-direction:column;gap:20px}
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 function sf(f,e){
   e.preventDefault();
   const b=f.querySelector('button');
@@ -514,10 +515,4 @@ async function submitFS(f,e){
   btn.disabled=true;
   try{
     const res=await fetch(f.dataset.formspree,{method:'POST',body:new FormData(f),headers:{Accept:'application/json'}});
-    if(res.ok){window.location.href='https://stephen850.github.io/meetmeatthehotel/thanks.html';}
-    else{btn.textContent='ERROR — TRY AGAIN';btn.disabled=false;}
-  }catch(err){btn.textContent='ERROR — TRY AGAIN';btn.disabled=false;}
-}
-</script>
-</body>
-</html>
+    if(res.ok){window.location.

@@ -173,6 +173,7 @@ form{display:flex;flex-direction:column;gap:14px}
     <a href="experiences.html">Experiences</a>
     <a href="spaces.html">Spaces</a>
     <a href="partners.html">Partners</a>
+    <a href="merch.html">Merch</a>
     <a href="booking.html" class="nc">Book Your Stay</a>
   </div>
   <div class="hb" onclick="var nl=document.getElementById('nl');var ov=document.getElementById('nav-overlay');nl.classList.toggle('open');ov.style.display=nl.classList.contains('open')?'block':'none'">
@@ -468,7 +469,7 @@ form{display:flex;flex-direction:column;gap:14px}
         <p>For group bookings of 4+ rooms, mention this in your message for dedicated group pricing and benefits.</p>
         <div style="margin-top:32px;padding:24px 28px;background:var(--blkc);border:1px solid var(--blkb)">
           <span class="lbl">Direct Contact</span>
-          <p style="font-family:var(--fc);font-size:13px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase;">stephen@meetmeatthehotel.com</p>
+          <p style="font-family:var(--fc);font-size:13px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="cbb8bfaebba3aea58ba6aeaebfa6aeaabfbfa3aea3a4bfaea7e5a8a4a6">[email&#160;protected]</a></p>
           <p style="font-family:var(--fc);font-size:13px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase;margin-top:6px;">IJdok 6 · Amsterdam</p>
         </div>
         <p style="font-family:var(--fc);font-size:10px;letter-spacing:.12em;color:rgba(245,245,240,.3);text-transform:uppercase;margin-top:16px">B2B industry professionals only · All inquiries treated with full confidentiality</p>
@@ -560,7 +561,7 @@ form{display:flex;flex-direction:column;gap:14px}
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target)}}),{threshold:.08});
 document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
 </script>
@@ -573,10 +574,4 @@ async function submitFS(f,e){
   btn.disabled=true;
   try{
     const res=await fetch(f.dataset.formspree,{method:'POST',body:new FormData(f),headers:{Accept:'application/json'}});
-    if(res.ok){window.location.href='https://stephen850.github.io/meetmeatthehotel/thanks.html';}
-    else{btn.textContent='ERROR — TRY AGAIN';btn.disabled=false;}
-  }catch(err){btn.textContent='ERROR — TRY AGAIN';btn.disabled=false;}
-}
-</script>
-</body>
-</html>
+    if(res.ok){window.locati
