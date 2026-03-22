@@ -186,10 +186,10 @@ h2{font-size:clamp(40px,6vw,84px)}
   <div class="c">
     <div class="notify-inner">
       <div class="notify-text">Get notified when the drop goes live</div>
-      <div class="notify-form">
-        <input type="email" placeholder="your@email.com">
-        <button onclick="this.textContent='REGISTERED ✓';this.style.background='#2E7A74'">Notify Me</button>
-      </div>
+      <form class="notify-form" onsubmit="submitNotify(this,event)">
+        <input type="email" name="email" placeholder="your@email.com" required>
+        <button type="submit">Notify Me</button>
+      </form>
     </div>
   </div>
 </div>
@@ -373,6 +373,31 @@ h2{font-size:clamp(40px,6vw,84px)}
 <script>
 const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target)}}),{threshold:.08});
 document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+
+async function submitNotify(f,e){
+  e.preventDefault();
+  const btn=f.querySelector('button');
+  btn.textContent='SENDING...';
+  btn.disabled=true;
+  try{
+    const res=await fetch('https://formspree.io/f/xnjgykwb',{
+      method:'POST',
+      body:new FormData(f),
+      headers:{Accept:'application/json'}
+    });
+    if(res.ok){
+      btn.textContent='REGISTERED ✓';
+      btn.style.background='#2E7A74';
+      f.reset();
+    }else{
+      btn.textContent='ERROR — TRY AGAIN';
+      btn.disabled=false;
+    }
+  }catch(err){
+    btn.textContent='ERROR — TRY AGAIN';
+    btn.disabled=false;
+  }
+}
 </script>
 </body>
 </html>
