@@ -171,10 +171,20 @@ h3{font-size:clamp(22px,3vw,40px)}
 @media(max-width:900px){.fg{grid-template-columns:1fr 1fr;gap:40px}}
 @media(max-width:480px){.fg{grid-template-columns:1fr}.fb2{flex-direction:column;gap:12px}}
 
+
+
 /* REVEAL */
 .rv{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
 .rv.vis{opacity:1;transform:none}
 .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+</style>
+<style>
+.ann-bar{background:#0d0d0d;border-bottom:1px solid rgba(77,168,160,.2);overflow:hidden;height:32px;display:flex;align-items:center}
+.ann-track{display:flex;animation:ann 28s linear infinite;width:max-content;white-space:nowrap}
+.ann-item{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;padding:0 40px;color:rgba(245,245,240,.35)}
+.ann-item.hi{color:#4DA8A0}
+.ann-sep{color:rgba(77,168,160,.3);padding:0 8px}
+@keyframes ann{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 </style>
 </head>
 <body>
@@ -229,6 +239,7 @@ h3{font-size:clamp(22px,3vw,40px)}
         <div style="font-family:var(--fc);font-size:10px;letter-spacing:.15em;color:var(--teal);text-transform:uppercase;margin-top:4px">5 Years Celebration · Grand Opening</div>
       </div>
     </div>
+
   </div>
   <div class="hscr">
     <span>Scroll</span>
@@ -505,6 +516,7 @@ h3{font-size:clamp(22px,3vw,40px)}
 <script>
 const nav=document.getElementById('nav');
 window.addEventListener('scroll',()=>nav.classList.toggle('sc',scrollY>60));
+
 const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target)}}),{threshold:.08});
 document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
 </script>
