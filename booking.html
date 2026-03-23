@@ -156,9 +156,23 @@ form{display:flex;flex-direction:column;gap:14px}
 .rv.vis{opacity:1;transform:none}
 .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
 </style>
+<style>
+.ann-bar{background:#0d0d0d;border-bottom:1px solid rgba(77,168,160,.2);overflow:hidden;height:32px;display:flex;align-items:center}
+.ann-track{display:flex;animation:ann 28s linear infinite;width:max-content;white-space:nowrap}
+.ann-item{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;padding:0 40px;color:rgba(245,245,240,.35)}
+.ann-item.hi{color:#4DA8A0}
+.ann-sep{color:rgba(77,168,160,.3);padding:0 8px}
+@keyframes ann{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+</style>
 </head>
 <body>
 
+<div class="ann-bar">
+  <div class="ann-track">
+    <span class="ann-item hi">✦ 5th Anniversary Edition</span><span class="ann-item">2022 – 2026</span><span class="ann-item hi">Meet Me at the Hotel</span><span class="ann-item">20 – 25 October 2026</span><span class="ann-item hi">Amsterdam</span><span class="ann-item">Industry Mixer · Opening Night · Tuesday October 20th</span>
+    <span class="ann-item hi">✦ 5th Anniversary Edition</span><span class="ann-item">2022 – 2026</span><span class="ann-item hi">Meet Me at the Hotel</span><span class="ann-item">20 – 25 October 2026</span><span class="ann-item hi">Amsterdam</span><span class="ann-item">Industry Mixer · Opening Night · Tuesday October 20th</span>
+  </div>
+</div>
 <div id="nav-overlay" style="display:none;position:fixed;inset:0;background:#0A0A0A;z-index:1998"></div>
 <nav class="nav">
   <a href="index.html" style="display:flex;align-items:center;">
@@ -574,4 +588,4 @@ async function submitFS(f,e){
   btn.disabled=true;
   try{
     const res=await fetch(f.dataset.formspree,{method:'POST',body:new FormData(f),headers:{Accept:'application/json'}});
-    if(res.ok){window.locati
+    if(res.ok){window.location.href='https://stephen850.github.io/meetmeatthehotel/thanks.html';window.locati
