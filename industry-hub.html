@@ -335,48 +335,48 @@ form{display:flex;flex-direction:column;gap:16px}
         <div class="field">
           <label>Which days will you attend?</label>
           <div style="display:flex;flex-direction:column;gap:6px;margin-top:12px">
-            <label class="day-check">
-              <input type="checkbox" name="oct20" value="Tue Oct 20 — Industry Mixer 18:00–00:00">
-              <span class="day-label">
+            <div class="day-check" onclick="this.querySelector('input').click()">
+              <input type="checkbox" name="oct20" value="Tue Oct 20 — Industry Mixer 18:00–00:00" onclick="event.stopPropagation()">
+              <div class="day-label">
                 <span class="day-date">TUE 20 OCT</span>
                 <span class="day-info">Industry Mixer · 18:00 – 00:00</span>
-              </span>
-            </label>
-            <label class="day-check">
-              <input type="checkbox" name="oct21" value="Wed Oct 21 — Industry Hub 09:00–18:00">
-              <span class="day-label">
+              </div>
+            </div>
+            <div class="day-check" onclick="this.querySelector('input').click()">
+              <input type="checkbox" name="oct21" value="Wed Oct 21 — Industry Hub 09:00–18:00" onclick="event.stopPropagation()">
+              <div class="day-label">
                 <span class="day-date">WED 21 OCT</span>
                 <span class="day-info">Industry Hub · 09:00 – 18:00</span>
-              </span>
-            </label>
-            <label class="day-check">
-              <input type="checkbox" name="oct22" value="Thu Oct 22 — Industry Hub 09:00–18:00">
-              <span class="day-label">
+              </div>
+            </div>
+            <div class="day-check" onclick="this.querySelector('input').click()">
+              <input type="checkbox" name="oct22" value="Thu Oct 22 — Industry Hub 09:00–18:00" onclick="event.stopPropagation()">
+              <div class="day-label">
                 <span class="day-date">THU 22 OCT</span>
                 <span class="day-info">Industry Hub · 09:00 – 18:00</span>
-              </span>
-            </label>
-            <label class="day-check">
-              <input type="checkbox" name="oct23" value="Fri Oct 23 — Industry Hub 09:00–18:00">
-              <span class="day-label">
+              </div>
+            </div>
+            <div class="day-check" onclick="this.querySelector('input').click()">
+              <input type="checkbox" name="oct23" value="Fri Oct 23 — Industry Hub 09:00–18:00" onclick="event.stopPropagation()">
+              <div class="day-label">
                 <span class="day-date">FRI 23 OCT</span>
                 <span class="day-info">Industry Hub · 09:00 – 18:00</span>
-              </span>
-            </label>
-            <label class="day-check">
-              <input type="checkbox" name="oct24" value="Sat Oct 24 — Industry Hub 09:00–18:00">
-              <span class="day-label">
+              </div>
+            </div>
+            <div class="day-check" onclick="this.querySelector('input').click()">
+              <input type="checkbox" name="oct24" value="Sat Oct 24 — Industry Hub 09:00–18:00" onclick="event.stopPropagation()">
+              <div class="day-label">
                 <span class="day-date">SAT 24 OCT</span>
                 <span class="day-info">Industry Hub · 09:00 – 18:00</span>
-              </span>
-            </label>
-            <label class="day-check">
-              <input type="checkbox" name="oct25" value="Sun Oct 25 — Industry Hub 09:00–18:00">
-              <span class="day-label">
+              </div>
+            </div>
+            <div class="day-check" onclick="this.querySelector('input').click()">
+              <input type="checkbox" name="oct25" value="Sun Oct 25 — Industry Hub 09:00–18:00" onclick="event.stopPropagation()">
+              <div class="day-label">
                 <span class="day-date">SUN 25 OCT</span>
                 <span class="day-info">Industry Hub · 09:00 – 18:00</span>
-              </span>
-            </label>
+              </div>
+            </div>
           </div>
         </div>
         <div class="field"><label>Message (optional)</label><textarea name="message" placeholder="Anything you'd like us to know about your participation at MMATH October 2026..."></textarea></div>
@@ -427,6 +427,13 @@ form{display:flex;flex-direction:column;gap:16px}
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+document.querySelectorAll('.day-check').forEach(d=>{
+  d.querySelector('input').addEventListener('change',function(){
+    d.style.borderColor = this.checked ? 'var(--teal)' : '';
+    d.style.background = this.checked ? 'rgba(77,168,160,.06)' : '';
+  });
+});
+
 const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target)}}),{threshold:.12});
 document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
 </script>
