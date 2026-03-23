@@ -140,9 +140,23 @@ form{display:flex;flex-direction:column;gap:16px}
 .rv.vis{opacity:1;transform:none}
 .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
 </style>
+<style>
+.ann-bar{background:#0d0d0d;border-bottom:1px solid rgba(77,168,160,.2);overflow:hidden;height:32px;display:flex;align-items:center}
+.ann-track{display:flex;animation:ann 28s linear infinite;width:max-content;white-space:nowrap}
+.ann-item{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;padding:0 40px;color:rgba(245,245,240,.35)}
+.ann-item.hi{color:#4DA8A0}
+.ann-sep{color:rgba(77,168,160,.3);padding:0 8px}
+@keyframes ann{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+</style>
 </head>
 <body>
 
+<div class="ann-bar">
+  <div class="ann-track">
+    <span class="ann-item hi">✦ 5th Anniversary Edition</span><span class="ann-item">2022 – 2026</span><span class="ann-item hi">Meet Me at the Hotel</span><span class="ann-item">20 – 25 October 2026</span><span class="ann-item hi">Amsterdam</span><span class="ann-item">Industry Mixer · Opening Night · Tuesday October 20th</span>
+    <span class="ann-item hi">✦ 5th Anniversary Edition</span><span class="ann-item">2022 – 2026</span><span class="ann-item hi">Meet Me at the Hotel</span><span class="ann-item">20 – 25 October 2026</span><span class="ann-item hi">Amsterdam</span><span class="ann-item">Industry Mixer · Opening Night · Tuesday October 20th</span>
+  </div>
+</div>
 <div id="nav-overlay" style="display:none;position:fixed;inset:0;background:#0A0A0A;z-index:1998"></div>
 <nav class="nav">
   <a href="index.html" style="display:flex;align-items:center;">
@@ -319,11 +333,33 @@ form{display:flex;flex-direction:column;gap:16px}
           </select>
         </div>
         <div class="field">
-          <label>Attendance Type</label>
-          <select name="attendance">
-            <option>Hotel Guest (full week access)</option>
-            <option>Not booked yet</option>
-          </select>
+          <label>Which days will you attend?</label>
+          <div style="display:flex;flex-direction:column;gap:10px;margin-top:8px">
+            <label style="display:flex;align-items:center;gap:12px;font-family:var(--fc);font-size:13px;letter-spacing:.08em;color:var(--wd);text-transform:uppercase;cursor:pointer">
+              <input type="checkbox" name="days[]" value="Oct 20 — Industry Mixer 18:00–00:00" style="width:16px;height:16px;accent-color:var(--teal);flex-shrink:0">
+              Tue Oct 20 &nbsp;·&nbsp; Industry Mixer &nbsp;·&nbsp; 18:00 – 00:00
+            </label>
+            <label style="display:flex;align-items:center;gap:12px;font-family:var(--fc);font-size:13px;letter-spacing:.08em;color:var(--wd);text-transform:uppercase;cursor:pointer">
+              <input type="checkbox" name="days[]" value="Oct 21 — Industry Hub 09:00–18:00" style="width:16px;height:16px;accent-color:var(--teal);flex-shrink:0">
+              Wed Oct 21 &nbsp;·&nbsp; Industry Hub &nbsp;·&nbsp; 09:00 – 18:00
+            </label>
+            <label style="display:flex;align-items:center;gap:12px;font-family:var(--fc);font-size:13px;letter-spacing:.08em;color:var(--wd);text-transform:uppercase;cursor:pointer">
+              <input type="checkbox" name="days[]" value="Oct 22 — Industry Hub 09:00–18:00" style="width:16px;height:16px;accent-color:var(--teal);flex-shrink:0">
+              Thu Oct 22 &nbsp;·&nbsp; Industry Hub &nbsp;·&nbsp; 09:00 – 18:00
+            </label>
+            <label style="display:flex;align-items:center;gap:12px;font-family:var(--fc);font-size:13px;letter-spacing:.08em;color:var(--wd);text-transform:uppercase;cursor:pointer">
+              <input type="checkbox" name="days[]" value="Oct 23 — Industry Hub 09:00–18:00" style="width:16px;height:16px;accent-color:var(--teal);flex-shrink:0">
+              Fri Oct 23 &nbsp;·&nbsp; Industry Hub &nbsp;·&nbsp; 09:00 – 18:00
+            </label>
+            <label style="display:flex;align-items:center;gap:12px;font-family:var(--fc);font-size:13px;letter-spacing:.08em;color:var(--wd);text-transform:uppercase;cursor:pointer">
+              <input type="checkbox" name="days[]" value="Oct 24 — Industry Hub 09:00–18:00" style="width:16px;height:16px;accent-color:var(--teal);flex-shrink:0">
+              Sat Oct 24 &nbsp;·&nbsp; Industry Hub &nbsp;·&nbsp; 09:00 – 18:00
+            </label>
+            <label style="display:flex;align-items:center;gap:12px;font-family:var(--fc);font-size:13px;letter-spacing:.08em;color:var(--wd);text-transform:uppercase;cursor:pointer">
+              <input type="checkbox" name="days[]" value="Oct 25 — Industry Hub 09:00–18:00" style="width:16px;height:16px;accent-color:var(--teal);flex-shrink:0">
+              Sun Oct 25 &nbsp;·&nbsp; Industry Hub &nbsp;·&nbsp; 09:00 – 18:00
+            </label>
+          </div>
         </div>
         <div class="field"><label>Message (optional)</label><textarea name="message" placeholder="Anything you'd like us to know about your participation at MMATH October 2026..."></textarea></div>
         <button type="submit" class="btn bp" style="width:100%;margin-top:8px;">RSVP for Industry Hub Access →</button>
