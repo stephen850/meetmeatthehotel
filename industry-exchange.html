@@ -158,6 +158,7 @@ form{display:flex;flex-direction:column;gap:14px}
     <a href="experiences.html">Experiences</a>
     <a href="spaces.html">Spaces</a>
     <a href="partners.html">Partners</a>
+    <a href="merch.html">Merch</a>
     <a href="booking.html" class="nc">Book Your Stay</a>
   </div>
   <div class="hb" onclick="var nl=document.getElementById('nl');var ov=document.getElementById('nav-overlay');nl.classList.toggle('open');ov.style.display=nl.classList.contains('open')?'block':'none'">
@@ -361,7 +362,7 @@ form{display:flex;flex-direction:column;gap:14px}
         </div>
         <div class="apply-contact">
           <span class="lbl">Questions?</span>
-          <p style="font-family:var(--fc);font-size:13px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b1d8dfd7def1dcd4d4c5dcd4d0c5c5d9d4d9dec5d4dd9fd2dedc">[email&#160;protected]</a></p>
+          <p style="font-family:var(--fc);font-size:13px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="660f080009260b0303120b030712120e030e0912030a4805090b">[email&#160;protected]</a></p>
         </div>
       </div>
       <form class="rv d1" data-formspree="https://formspree.io/f/xojkbdkj" onsubmit="submitFS(this,event)">
@@ -447,27 +448,17 @@ form{display:flex;flex-direction:column;gap:14px}
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target)}}),{threshold:.08});
 document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
-function sf(f,e){
-  e.preventDefault();
-  const b=f.querySelector('button');
-  b.textContent='APPLICATION RECEIVED ✓';
-  b.style.background='#2E7A74';
-  setTimeout(()=>{b.textContent='Submit Application →';b.style.background='';f.reset()},3500);
-}
-</script>
-<script>
 async function submitFS(f,e){
   e.preventDefault();
   const btn=f.querySelector('button[type=submit]');
-  const orig=btn.textContent;
   btn.textContent='SENDING...';
   btn.disabled=true;
   try{
     const res=await fetch(f.dataset.formspree,{method:'POST',body:new FormData(f),headers:{Accept:'application/json'}});
-    if(res.ok){window.location.href='https://stephen850.github.io/meetmeatthehotel/thanks.html';}
+    if(res.ok){window.location.href='https://meetmeatthehotel.com/thanks.html';}
     else{btn.textContent='ERROR — TRY AGAIN';btn.disabled=false;}
   }catch(err){btn.textContent='ERROR — TRY AGAIN';btn.disabled=false;}
 }
