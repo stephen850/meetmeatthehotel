@@ -118,7 +118,7 @@ h3{font-size:clamp(22px,3vw,40px)}
 form{display:flex;flex-direction:column;gap:16px}
 .field{display:flex;flex-direction:column;gap:6px}
 .field label{font-family:var(--fc);font-size:10px;font-weight:600;letter-spacing:.25em;color:var(--teal);text-transform:uppercase}
-.field input,.field select,.field textarea{background:transparent;border:none;border-bottom:1px solid rgba(77,168,160,.35);color:var(--wh);padding:12px 0;font-family:var(--fc);font-size:14px;letter-spacing:.08em;outline:none;transition:border-color var(--tr);-webkit-appearance:none}.field input[type=checkbox]{width:18px;height:18px;min-width:18px;padding:0;accent-color:var(--teal);-webkit-appearance:checkbox;appearance:checkbox;cursor:pointer;flex-shrink:0;border-bottom:none}
+.field input,.field select,.field textarea{background:transparent;border:none;border-bottom:1px solid rgba(77,168,160,.35);color:var(--wh);padding:12px 0;font-family:var(--fc);font-size:14px;letter-spacing:.08em;outline:none;transition:border-color var(--tr);-webkit-appearance:none}
 .field input:focus,.field select:focus,.field textarea:focus{border-bottom-color:var(--teal)}
 .field input::placeholder,.field textarea::placeholder{color:rgba(245,245,240,.2)}
 .field select option{background:var(--blkc);color:var(--wh)}
@@ -136,11 +136,6 @@ form{display:flex;flex-direction:column;gap:16px}
 .fb2 a:hover{color:var(--teal)}
 @media(max-width:900px){.fg{grid-template-columns:1fr 1fr;gap:40px}}
 @media(max-width:480px){.fg{grid-template-columns:1fr}.fb2{flex-direction:column;gap:12px}}
-.day-check{display:flex;align-items:center;gap:14px;padding:14px 16px;border:1px solid var(--blkb);cursor:pointer;transition:border-color var(--tr),background var(--tr)}
-.day-check:hover{border-color:var(--teal);background:rgba(77,168,160,.04)}
-.day-label{display:flex;align-items:center;gap:16px;flex:1;pointer-events:none}
-.day-date{font-family:var(--fd);font-size:20px;color:var(--wh);line-height:1;min-width:110px}
-.day-info{font-family:var(--fc);font-size:12px;letter-spacing:.12em;color:rgba(245,245,240,.8);text-transform:uppercase}
 .rv{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
 .rv.vis{opacity:1;transform:none}
 .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
@@ -162,7 +157,6 @@ form{display:flex;flex-direction:column;gap:16px}
     <a href="experiences.html">Experiences</a>
     <a href="spaces.html">Spaces</a>
     <a href="partners.html">Partners</a>
-    <a href="merch.html">Merch</a>
     <a href="booking.html" class="nc">Book Your Stay</a>
   </div>
   <div class="hb" onclick="var nl=document.getElementById('nl');var ov=document.getElementById('nav-overlay');nl.classList.toggle('open');ov.style.display=nl.classList.contains('open')?'block':'none'">
@@ -294,11 +288,10 @@ form{display:flex;flex-direction:column;gap:16px}
     <div class="reg-grid">
       <div class="rv">
         <p>RSVP to secure your access to the Industry Hub at MMATH October 2026. The Hub is open to all registered industry professionals throughout the week — no matching, no application required.</p>
-        <p>Hotel guests are automatically included. Open daily from 09:00 to 18:00. Registration for the MMATH Industry Mixer can be done with this form as well.</p>
-        <p>For events after 18:00 you need to RSVP with the showcase partners directly.</p>
+        <p>Hotel guests are automatically included. Open daily from 09:00 to 18:00.</p>
         <div class="contact-box">
           <span class="lbl">Questions?</span>
-          <p style="font-family:var(--fc);font-size:13px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0f666169604f626a6a7b626a6e7b7b676a67607b6a63216c6062">[email&#160;protected]</a></p>
+          <p style="font-family:var(--fc);font-size:13px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b5dcdbd3daf5d8d0d0c1d8d0d4c1c1ddd0dddac1d0d99bd6dad8">[email&#160;protected]</a></p>
         </div>
         <p class="reg-note">B2B industry professionals only · All profiles are manually reviewed · Opens 3 months before the event</p>
       </div>
@@ -325,15 +318,11 @@ form{display:flex;flex-direction:column;gap:16px}
           </select>
         </div>
         <div class="field">
-          <label>Which days will you attend?</label>
-          <div style="display:flex;flex-direction:column;gap:4px;margin-top:12px">
-            <label class="day-check"><input type="checkbox" name="oct20" value="Tue Oct 20 — Industry Mixer 18:00–00:00"><div class="day-label"><span class="day-date">TUE 20 OCT</span><span class="day-info">Industry Mixer · 18:00 – 00:00</span></div></label>
-            <label class="day-check"><input type="checkbox" name="oct21" value="Wed Oct 21 — Industry Hub 09:00–18:00"><div class="day-label"><span class="day-date">WED 21 OCT</span><span class="day-info">Industry Hub · 09:00 – 18:00</span></div></label>
-            <label class="day-check"><input type="checkbox" name="oct22" value="Thu Oct 22 — Industry Hub 09:00–18:00"><div class="day-label"><span class="day-date">THU 22 OCT</span><span class="day-info">Industry Hub · 09:00 – 18:00</span></div></label>
-            <label class="day-check"><input type="checkbox" name="oct23" value="Fri Oct 23 — Industry Hub 09:00–18:00"><div class="day-label"><span class="day-date">FRI 23 OCT</span><span class="day-info">Industry Hub · 09:00 – 18:00</span></div></label>
-            <label class="day-check"><input type="checkbox" name="oct24" value="Sat Oct 24 — Industry Hub 09:00–18:00"><div class="day-label"><span class="day-date">SAT 24 OCT</span><span class="day-info">Industry Hub · 09:00 – 18:00</span></div></label>
-            <label class="day-check"><input type="checkbox" name="oct25" value="Sun Oct 25 — Industry Hub 09:00–18:00"><div class="day-label"><span class="day-date">SUN 25 OCT</span><span class="day-info">Industry Hub · 09:00 – 18:00</span></div></label>
-          </div>
+          <label>Attendance Type</label>
+          <select name="attendance">
+            <option>Hotel Guest (full week access)</option>
+            <option>Not booked yet</option>
+          </select>
         </div>
         <div class="field"><label>Message (optional)</label><textarea name="message" placeholder="Anything you'd like us to know about your participation at MMATH October 2026..."></textarea></div>
         <button type="submit" class="btn bp" style="width:100%;margin-top:8px;">RSVP for Industry Hub Access →</button>
@@ -382,20 +371,17 @@ form{display:flex;flex-direction:column;gap:16px}
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target)}}),{threshold:.12});
 document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
-</script>
-<script>
 async function submitFS(f,e){
   e.preventDefault();
   const btn=f.querySelector('button[type=submit]');
-  const orig=btn.textContent;
   btn.textContent='SENDING...';
   btn.disabled=true;
   try{
     const res=await fetch(f.dataset.formspree,{method:'POST',body:new FormData(f),headers:{Accept:'application/json'}});
-    if(res.ok){window.location.href='https://stephen850.github.io/meetmeatthehotel/thanks.html';}
+    if(res.ok){window.location.href='https://meetmeatthehotel.com/thanks.html';}
     else{btn.textContent='ERROR — TRY AGAIN';btn.disabled=false;}
   }catch(err){btn.textContent='ERROR — TRY AGAIN';btn.disabled=false;}
 }
