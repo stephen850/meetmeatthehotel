@@ -156,23 +156,9 @@ form{display:flex;flex-direction:column;gap:14px}
 .rv.vis{opacity:1;transform:none}
 .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
 </style>
-<style>
-.ann-bar{background:#0d0d0d;border-bottom:1px solid rgba(77,168,160,.2);overflow:hidden;height:32px;display:flex;align-items:center}
-.ann-track{display:flex;animation:ann 28s linear infinite;width:max-content;white-space:nowrap}
-.ann-item{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;padding:0 40px;color:rgba(245,245,240,.35)}
-.ann-item.hi{color:#4DA8A0}
-.ann-sep{color:rgba(77,168,160,.3);padding:0 8px}
-@keyframes ann{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-</style>
 </head>
 <body>
 
-<div class="ann-bar">
-  <div class="ann-track">
-    <span class="ann-item hi">✦ 5th Anniversary Edition</span><span class="ann-item">2022 – 2026</span><span class="ann-item hi">Meet Me at the Hotel</span><span class="ann-item">20 – 25 October 2026</span><span class="ann-item hi">Amsterdam</span><span class="ann-item">Industry Mixer · Opening Night · Tuesday October 20th</span>
-    <span class="ann-item hi">✦ 5th Anniversary Edition</span><span class="ann-item">2022 – 2026</span><span class="ann-item hi">Meet Me at the Hotel</span><span class="ann-item">20 – 25 October 2026</span><span class="ann-item hi">Amsterdam</span><span class="ann-item">Industry Mixer · Opening Night · Tuesday October 20th</span>
-  </div>
-</div>
 <div id="nav-overlay" style="display:none;position:fixed;inset:0;background:#0A0A0A;z-index:1998"></div>
 <nav class="nav">
   <a href="index.html" style="display:flex;align-items:center;">
@@ -187,7 +173,6 @@ form{display:flex;flex-direction:column;gap:14px}
     <a href="experiences.html">Experiences</a>
     <a href="spaces.html">Spaces</a>
     <a href="partners.html">Partners</a>
-    <a href="merch.html">Merch</a>
     <a href="booking.html" class="nc">Book Your Stay</a>
   </div>
   <div class="hb" onclick="var nl=document.getElementById('nl');var ov=document.getElementById('nav-overlay');nl.classList.toggle('open');ov.style.display=nl.classList.contains('open')?'block':'none'">
@@ -483,12 +468,12 @@ form{display:flex;flex-direction:column;gap:14px}
         <p>For group bookings of 4+ rooms, mention this in your message for dedicated group pricing and benefits.</p>
         <div style="margin-top:32px;padding:24px 28px;background:var(--blkc);border:1px solid var(--blkb)">
           <span class="lbl">Direct Contact</span>
-          <p style="font-family:var(--fc);font-size:13px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="cbb8bfaebba3aea58ba6aeaebfa6aeaabfbfa3aea3a4bfaea7e5a8a4a6">[email&#160;protected]</a></p>
+          <p style="font-family:var(--fc);font-size:13px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="afdcdbcadfc7cac1efc2cacadbc2cacedbdbc7cac7c0dbcac381ccc0c2">[email&#160;protected]</a></p>
           <p style="font-family:var(--fc);font-size:13px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase;margin-top:6px;">IJdok 6 · Amsterdam</p>
         </div>
         <p style="font-family:var(--fc);font-size:10px;letter-spacing:.12em;color:rgba(245,245,240,.3);text-transform:uppercase;margin-top:16px">B2B industry professionals only · All inquiries treated with full confidentiality</p>
       </div>
-      <form class="rv d1" data-formspree="https://formspree.io/f/xdawjglj" onsubmit="submitFS(this,event)">
+      <form class="rv d1" data-formspree="https://formspree.io/f/meepjqba" onsubmit="submitFS(this,event)">
         <div class="field-row">
           <div class="field"><label>First Name</label><input type="text" name="first_name" placeholder="Your first name" required></div>
           <div class="field"><label>Last Name</label><input type="text" name="last_name" placeholder="Your last name" required></div>
@@ -575,17 +560,21 @@ form{display:flex;flex-direction:column;gap:14px}
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+
+<script>
 const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target)}}),{threshold:.08});
 document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
-</script>
-<script>
 async function submitFS(f,e){
   e.preventDefault();
   const btn=f.querySelector('button[type=submit]');
-  const orig=btn.textContent;
   btn.textContent='SENDING...';
   btn.disabled=true;
   try{
     const res=await fetch(f.dataset.formspree,{method:'POST',body:new FormData(f),headers:{Accept:'application/json'}});
-    if(res.ok){window.location.href='https://stephen850.github.io/meetmeatthehotel/thanks.html';window.locati
+    if(res.ok){window.location.href='https://meetmeatthehotel.com/thanks.html';}
+    else{btn.textContent='ERROR — TRY AGAIN';btn.disabled=false;}
+  }catch(err){btn.textContent='ERROR — TRY AGAIN';btn.disabled=false;}
+}
+</script>
+</body>
+</html>
