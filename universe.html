@@ -16,7 +16,7 @@ img{display:block;max-width:100%}
 @media(max-width:1024px){.c{padding:0 40px}}
 @media(max-width:640px){.c{padding:0 20px}}
 h1,h2,h3,h4{font-family:var(--fd);line-height:.93;text-transform:uppercase;letter-spacing:-.01em}
-h1{font-size:clamp(64px,10vw,140px)}
+h1{font-size:clamp(72px,12vw,170px)}
 h2{font-size:clamp(40px,6vw,84px)}
 h3{font-size:clamp(22px,3vw,40px)}
 .teal{color:var(--teal)}
@@ -41,8 +41,8 @@ h3{font-size:clamp(22px,3vw,40px)}
 }
 
 /* HERO */
-.ph{padding-top:calc(var(--nav) + 80px);padding-bottom:80px;min-height:70vh;display:flex;align-items:center;justify-content:flex-start;position:relative;overflow:hidden;background:#0a1412;border-bottom:1px solid var(--blkb)}
-.ph-img{position:absolute;inset:0;z-index:0;background-image:url('universe-hero.jpg');background-size:cover;background-position:center 40%;opacity:0.35}
+.ph{padding-top:calc(var(--nav) + 120px);padding-bottom:120px;min-height:92vh;display:flex;align-items:center;justify-content:flex-start;position:relative;overflow:hidden;background:#0a1412;border-bottom:1px solid var(--blkb)}
+.ph-img{position:absolute;inset:0;z-index:0;background-image:url('universe-hero.jpg');background-size:cover;background-position:center 30%;opacity:0.5}
 .ph-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(to right,rgba(10,10,10,.85) 0%,rgba(10,10,10,.6) 50%,rgba(10,10,10,.2) 100%),linear-gradient(to bottom,rgba(10,10,10,.3) 0%,rgba(10,10,10,.0) 40%,rgba(10,10,10,.7) 100%)}
 .ph-grid{position:absolute;inset:0;z-index:0;background-image:linear-gradient(rgba(77,168,160,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(77,168,160,.04) 1px,transparent 1px);background-size:80px 80px}
 .ph-inner{position:relative;z-index:20}
@@ -68,12 +68,12 @@ h3{font-size:clamp(22px,3vw,40px)}
 .platforms{padding:100px 0;border-bottom:1px solid var(--blkb)}
 .platforms-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:60px}
 .platform{background:var(--blkc);border:1px solid var(--blkb);padding:40px 32px;display:flex;flex-direction:column;transition:all var(--tr);position:relative;overflow:hidden}
-.platform::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--teal);transform:scaleX(0);transform-origin:left;transition:transform var(--tr)}
-.platform:hover{border-color:var(--teal);background:var(--blk)}
+.platform::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--pc,var(--teal));transform:scaleX(0);transform-origin:left;transition:transform var(--tr)}
+.platform:hover{border-color:var(--pc,var(--teal));background:var(--blk)}
 .platform:hover::before{transform:scaleX(1)}
-.platform-num{font-family:var(--fd);font-size:72px;color:var(--teal);opacity:.07;line-height:1;margin-bottom:-8px}
+.platform-num{font-family:var(--fd);font-size:72px;color:var(--pc,var(--teal));opacity:.07;line-height:1;margin-bottom:-8px}
 .platform-name{font-family:var(--fd);font-size:clamp(24px,2.5vw,34px);color:var(--wh);margin-bottom:8px;line-height:.95}
-.platform-focus{font-family:var(--fc);font-size:10px;letter-spacing:.25em;color:var(--teal);text-transform:uppercase;margin-bottom:20px;display:block}
+.platform-focus{font-family:var(--fc);font-size:10px;letter-spacing:.25em;color:var(--pc,var(--teal));text-transform:uppercase;margin-bottom:20px;display:block}
 .platform-text{font-size:13px;color:var(--wd);line-height:1.75;font-weight:300;flex:1}
 @media(max-width:900px){.platforms-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:480px){.platforms-grid{grid-template-columns:1fr}}
@@ -128,6 +128,7 @@ h3{font-size:clamp(22px,3vw,40px)}
     <a href="experiences.html">Experiences</a>
     <a href="spaces.html">Spaces</a>
     <a href="partners.html">Partners</a>
+    <a href="merch.html">Merch</a>
     <a href="booking.html" class="nc">Book Your Stay</a>
   </div>
   <div class="hb" onclick="var nl=document.getElementById('nl');var ov=document.getElementById('nav-overlay');nl.classList.toggle('open');ov.style.display=nl.classList.contains('open')?'block':'none'">
@@ -180,52 +181,54 @@ h3{font-size:clamp(22px,3vw,40px)}
   </div>
 </section>
 
-<!-- THE PLATFORMS -->
+<!-- THE SIX PLATFORMS -->
 <section class="platforms">
   <div class="c">
     <span class="lbl rv">The Platforms</span>
     <h2 class="rv">Five platforms.<br><span class="teal">One universe.</span></h2>
     <div class="platforms-grid">
 
-      <a href="meetme-experience.html" class="platform rv" style="cursor:pointer">
+      <a href="meetme-experience.html" class="platform rv" style="--pc:#FF6B35">
         <div class="platform-num">01</div>
         <div class="platform-name">MEET ME EXPERIENCE</div>
         <span class="platform-focus">Nightlife environments & hospitality</span>
         <p class="platform-text">Meet Me Experience explores the environments where music culture happens — from clubs and festivals to hospitality concepts and destination events. The platform highlights how venues, hospitality and cultural spaces shape the global music industry.</p>
-        <span style="font-family:var(--fc);font-size:11px;letter-spacing:.2em;color:var(--teal);text-transform:uppercase;margin-top:20px;display:block">Explore Experience →</span>
+        <span style="font-family:var(--fc);font-size:11px;letter-spacing:.2em;color:#FF6B35;text-transform:uppercase;margin-top:20px;display:block">Explore →</span>
       </a>
 
-      <a href="image-lab.html" class="platform rv d1" style="cursor:pointer">
+      <a href="image-lab.html" class="platform rv d1" style="--pc:#C9A84C">
         <div class="platform-num">02</div>
         <div class="platform-name">MEET ME IMAGE LAB</div>
         <span class="platform-focus">Fashion & artist identity</span>
         <p class="platform-text">Meet Me Image Lab explores the intersection between music, fashion and identity. The platform connects artists, designers and brands to explore how style, culture and visual identity shape the modern music scene.</p>
-        <span style="font-family:var(--fc);font-size:11px;letter-spacing:.2em;color:var(--teal);text-transform:uppercase;margin-top:20px;display:block">Explore Image Lab →</span>
+        <span style="font-family:var(--fc);font-size:11px;letter-spacing:.2em;color:#C9A84C;text-transform:uppercase;margin-top:20px;display:block">Explore →</span>
       </a>
 
-      <a href="meetme-future.html" class="platform rv d2" style="cursor:pointer">
+      <a href="meetme-future.html" class="platform rv d2" style="--pc:#7B61FF">
         <div class="platform-num">03</div>
         <div class="platform-name">MEET ME IN THE FUTURE</div>
         <span class="platform-focus">Technology & innovation</span>
         <p class="platform-text">Meet Me In The Future focuses on the technologies shaping the next era of the music industry — from AI and digital tools to new business models and creative innovation. The platform connects innovators, technologists and industry leaders exploring the future of music culture.</p>
-        <span style="font-family:var(--fc);font-size:11px;letter-spacing:.2em;color:var(--teal);text-transform:uppercase;margin-top:20px;display:block">Explore In The Future →</span>
+        <span style="font-family:var(--fc);font-size:11px;letter-spacing:.2em;color:#7B61FF;text-transform:uppercase;margin-top:20px;display:block">Explore →</span>
       </a>
 
-      <a href="creators-lab.html" class="platform rv" style="cursor:pointer">
+      <a href="creators-lab.html" class="platform rv" style="--pc:#CEFF47">
         <div class="platform-num">04</div>
         <div class="platform-name">MEET ME CREATOR LAB</div>
         <span class="platform-focus">Creators & digital culture</span>
         <p class="platform-text">Meet Me Creator Lab focuses on the growing role of creators within the global music industry. From content creators and media platforms to digital storytelling and community building, the platform explores how creators shape modern music culture.</p>
-        <span style="font-family:var(--fc);font-size:11px;letter-spacing:.2em;color:var(--teal);text-transform:uppercase;margin-top:20px;display:block">Explore Creator Lab →</span>
+        <span style="font-family:var(--fc);font-size:11px;letter-spacing:.2em;color:#CEFF47;text-transform:uppercase;margin-top:20px;display:block">Explore →</span>
       </a>
 
-      <a href="meetme-live.html" class="platform rv d1" style="cursor:pointer">
+      <a href="meetme-live.html" class="platform rv d1" style="--pc:#E63946">
         <div class="platform-num">05</div>
         <div class="platform-name">MEET ME LIVE</div>
         <span class="platform-focus">Media & storytelling</span>
         <p class="platform-text">Meet Me Live is the media layer of the Meet Me ecosystem. Through interviews, podcasts and filmed conversations, the platform captures the voices shaping the global music industry.</p>
-        <span style="font-family:var(--fc);font-size:11px;letter-spacing:.2em;color:var(--teal);text-transform:uppercase;margin-top:20px;display:block">Explore Live →</span>
+        <span style="font-family:var(--fc);font-size:11px;letter-spacing:.2em;color:#E63946;text-transform:uppercase;margin-top:20px;display:block">Explore →</span>
       </a>
+
+
 
     </div>
   </div>
