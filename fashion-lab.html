@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MeetMe Fashion Lab — Where Artists Get Styled</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --teal:#4DA8A0;--deep:#2E7A74;--pool:#7DCDC7;
+  --blk:#0A0A0A;--blkm:#111;--blkc:#161616;--blkb:#222;
+  --wh:#F5F5F0;--wd:rgba(245,245,240,0.6);
+  --gold:#C9A84C;--gold2:rgba(201,168,76,0.15);
+  --fd:'Bebas Neue',sans-serif;--fc:'Barlow Condensed',sans-serif;--fb:'Barlow',sans-serif;
+  --nav:72px;--tr:0.35s cubic-bezier(.4,0,.2,1)
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--blk);color:var(--wh);font-family:var(--fb);overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.c{max-width:1280px;margin:0 auto;padding:0 80px}
+@media(max-width:1024px){.c{padding:0 40px}}
+@media(max-width:640px){.c{padding:0 20px}}
+h1,h2,h3,h4{font-family:var(--fd);line-height:.93;text-transform:uppercase;letter-spacing:-.01em}
+h1{font-size:clamp(64px,10vw,140px)}
+h2{font-size:clamp(40px,6vw,84px)}
+h3{font-size:clamp(22px,3vw,40px)}
+.teal{color:var(--teal)}
+.gold{color:var(--gold)}
+.lbl{font-family:var(--fc);font-size:11px;font-weight:600;letter-spacing:.28em;color:var(--teal);text-transform:uppercase;display:block;margin-bottom:16px}
+.lbl-gold{font-family:var(--fc);font-size:11px;font-weight:600;letter-spacing:.28em;color:var(--gold);text-transform:uppercase;display:block;margin-bottom:16px}
+.btn{display:inline-block;font-family:var(--fc);font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:15px 36px;transition:all var(--tr);cursor:pointer;border:none;text-align:center}
+.bp{background:var(--teal);color:var(--blk)}.bp:hover{background:var(--deep);color:var(--wh)}
+.bo{border:1px solid var(--teal);color:var(--teal);background:transparent}.bo:hover{background:var(--teal);color:var(--blk)}
+.bg{border:1px solid var(--gold);color:var(--gold);background:transparent}.bg:hover{background:var(--gold);color:var(--blk)}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;height:var(--nav);display:flex;align-items:center;justify-content:space-between;padding:0 40px;z-index:2000;background:rgba(10,10,10,.98);border-bottom:1px solid var(--blkb);backdrop-filter:blur(16px)}
+.nl{display:flex;align-items:center;gap:28px}
+.nl a{font-family:var(--fc);font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--wd);transition:color var(--tr)}.nl a:hover{color:var(--wh)}
+.nc{background:var(--teal);color:var(--blk)!important;padding:10px 20px}.nc:hover{background:var(--deep)!important;color:var(--wh)!important}
+.hb{display:none;flex-direction:column;gap:5px;cursor:pointer}
+.hb span{display:block;width:22px;height:1.5px;background:var(--wh)}
+@media(max-width:900px){
+  .hb{display:flex}
+  .nl{position:fixed;top:var(--nav);left:0;right:0;bottom:0;background:#0A0A0A;flex-direction:column;align-items:flex-start;padding:40px;gap:20px;transform:translateX(100%);transition:transform var(--tr);z-index:1999}
+  .nl.open{transform:none}
+  .nl a{font-size:20px}
+}
+
+/* HERO */
+.hero{min-height:100vh;position:relative;display:flex;align-items:flex-end;padding-bottom:100px;overflow:hidden;background:#0a0808}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 70% 30%,rgba(201,168,76,.08) 0%,transparent 60%),radial-gradient(ellipse 40% 60% at 20% 80%,rgba(77,168,160,.06) 0%,transparent 55%)}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.03) 1px,transparent 1px);background-size:60px 60px}
+.hero-line{position:absolute;top:0;left:50%;width:1px;height:100%;background:linear-gradient(to bottom,transparent,rgba(201,168,76,.15),transparent)}
+.hero-content{position:relative;z-index:2;width:100%;max-width:1280px;margin:0 auto;padding:0 80px}
+.hero-eyebrow{font-family:var(--fc);font-size:11px;font-weight:600;letter-spacing:.4em;color:var(--gold);text-transform:uppercase;margin-bottom:24px;display:flex;align-items:center;gap:16px}
+.hero-eyebrow::before{content:'';width:40px;height:1px;background:var(--gold)}
+.hero-tagline{font-family:var(--fc);font-size:clamp(16px,2vw,22px);font-weight:400;letter-spacing:.06em;color:var(--wd);margin-top:24px;max-width:600px;line-height:1.6;text-transform:uppercase}
+.hero-quote{position:absolute;bottom:100px;right:80px;font-family:var(--fd);font-size:clamp(18px,2vw,26px);color:rgba(201,168,76,.4);text-align:right;line-height:1.1;max-width:400px}
+@media(max-width:768px){.hero-content{padding:0 20px}.hero-quote{display:none}}
+
+/* INTRO STRIP */
+.intro-strip{background:var(--gold);padding:20px 0}
+.intro-strip-inner{display:flex;align-items:center;justify-content:center;gap:60px;flex-wrap:wrap}
+.strip-stat{text-align:center}
+.strip-n{font-family:var(--fd);font-size:36px;color:var(--blk);line-height:1}
+.strip-l{font-family:var(--fc);font-size:10px;letter-spacing:.22em;color:rgba(10,10,10,.6);text-transform:uppercase;margin-top:4px}
+.strip-div{width:1px;height:40px;background:rgba(10,10,10,.2)}
+@media(max-width:640px){.strip-div{display:none}}
+
+/* OPPORTUNITY */
+.opportunity{padding:120px 0;border-bottom:1px solid var(--blkb);background:var(--blkm)}
+.opp-inner{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:center}
+.opp-text p{font-size:16px;color:var(--wd);line-height:1.85;font-weight:300;margin-bottom:20px}
+.opp-cards{display:flex;flex-direction:column;gap:2px}
+.opp-card{background:var(--blkc);border:1px solid var(--blkb);border-left:3px solid var(--gold);padding:24px 28px;transition:border-color var(--tr)}
+.opp-card:hover{border-color:var(--gold)}
+.opp-card-title{font-family:var(--fd);font-size:22px;color:var(--wh);margin-bottom:6px}
+.opp-card-desc{font-family:var(--fc);font-size:12px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase}
+@media(max-width:768px){.opp-inner{grid-template-columns:1fr;gap:48px}}
+
+/* CONCEPT */
+.concept{padding:120px 0;border-bottom:1px solid var(--blkb)}
+.concept-statement{font-family:var(--fd);font-size:clamp(32px,5vw,72px);line-height:.95;color:var(--wh);max-width:900px;margin:40px 0 80px}
+.concept-statement em{color:var(--gold);font-style:normal}
+.concept-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:2px}
+.concept-step{background:var(--blkc);border:1px solid var(--blkb);padding:32px 24px;position:relative;transition:border-color var(--tr)}
+.concept-step:hover{border-color:var(--gold)}
+.concept-step-n{font-family:var(--fd);font-size:72px;color:var(--gold);opacity:.08;line-height:1;margin-bottom:-8px}
+.concept-step h4{font-family:var(--fd);font-size:20px;margin-bottom:8px}
+.concept-step p{font-size:12px;color:var(--wd);line-height:1.65}
+.step-arr{position:absolute;top:50%;right:-1px;transform:translateY(-50%);width:22px;height:22px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--blk);z-index:1;font-weight:700}
+.concept-step:last-child .step-arr{display:none}
+@media(max-width:900px){.concept-steps{grid-template-columns:1fr 1fr}.step-arr{display:none}}
+@media(max-width:480px){.concept-steps{grid-template-columns:1fr}}
+
+/* ZONES */
+.zones{padding:120px 0;border-bottom:1px solid var(--blkb);background:var(--blkm)}
+.zones-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:60px}
+.zone{background:var(--blkc);border:1px solid var(--blkb);padding:48px 36px;position:relative;overflow:hidden;transition:border-color var(--tr)}
+.zone::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform var(--tr)}
+.zone:hover{border-color:var(--gold)}.zone:hover::before{transform:scaleX(1)}
+.zone-num{font-family:var(--fd);font-size:100px;color:var(--gold);opacity:.05;line-height:1;position:absolute;top:20px;right:20px}
+.zone-name{font-family:var(--fd);font-size:32px;margin-bottom:12px;color:var(--wh)}
+.zone-tag{font-family:var(--fc);font-size:10px;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;border:1px solid rgba(201,168,76,.3);padding:4px 10px;display:inline-block;margin-bottom:20px}
+.zone ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.zone ul li{font-family:var(--fc);font-size:12px;letter-spacing:.08em;color:var(--wd);text-transform:uppercase;display:flex;align-items:center;gap:10px}
+.zone ul li::before{content:'→';color:var(--gold);flex-shrink:0}
+.zone-key{border-color:var(--gold);background:rgba(201,168,76,.03)}
+.zone-key::before{transform:scaleX(1)}
+@media(max-width:768px){.zones-grid{grid-template-columns:1fr}}
+
+/* CONTENT ENGINE */
+.engine{padding:120px 0;border-bottom:1px solid var(--blkb)}
+.engine-inner{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:start}
+.engine-text p{font-size:15px;color:var(--wd);line-height:1.8;font-weight:300;margin-bottom:20px}
+.engine-output{display:flex;flex-direction:column;gap:2px}
+.engine-item{background:var(--blkc);border:1px solid var(--blkb);padding:18px 24px;display:flex;align-items:center;gap:16px;transition:border-color var(--tr)}
+.engine-item:hover{border-color:var(--gold)}
+.engine-item-icon{font-size:20px;flex-shrink:0}
+.engine-item-text{font-family:var(--fc);font-size:13px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase}
+.engine-dist{margin-top:32px;padding:28px;background:var(--blkc);border:1px solid var(--blkb);border-top:3px solid var(--gold)}
+.engine-dist-title{font-family:var(--fc);font-size:10px;letter-spacing:.25em;color:var(--gold);text-transform:uppercase;margin-bottom:16px}
+.dist-items{display:flex;gap:8px;flex-wrap:wrap}
+.dist-item{font-family:var(--fc);font-size:11px;letter-spacing:.15em;color:var(--wh);text-transform:uppercase;border:1px solid var(--blkb);padding:6px 14px;transition:border-color var(--tr)}
+.dist-item:hover{border-color:var(--gold)}
+@media(max-width:768px){.engine-inner{grid-template-columns:1fr;gap:48px}}
+
+/* PARTNERSHIPS */
+.partners{padding:120px 0;border-bottom:1px solid var(--blkb);background:var(--blkm)}
+.partners-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:60px}
+.partner-tier{background:var(--blkc);border:1px solid var(--blkb);padding:48px 36px;display:flex;flex-direction:column;transition:border-color var(--tr)}
+.partner-tier.premium{border-color:var(--gold);background:rgba(201,168,76,.03)}
+.partner-tier:hover{border-color:var(--gold)}
+.tier-badge{font-family:var(--fc);font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;padding:5px 14px;display:inline-block;margin-bottom:24px}
+.tier-basic{background:transparent;border:1px solid var(--blkb);color:var(--wd)}
+.tier-activation{background:transparent;border:1px solid rgba(201,168,76,.4);color:var(--gold)}
+.tier-premium{background:var(--gold);color:var(--blk)}
+.tier-name{font-family:var(--fd);font-size:36px;margin-bottom:8px}
+.tier-sub{font-family:var(--fc);font-size:11px;letter-spacing:.15em;color:var(--teal);text-transform:uppercase;margin-bottom:28px}
+.tier-features{list-style:none;display:flex;flex-direction:column;gap:10px;flex:1}
+.tier-features li{font-family:var(--fc);font-size:12px;letter-spacing:.08em;color:var(--wd);text-transform:uppercase;padding:10px 0;border-bottom:1px solid var(--blkb);display:flex;align-items:center;gap:10px}
+.tier-features li::before{content:'→';color:var(--gold);flex-shrink:0}
+@media(max-width:768px){.partners-grid{grid-template-columns:1fr}}
+
+/* DIFFERENTIATION */
+.diff{padding:120px 0;border-bottom:1px solid var(--blkb)}
+.diff-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-top:60px}
+.diff-col-title{font-family:var(--fc);font-size:11px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;margin-bottom:16px;padding:8px 16px;display:inline-block}
+.not-this{border-left:3px solid #e05555;color:#e05555;background:rgba(224,85,85,.06)}
+.but-this{border-left:3px solid var(--gold);color:var(--gold);background:var(--gold2)}
+.diff-list{list-style:none;display:flex;flex-direction:column;gap:2px}
+.diff-item{padding:16px 20px;background:var(--blkc);border:1px solid var(--blkb);font-family:var(--fc);font-size:13px;letter-spacing:.1em;text-transform:uppercase;display:flex;align-items:center;gap:12px}
+.diff-item.no{color:rgba(245,245,240,.35)}.diff-item.no::before{content:'✕';color:#e05555;flex-shrink:0}
+.diff-item.yes{color:var(--wh)}.diff-item.yes::before{content:'✓';color:var(--gold);flex-shrink:0}
+@media(max-width:768px){.diff-inner{grid-template-columns:1fr}}
+
+/* CTA */
+.cta{padding:140px 0;text-align:center;background:radial-gradient(ellipse 80% 100% at 50% 50%,rgba(201,168,76,.06) 0%,transparent 70%),var(--blk);border-top:1px solid var(--blkb)}
+.cta-quote{font-family:var(--fd);font-size:clamp(28px,5vw,72px);line-height:.95;max-width:900px;margin:0 auto 60px;color:var(--wh)}
+.cta-quote em{color:var(--gold);font-style:normal}
+.cta-contact{font-family:var(--fc);font-size:14px;letter-spacing:.15em;color:var(--wd);text-transform:uppercase;margin-top:32px}
+.cta-contact a{color:var(--gold)}
+
+/* FOOTER */
+.ft{padding:80px 0 40px;background:var(--blkc);border-top:1px solid var(--blkb)}
+.fg{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:60px}
+.fb p{font-size:13px;color:var(--wd);margin-top:20px;line-height:1.75;font-weight:300}
+.fa{margin-top:10px;opacity:.4;font-size:12px}
+.fcc{display:flex;flex-direction:column;gap:12px}
+.fct{font-family:var(--fc);font-size:10px;font-weight:600;letter-spacing:.3em;color:var(--teal);text-transform:uppercase;margin-bottom:4px}
+.fcc a{font-family:var(--fc);font-size:13px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase;transition:color var(--tr)}.fcc a:hover{color:var(--teal)}
+.fb2{display:flex;justify-content:space-between;padding-top:32px;border-top:1px solid var(--blkb);font-family:var(--fc);font-size:11px;letter-spacing:.1em;color:rgba(245,245,240,.3);text-transform:uppercase}
+@media(max-width:900px){.fg{grid-template-columns:1fr 1fr;gap:40px}}
+@media(max-width:480px){.fg{grid-template-columns:1fr}.fb2{flex-direction:column;gap:12px}}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+.rv.vis{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+</style>
+</head>
+<body>
+
+<div id="nav-overlay" style="display:none;position:fixed;inset:0;background:#0A0A0A;z-index:1998"></div>
+<nav class="nav">
+  <a href="index.html" style="display:flex;align-items:center;">
+    <img src="logo.png" alt="Meet Me at the Hotel" style="height:48px;width:auto;display:block;">
+  </a>
+  <div class="nl" id="nl">
+    <a href="about.html">About</a>
+    <a href="program.html">Program</a>
+    <a href="universe.html">Universe</a>
+    <a href="industry-hub.html">Industry Hub</a>
+    <a href="industry-exchange.html">Industry Exchange</a>
+    <a href="experiences.html">Experiences</a>
+    <a href="spaces.html">Spaces</a>
+    <a href="partners.html">Partners</a>
+    <a href="merch.html">Merch</a>
+    <a href="booking.html" class="nc">Book Your Stay</a>
+  </div>
+  <div class="hb" onclick="var nl=document.getElementById('nl');var ov=document.getElementById('nav-overlay');nl.classList.toggle('open');ov.style.display=nl.classList.contains('open')?'block':'none'">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-line"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow" style="opacity:1;transform:none">Meet Me Universe · Fashion Lab</div>
+    <h1>MEETME<br><span class="gold">FASHION</span><br>LAB.</h1>
+    <p class="hero-tagline">Where artists get styled, brands get seen, and content gets created.</p>
+    <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:40px">
+      <a href="#partnerships" class="bg">Explore Partnership →</a>
+      <a href="#contact" class="bo">Get in Touch</a>
+    </div>
+  </div>
+  <div class="hero-quote">"Not influencer<br>marketing.<br>Real artist<br>integration."</div>
+</section>
+
+<!-- INTRO STRIP -->
+<div class="intro-strip">
+  <div class="c">
+    <div class="intro-strip-inner">
+      <div class="strip-stat"><div class="strip-n">1,500+</div><div class="strip-l">Industry guests per day</div></div>
+      <div class="strip-div"></div>
+      <div class="strip-stat"><div class="strip-n">45+</div><div class="strip-l">Nationalities</div></div>
+      <div class="strip-div"></div>
+      <div class="strip-stat"><div class="strip-n">5th</div><div class="strip-l">Anniversary Edition</div></div>
+      <div class="strip-div"></div>
+      <div class="strip-stat"><div class="strip-n">100%</div><div class="strip-l">Live content production</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- OPPORTUNITY -->
+<section class="opportunity">
+  <div class="c">
+    <div class="opp-inner">
+      <div class="rv">
+        <span class="lbl-gold">The Opportunity</span>
+        <h2>Influencer marketing<br><span class="gold">is saturated.</span></h2>
+        <div class="opp-text" style="margin-top:32px">
+          <p>Brands are no longer looking for reach. They are looking for relevance — authentic moments with real artists, in real environments, creating real content.</p>
+          <p>MeetMe Fashion Lab delivers exactly that. A curated in-hotel styling and content experience that places your brand at the intersection of music culture and fashion.</p>
+        </div>
+        <a href="#partnerships" class="bg" style="margin-top:16px">View Partnership Options →</a>
+      </div>
+      <div class="opp-cards rv d1">
+        <div class="opp-card">
+          <div class="opp-card-title">AUTHENTIC PLACEMENT</div>
+          <div class="opp-card-desc">Your product in the hands of real artists — not staged, not seeded</div>
+        </div>
+        <div class="opp-card" style="margin-top:2px">
+          <div class="opp-card-title">CULTURAL RELEVANCE</div>
+          <div class="opp-card-desc">Direct alignment with the global dance music community</div>
+        </div>
+        <div class="opp-card" style="margin-top:2px">
+          <div class="opp-card-title">HIGH-QUALITY CONTENT</div>
+          <div class="opp-card-desc">Professional photography & video produced on-site, immediately</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONCEPT -->
+<section class="concept">
+  <div class="c">
+    <span class="lbl-gold rv">The Concept</span>
+    <div class="concept-statement rv">
+      Artists get <em>styled.</em><br>
+      Brands get <em>seen.</em><br>
+      Content gets <em>created.</em>
+    </div>
+    <div class="concept-steps">
+      <div class="concept-step rv">
+        <div class="concept-step-n">1</div>
+        <h4>ARTIST ENTERS</h4>
+        <p>International DJs, artists and industry figures enter the Fashion Lab environment.</p>
+        <div class="step-arr">→</div>
+      </div>
+      <div class="concept-step rv d1">
+        <div class="concept-step-n">2</div>
+        <h4>STYLIST SELECTS</h4>
+        <p>Professional stylist curates looks from partner brand collections.</p>
+        <div class="step-arr">→</div>
+      </div>
+      <div class="concept-step rv d2">
+        <div class="concept-step-n">3</div>
+        <h4>ARTIST STYLED</h4>
+        <p>Full premium styling session. The artist becomes the brand.</p>
+        <div class="step-arr">→</div>
+      </div>
+      <div class="concept-step rv d1">
+        <div class="concept-step-n">4</div>
+        <h4>CONTENT CREATED</h4>
+        <p>Immediate photoshoot and video production. Professional, editorial, instant.</p>
+        <div class="step-arr">→</div>
+      </div>
+      <div class="concept-step rv d2">
+        <div class="concept-step-n">5</div>
+        <h4>DISTRIBUTED</h4>
+        <p>Content shared across artist, brand and MMATH channels. Massive organic reach.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THREE ZONES -->
+<section class="zones">
+  <div class="c">
+    <span class="lbl-gold rv">The Experience</span>
+    <h2 class="rv">Three zones.<br><span class="gold">One ecosystem.</span></h2>
+    <div class="zones-grid">
+      <div class="zone rv">
+        <div class="zone-num">01</div>
+        <div class="zone-name">STYLING AREA</div>
+        <div class="zone-tag">Brand Activation</div>
+        <ul>
+          <li>Curated racks per brand</li>
+          <li>Professional stylists on-site</li>
+          <li>Fast, premium fittings</li>
+          <li>Brand-controlled curation</li>
+        </ul>
+      </div>
+      <div class="zone rv d1">
+        <div class="zone-num">02</div>
+        <div class="zone-name">BRAND SHOWCASE</div>
+        <div class="zone-tag">Visibility</div>
+        <ul>
+          <li>Clean, high-end brand presence</li>
+          <li>No trade show aesthetic</li>
+          <li>Curated display environment</li>
+          <li>Premium visual identity</li>
+        </ul>
+      </div>
+      <div class="zone zone-key rv d2">
+        <div class="zone-num">03</div>
+        <div class="zone-name">CONTENT STUDIO</div>
+        <div class="zone-tag">★ Key Zone</div>
+        <ul>
+          <li>Professional photography & video</li>
+          <li>Branded or neutral backdrops</li>
+          <li>Instant content production</li>
+          <li>Immediate distribution</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTENT ENGINE -->
+<section class="engine">
+  <div class="c">
+    <div class="engine-inner">
+      <div class="rv">
+        <span class="lbl-gold">Content Engine</span>
+        <h2>Not just<br><span class="gold">exposure.</span></h2>
+        <div class="engine-text" style="margin-top:32px">
+          <p>This is a content machine. Every styling session produces immediate, high-quality assets across multiple formats — ready for distribution the same day.</p>
+          <p>The result: massive organic reach, repeated brand exposure, and authentic cultural association that money cannot buy.</p>
+        </div>
+        <div class="engine-dist">
+          <div class="engine-dist-title">Distribution Channels</div>
+          <div class="dist-items">
+            <div class="dist-item">Artists</div>
+            <div class="dist-item">Brands</div>
+            <div class="dist-item">MMATH Channels</div>
+            <div class="dist-item">Press & Media</div>
+          </div>
+        </div>
+      </div>
+      <div class="engine-output rv d1">
+        <span class="lbl-gold">Content Output</span>
+        <div class="engine-item">
+          <div class="engine-item-icon">📸</div>
+          <div class="engine-item-text">Artist portraits & editorial shots</div>
+        </div>
+        <div class="engine-item">
+          <div class="engine-item-icon">🎬</div>
+          <div class="engine-item-text">Social media reels & TikToks</div>
+        </div>
+        <div class="engine-item">
+          <div class="engine-item-icon">✦</div>
+          <div class="engine-item-text">"Styled by [Brand]" features</div>
+        </div>
+        <div class="engine-item">
+          <div class="engine-item-icon">📰</div>
+          <div class="engine-item-text">Fashion & editorial photography</div>
+        </div>
+        <div class="engine-item">
+          <div class="engine-item-icon">🎵</div>
+          <div class="engine-item-text">Artist × brand co-content</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERSHIPS -->
+<section class="partners" id="partnerships">
+  <div class="c">
+    <span class="lbl-gold rv">Partnership Options</span>
+    <h2 class="rv">Choose your<br><span class="gold">level.</span></h2>
+    <div class="partners-grid">
+      <div class="partner-tier rv">
+        <div class="tier-badge tier-basic">Basic Placement</div>
+        <div class="tier-name">BASIC</div>
+        <div class="tier-sub">Product integration</div>
+        <ul class="tier-features">
+          <li>Product integration in styling area</li>
+          <li>Brand visibility on-site</li>
+          <li>MMATH partner recognition</li>
+        </ul>
+        <a href="#contact" class="bo" style="margin-top:32px;display:inline-block">Get in Touch →</a>
+      </div>
+      <div class="partner-tier rv d1">
+        <div class="tier-badge tier-activation">Activation Partner</div>
+        <div class="tier-name">ACTIVATION</div>
+        <div class="tier-sub">Dedicated space + content</div>
+        <ul class="tier-features">
+          <li>Dedicated brand space in Fashion Lab</li>
+          <li>Content inclusion & distribution</li>
+          <li>Brand featured in MMATH channels</li>
+          <li>Stylist briefed on brand story</li>
+        </ul>
+        <a href="#contact" class="bg" style="margin-top:32px;display:inline-block">Get in Touch →</a>
+      </div>
+      <div class="partner-tier premium rv d2">
+        <div class="tier-badge tier-premium">Premium Partner</div>
+        <div class="tier-name">PREMIUM</div>
+        <div class="tier-sub">Full integration</div>
+        <ul class="tier-features">
+          <li>Studio branding throughout</li>
+          <li>Featured artists selection</li>
+          <li>Content rights & assets</li>
+          <li>Strategic brand visibility</li>
+          <li>Co-branded productions</li>
+          <li>Priority artist access</li>
+        </ul>
+        <a href="#contact" class="bg" style="margin-top:32px;display:inline-block">Get in Touch →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFFERENTIATION -->
+<section class="diff">
+  <div class="c">
+    <span class="lbl-gold rv">Why This Works</span>
+    <h2 class="rv">Real integration.<br><span class="gold">Not advertising.</span></h2>
+    <div class="diff-inner">
+      <div class="rv">
+        <div class="diff-col-title not-this">This is NOT</div>
+        <ul class="diff-list" style="margin-top:12px">
+          <li class="diff-item no">A booth or exhibition stand</li>
+          <li class="diff-item no">A sponsorship logo placement</li>
+          <li class="diff-item no">Influencer seeding</li>
+          <li class="diff-item no">Paid social promotion</li>
+          <li class="diff-item no">A trade show activation</li>
+        </ul>
+      </div>
+      <div class="rv d1">
+        <div class="diff-col-title but-this">This IS</div>
+        <ul class="diff-list" style="margin-top:12px">
+          <li class="diff-item yes">Real integration with real artists</li>
+          <li class="diff-item yes">Live, in-person cultural moments</li>
+          <li class="diff-item yes">Immediate professional content</li>
+          <li class="diff-item yes">Authentic brand-artist association</li>
+          <li class="diff-item yes">Organic reach through artist channels</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+  <div class="c">
+    <span class="lbl-gold rv" style="text-align:center;display:block">Next Steps</span>
+    <div class="cta-quote rv">
+      MeetMe Fashion Lab transforms<br>
+      brands from sponsors into<br>
+      <em>part of the artist story.</em>
+    </div>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:48px" class="rv d1">
+      <a href="partners.html#contact" class="bg">Request a Partnership →</a>
+      <a href="universe.html" class="bo">Explore the Universe</a>
+    </div>
+    <div class="cta-contact rv d2">
+      Questions? <a href="/cdn-cgi/l/email-protection#4c25222a230c2129293821292d383824292423382920622f2321"><span class="__cf_email__" data-cfemail="9cf5f2faf3dcf1f9f9e8f1f9fde8e8f4f9f4f3e8f9f0b2fff3f1">[email&#160;protected]</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="ft">
+  <div class="c">
+    <div class="fg">
+      <div class="fb">
+        <img src="logo.png" alt="Meet Me at the Hotel" style="height:44px;width:auto;display:block;">
+        <p>MeetMeAtTheHotel is an international platform where the global music industry connects with culture, technology and creators.</p>
+        <p class="fa">Room Mate Aitana Hotel · IJdok 6<br>Amsterdam · October 2026</p>
+      </div>
+      <div class="fcc">
+        <p class="fct">Explore</p>
+        <a href="about.html">About</a>
+        <a href="program.html">Program</a>
+        <a href="universe.html">Universe</a>
+        <a href="industry-hub.html">Industry Hub</a>
+        <a href="industry-exchange.html">Industry Exchange</a>
+        <a href="experiences.html">Experiences</a>
+      </div>
+      <div class="fcc">
+        <p class="fct">Book</p>
+        <a href="booking.html">Hotel Rooms</a>
+        <a href="spaces.html">Meeting Rooms</a>
+        <a href="experiences.html">Showcases</a>
+        <a href="partners.html">Partnerships</a>
+      </div>
+      <div class="fcc">
+        <p class="fct">Connect</p>
+        <a href="contact.html">Contact</a>
+        <a href="#">Instagram</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">TikTok</a>
+      </div>
+    </div>
+    <div class="fb2">
+      <p>© 2026 Meet Me at the Hotel · 5th Anniversary Edition · Amsterdam · October 2026</p>
+      <p><a href="#">Privacy</a> · <a href="#">Terms</a></p>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></
