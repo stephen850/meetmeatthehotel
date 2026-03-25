@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MeetMe Creators Lab — Where Brands Become Culture</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --teal:#4DA8A0;--deep:#2E7A74;--pool:#7DCDC7;
+  --blk:#0A0A0A;--blkm:#111;--blkc:#161616;--blkb:#222;
+  --wh:#F5F5F0;--wd:rgba(245,245,240,0.6);
+  --acc:#E8FF47;--acc2:rgba(232,255,71,0.1);
+  --fd:'Bebas Neue',sans-serif;--fc:'Barlow Condensed',sans-serif;--fb:'Barlow',sans-serif;
+  --nav:72px;--tr:0.35s cubic-bezier(.4,0,.2,1)
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--blk);color:var(--wh);font-family:var(--fb);overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.c{max-width:1280px;margin:0 auto;padding:0 80px}
+@media(max-width:1024px){.c{padding:0 40px}}
+@media(max-width:640px){.c{padding:0 20px}}
+h1,h2,h3,h4{font-family:var(--fd);line-height:.93;text-transform:uppercase;letter-spacing:-.01em}
+h1{font-size:clamp(64px,10vw,140px)}
+h2{font-size:clamp(40px,6vw,84px)}
+h3{font-size:clamp(22px,3vw,40px)}
+.teal{color:var(--teal)}
+.acc{color:var(--acc)}
+.lbl{font-family:var(--fc);font-size:11px;font-weight:600;letter-spacing:.28em;color:var(--teal);text-transform:uppercase;display:block;margin-bottom:16px}
+.lbl-acc{font-family:var(--fc);font-size:11px;font-weight:600;letter-spacing:.28em;color:var(--acc);text-transform:uppercase;display:block;margin-bottom:16px}
+.btn{display:inline-block;font-family:var(--fc);font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:12px 28px;transition:all var(--tr);cursor:pointer;border:none;text-align:center}
+.bp{background:var(--teal);color:var(--blk)}.bp:hover{background:var(--deep);color:var(--wh)}
+.bo{display:inline-block;font-family:var(--fc);font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:12px 28px;transition:all var(--tr);cursor:pointer;border:1px solid var(--teal);color:var(--teal);background:transparent}.bo:hover{background:var(--teal);color:var(--blk)}
+.ba{display:inline-block;font-family:var(--fc);font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:12px 28px;transition:all var(--tr);cursor:pointer;background:var(--acc);color:var(--blk);border:none}.ba:hover{background:#d4eb3a}
+.bao{display:inline-block;font-family:var(--fc);font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:12px 28px;transition:all var(--tr);cursor:pointer;border:1px solid var(--acc);color:var(--acc);background:transparent}.bao:hover{background:var(--acc);color:var(--blk)}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;height:var(--nav);display:flex;align-items:center;justify-content:space-between;padding:0 40px;z-index:2000;background:rgba(10,10,10,.98);border-bottom:1px solid var(--blkb);backdrop-filter:blur(16px)}
+.nl{display:flex;align-items:center;gap:28px}
+.nl a{font-family:var(--fc);font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--wd);transition:color var(--tr)}.nl a:hover{color:var(--wh)}
+.nc{background:var(--teal);color:var(--blk)!important;padding:10px 20px}.nc:hover{background:var(--deep)!important;color:var(--wh)!important}
+.hb{display:none;flex-direction:column;gap:5px;cursor:pointer}
+.hb span{display:block;width:22px;height:1.5px;background:var(--wh)}
+@media(max-width:900px){
+  .hb{display:flex}
+  .nl{position:fixed;top:var(--nav);left:0;right:0;bottom:0;background:#0A0A0A;flex-direction:column;align-items:flex-start;padding:40px;gap:20px;transform:translateX(100%);transition:transform var(--tr);z-index:1999}
+  .nl.open{transform:none}
+  .nl a{font-size:20px}
+}
+
+/* HERO */
+.hero{min-height:100vh;position:relative;display:flex;align-items:flex-end;padding-bottom:100px;overflow:hidden;background:#080a05}
+.hero-img{position:absolute;inset:0;z-index:0;background-image:url('https://images.unsplash.com/photo-1492619375914-88005aa9e8fb?w=1920&q=80&fit=crop');background-size:cover;background-position:center 30%;opacity:0.25}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 70% 30%,rgba(232,255,71,.06) 0%,transparent 60%),radial-gradient(ellipse 40% 60% at 20% 80%,rgba(77,168,160,.05) 0%,transparent 55%)}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(232,255,71,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(232,255,71,.025) 1px,transparent 1px);background-size:60px 60px}
+.hero-content{position:relative;z-index:2;width:100%;max-width:1280px;margin:0 auto;padding:0 80px}
+.hero-eyebrow{font-family:var(--fc);font-size:11px;font-weight:600;letter-spacing:.4em;color:var(--acc);text-transform:uppercase;margin-bottom:24px;display:flex;align-items:center;gap:16px}
+.hero-eyebrow::before{content:'';width:40px;height:1px;background:var(--acc)}
+.hero-tagline{font-family:var(--fc);font-size:clamp(16px,2vw,22px);font-weight:400;letter-spacing:.06em;color:var(--wd);margin-top:24px;max-width:600px;line-height:1.6;text-transform:uppercase}
+.hero-oneliner{position:absolute;bottom:100px;right:80px;font-family:var(--fd);font-size:clamp(16px,1.8vw,22px);color:rgba(232,255,71,.35);text-align:right;line-height:1.2;max-width:380px}
+@media(max-width:768px){.hero-content{padding:0 20px}.hero-oneliner{display:none}}
+
+/* STRIP */
+.strip{background:var(--acc);padding:20px 0}
+.strip-inner{display:flex;align-items:center;justify-content:center;gap:60px;flex-wrap:wrap}
+.strip-stat{text-align:center}
+.strip-n{font-family:var(--fd);font-size:36px;color:var(--blk);line-height:1}
+.strip-l{font-family:var(--fc);font-size:10px;letter-spacing:.22em;color:rgba(10,10,10,.6);text-transform:uppercase;margin-top:4px}
+.strip-div{width:1px;height:40px;background:rgba(10,10,10,.2)}
+@media(max-width:640px){.strip-div{display:none}}
+
+/* OPPORTUNITY */
+.opportunity{padding:120px 0;border-bottom:1px solid var(--blkb);background:var(--blkm)}
+.opp-inner{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:center}
+.opp-text p{font-size:16px;color:var(--wd);line-height:1.85;font-weight:300;margin-bottom:20px}
+.opp-cards{display:flex;flex-direction:column;gap:2px}
+.opp-card{background:var(--blkc);border:1px solid var(--blkb);border-left:3px solid var(--acc);padding:24px 28px;transition:border-color var(--tr)}
+.opp-card:hover{border-color:var(--acc)}
+.opp-card-title{font-family:var(--fd);font-size:22px;color:var(--wh);margin-bottom:6px}
+.opp-card-desc{font-family:var(--fc);font-size:12px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase}
+.no-list{list-style:none;display:flex;flex-direction:column;gap:8px;margin-top:28px}
+.no-list li{font-family:var(--fc);font-size:13px;letter-spacing:.1em;color:var(--acc);text-transform:uppercase;display:flex;align-items:center;gap:10px}
+.no-list li::before{content:'→';flex-shrink:0}
+@media(max-width:768px){.opp-inner{grid-template-columns:1fr;gap:48px}}
+
+/* HOW IT WORKS */
+.how{padding:120px 0;border-bottom:1px solid var(--blkb)}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:60px}
+.flow-step{background:var(--blkc);border:1px solid var(--blkb);padding:36px 28px;position:relative;transition:border-color var(--tr)}
+.flow-step:hover{border-color:var(--acc)}
+.flow-n{font-family:var(--fd);font-size:80px;color:var(--acc);opacity:.07;line-height:1;margin-bottom:-8px}
+.flow-step h4{font-family:var(--fd);font-size:24px;margin-bottom:10px}
+.flow-step p{font-size:13px;color:var(--wd);line-height:1.65}
+.flow-arr{position:absolute;top:50%;right:-1px;transform:translateY(-50%);width:22px;height:22px;background:var(--acc);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--blk);z-index:1;font-weight:700}
+.flow-step:last-child .flow-arr{display:none}
+@media(max-width:900px){.flow{grid-template-columns:1fr 1fr}.flow-arr{display:none}}
+@media(max-width:480px){.flow{grid-template-columns:1fr}}
+
+/* WHY */
+.why{padding:120px 0;border-bottom:1px solid var(--blkb);background:var(--blkm)}
+.why-inner{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:center}
+.why-text p{font-size:16px;color:var(--wd);line-height:1.85;font-weight:300;margin-bottom:20px}
+.why-points{display:flex;flex-direction:column;gap:2px}
+.why-point{background:var(--blkc);border:1px solid var(--blkb);padding:20px 24px;display:flex;align-items:center;gap:16px;transition:border-color var(--tr)}
+.why-point:hover{border-color:var(--acc)}
+.why-point-icon{font-size:20px;flex-shrink:0}
+.why-point-text{font-family:var(--fc);font-size:13px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase}
+@media(max-width:768px){.why-inner{grid-template-columns:1fr;gap:48px}}
+
+/* PARTNERSHIPS */
+.partners{padding:120px 0;border-bottom:1px solid var(--blkb)}
+.partners-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:60px}
+.partner-tier{background:var(--blkc);border:1px solid var(--blkb);padding:48px 36px;display:flex;flex-direction:column;transition:border-color var(--tr)}
+.partner-tier.headline{border-color:var(--acc);background:var(--acc2)}
+.partner-tier:hover{border-color:var(--acc)}
+.tier-badge{font-family:var(--fc);font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;padding:5px 14px;display:inline-block;margin-bottom:24px}
+.t1{background:transparent;border:1px solid var(--blkb);color:var(--wd)}
+.t2{background:transparent;border:1px solid rgba(232,255,71,.4);color:var(--acc)}
+.t3{background:var(--acc);color:var(--blk)}
+.tier-name{font-family:var(--fd);font-size:36px;margin-bottom:8px}
+.tier-sub{font-family:var(--fc);font-size:11px;letter-spacing:.15em;color:var(--teal);text-transform:uppercase;margin-bottom:8px}
+.tier-ideal{font-family:var(--fc);font-size:11px;letter-spacing:.1em;color:rgba(232,255,71,.6);text-transform:uppercase;margin-bottom:28px;font-style:italic}
+.tier-features{list-style:none;display:flex;flex-direction:column;gap:10px;flex:1}
+.tier-features li{font-family:var(--fc);font-size:12px;letter-spacing:.08em;color:var(--wd);text-transform:uppercase;padding:10px 0;border-bottom:1px solid var(--blkb);display:flex;align-items:center;gap:10px}
+.tier-features li::before{content:'→';color:var(--acc);flex-shrink:0}
+@media(max-width:768px){.partners-grid{grid-template-columns:1fr}}
+
+/* WHAT YOU GET */
+.output{padding:120px 0;border-bottom:1px solid var(--blkb);background:var(--blkm)}
+.output-inner{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:start}
+.output-list{display:flex;flex-direction:column;gap:2px}
+.output-item{background:var(--blkc);border:1px solid var(--blkb);padding:20px 24px;display:flex;align-items:center;gap:16px;transition:border-color var(--tr)}
+.output-item:hover{border-color:var(--acc)}
+.output-item-icon{font-size:22px;flex-shrink:0}
+.output-item-text{font-family:var(--fc);font-size:13px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase}
+.advantage-box{background:var(--blkc);border:1px solid var(--acc);padding:48px;margin-top:0}
+.advantage-box-title{font-family:var(--fd);font-size:28px;color:var(--acc);margin-bottom:20px}
+.advantage-items{display:flex;flex-direction:column;gap:16px}
+.advantage-item{border-left:2px solid var(--acc);padding-left:16px}
+.advantage-item-title{font-family:var(--fc);font-size:12px;font-weight:700;letter-spacing:.2em;color:var(--wh);text-transform:uppercase;margin-bottom:4px}
+.advantage-item-desc{font-size:13px;color:var(--wd);line-height:1.6;font-weight:300}
+@media(max-width:768px){.output-inner{grid-template-columns:1fr;gap:48px}}
+
+/* CTA */
+.cta{padding:140px 0;text-align:center;background:radial-gradient(ellipse 80% 100% at 50% 50%,rgba(232,255,71,.05) 0%,transparent 70%),var(--blk);border-top:1px solid var(--blkb)}
+.cta-quote{font-family:var(--fd);font-size:clamp(28px,5vw,72px);line-height:.95;max-width:900px;margin:0 auto 60px;color:var(--wh)}
+.cta-quote em{color:var(--acc);font-style:normal}
+.cta-note{font-family:var(--fc);font-size:12px;letter-spacing:.15em;color:var(--wd);text-transform:uppercase;margin-top:40px;line-height:2}
+.cta-note span{color:var(--acc)}
+.cta-contact{font-family:var(--fc);font-size:14px;letter-spacing:.15em;color:var(--wd);text-transform:uppercase;margin-top:24px}
+.cta-contact a{color:var(--acc)}
+
+/* FOOTER */
+.ft{padding:80px 0 40px;background:var(--blkc);border-top:1px solid var(--blkb)}
+.fg{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:60px}
+.fb p{font-size:13px;color:var(--wd);margin-top:20px;line-height:1.75;font-weight:300}
+.fa{margin-top:10px;opacity:.4;font-size:12px}
+.fcc{display:flex;flex-direction:column;gap:12px}
+.fct{font-family:var(--fc);font-size:10px;font-weight:600;letter-spacing:.3em;color:var(--teal);text-transform:uppercase;margin-bottom:4px}
+.fcc a{font-family:var(--fc);font-size:13px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase;transition:color var(--tr)}.fcc a:hover{color:var(--teal)}
+.fb2{display:flex;justify-content:space-between;padding-top:32px;border-top:1px solid var(--blkb);font-family:var(--fc);font-size:11px;letter-spacing:.1em;color:rgba(245,245,240,.3);text-transform:uppercase}
+@media(max-width:900px){.fg{grid-template-columns:1fr 1fr;gap:40px}}
+@media(max-width:480px){.fg{grid-template-columns:1fr}.fb2{flex-direction:column;gap:12px}}
+</style>
+</head>
+<body>
+
+<div id="nav-overlay" style="display:none;position:fixed;inset:0;background:#0A0A0A;z-index:1998"></div>
+<nav class="nav">
+  <a href="index.html" style="display:flex;align-items:center;">
+    <img src="logo.png" alt="Meet Me at the Hotel" style="height:48px;width:auto;display:block;">
+  </a>
+  <div class="nl" id="nl">
+    <a href="about.html">About</a>
+    <a href="program.html">Program</a>
+    <a href="universe.html">Universe</a>
+    <a href="industry-hub.html">Industry Hub</a>
+    <a href="industry-exchange.html">Industry Exchange</a>
+    <a href="experiences.html">Experiences</a>
+    <a href="spaces.html">Spaces</a>
+    <a href="partners.html">Partners</a>
+    <a href="merch.html">Merch</a>
+    <a href="booking.html" class="nc">Book Your Stay</a>
+  </div>
+  <div class="hb" onclick="var nl=document.getElementById('nl');var ov=document.getElementById('nav-overlay');nl.classList.toggle('open');ov.style.display=nl.classList.contains('open')?'block':'none'">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-img"></div>
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Meet Me Universe · Creators Lab</div>
+    <h1>MEETME<br><span class="acc">CREATORS</span><br>LAB.</h1>
+    <p class="hero-tagline">Where brands become culture. Real-time content creation at scale — inside live events.</p>
+    <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:40px">
+      <a href="#partnerships" class="ba">Explore Partnership →</a>
+      <a href="#contact" class="bo">Get in Touch</a>
+    </div>
+  </div>
+  <div class="hero-oneliner">We don't just place<br>your product —<br>we make it part<br>of culture.</div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="c">
+    <div class="strip-inner">
+      <div class="strip-stat"><div class="strip-n">1,500+</div><div class="strip-l">Industry guests per day</div></div>
+      <div class="strip-div"></div>
+      <div class="strip-stat"><div class="strip-n">45+</div><div class="strip-l">Nationalities</div></div>
+      <div class="strip-div"></div>
+      <div class="strip-stat"><div class="strip-n">24h</div><div class="strip-l">From creation to publish</div></div>
+      <div class="strip-div"></div>
+      <div class="strip-stat"><div class="strip-n">100%</div><div class="strip-l">Real-time production</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- OPPORTUNITY -->
+<section class="opportunity">
+  <div class="c">
+    <div class="opp-inner">
+      <div>
+        <span class="lbl-acc">The Opportunity</span>
+        <h2>Attention is<br><span class="acc">everything.</span></h2>
+        <div class="opp-text" style="margin-top:32px">
+          <p>MeetMe Creators Lab is a premium content environment where brands, artists and creators collaborate to produce high-impact content during live events.</p>
+          <p>We don't just create content. We create distribution at scale — authentic, fast and culturally relevant.</p>
+        </div>
+        <ul class="no-list">
+          <li>No traditional campaigns</li>
+          <li>No long production cycles</li>
+          <li>Just real-time impact</li>
+        </ul>
+      </div>
+      <div class="opp-cards">
+        <div class="opp-card">
+          <div class="opp-card-title">DIRECT CREATOR ACCESS</div>
+          <div class="opp-card-desc">Top-tier creators & artists — no intermediaries</div>
+        </div>
+        <div class="opp-card" style="margin-top:2px">
+          <div class="opp-card-title">READY-TO-PUBLISH CONTENT</div>
+          <div class="opp-card-desc">High-quality assets distributed within hours</div>
+        </div>
+        <div class="opp-card" style="margin-top:2px">
+          <div class="opp-card-title">AUTHENTIC INTEGRATION</div>
+          <div class="opp-card-desc">Real cultural moments — not staged advertising</div>
+        </div>
+        <div class="opp-card" style="margin-top:2px">
+          <div class="opp-card-title">GLOBAL EXPOSURE</div>
+          <div class="opp-card-desc">Immediate reach across international audiences</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how">
+  <div class="c">
+    <span class="lbl-acc">Inside the Lab</span>
+    <h2>From creation<br><span class="acc">to culture.</span></h2>
+    <div class="flow">
+      <div class="flow-step">
+        <div class="flow-n">1</div>
+        <h4>CONTENT CREATED</h4>
+        <p>Multiple premium studio setups running simultaneously. Creators producing native content across formats.</p>
+        <div class="flow-arr">→</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-n">2</div>
+        <h4>BRAND INTEGRATED</h4>
+        <p>Brands seamlessly woven into content formats — part of the story, never the interruption.</p>
+        <div class="flow-arr">→</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-n">3</div>
+        <h4>EDITED FAST</h4>
+        <p>Content edited and packaged for multi-platform distribution within hours of creation.</p>
+        <div class="flow-arr">→</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-n">4</div>
+        <h4>DISTRIBUTED</h4>
+        <p>Published across creator, brand and MMATH channels. TikTok, Instagram, YouTube and beyond.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY THIS WORKS -->
+<section class="why">
+  <div class="c">
+    <div class="why-inner">
+      <div>
+        <span class="lbl-acc">Why This Works</span>
+        <h2>Culture creation<br><span class="acc">at scale.</span></h2>
+        <div class="why-text" style="margin-top:32px">
+          <p>This is not influencer marketing. This is culture creation at scale — where brands become part of the moments that matter to the global music industry.</p>
+          <p>Content is authentic because it happens in real environments, with real artists, at real events. The distribution is trusted because it flows through genuine creator channels.</p>
+        </div>
+      </div>
+      <div class="why-points">
+        <div class="why-point">
+          <div class="why-point-icon">✓</div>
+          <div class="why-point-text">Content is authentic, not forced</div>
+        </div>
+        <div class="why-point">
+          <div class="why-point-icon">✓</div>
+          <div class="why-point-text">Brands become part of the story, not an ad</div>
+        </div>
+        <div class="why-point">
+          <div class="why-point-icon">✓</div>
+          <div class="why-point-text">Distribution through trusted creator channels</div>
+        </div>
+        <div class="why-point">
+          <div class="why-point-icon">✓</div>
+          <div class="why-point-text">Output is fast, scalable and measurable</div>
+        </div>
+        <div class="why-point">
+          <div class="why-point-icon">✓</div>
+          <div class="why-point-text">Physical presence meets digital scale</div>
+        </div>
+        <div class="why-point">
+          <div class="why-point-icon">✓</div>
+          <div class="why-point-text">Turning moments into media</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERSHIPS -->
+<section class="partners" id="partnerships">
+  <div class="c">
+    <span class="lbl-acc">Brand Partnerships</span>
+    <h2>Choose your<br><span class="acc">level.</span></h2>
+    <div class="partners-grid">
+      <div class="partner-tier">
+        <div class="tier-badge t1">Integration Partner</div>
+        <div class="tier-name">INTEGRATION</div>
+        <div class="tier-sub">Product placement</div>
+        <div class="tier-ideal">Ideal for visibility & discovery</div>
+        <ul class="tier-features">
+          <li>Product placement within curated content formats</li>
+          <li>Brand visibility across creator content</li>
+          <li>MMATH partner recognition</li>
+        </ul>
+        <a href="#contact" class="bao" style="margin-top:32px">Get in Touch →</a>
+      </div>
+      <div class="partner-tier">
+        <div class="tier-badge t2">Content Partner</div>
+        <div class="tier-name">CONTENT</div>
+        <div class="tier-sub">Dedicated content creation</div>
+        <div class="tier-ideal">Ideal for storytelling & campaigns</div>
+        <ul class="tier-features">
+          <li>Dedicated content with selected creators</li>
+          <li>Multi-platform distribution included</li>
+          <li>Brand featured in MMATH channels</li>
+          <li>Content assets delivered post-event</li>
+        </ul>
+        <a href="#contact" class="bao" style="margin-top:32px">Get in Touch →</a>
+      </div>
+      <div class="partner-tier headline">
+        <div class="tier-badge t3">Headline Partner</div>
+        <div class="tier-name">HEADLINE</div>
+        <div class="tier-sub">Full branded environment</div>
+        <div class="tier-ideal">Maximum exposure & positioning</div>
+        <ul class="tier-features">
+          <li>Branded studio environment</li>
+          <li>Category exclusivity</li>
+          <li>Featured artist collaborations</li>
+          <li>Full content rights</li>
+          <li>Optional paid amplification</li>
+          <li>Measurable reach & engagement report</li>
+        </ul>
+        <a href="#contact" class="ba" style="margin-top:32px">Get in Touch →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT YOU GET + ADVANTAGE -->
+<section class="output">
+  <div class="c">
+    <div class="output-inner">
+      <div>
+        <span class="lbl-acc">What You Get</span>
+        <h2>Assets that<br><span class="acc">work.</span></h2>
+        <div class="output-list" style="margin-top:40px">
+          <div class="output-item"><div class="output-item-icon">📸</div><div class="output-item-text">High-quality content assets</div></div>
+          <div class="output-item"><div class="output-item-icon">🤝</div><div class="output-item-text">Creator collaborations</div></div>
+          <div class="output-item"><div class="output-item-icon">📱</div><div class="output-item-text">Multi-platform distribution (TikTok, Instagram, etc.)</div></div>
+          <div class="output-item"><div class="output-item-icon">📊</div><div class="output-item-text">Measurable reach & engagement</div></div>
+          <div class="output-item"><div class="output-item-icon">🚀</div><div class="output-item-text">Optional paid amplification</div></div>
+        </div>
+      </div>
+      <div>
+        <span class="lbl-acc">Unique Advantage</span>
+        <div class="advantage-box">
+          <div class="advantage-box-title">PHYSICAL + DIGITAL</div>
+          <div class="advantage-items">
+            <div class="advantage-item">
+              <div class="advantage-item-title">Physical Presence</div>
+              <div class="advantage-item-desc">Live events, real artists, raw energy — the moments that make culture.</div>
+            </div>
+            <div class="advantage-item">
+              <div class="advantage-item-title">Digital Scale</div>
+              <div class="advantage-item-desc">Content, reach and distribution that extends far beyond the event itself.</div>
+            </div>
+            <div class="advantage-item">
+              <div class="advantage-item-title">The Result</div>
+              <div class="advantage-item-desc" style="color:var(--acc);font-weight:500">Turning moments into media.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+  <div class="c">
+    <span class="lbl-acc" style="text-align:center;display:block">Let's Build Together</span>
+    <div class="cta-quote">
+      We don't just place<br>your product —<br>we make it part of <em>culture.</em>
+    </div>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+      <a href="partners.html#contact" class="ba">Request a Partnership →</a>
+      <a href="universe.html" class="bo">Explore the Universe</a>
+    </div>
+    <div class="cta-note">
+      Limited partners per edition · <span>Quality · Exclusivity · Maximum impact</span>
+    </div>
+    <div class="cta-contact">
+      Contact: <a href="mailto:info@meetmeatthehotel.com">info@meetmeatthehotel.com</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="ft">
+  <div class="c">
+    <div class="fg">
+      <div class="fb">
+        <img src="logo.png" alt="Meet Me at the Hotel" style="height:44px;width:auto;display:block;">
+        <p>MeetMeAtTheHotel is an international platform where the global music industry connects with culture, technology and creators.</p>
+        <p class="fa">Room Mate Aitana Hotel · IJdok 6<br>Amsterdam · October 2026</p>
+      </div>
+      <div class="fcc">
+        <p class="fct">Explore</p>
+        <a href="about.html">About</a>
+        <a href="program.html">Program</a>
+        <a href="universe.html">Universe</a>
+        <a href="industry-hub.html">Industry Hub</a>
+        <a href="industry-exchange.html">Industry Exchange</a>
+        <a href="experiences.html">Experiences</a>
+      </div>
+      <div class="fcc">
+        <p class="fct">Book</p>
+        <a href="booking.html">Hotel Rooms</a>
+        <a href="spaces.html">Meeting Rooms</a>
+        <a href="experiences.html">Showcases</a>
+        <a href="partners.html">Partnerships</a>
+      </div>
+      <div class="fcc">
+        <p class="fct">Connect</p>
+        <a href="contact.html">Contact</a>
+        <a href="#">Instagram</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">TikTok</a>
+      </div>
+    </div>
+    <div class="fb2">
+      <p>© 2026 Meet Me at the Hotel · 5th Anniversary Edition · Amsterdam · October 2026</p>
+      <p><a href="#">Privacy</a> · <a href="#">Terms</a></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.rv').forEach(el => el.classList.add('vis'));
+const obs = new IntersectionObserver(es => es.forEach(e => {
+  if(e.isIntersecting){ e.target.classList.add('vis'); obs.unobserve(e.target); }
+}), {threshold: 0});
+document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
