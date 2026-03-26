@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+# Block old duplicate pages
+Disallow: /program-2025-ade
+Disallow: /program-2024-ade
+Disallow: /bookahotelroom
+Disallow: /bookyourroom
+Disallow: /boat
+Disallow: /networkdrinks
+Disallow: /meetingrooms
+Disallow: /showcase
+Disallow: /details-en-registratie/
+
+Sitemap: https://www.meetmeatthehotel.com/sitemap.xml

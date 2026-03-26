@@ -1,0 +1,28 @@
+# MMATH 301 REDIRECT MAPPING
+# Implement these as server-side 301 redirects
+# GitHub Pages: use a _redirects file (if on Netlify) or custom 404.html redirect trick
+
+# OLD URL → NEW CANONICAL URL
+
+/bookahotelroom          → /booking.html
+/bookyourroom            → /booking.html
+/program-2025-ade        → /program.html
+/program-2024-ade        → /program.html
+/boat                    → /experiences.html
+/networkdrinks           → /experiences.html
+/meetingrooms            → /spaces.html
+/showcase                → /experiences.html
+/details-en-registratie/ → /experiences.html
+/about                   → /about.html
+/contact                 → /contact.html
+
+# GitHub Pages _redirects file format (if using Netlify):
+# /bookahotelroom          /booking.html           301
+# /bookyourroom            /booking.html           301
+# /program-2025-ade        /program.html           301
+# /program-2024-ade        /program.html           301
+# /boat                    /experiences.html       301
+# /networkdrinks           /experiences.html       301
+# /meetingrooms            /spaces.html            301
+# /showcase                /experiences.html       301
+# /details-en-registratie/* /experiences.html      301
