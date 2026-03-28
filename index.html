@@ -47,13 +47,15 @@ h3{font-size:clamp(22px,3vw,40px)}
 }
 
 /* 1. HERO */
-.hero{min-height:100vh;position:relative;display:flex;align-items:flex-end;padding-bottom:80px;overflow:hidden}
+.hero{min-height:100vh;position:relative;display:flex;align-items:flex-end;padding-bottom:80px;padding-top:calc(var(--nav) + 40px);overflow:hidden}
 .hbg{position:absolute;inset:0;background-image:url('hero.jpg');background-size:cover;background-position:center 40%;background-color:#0f1a19}
 .hbg::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 65% 35%,rgba(77,168,160,.18) 0%,transparent 65%),radial-gradient(ellipse 40% 60% at 20% 70%,rgba(46,122,116,.12) 0%,transparent 55%)}
 .hov{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,10,.55) 0%,rgba(10,10,10,.45) 30%,rgba(10,10,10,.85) 70%,rgba(10,10,10,.98) 100%)}
 .hgr{position:absolute;inset:0;background-image:linear-gradient(rgba(77,168,160,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(77,168,160,.04) 1px,transparent 1px);background-size:80px 80px}
 .hcont{position:relative;z-index:2;width:100%;max-width:1280px;margin:0 auto;padding:0 80px}
-.hbadge{display:inline-block;font-family:var(--fc);font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--teal);border:1px solid rgba(77,168,160,.5);padding:6px 16px;margin-bottom:28px;backdrop-filter:blur(4px);background:rgba(10,10,10,.3)}
+/* FIX: badge wraps properly on mobile and doesn't hide behind logo */
+.hbadge{display:inline-block;font-family:var(--fc);font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--teal);border:1px solid rgba(77,168,160,.5);padding:6px 16px;margin-bottom:28px;backdrop-filter:blur(4px);background:rgba(10,10,10,.3);max-width:100%;white-space:normal;line-height:1.6}
+@media(max-width:640px){.hbadge{font-size:9px;letter-spacing:.15em;padding:5px 12px}}
 .hero h1{color:var(--wh);margin-bottom:24px;max-width:960px}
 .hsub{font-family:var(--fc);font-size:clamp(15px,1.8vw,20px);font-weight:400;letter-spacing:.06em;color:var(--wd);margin-bottom:40px;line-height:1.6;max-width:680px;text-transform:uppercase}
 .hctas{display:flex;gap:14px;flex-wrap:wrap}
