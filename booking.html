@@ -69,7 +69,7 @@ h3{font-size:clamp(22px,3vw,40px)}
 .carousel{position:relative;overflow:hidden;aspect-ratio:16/10;flex-shrink:0}
 .carousel-track{display:flex;height:100%;transition:transform .5s cubic-bezier(.4,0,.2,1)}
 .carousel-slide{min-width:100%;height:100%;flex-shrink:0}
-.carousel-slide img{width:100%;height:100%;object-fit:cover;filter:brightness(.8) saturate(.85);display:block}
+.carousel-slide img{width:100%;height:100%;object-fit:cover;object-position:center 60%;filter:brightness(.8) saturate(.85);display:block}
 .carousel-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,10,.55) 0%,transparent 50%);pointer-events:none;z-index:2}
 .carousel-btn{position:absolute;top:50%;transform:translateY(-50%);z-index:3;background:rgba(10,10,10,.6);border:1px solid rgba(245,245,240,.15);color:var(--wh);font-family:var(--fd);font-size:20px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background var(--tr);line-height:1}
 .carousel-btn:hover{background:rgba(77,168,160,.7)}
@@ -675,9 +675,9 @@ form{display:flex;flex-direction:column;gap:14px}
 .room-select:focus{border-color:var(--teal)}
 .room-date-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:2px}
 .room-date-lbl{font-family:var(--fc);font-size:10px;font-weight:600;letter-spacing:.2em;color:var(--teal);text-transform:uppercase;display:block;margin-bottom:5px}
-.room-date-inp{background:var(--blkc);border:1px solid var(--blkb);color:var(--wh);font-family:var(--fc);font-size:12px;padding:10px 12px;width:100%;outline:none;transition:border-color .3s;height:42px;box-sizing:border-box;cursor:pointer;color-scheme:dark}
-.room-date-inp:focus{border-color:var(--teal)}
-.room-date-inp::-webkit-calendar-picker-indicator{cursor:pointer;filter:invert(0.6) sepia(1) saturate(5) hue-rotate(130deg)}
+.room-date-sel{background:var(--blkc);border:1px solid var(--blkb);color:var(--wh);font-family:var(--fc);font-size:12px;padding:10px 12px;width:100%;outline:none;transition:border-color .3s;height:42px;box-sizing:border-box;cursor:pointer;-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%234DA8A0'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
+.room-date-sel:focus{border-color:var(--teal)}
+.room-date-sel option{background:#161616;color:var(--wh)}
 .room-nights{font-family:var(--fc);font-size:10px;letter-spacing:.1em;color:var(--teal);text-transform:uppercase;margin-top:6px;height:16px}
 </style>
 
@@ -713,11 +713,11 @@ function addRoom(preselect){
     '<div class="room-date-grid">'+
       '<div>'+
         '<span class="room-date-lbl">Check-in</span>'+
-        '<input type="date" class="room-date-inp" id="ci-'+rid+'" min="2026-10-15" max="2026-10-30" onchange="onDateChange('+rid+')" required>'+
+        '<select class="room-date-sel" id="ci-'+rid+'" onchange="onDateChange('+rid+')" required><option value="">Day</option><option value="15">15 Oct</option><option value="16">16 Oct</option><option value="17">17 Oct</option><option value="18">18 Oct</option><option value="19">19 Oct</option><option value="20">20 Oct</option><option value="21">21 Oct</option><option value="22">22 Oct</option><option value="23">23 Oct</option><option value="24">24 Oct</option><option value="25">25 Oct</option><option value="26">26 Oct</option><option value="27">27 Oct</option><option value="28">28 Oct</option><option value="29">29 Oct</option><option value="30">30 Oct</option></select>'+
       '</div>'+
       '<div>'+
         '<span class="room-date-lbl">Check-out</span>'+
-        '<input type="date" class="room-date-inp" id="co-'+rid+'" min="2026-10-16" max="2026-10-30" onchange="onDateChange('+rid+')" required>'+
+        '<select class="room-date-sel" id="co-'+rid+'" onchange="onDateChange('+rid+')" required><option value="">Day</option><option value="15">15 Oct</option><option value="16">16 Oct</option><option value="17">17 Oct</option><option value="18">18 Oct</option><option value="19">19 Oct</option><option value="20">20 Oct</option><option value="21">21 Oct</option><option value="22">22 Oct</option><option value="23">23 Oct</option><option value="24">24 Oct</option><option value="25">25 Oct</option><option value="26">26 Oct</option><option value="27">27 Oct</option><option value="28">28 Oct</option><option value="29">29 Oct</option><option value="30">30 Oct</option></select>'+
       '</div>'+
     '</div>'+
     '<div class="room-nights" id="nt-'+rid+'"></div>';
@@ -731,25 +731,19 @@ function removeRoom(rid){
 }
 
 function onDateChange(rid){
-  const ci=document.getElementById('ci-'+rid).value;
-  const co=document.getElementById('co-'+rid).value;
-  // enforce co min = ci+1
-  if(ci){
-    const nextDay=new Date(ci);
-    nextDay.setDate(nextDay.getDate()+1);
-    const minCo=nextDay.toISOString().split('T')[0];
-    document.getElementById('co-'+rid).min=minCo;
-    if(co && co<=ci){
-      document.getElementById('co-'+rid).value='';
-    }
-  }
+  const ciSel=document.getElementById('ci-'+rid);
+  const coSel=document.getElementById('co-'+rid);
+  const ci=parseInt(ciSel.value)||0;
+  const co=parseInt(coSel.value)||0;
+  // disable co options <= ci
+  [...coSel.options].forEach(opt=>{
+    const v=parseInt(opt.value)||0;
+    opt.disabled = v>0 && v<=ci;
+  });
+  if(co && co<=ci) coSel.value='';
   const el=document.getElementById('nt-'+rid);
-  if(ci&&co&&co>ci){
-    const nights=(new Date(co)-new Date(ci))/(1000*60*60*24);
-    el.textContent='→ '+nights+' night'+(nights>1?'s':'');
-  } else {
-    el.textContent='';
-  }
+  const nights=ci&&co&&co>ci?co-ci:0;
+  el.textContent=nights?'→ '+nights+' night'+(nights>1?'s':''):'';
   updateSummary();
 }
 
@@ -757,9 +751,9 @@ function getRoomCards(){
   return [...document.querySelectorAll('.room-card')].map(card=>{
     const rid=card.id.replace('rc-','');
     const type=document.getElementById('rs-'+rid)?.value||'';
-    const ci=document.getElementById('ci-'+rid)?.value||'';
-    const co=document.getElementById('co-'+rid)?.value||'';
-    const nights=ci&&co&&co>ci?(new Date(co)-new Date(ci))/(1000*60*60*24):0;
+    const ci=parseInt(document.getElementById('ci-'+rid)?.value)||0;
+    const co=parseInt(document.getElementById('co-'+rid)?.value)||0;
+    const nights=ci&&co&&co>ci?co-ci:0;
     return{rid,type,ci,co,nights};
   });
 }
@@ -776,12 +770,12 @@ function updateSummary(){
     total+=sub;
     const ciLabel=r.ci?r.ci.split('-').slice(1).reverse().join(' Oct '):'?';
     const coLabel=r.co?r.co.split('-').slice(1).reverse().join(' Oct '):'?';
-    const dates=r.ci&&r.co?('Oct '+parseInt(r.ci.split('-')[2])+' → Oct '+parseInt(r.co.split('-')[2])+' · '+r.nights+'n'):'Dates pending';
+    const dates=r.ci&&r.co?('Oct '+r.ci+' → Oct '+r.co+' · '+r.nights+'n'):'Dates pending';
     html+='<div style="padding:6px 0;border-bottom:1px solid var(--blkb)">Room '+(i+1)+': '+r.type+'<br><span style="color:rgba(245,245,240,.4)">'+dates+(sub?' · €'+sub.toLocaleString('nl-NL'):'')+'</span></div>';
   });
   document.getElementById('summary-rooms-text').innerHTML=html;
   document.getElementById('summary-total').textContent=total?'Est. €'+total.toLocaleString('nl-NL')+' total':'';
-  const detail=cards.map(r=>r.type+' ('+r.ci+' → '+r.co+', '+r.nights+' nights)').join(' | ');
+  const detail=cards.map(r=>r.type+' (Oct '+r.ci+' → Oct '+r.co+', '+r.nights+' nights)').join(' | ');
   document.getElementById('inp-rooms-detail').value=detail;
 }
 
@@ -804,7 +798,7 @@ async function submitFS(f,e){
   e.preventDefault();
   const cards=getRoomCards().filter(r=>r.type);
   if(!cards.length){alert('Please select at least one room.');return;}
-  const incomplete=cards.filter(r=>!r.ci||!r.co);
+  const incomplete=cards.filter(r=>!r.ci||!r.co||r.nights<=0);
   if(incomplete.length){alert('Please select check-in and check-out dates for all rooms.');return;}
   const btn=f.querySelector('button[type=submit]');
   btn.textContent='SENDING...';btn.disabled=true;
