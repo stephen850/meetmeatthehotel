@@ -725,19 +725,22 @@ form{display:flex;flex-direction:column;gap:14px}
 .room-date-inp{background:var(--blkc);border:1px solid var(--blkb);color:var(--wh);font-family:var(--fc);font-size:12px;letter-spacing:.06em;padding:10px 12px;width:100%;outline:none;transition:border-color .3s;text-transform:uppercase}
 .room-date-inp::placeholder{color:rgba(245,245,240,.25)}
 .room-nights-tag{font-family:var(--fc);font-size:10px;letter-spacing:.1em;color:var(--teal);text-transform:uppercase;margin-top:5px;min-height:14px}
-.cal-pop{position:fixed;z-index:9999;background:#1a1a1a;border:1px solid var(--teal);padding:16px;width:280px;box-shadow:0 8px 32px rgba(0,0,0,.6)}
-.cal-pop-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
-.cal-pop-title{font-family:var(--fd);font-size:16px;letter-spacing:.05em}
-.cal-pop-close{background:transparent;border:none;color:var(--wd);font-size:18px;cursor:pointer;padding:0 4px;line-height:1}
-.cal-pop-dow{display:grid;grid-template-columns:repeat(7,1fr);gap:1px;margin-bottom:3px}
-.cal-pop-dow span{font-family:var(--fc);font-size:9px;font-weight:600;letter-spacing:.1em;color:rgba(245,245,240,.3);text-transform:uppercase;text-align:center;padding:3px 0}
-.cal-pop-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:1px}
-.cpd{font-family:var(--fc);font-size:11px;font-weight:600;text-align:center;padding:6px 1px;cursor:pointer;transition:all .18s;border:1px solid transparent;color:var(--wd)}
+.cal-inline{margin-top:10px;border-top:1px solid var(--blkb);padding-top:12px;display:none}
+.cal-inline.open{display:block}
+.cal-inline-label{font-family:var(--fc);font-size:10px;letter-spacing:.18em;color:var(--teal);text-transform:uppercase;margin-bottom:10px;display:block}
+.cal-dow-row{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-bottom:3px}
+.cal-dow-row span{font-family:var(--fc);font-size:9px;font-weight:600;letter-spacing:.08em;color:rgba(245,245,240,.3);text-transform:uppercase;text-align:center;padding:3px 0}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
+.cpd{font-family:var(--fc);font-size:12px;font-weight:600;text-align:center;padding:8px 2px;cursor:pointer;transition:all .15s;border:1px solid transparent;color:var(--wd)}
 .cpd.dis{color:rgba(245,245,240,.12);cursor:default;pointer-events:none}
-.cpd.emp{cursor:default;pointer-events:none}
-.cpd.avail:hover{background:rgba(77,168,160,.15);border-color:rgba(77,168,160,.3);color:var(--wh)}
+.cpd.emp{cursor:default;pointer-events:none;color:transparent}
+.cpd.avail:hover{background:rgba(77,168,160,.2);border-color:rgba(77,168,160,.4);color:var(--wh)}
 .cpd.sel{background:var(--teal);color:var(--blk)!important;border-color:var(--teal)}
-.cpd.inr{background:rgba(77,168,160,.18);color:var(--wh);border-color:rgba(77,168,160,.15)}
+.cpd.inr{background:rgba(77,168,160,.15);color:var(--wh);border-color:rgba(77,168,160,.12)}
+.date-btn{background:var(--blkc);border:1px solid var(--blkb);color:var(--wh);font-family:var(--fc);font-size:12px;letter-spacing:.08em;padding:10px 12px;width:100%;cursor:pointer;text-align:left;transition:border-color .2s;text-transform:uppercase;display:flex;justify-content:space-between;align-items:center}
+.date-btn:hover,.date-btn.active{border-color:var(--teal);color:var(--wh)}
+.date-btn span.ph{color:rgba(245,245,240,.3)}
+.date-btn .arr{color:var(--teal);font-size:10px}
 </style>
 
 <script>
@@ -772,17 +775,28 @@ function addRoom(preselect){
       <option value="" disabled${!preselect?' selected':''}>Select room type</option>
       ${opts}
     </select>
-    <div class="room-dates">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:2px">
       <div>
-        <span class="room-date-label">Check-in</span>
-        <input class="room-date-inp" id="ci-${rid}" placeholder="Oct 15" readonly onclick="openCal(${rid},'ci')" required>
+        <span class="room-date-label" style="font-family:var(--fc);font-size:10px;font-weight:600;letter-spacing:.2em;color:var(--teal);text-transform:uppercase;display:block;margin-bottom:5px">Check-in</span>
+        <button type="button" class="date-btn" id="cibtn-${rid}" onclick="toggleCal(${rid},'ci')">
+          <span id="ci-label-${rid}" class="ph">Select date</span><span class="arr">▾</span>
+        </button>
       </div>
       <div>
-        <span class="room-date-label">Check-out</span>
-        <input class="room-date-inp" id="co-${rid}" placeholder="Oct 20" readonly onclick="openCal(${rid},'co')">
+        <span class="room-date-label" style="font-family:var(--fc);font-size:10px;font-weight:600;letter-spacing:.2em;color:var(--teal);text-transform:uppercase;display:block;margin-bottom:5px">Check-out</span>
+        <button type="button" class="date-btn" id="cobtn-${rid}" onclick="toggleCal(${rid},'co')">
+          <span id="co-label-${rid}" class="ph">Select date</span><span class="arr">▾</span>
+        </button>
       </div>
     </div>
+    <div class="cal-inline" id="cal-${rid}">
+      <span class="cal-inline-label" id="cal-title-${rid}">Select check-in date</span>
+      <div class="cal-dow-row">${['Mo','Tu','We','Th','Fr','Sa','Su'].map(d=>'<span>'+d+'</span>').join('')}</div>
+      <div class="cal-grid" id="cal-grid-${rid}"></div>
+    </div>
     <div class="room-nights-tag" id="nt-${rid}"></div>
+    <input type="hidden" id="ci-${rid}" data-day="">
+    <input type="hidden" id="co-${rid}" data-day="">
   `;
   document.getElementById('rooms-list').appendChild(div);
   updateSummary();
@@ -793,122 +807,113 @@ function removeRoom(rid){
   updateSummary();
 }
 
-// ── CALENDAR POPUP ──────────────────────────────────────────
-// ── CALENDAR POPUP (rewritable) ─────────────────────────────
-let calOpenFor = null; // {rid, field}
+// ── CALENDAR (inline, no popup) ─────────────────────────────
+const MIN_D2=15, MAX_D2=30;
+// calState[rid] = {field: 'ci'|'co'|null}
+const calState={};
 
-function openCal(rid, field) {
-  // If same field already open → close and return (toggle)
-  if (calOpenFor && calOpenFor.rid == rid && calOpenFor.field === field) {
-    closeCal(); return;
+function toggleCal(rid, field) {
+  const cal = document.getElementById('cal-'+rid);
+  const isOpen = cal.classList.contains('open');
+  const sameField = calState[rid] && calState[rid].field === field;
+
+  if (isOpen && sameField) {
+    // Close
+    cal.classList.remove('open');
+    document.getElementById('cibtn-'+rid).classList.remove('active');
+    document.getElementById('cobtn-'+rid).classList.remove('active');
+    calState[rid] = {field: null};
+    return;
   }
-  closeCal();
-  calOpenFor = {rid, field};
-
-  const inp = document.getElementById(`${field}-${rid}`);
-  const rect = inp.getBoundingClientRect();
-
-  const pop = document.createElement('div');
-  pop.className = 'cal-pop';
-  pop.id = 'cal-pop';
-  pop.innerHTML = `
-    <div class="cal-pop-header">
-      <span class="cal-pop-title">OCTOBER 2026</span>
-      <button class="cal-pop-close" type="button" onclick="closeCal()">✕</button>
-    </div>
-    <div style="font-family:var(--fc);font-size:10px;letter-spacing:.15em;color:var(--teal);text-transform:uppercase;margin-bottom:10px">
-      ${field==='ci' ? 'Select check-in date' : 'Select check-out date'}
-    </div>
-    <div class="cal-pop-dow">${['Mo','Tu','We','Th','Fr','Sa','Su'].map(d=>`<span>${d}</span>`).join('')}</div>
-    <div class="cal-pop-grid" id="cpg"></div>
-  `;
-  document.body.appendChild(pop);
-
-  // Position below input, clamp to viewport
-  let top = rect.bottom + window.scrollY + 6;
-  let left = rect.left + window.scrollX;
-  if (left + 290 > window.innerWidth) left = window.innerWidth - 296;
-  if (left < 4) left = 4;
-  pop.style.top = top + 'px';
-  pop.style.left = left + 'px';
-
-  renderCalPop(rid, field);
-
-  // Outside click closes — use mousedown so it fires before click
-  setTimeout(() => document.addEventListener('mousedown', calOutsideClick), 50);
+  // Open for this field
+  calState[rid] = {field};
+  cal.classList.add('open');
+  document.getElementById('cibtn-'+rid).classList.toggle('active', field==='ci');
+  document.getElementById('cobtn-'+rid).classList.toggle('active', field==='co');
+  document.getElementById('cal-title-'+rid).textContent = field==='ci' ? 'Select check-in date' : 'Select check-out date';
+  renderInlineCal(rid);
 }
 
-function renderCalPop(rid, field) {
-  const grid = document.getElementById('cpg');
+function renderInlineCal(rid) {
+  const grid = document.getElementById('cal-grid-'+rid);
   if (!grid) return;
   const ci = getCiDay(rid), co = getCoDay(rid);
-  const offset = 3; // Oct 1 2026 = Thursday, Mon=0
+  const offset = 3;
   let html = '';
-  for (let i = 0; i < offset; i++) html += `<div class="cpd emp"></div>`;
-  for (let d = 1; d <= 31; d++) {
-    const avail = d >= MIN_D && d <= MAX_D;
+  for (let i=0; i<offset; i++) html += '<div class="cpd emp"> </div>';
+  for (let d=1; d<=31; d++) {
+    const avail = d>=MIN_D2 && d<=MAX_D2;
     let cls = 'cpd ' + (avail ? 'avail' : 'dis');
-    if (d === ci && d === co) cls += ' sel';
-    else if (d === ci) cls += ' sel';
-    else if (d === co) cls += ' sel';
-    else if (ci && co && d > ci && d < co) cls += ' inr';
-    html += `<div class="${cls}" data-d="${d}" onclick="calPickDay(${rid},'${field}',${d})">${d}</div>`;
+    if (d===ci) cls += ' sel';
+    else if (d===co) cls += ' sel';
+    else if (ci && co && d>ci && d<co) cls += ' inr';
+    html += `<div class="${cls}" onclick="pickDay(${rid},${d})">${d}</div>`;
   }
   grid.innerHTML = html;
 }
 
-function calPickDay(rid, field, d) {
-  if (d < MIN_D || d > MAX_D) return;
-  const ciInp = document.getElementById(`ci-${rid}`);
-  const coInp = document.getElementById(`co-${rid}`);
+function pickDay(rid, d) {
+  if (d < MIN_D2 || d > MAX_D2) return;
+  const field = calState[rid]?.field;
+  if (!field) return;
+
+  const ciInp = document.getElementById('ci-'+rid);
+  const coInp = document.getElementById('co-'+rid);
+  const ciLbl = document.getElementById('ci-label-'+rid);
+  const coLbl = document.getElementById('co-label-'+rid);
 
   if (field === 'ci') {
-    ciInp.value = `Oct ${d}`;
     ciInp.dataset.day = d;
-    // Clear checkout if now invalid
+    ciLbl.textContent = 'Oct ' + d;
+    ciLbl.classList.remove('ph');
+    // clear checkout if invalid
     const co = getCoDay(rid);
-    if (co && co <= d) { coInp.value = ''; delete coInp.dataset.day; }
+    if (co && co <= d) {
+      coInp.dataset.day = '';
+      coLbl.textContent = 'Select date';
+      coLbl.classList.add('ph');
+    }
+    // auto-switch to checkout picker
+    calState[rid].field = 'co';
+    document.getElementById('cibtn-'+rid).classList.remove('active');
+    document.getElementById('cobtn-'+rid).classList.add('active');
+    document.getElementById('cal-title-'+rid).textContent = 'Now select check-out date';
   } else {
     const ci = getCiDay(rid);
     if (!ci || d <= ci) {
-      // Clicked before or on check-in: shift check-in, clear checkout
-      ciInp.value = `Oct ${d}`;
+      // clicked before checkin: reset checkin
       ciInp.dataset.day = d;
-      coInp.value = ''; delete coInp.dataset.day;
+      ciLbl.textContent = 'Oct ' + d;
+      ciLbl.classList.remove('ph');
+      coInp.dataset.day = '';
+      coLbl.textContent = 'Select date';
+      coLbl.classList.add('ph');
+      calState[rid].field = 'co';
+      document.getElementById('cal-title-'+rid).textContent = 'Now select check-out date';
     } else {
-      coInp.value = `Oct ${d}`;
       coInp.dataset.day = d;
+      coLbl.textContent = 'Oct ' + d;
+      coLbl.classList.remove('ph');
+      // close calendar
+      document.getElementById('cal-'+rid).classList.remove('open');
+      document.getElementById('cibtn-'+rid).classList.remove('active');
+      document.getElementById('cobtn-'+rid).classList.remove('active');
+      calState[rid] = {field: null};
     }
   }
+  renderInlineCal(rid);
   updateNights(rid);
   updateSummary();
-  closeCal();
 }
 
-function getCiDay(rid) { const v = document.getElementById(`ci-${rid}`)?.dataset.day; return v ? parseInt(v) : null; }
-function getCoDay(rid) { const v = document.getElementById(`co-${rid}`)?.dataset.day; return v ? parseInt(v) : null; }
+function getCiDay(rid) { const v = document.getElementById('ci-'+rid)?.dataset.day; return v ? parseInt(v) : null; }
+function getCoDay(rid) { const v = document.getElementById('co-'+rid)?.dataset.day; return v ? parseInt(v) : null; }
 
 function updateNights(rid) {
   const ci = getCiDay(rid), co = getCoDay(rid);
-  const el = document.getElementById(`nt-${rid}`);
+  const el = document.getElementById('nt-'+rid);
   if (!el) return;
-  el.textContent = (ci && co && co > ci) ? `→ ${co - ci} night${co - ci > 1 ? 's' : ''}` : '';
-}
-
-function closeCal() {
-  const p = document.getElementById('cal-pop');
-  if (p) p.remove();
-  document.removeEventListener('mousedown', calOutsideClick);
-  calOpenFor = null;
-}
-
-function calOutsideClick(e) {
-  const p = document.getElementById('cal-pop');
-  if (!p) return;
-  // Don't close if clicking inside popup or on a date input
-  if (p.contains(e.target)) return;
-  if (e.target.classList.contains('room-date-inp')) return;
-  closeCal();
+  el.textContent = (ci && co && co > ci) ? '→ ' + (co-ci) + ' night' + (co-ci>1?'s':'') : '';
 }
 
 // ── SUMMARY ─────────────────────────────────────────────────
