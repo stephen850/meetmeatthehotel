@@ -724,23 +724,25 @@ form{display:flex;flex-direction:column;gap:14px}
 .room-date-label{font-family:var(--fc);font-size:10px;font-weight:600;letter-spacing:.2em;color:var(--teal);text-transform:uppercase;display:block;margin-bottom:5px}
 .room-date-inp{background:var(--blkc);border:1px solid var(--blkb);color:var(--wh);font-family:var(--fc);font-size:12px;letter-spacing:.06em;padding:10px 12px;width:100%;outline:none;transition:border-color .3s;text-transform:uppercase}
 .room-date-inp::placeholder{color:rgba(245,245,240,.25)}
-.room-nights-tag{font-family:var(--fc);font-size:10px;letter-spacing:.1em;color:var(--teal);text-transform:uppercase;margin-top:5px;min-height:14px}
-.cal-inline{margin-top:10px;border-top:1px solid var(--blkb);padding-top:12px;display:none;background:var(--blkc);padding:14px;border:1px solid var(--teal)}
-.cal-inline.open{display:block}
-.cal-inline-label{font-family:var(--fc);font-size:10px;letter-spacing:.18em;color:var(--teal);text-transform:uppercase;margin-bottom:10px;display:block}
+.room-nights-tag{font-family:var(--fc);font-size:10px;letter-spacing:.1em;color:var(--teal);text-transform:uppercase;margin-top:8px;height:16px}
+.date-btn{background:var(--blkc);border:1px solid var(--blkb);color:var(--wh);font-family:var(--fc);font-size:12px;letter-spacing:.08em;padding:10px 12px;width:100%;cursor:pointer;text-align:left;transition:border-color .2s;text-transform:uppercase;display:flex;justify-content:space-between;align-items:center;height:42px;box-sizing:border-box}
+.date-btn:hover,.date-btn.active{border-color:var(--teal)}
+.date-btn .ph{color:rgba(245,245,240,.3)}
+.date-btn .arr{color:var(--teal);font-size:10px;transition:transform .2s}
+.date-btn.active .arr{transform:rotate(180deg)}
+.cal-wrap{overflow:hidden;max-height:0;transition:max-height .3s ease}
+.cal-wrap.open{max-height:320px}
+.cal-inner{background:var(--blkc);border:1px solid var(--teal);border-top:none;padding:12px}
+.cal-field-label{font-family:var(--fc);font-size:10px;letter-spacing:.18em;color:var(--teal);text-transform:uppercase;margin-bottom:8px;display:block}
 .cal-dow-row{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-bottom:3px}
-.cal-dow-row span{font-family:var(--fc);font-size:9px;font-weight:600;letter-spacing:.08em;color:rgba(245,245,240,.3);text-transform:uppercase;text-align:center;padding:3px 0}
+.cal-dow-row span{font-family:var(--fc);font-size:9px;font-weight:600;color:rgba(245,245,240,.3);text-transform:uppercase;text-align:center;padding:3px 0}
 .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
-.cpd{font-family:var(--fc);font-size:12px;font-weight:600;text-align:center;padding:8px 2px;cursor:pointer;transition:all .15s;border:1px solid transparent;color:var(--wd)}
-.cpd.dis{color:rgba(245,245,240,.12);cursor:default;pointer-events:none}
-.cpd.emp{cursor:default;pointer-events:none;color:transparent}
+.cpd{font-family:var(--fc);font-size:12px;font-weight:600;text-align:center;padding:8px 2px;cursor:pointer;transition:all .15s;border:1px solid transparent;color:var(--wd);user-select:none}
+.cpd.dis{color:rgba(245,245,240,.1);cursor:default;pointer-events:none}
+.cpd.emp{pointer-events:none;visibility:hidden}
 .cpd.avail:hover{background:rgba(77,168,160,.2);border-color:rgba(77,168,160,.4);color:var(--wh)}
 .cpd.sel{background:var(--teal);color:var(--blk)!important;border-color:var(--teal)}
-.cpd.inr{background:rgba(77,168,160,.15);color:var(--wh);border-color:rgba(77,168,160,.12)}
-.date-btn{background:var(--blkc);border:1px solid var(--blkb);color:var(--wh);font-family:var(--fc);font-size:12px;letter-spacing:.08em;padding:10px 12px;width:100%;cursor:pointer;text-align:left;transition:border-color .2s;text-transform:uppercase;display:flex;justify-content:space-between;align-items:center;min-height:42px}
-.date-btn:hover,.date-btn.active{border-color:var(--teal);color:var(--wh)}
-.date-btn span.ph{color:rgba(245,245,240,.3)}
-.date-btn .arr{color:var(--teal);font-size:10px}
+.cpd.inr{background:rgba(77,168,160,.15);color:var(--wh)}
 </style>
 
 <script>
@@ -774,24 +776,26 @@ function addRoom(preselect){
       <option value="" disabled${!preselect?' selected':''}>Select room type</option>
       ${opts}
     </select>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:2px">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px">
       <div>
-        <span class="room-date-label" style="font-family:var(--fc);font-size:10px;font-weight:600;letter-spacing:.2em;color:var(--teal);text-transform:uppercase;display:block;margin-bottom:5px">Check-in</span>
+        <span style="font-family:var(--fc);font-size:10px;font-weight:600;letter-spacing:.2em;color:var(--teal);text-transform:uppercase;display:block;margin-bottom:5px">Check-in</span>
         <button type="button" class="date-btn" id="cibtn-${rid}" onclick="toggleCal(${rid},'ci')">
           <span id="ci-label-${rid}" class="ph">Select date</span><span class="arr">▾</span>
         </button>
       </div>
       <div>
-        <span class="room-date-label" style="font-family:var(--fc);font-size:10px;font-weight:600;letter-spacing:.2em;color:var(--teal);text-transform:uppercase;display:block;margin-bottom:5px">Check-out</span>
+        <span style="font-family:var(--fc);font-size:10px;font-weight:600;letter-spacing:.2em;color:var(--teal);text-transform:uppercase;display:block;margin-bottom:5px">Check-out</span>
         <button type="button" class="date-btn" id="cobtn-${rid}" onclick="toggleCal(${rid},'co')">
           <span id="co-label-${rid}" class="ph">Select date</span><span class="arr">▾</span>
         </button>
       </div>
     </div>
-    <div class="cal-inline" id="cal-${rid}">
-      <span class="cal-inline-label" id="cal-title-${rid}">Select check-in date</span>
-      <div class="cal-dow-row"><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span><span>Su</span></div>
-      <div class="cal-grid" id="cal-grid-${rid}"></div>
+    <div class="cal-wrap" id="cal-${rid}">
+      <div class="cal-inner">
+        <span class="cal-field-label" id="cal-title-${rid}">Select check-in date</span>
+        <div class="cal-dow-row"><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span><span>Su</span></div>
+        <div class="cal-grid" id="cal-grid-${rid}"></div>
+      </div>
     </div>
     <div class="room-nights-tag" id="nt-${rid}"></div>
     <input type="hidden" id="ci-${rid}" data-day="">
@@ -812,24 +816,21 @@ const MIN_D=15, MAX_D=30;
 const calState={};
 
 function toggleCal(rid, field) {
-  const cal = document.getElementById('cal-'+rid);
-  const isOpen = cal.classList.contains('open');
+  const wrap = document.getElementById('cal-'+rid);
+  const isOpen = wrap.classList.contains('open');
   const sameField = calState[rid] && calState[rid].field === field;
-
   if (isOpen && sameField) {
-    // Close
-    cal.classList.remove('open');
+    wrap.classList.remove('open');
     document.getElementById('cibtn-'+rid).classList.remove('active');
     document.getElementById('cobtn-'+rid).classList.remove('active');
     calState[rid] = {field: null};
     return;
   }
-  // Open for this field
   calState[rid] = {field};
-  cal.classList.add('open');
+  wrap.classList.add('open');
   document.getElementById('cibtn-'+rid).classList.toggle('active', field==='ci');
   document.getElementById('cobtn-'+rid).classList.toggle('active', field==='co');
-  document.getElementById('cal-title-'+rid).textContent = field==='ci' ? 'Select check-in date' : 'Select check-out date';
+  document.getElementById('cal-title-'+rid).textContent = field==='ci' ? 'Select check-in' : 'Select check-out';
   renderInlineCal(rid);
 }
 
@@ -897,7 +898,7 @@ function pickDay(rid, d) {
       document.getElementById('cal-'+rid).classList.remove('open');
       document.getElementById('cibtn-'+rid).classList.remove('active');
       document.getElementById('cobtn-'+rid).classList.remove('active');
-      calState[rid] = {field: null};
+      if(calState[rid]) calState[rid].field = null;
     }
   }
   renderInlineCal(rid);
