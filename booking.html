@@ -675,9 +675,11 @@ form{display:flex;flex-direction:column;gap:14px}
 .room-select:focus{border-color:var(--teal)}
 .room-date-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:2px}
 .room-date-lbl{font-family:var(--fc);font-size:10px;font-weight:600;letter-spacing:.2em;color:var(--teal);text-transform:uppercase;display:block;margin-bottom:5px}
-.room-date-inp{background:var(--blkc);border:1px solid var(--blkb);color:var(--wh);font-family:var(--fc);font-size:12px;padding:10px 12px;width:100%;outline:none;transition:border-color .3s;height:42px;box-sizing:border-box;cursor:pointer}
+.room-date-inp{background:var(--blkc);border:1px solid var(--blkb);color:var(--wh);font-family:var(--fc);font-size:12px;padding:10px 12px;width:100%;outline:none;transition:border-color .3s;height:42px;box-sizing:border-box;cursor:pointer;color-scheme:dark;-webkit-appearance:none;appearance:none;position:relative;z-index:1}
 .room-date-inp:focus{border-color:var(--teal)}
-.room-date-inp::-webkit-calendar-picker-indicator{filter:invert(0.7) sepia(1) saturate(3) hue-rotate(130deg);cursor:pointer}
+.room-date-inp::-webkit-calendar-picker-indicator{opacity:1;cursor:pointer;filter:invert(0.6) sepia(1) saturate(5) hue-rotate(130deg);width:18px;height:18px;padding:0;margin-right:2px}
+.room-date-inp::-webkit-datetime-edit{color:var(--wh)}
+.room-date-inp::-webkit-datetime-edit-fields-wrapper{color:var(--wh)}
 .room-nights{font-family:var(--fc);font-size:10px;letter-spacing:.1em;color:var(--teal);text-transform:uppercase;margin-top:6px;height:16px}
 </style>
 
