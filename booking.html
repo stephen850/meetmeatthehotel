@@ -794,82 +794,90 @@ function removeRoom(rid){
 }
 
 // ── CALENDAR POPUP ──────────────────────────────────────────
-function openCal(rid,field){
+// ── CALENDAR POPUP (rewritable) ─────────────────────────────
+let calOpenFor = null; // {rid, field}
+
+function openCal(rid, field) {
+  // If same field already open → close and return (toggle)
+  if (calOpenFor && calOpenFor.rid == rid && calOpenFor.field === field) {
+    closeCal(); return;
+  }
   closeCal();
-  activeCal={rid,field};
-  const inp=document.getElementById(`${field}-${rid}`);
-  const rect=inp.getBoundingClientRect();
+  calOpenFor = {rid, field};
 
-  const pop=document.createElement('div');
-  pop.className='cal-pop';
-  pop.id='cal-pop';
+  const inp = document.getElementById(`${field}-${rid}`);
+  const rect = inp.getBoundingClientRect();
 
-  const ciVal=getCiDay(rid), coVal=getCoDay(rid);
-
-  pop.innerHTML=`
+  const pop = document.createElement('div');
+  pop.className = 'cal-pop';
+  pop.id = 'cal-pop';
+  pop.innerHTML = `
     <div class="cal-pop-header">
       <span class="cal-pop-title">OCTOBER 2026</span>
-      <button class="cal-pop-close" onclick="closeCal()">✕</button>
+      <button class="cal-pop-close" type="button" onclick="closeCal()">✕</button>
     </div>
     <div style="font-family:var(--fc);font-size:10px;letter-spacing:.15em;color:var(--teal);text-transform:uppercase;margin-bottom:10px">
-      ${field==='ci'?'Select check-in date':'Select check-out date'}
+      ${field==='ci' ? 'Select check-in date' : 'Select check-out date'}
     </div>
     <div class="cal-pop-dow">${['Mo','Tu','We','Th','Fr','Sa','Su'].map(d=>`<span>${d}</span>`).join('')}</div>
-    <div class="cal-pop-grid" id="cpg-${rid}-${field}"></div>
+    <div class="cal-pop-grid" id="cpg"></div>
   `;
-
   document.body.appendChild(pop);
 
-  // Position
-  let top=rect.bottom+window.scrollY+6;
-  let left=rect.left+window.scrollX;
-  if(left+280>window.innerWidth) left=window.innerWidth-290;
-  pop.style.top=top+'px';
-  pop.style.left=left+'px';
+  // Position below input, clamp to viewport
+  let top = rect.bottom + window.scrollY + 6;
+  let left = rect.left + window.scrollX;
+  if (left + 290 > window.innerWidth) left = window.innerWidth - 296;
+  if (left < 4) left = 4;
+  pop.style.top = top + 'px';
+  pop.style.left = left + 'px';
 
-  buildCalPop(rid,field,ciVal,coVal);
+  renderCalPop(rid, field);
 
-  setTimeout(()=>document.addEventListener('click',calOutsideClick),10);
+  // Outside click closes — use mousedown so it fires before click
+  setTimeout(() => document.addEventListener('mousedown', calOutsideClick), 50);
 }
 
-function buildCalPop(rid,field,ci,co){
-  const grid=document.getElementById(`cpg-${rid}-${field}`);
-  if(!grid)return;
-  const offset=3; // Oct 1 = Thursday, Mon=0 → offset 3
-  let html='';
-  for(let i=0;i<offset;i++) html+=`<div class="cpd emp"></div>`;
-  for(let d=1;d<=31;d++){
-    const avail=d>=MIN_D&&d<=MAX_D;
-    let cls='cpd '+(avail?'avail':'dis');
-    if(d===ci) cls+=' sel';
-    else if(d===co) cls+=' sel';
-    else if(ci&&co&&d>ci&&d<co) cls+=' inr';
-    html+=`<div class="${cls}" onclick="calPickDay(${rid},'${field}',${d})">${d}</div>`;
+function renderCalPop(rid, field) {
+  const grid = document.getElementById('cpg');
+  if (!grid) return;
+  const ci = getCiDay(rid), co = getCoDay(rid);
+  const offset = 3; // Oct 1 2026 = Thursday, Mon=0
+  let html = '';
+  for (let i = 0; i < offset; i++) html += `<div class="cpd emp"></div>`;
+  for (let d = 1; d <= 31; d++) {
+    const avail = d >= MIN_D && d <= MAX_D;
+    let cls = 'cpd ' + (avail ? 'avail' : 'dis');
+    if (d === ci && d === co) cls += ' sel';
+    else if (d === ci) cls += ' sel';
+    else if (d === co) cls += ' sel';
+    else if (ci && co && d > ci && d < co) cls += ' inr';
+    html += `<div class="${cls}" data-d="${d}" onclick="calPickDay(${rid},'${field}',${d})">${d}</div>`;
   }
-  grid.innerHTML=html;
+  grid.innerHTML = html;
 }
 
-function calPickDay(rid,field,d){
-  if(d<MIN_D||d>MAX_D)return;
-  const ciInp=document.getElementById(`ci-${rid}`);
-  const coInp=document.getElementById(`co-${rid}`);
+function calPickDay(rid, field, d) {
+  if (d < MIN_D || d > MAX_D) return;
+  const ciInp = document.getElementById(`ci-${rid}`);
+  const coInp = document.getElementById(`co-${rid}`);
 
-  if(field==='ci'){
-    ciInp.value=`Oct ${d}`;
-    ciInp.dataset.day=d;
-    // reset checkout if it's before or equal to new checkin
-    const coDay=getCoDay(rid);
-    if(coDay&&coDay<=d){coInp.value='';coInp.dataset.day='';}
+  if (field === 'ci') {
+    ciInp.value = `Oct ${d}`;
+    ciInp.dataset.day = d;
+    // Clear checkout if now invalid
+    const co = getCoDay(rid);
+    if (co && co <= d) { coInp.value = ''; delete coInp.dataset.day; }
   } else {
-    const ciDay=getCiDay(rid);
-    if(ciDay&&d<=ciDay){
-      // treat as new checkin
-      ciInp.value=`Oct ${d}`;
-      ciInp.dataset.day=d;
-      coInp.value='';coInp.dataset.day='';
+    const ci = getCiDay(rid);
+    if (!ci || d <= ci) {
+      // Clicked before or on check-in: shift check-in, clear checkout
+      ciInp.value = `Oct ${d}`;
+      ciInp.dataset.day = d;
+      coInp.value = ''; delete coInp.dataset.day;
     } else {
-      coInp.value=`Oct ${d}`;
-      coInp.dataset.day=d;
+      coInp.value = `Oct ${d}`;
+      coInp.dataset.day = d;
     }
   }
   updateNights(rid);
@@ -877,26 +885,30 @@ function calPickDay(rid,field,d){
   closeCal();
 }
 
-function getCiDay(rid){return parseInt(document.getElementById(`ci-${rid}`)?.dataset.day)||null}
-function getCoDay(rid){return parseInt(document.getElementById(`co-${rid}`)?.dataset.day)||null}
+function getCiDay(rid) { const v = document.getElementById(`ci-${rid}`)?.dataset.day; return v ? parseInt(v) : null; }
+function getCoDay(rid) { const v = document.getElementById(`co-${rid}`)?.dataset.day; return v ? parseInt(v) : null; }
 
-function updateNights(rid){
-  const ci=getCiDay(rid),co=getCoDay(rid);
-  const el=document.getElementById(`nt-${rid}`);
-  if(ci&&co&&co>ci) el.textContent=`→ ${co-ci} night${co-ci>1?'s':''}`;
-  else el.textContent='';
+function updateNights(rid) {
+  const ci = getCiDay(rid), co = getCoDay(rid);
+  const el = document.getElementById(`nt-${rid}`);
+  if (!el) return;
+  el.textContent = (ci && co && co > ci) ? `→ ${co - ci} night${co - ci > 1 ? 's' : ''}` : '';
 }
 
-function closeCal(){
-  const p=document.getElementById('cal-pop');
-  if(p)p.remove();
-  document.removeEventListener('click',calOutsideClick);
-  activeCal=null;
+function closeCal() {
+  const p = document.getElementById('cal-pop');
+  if (p) p.remove();
+  document.removeEventListener('mousedown', calOutsideClick);
+  calOpenFor = null;
 }
 
-function calOutsideClick(e){
-  const p=document.getElementById('cal-pop');
-  if(p&&!p.contains(e.target)&&!e.target.classList.contains('room-date-inp'))closeCal();
+function calOutsideClick(e) {
+  const p = document.getElementById('cal-pop');
+  if (!p) return;
+  // Don't close if clicking inside popup or on a date input
+  if (p.contains(e.target)) return;
+  if (e.target.classList.contains('room-date-inp')) return;
+  closeCal();
 }
 
 // ── SUMMARY ─────────────────────────────────────────────────
