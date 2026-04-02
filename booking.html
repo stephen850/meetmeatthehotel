@@ -424,7 +424,7 @@ form{display:flex;flex-direction:column;gap:14px}
       </div>
 
     </div>
-    <p class="price-note">* Prices per room per night · Subject to availability · October 2026 rates · Breakfast not included (available from €25pp)</p>
+    <p class="price-note">* Prices per room per night · Subject to availability · October 2026 rates · Excl. city tax (paid at hotel reception) · Breakfast available on-site at the hotel</p>
   </div>
 </section>
 
@@ -571,17 +571,24 @@ form{display:flex;flex-direction:column;gap:14px}
     <div class="form-grid">
       <div class="form-text rv">
         <p>Fill in your details and we'll confirm availability and pricing for October 2026. We respond within 24 hours.</p>
-        <p>For group bookings of 4+ rooms, you'll automatically get dedicated group pricing and benefits.</p>
+        <p>For group bookings of 4+ rooms, you'll automatically receive dedicated group pricing and benefits.</p>
         <div style="margin-top:32px;padding:24px 28px;background:var(--blkc);border:1px solid var(--blkb)">
           <span class="lbl">Direct Contact</span>
           <p style="font-family:var(--fc);font-size:13px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase;">info@meetmeatthehotel.com</p>
           <p style="font-family:var(--fc);font-size:13px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase;margin-top:6px;">IJdok 6 · Amsterdam</p>
         </div>
-        <div id="booking-summary" style="display:none;margin-top:20px;padding:24px 28px;background:var(--blkc);border:1px solid var(--teal)">
+        <div style="margin-top:16px;padding:20px 24px;background:var(--blkc);border:1px solid var(--blkb)">
+          <span class="lbl" style="margin-bottom:8px">Good to Know</span>
+          <p style="font-family:var(--fc);font-size:12px;letter-spacing:.08em;color:var(--wd);line-height:1.8;text-transform:uppercase">
+            → City tax excl. · Paid at hotel reception upon check-in<br>
+            → Breakfast available on-site at the hotel
+          </p>
+        </div>
+        <div id="booking-summary" style="display:none;margin-top:16px;padding:24px 28px;background:var(--blkc);border:1px solid var(--teal)">
           <span class="lbl" style="margin-bottom:10px">Your Selection</span>
-          <div id="summary-dates" style="font-family:var(--fc);font-size:13px;letter-spacing:.1em;color:var(--wh);text-transform:uppercase;margin-bottom:6px"></div>
-          <div id="summary-rooms-text" style="font-family:var(--fc);font-size:12px;letter-spacing:.08em;color:var(--wd);text-transform:uppercase;line-height:1.9"></div>
+          <div id="summary-rooms-text" style="font-family:var(--fc);font-size:12px;letter-spacing:.08em;color:var(--wd);text-transform:uppercase;line-height:2"></div>
           <div id="summary-total" style="font-family:var(--fd);font-size:32px;color:var(--teal);margin-top:12px"></div>
+          <div style="font-family:var(--fc);font-size:10px;letter-spacing:.1em;color:rgba(245,245,240,.3);text-transform:uppercase;margin-top:6px">Excl. city tax · Subject to availability</div>
         </div>
         <p style="font-family:var(--fc);font-size:10px;letter-spacing:.12em;color:rgba(245,245,240,.3);text-transform:uppercase;margin-top:16px">B2B industry professionals only · All inquiries treated with full confidentiality</p>
       </div>
@@ -594,28 +601,16 @@ form{display:flex;flex-direction:column;gap:14px}
         <div class="field"><label>Email Address</label><input type="email" name="email" placeholder="your@email.com" required></div>
         <div class="field"><label>Company</label><input type="text" name="company" placeholder="Your company" required></div>
 
-        <!-- DATE PICKER -->
-        <div style="background:var(--blkc);border:1px solid var(--blkb);padding:20px 20px 18px">
-          <span class="lbl" style="margin-bottom:14px">Stay Dates · October 2026</span>
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
-            <span style="font-family:var(--fd);font-size:18px;letter-spacing:.05em">OCTOBER 2026</span>
-            <span id="cal-label" style="font-family:var(--fc);font-size:11px;letter-spacing:.15em;color:var(--teal);text-transform:uppercase">Select check-in</span>
-          </div>
-          <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-bottom:4px" id="cal-dow"></div>
-          <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:2px" id="cal-grid"></div>
-          <input type="hidden" name="check_in" id="inp-checkin">
-          <input type="hidden" name="check_out" id="inp-checkout">
-        </div>
-
-        <!-- ROOMS -->
-        <div style="background:var(--blkc);border:1px solid var(--blkb);padding:20px;margin-top:2px">
-          <span class="lbl" style="margin-bottom:14px">Room Selection</span>
+        <!-- ROOMS WITH PER-ROOM DATES -->
+        <div style="background:var(--blkc);border:1px solid var(--blkb);padding:20px">
+          <span class="lbl" style="margin-bottom:4px">Room Selection</span>
+          <p style="font-family:var(--fc);font-size:10px;letter-spacing:.12em;color:rgba(245,245,240,.3);text-transform:uppercase;margin-bottom:16px">Each room can have different dates · Oct 15–30 only</p>
           <div id="rooms-list"></div>
-          <button type="button" onclick="addRoom()" id="add-room-btn" style="display:flex;align-items:center;gap:8px;background:transparent;border:1px dashed rgba(77,168,160,.35);color:var(--teal);font-family:var(--fc);font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;padding:11px 16px;cursor:pointer;width:100%;justify-content:center;margin-top:4px;transition:all .3s">+ ADD ANOTHER ROOM</button>
+          <button type="button" onclick="addRoom()" style="display:flex;align-items:center;gap:8px;background:transparent;border:1px dashed rgba(77,168,160,.35);color:var(--teal);font-family:var(--fc);font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;padding:11px 16px;cursor:pointer;width:100%;justify-content:center;margin-top:6px;transition:all .3s" onmouseover="this.style.borderColor='var(--teal)'" onmouseout="this.style.borderColor='rgba(77,168,160,.35)'">+ ADD ANOTHER ROOM</button>
           <input type="hidden" name="rooms_detail" id="inp-rooms-detail">
         </div>
 
-        <div class="field"><label>Additional Notes</label><textarea name="notes" placeholder="Special requests, parking, breakfast, group details..."></textarea></div>
+        <div class="field"><label>Additional Notes</label><textarea name="notes" placeholder="Special requests, parking, city tax info, group details..."></textarea></div>
         <button type="submit" class="btn bp" style="width:100%;margin-top:8px;">Send Inquiry →</button>
       </form>
     </div>
@@ -669,142 +664,278 @@ form{display:flex;flex-direction:column;gap:14px}
     </div>
   </div>
 </footer>
+<!-- FOOTER -->
+<footer class="ft">
+  <div class="c">
+    <div class="fg">
+      <div class="fb">
+        <img src="logo.png" alt="Meet Me at the Hotel" style="height:52px;width:auto;display:block;">
+        <p>MeetMeAtTheHotel is an international platform where the global music industry connects with culture, technology and creators.</p>
+        <p class="fa">Room Mate Aitana Hotel · IJdok 6 · Amsterdam · October 2026</p>
+      </div>
+      <div class="fcc">
+        <p class="fct">Explore</p>
+        <a href="about.html">About</a>
+        <a href="program.html">Program</a>
+        <a href="universe.html">Universe</a>
+        <a href="industry-hub.html">Industry Hub</a>
+        <a href="industry-exchange.html">Industry Exchange</a>
+        <a href="experiences.html">Experiences</a>
+      </div>
+      <div class="fcc">
+        <p class="fct">Book</p>
+        <a href="booking.html">Hotel Rooms</a>
+        <a href="spaces.html">Meeting Rooms</a>
+        <a href="experiences.html">Showcases</a>
+        <a href="partners.html">Partnerships</a>
+      </div>
+      <div class="fcc">
+        <p class="fct">Industry Resources</p>
+        <a href="music-industry-networking-amsterdam.html">Music Industry Networking</a>
+        <a href="artist-showcases-amsterdam.html">Artist Showcases</a>
+        <a href="b2b-music-platform.html">B2B Music Platform</a>
+        <a href="brand-activation-events.html">Brand Activations</a>
+        <a href="hotel-experience-amsterdam.html">Hotel Experience</a>
+      </div>
+      <div class="fcc">
+        <p class="fct">Connect</p>
+        <a href="contact.html">Contact</a>
+        <a href="https://www.instagram.com/meetmeconnect/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.linkedin.com/company/meetmeconnect/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="#">TikTok</a>
+      </div>
+    </div>
+    <div class="fb2">
+      <p>© 2026 Meet Me at the Hotel · 5th Anniversary Edition · Amsterdam · October 2026</p>
+      <p><a href="#">Privacy</a> · <a href="#">Cookies</a> · <a href="#">Terms</a></p>
+    </div>
+  </div>
+</footer>
 
 <style>
-.cal-dow{font-family:var(--fc);font-size:10px;font-weight:600;letter-spacing:.12em;color:rgba(245,245,240,.3);text-transform:uppercase;text-align:center;padding:4px 0}
-.cal-day{font-family:var(--fc);font-size:12px;font-weight:600;text-align:center;padding:7px 2px;cursor:pointer;transition:all .2s;border:1px solid transparent;color:var(--wd)}
-.cal-day.disabled{color:rgba(245,245,240,.15);cursor:default;pointer-events:none}
-.cal-day.empty{cursor:default}
-.cal-day.available:hover{background:rgba(77,168,160,.15);border-color:rgba(77,168,160,.3);color:var(--wh)}
-.cal-day.checkin{background:var(--teal);color:var(--blk)!important;border-color:var(--teal)}
-.cal-day.checkout{background:var(--teal);color:var(--blk)!important;border-color:var(--teal)}
-.cal-day.inrange{background:rgba(77,168,160,.18);color:var(--wh);border-color:rgba(77,168,160,.2)}
-.room-row{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;margin-bottom:6px}
-.room-select{background:var(--blk);border:1px solid var(--blkb);color:var(--wh);font-family:var(--fc);font-size:12px;letter-spacing:.08em;padding:11px 12px;width:100%;outline:none;transition:border-color .3s;text-transform:uppercase}
-.room-select:focus{border-color:var(--teal)}
-.room-remove{background:transparent;border:1px solid rgba(245,245,240,.1);color:rgba(245,245,240,.3);font-family:var(--fc);font-size:16px;width:36px;height:42px;cursor:pointer;transition:all .2s;flex-shrink:0}
+.room-card{background:var(--blk);border:1px solid var(--blkb);padding:16px;margin-bottom:6px;position:relative}
+.room-card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.room-card-num{font-family:var(--fd);font-size:16px;color:var(--teal);letter-spacing:.05em}
+.room-remove{background:transparent;border:1px solid rgba(245,245,240,.12);color:rgba(245,245,240,.3);font-size:13px;padding:4px 10px;cursor:pointer;font-family:var(--fc);letter-spacing:.1em;transition:all .2s}
 .room-remove:hover{border-color:#e05555;color:#e05555}
+.room-select{background:var(--blkc);border:1px solid var(--blkb);color:var(--wh);font-family:var(--fc);font-size:12px;letter-spacing:.08em;padding:11px 12px;width:100%;outline:none;transition:border-color .3s;text-transform:uppercase;margin-bottom:8px}
+.room-select:focus,.room-date-inp:focus{border-color:var(--teal)}
+.room-dates{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:2px}
+.room-date-label{font-family:var(--fc);font-size:10px;font-weight:600;letter-spacing:.2em;color:var(--teal);text-transform:uppercase;display:block;margin-bottom:5px}
+.room-date-inp{background:var(--blkc);border:1px solid var(--blkb);color:var(--wh);font-family:var(--fc);font-size:12px;letter-spacing:.06em;padding:10px 12px;width:100%;outline:none;transition:border-color .3s;text-transform:uppercase}
+.room-date-inp::placeholder{color:rgba(245,245,240,.25)}
+.room-nights-tag{font-family:var(--fc);font-size:10px;letter-spacing:.1em;color:var(--teal);text-transform:uppercase;margin-top:5px;min-height:14px}
+.cal-pop{position:fixed;z-index:9999;background:#1a1a1a;border:1px solid var(--teal);padding:16px;width:280px;box-shadow:0 8px 32px rgba(0,0,0,.6)}
+.cal-pop-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.cal-pop-title{font-family:var(--fd);font-size:16px;letter-spacing:.05em}
+.cal-pop-close{background:transparent;border:none;color:var(--wd);font-size:18px;cursor:pointer;padding:0 4px;line-height:1}
+.cal-pop-dow{display:grid;grid-template-columns:repeat(7,1fr);gap:1px;margin-bottom:3px}
+.cal-pop-dow span{font-family:var(--fc);font-size:9px;font-weight:600;letter-spacing:.1em;color:rgba(245,245,240,.3);text-transform:uppercase;text-align:center;padding:3px 0}
+.cal-pop-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:1px}
+.cpd{font-family:var(--fc);font-size:11px;font-weight:600;text-align:center;padding:6px 1px;cursor:pointer;transition:all .18s;border:1px solid transparent;color:var(--wd)}
+.cpd.dis{color:rgba(245,245,240,.12);cursor:default;pointer-events:none}
+.cpd.emp{cursor:default;pointer-events:none}
+.cpd.avail:hover{background:rgba(77,168,160,.15);border-color:rgba(77,168,160,.3);color:var(--wh)}
+.cpd.sel{background:var(--teal);color:var(--blk)!important;border-color:var(--teal)}
+.cpd.inr{background:rgba(77,168,160,.18);color:var(--wh);border-color:rgba(77,168,160,.15)}
 </style>
 
 <script>
-// ── CALENDAR ────────────────────────────────────────────────
-const ROOM_PRICES = {
-  'Superior Twin':285,'Superior Double':285,'Superior City View':300,
-  'Executive Room':325,'Junior Suite':365,'King Suite (Waitlist)':435
-};
-const MIN_DAY = 15, MAX_DAY = 30;
-let ciDay = null, coDay = null;
-
-function buildCalendar() {
-  const dow = document.getElementById('cal-dow');
-  const grid = document.getElementById('cal-grid');
-  dow.innerHTML = ['Mo','Tu','We','Th','Fr','Sa','Su'].map(d=>`<div class="cal-dow">${d}</div>`).join('');
-  // Oct 2026: 1st is Thursday → offset 3 (Mon=0)
-  const offset = 3;
-  let html = '';
-  for(let i=0;i<offset;i++) html+=`<div class="cal-day empty"></div>`;
-  for(let d=1;d<=31;d++){
-    const avail = d>=MIN_DAY && d<=MAX_DAY;
-    const cls = avail ? 'cal-day available' : 'cal-day disabled';
-    html+=`<div class="${cls}" data-day="${d}" onclick="calClick(${d})">${d}</div>`;
-  }
-  grid.innerHTML = html;
-  renderCalState();
-}
-
-function calClick(d) {
-  if(d < MIN_DAY || d > MAX_DAY) return;
-  if(!ciDay || (ciDay && coDay)) { ciDay=d; coDay=null; }
-  else if(d<=ciDay) { ciDay=d; coDay=null; }
-  else { coDay=d; }
-  renderCalState();
-  updateSummary();
-}
-
-function renderCalState() {
-  document.querySelectorAll('#cal-grid .cal-day').forEach(el=>{
-    const d = parseInt(el.dataset.day);
-    el.classList.remove('checkin','checkout','inrange');
-    if(d===ciDay) el.classList.add('checkin');
-    else if(d===coDay) el.classList.add('checkout');
-    else if(ciDay&&coDay&&d>ciDay&&d<coDay) el.classList.add('inrange');
-  });
-  const lbl = document.getElementById('cal-label');
-  if(!ciDay) lbl.textContent='Select check-in';
-  else if(!coDay) lbl.textContent=`Check-in: Oct ${ciDay} — Select check-out`;
-  else lbl.textContent=`Oct ${ciDay} → Oct ${coDay} (${coDay-ciDay} night${coDay-ciDay>1?'s':''})`;
-  document.getElementById('inp-checkin').value = ciDay ? `Oct ${ciDay}, 2026` : '';
-  document.getElementById('inp-checkout').value = coDay ? `Oct ${coDay}, 2026` : '';
-}
-
-// ── ROOMS ────────────────────────────────────────────────────
-let roomCount = 0;
-const ROOM_OPTS = [
-  {v:'Superior Twin', l:'Superior Room — Twin Bed · €285/night'},
-  {v:'Superior Double', l:'Superior Room — Double Bed · €285/night'},
-  {v:'Superior City View', l:'Superior Room — City View · €300/night'},
-  {v:'Executive Room', l:'Executive Room · €325/night'},
-  {v:'Junior Suite', l:'Junior Suite · €365/night'},
-  {v:'King Suite (Waitlist)', l:'King Suite — Waitlist · €435/night'},
+const ROOM_PRICES={'Superior Twin':285,'Superior Double':285,'Superior City View':300,'Executive Room':325,'Junior Suite':365,'King Suite (Waitlist)':435};
+const ROOM_OPTS=[
+  {v:'Superior Twin',l:'Superior Room — Twin Bed · €285/night'},
+  {v:'Superior Double',l:'Superior Room — Double Bed · €285/night'},
+  {v:'Superior City View',l:'Superior Room — City View · €300/night'},
+  {v:'Executive Room',l:'Executive Room · €325/night'},
+  {v:'Junior Suite',l:'Junior Suite · €365/night'},
+  {v:'King Suite (Waitlist)',l:'King Suite — Waitlist · €435/night'},
 ];
+const MIN_D=15,MAX_D=30;
+let roomCount=0;
+let activeCal=null; // {roomId, field:'ci'|'co'}
 
-function addRoom(preselect) {
+// ── ROOM CARDS ──────────────────────────────────────────────
+function addRoom(preselect){
   roomCount++;
-  const id = `room-${roomCount}`;
-  const div = document.createElement('div');
-  div.className='room-row';
-  div.id=`row-${id}`;
-  const opts = ROOM_OPTS.map(o=>`<option value="${o.v}"${preselect===o.v?' selected':''}>${o.l}</option>`).join('');
-  const removeBtn = roomCount>1 ? `<button type="button" class="room-remove" onclick="removeRoom('row-${id}')">✕</button>` : `<div style="width:36px"></div>`;
-  div.innerHTML=`<select class="room-select" id="${id}" onchange="updateSummary()" required><option value="" disabled${!preselect?' selected':''}>Select room type</option>${opts}</select>${removeBtn}`;
+  const rid=roomCount;
+  const div=document.createElement('div');
+  div.className='room-card';
+  div.id=`rc-${rid}`;
+  const opts=ROOM_OPTS.map(o=>`<option value="${o.v}"${preselect===o.v?' selected':''}>${o.l}</option>`).join('');
+  const removable=rid>1?`<button type="button" class="room-remove" onclick="removeRoom(${rid})">✕ Remove</button>`:'<span></span>';
+  div.innerHTML=`
+    <div class="room-card-header">
+      <span class="room-card-num">ROOM ${rid}</span>
+      ${removable}
+    </div>
+    <select class="room-select" id="rs-${rid}" onchange="updateSummary()" required>
+      <option value="" disabled${!preselect?' selected':''}>Select room type</option>
+      ${opts}
+    </select>
+    <div class="room-dates">
+      <div>
+        <span class="room-date-label">Check-in</span>
+        <input class="room-date-inp" id="ci-${rid}" placeholder="Oct 15" readonly onclick="openCal(${rid},'ci')" required>
+      </div>
+      <div>
+        <span class="room-date-label">Check-out</span>
+        <input class="room-date-inp" id="co-${rid}" placeholder="Oct 20" readonly onclick="openCal(${rid},'co')">
+      </div>
+    </div>
+    <div class="room-nights-tag" id="nt-${rid}"></div>
+  `;
   document.getElementById('rooms-list').appendChild(div);
   updateSummary();
 }
 
-function removeRoom(rowId) {
-  document.getElementById(rowId).remove();
+function removeRoom(rid){
+  document.getElementById(`rc-${rid}`).remove();
   updateSummary();
 }
 
-function getRooms() {
-  return [...document.querySelectorAll('.room-select')].map(s=>s.value).filter(Boolean);
+// ── CALENDAR POPUP ──────────────────────────────────────────
+function openCal(rid,field){
+  closeCal();
+  activeCal={rid,field};
+  const inp=document.getElementById(`${field}-${rid}`);
+  const rect=inp.getBoundingClientRect();
+
+  const pop=document.createElement('div');
+  pop.className='cal-pop';
+  pop.id='cal-pop';
+
+  const ciVal=getCiDay(rid), coVal=getCoDay(rid);
+
+  pop.innerHTML=`
+    <div class="cal-pop-header">
+      <span class="cal-pop-title">OCTOBER 2026</span>
+      <button class="cal-pop-close" onclick="closeCal()">✕</button>
+    </div>
+    <div style="font-family:var(--fc);font-size:10px;letter-spacing:.15em;color:var(--teal);text-transform:uppercase;margin-bottom:10px">
+      ${field==='ci'?'Select check-in date':'Select check-out date'}
+    </div>
+    <div class="cal-pop-dow">${['Mo','Tu','We','Th','Fr','Sa','Su'].map(d=>`<span>${d}</span>`).join('')}</div>
+    <div class="cal-pop-grid" id="cpg-${rid}-${field}"></div>
+  `;
+
+  document.body.appendChild(pop);
+
+  // Position
+  let top=rect.bottom+window.scrollY+6;
+  let left=rect.left+window.scrollX;
+  if(left+280>window.innerWidth) left=window.innerWidth-290;
+  pop.style.top=top+'px';
+  pop.style.left=left+'px';
+
+  buildCalPop(rid,field,ciVal,coVal);
+
+  setTimeout(()=>document.addEventListener('click',calOutsideClick),10);
+}
+
+function buildCalPop(rid,field,ci,co){
+  const grid=document.getElementById(`cpg-${rid}-${field}`);
+  if(!grid)return;
+  const offset=3; // Oct 1 = Thursday, Mon=0 → offset 3
+  let html='';
+  for(let i=0;i<offset;i++) html+=`<div class="cpd emp"></div>`;
+  for(let d=1;d<=31;d++){
+    const avail=d>=MIN_D&&d<=MAX_D;
+    let cls='cpd '+(avail?'avail':'dis');
+    if(d===ci) cls+=' sel';
+    else if(d===co) cls+=' sel';
+    else if(ci&&co&&d>ci&&d<co) cls+=' inr';
+    html+=`<div class="${cls}" onclick="calPickDay(${rid},'${field}',${d})">${d}</div>`;
+  }
+  grid.innerHTML=html;
+}
+
+function calPickDay(rid,field,d){
+  if(d<MIN_D||d>MAX_D)return;
+  const ciInp=document.getElementById(`ci-${rid}`);
+  const coInp=document.getElementById(`co-${rid}`);
+
+  if(field==='ci'){
+    ciInp.value=`Oct ${d}`;
+    ciInp.dataset.day=d;
+    // reset checkout if it's before or equal to new checkin
+    const coDay=getCoDay(rid);
+    if(coDay&&coDay<=d){coInp.value='';coInp.dataset.day='';}
+  } else {
+    const ciDay=getCiDay(rid);
+    if(ciDay&&d<=ciDay){
+      // treat as new checkin
+      ciInp.value=`Oct ${d}`;
+      ciInp.dataset.day=d;
+      coInp.value='';coInp.dataset.day='';
+    } else {
+      coInp.value=`Oct ${d}`;
+      coInp.dataset.day=d;
+    }
+  }
+  updateNights(rid);
+  updateSummary();
+  closeCal();
+}
+
+function getCiDay(rid){return parseInt(document.getElementById(`ci-${rid}`)?.dataset.day)||null}
+function getCoDay(rid){return parseInt(document.getElementById(`co-${rid}`)?.dataset.day)||null}
+
+function updateNights(rid){
+  const ci=getCiDay(rid),co=getCoDay(rid);
+  const el=document.getElementById(`nt-${rid}`);
+  if(ci&&co&&co>ci) el.textContent=`→ ${co-ci} night${co-ci>1?'s':''}`;
+  else el.textContent='';
+}
+
+function closeCal(){
+  const p=document.getElementById('cal-pop');
+  if(p)p.remove();
+  document.removeEventListener('click',calOutsideClick);
+  activeCal=null;
+}
+
+function calOutsideClick(e){
+  const p=document.getElementById('cal-pop');
+  if(p&&!p.contains(e.target)&&!e.target.classList.contains('room-date-inp'))closeCal();
 }
 
 // ── SUMMARY ─────────────────────────────────────────────────
-function updateSummary() {
-  const rooms = getRooms();
-  const nights = (ciDay&&coDay) ? coDay-ciDay : 0;
-  const summary = document.getElementById('booking-summary');
+function getRoomCards(){
+  return [...document.querySelectorAll('.room-card')].map(card=>{
+    const rid=card.id.replace('rc-','');
+    const type=document.getElementById(`rs-${rid}`)?.value||'';
+    const ci=getCiDay(rid),co=getCoDay(rid);
+    return{rid,type,ci,co,nights:ci&&co&&co>ci?co-ci:0};
+  });
+}
 
-  // update hidden input
-  document.getElementById('inp-rooms-detail').value = rooms.join(' | ');
-
-  if(!rooms.length && !ciDay) { summary.style.display='none'; return; }
+function updateSummary(){
+  const cards=getRoomCards().filter(r=>r.type);
+  const summary=document.getElementById('booking-summary');
+  if(!cards.length){summary.style.display='none';return;}
   summary.style.display='block';
 
-  if(ciDay&&coDay) document.getElementById('summary-dates').textContent=`Oct ${ciDay} → Oct ${coDay} · ${nights} night${nights>1?'s':''}`;
-  else if(ciDay) document.getElementById('summary-dates').textContent=`Check-in: Oct ${ciDay} · Check-out pending`;
-  else document.getElementById('summary-dates').textContent='Dates not selected';
+  let html='',total=0;
+  cards.forEach((r,i)=>{
+    const price=ROOM_PRICES[r.type]||0;
+    const sub=r.nights?price*r.nights:0;
+    total+=sub;
+    const dates=r.ci&&r.co?`Oct ${r.ci} → Oct ${r.co} · ${r.nights}n`:'Dates pending';
+    html+=`<div style="padding:6px 0;border-bottom:1px solid var(--blkb)">Room ${i+1}: ${r.type}<br><span style="color:rgba(245,245,240,.4)">${dates}${sub?` · €${sub.toLocaleString('nl-NL')}`:''}</span></div>`;
+  });
+  document.getElementById('summary-rooms-text').innerHTML=html;
+  document.getElementById('summary-total').textContent=total?`Est. €${total.toLocaleString('nl-NL')} total`:'';
 
-  const roomLines = rooms.length ? rooms.map((r,i)=>`Room ${i+1}: ${r}`).join('<br>') : 'No rooms selected';
-  document.getElementById('summary-rooms-text').innerHTML = roomLines;
-
-  if(nights>0 && rooms.length) {
-    const total = rooms.reduce((sum,r)=>sum+(ROOM_PRICES[r]||0),0)*nights;
-    document.getElementById('summary-total').textContent=`Est. €${total.toLocaleString('nl-NL')} total`;
-  } else {
-    document.getElementById('summary-total').textContent='';
-  }
+  // Build hidden input
+  const detail=cards.map(r=>`${r.type} (Oct ${r.ci||'?'} → Oct ${r.co||'?'}, ${r.nights||'?'} nights)`).join(' | ');
+  document.getElementById('inp-rooms-detail').value=detail;
 }
 
 // ── INIT ────────────────────────────────────────────────────
-document.addEventListener('DOMContentLoaded', ()=>{
-  buildCalendar();
-  addRoom('Executive Room');
-});
+document.addEventListener('DOMContentLoaded',()=>{ addRoom('Executive Room'); });
 
 // ── CAROUSEL ────────────────────────────────────────────────
-const carouselState = {};
+const carouselState={};
 function carouselInit(id){if(!carouselState[id])carouselState[id]={index:0}}
 function carouselMove(id,dir){carouselInit(id);const el=document.getElementById(id);const track=el.querySelector('.carousel-track');const slides=track.querySelectorAll('.carousel-slide');const total=slides.length;carouselState[id].index=(carouselState[id].index+dir+total)%total;carouselUpdate(id)}
 function carouselGo(id,idx){carouselInit(id);carouselState[id].index=idx;carouselUpdate(id)}
@@ -818,9 +949,10 @@ document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
 // ── FORM SUBMIT ─────────────────────────────────────────────
 async function submitFS(f,e){
   e.preventDefault();
-  if(!ciDay||!coDay){alert('Please select your check-in and check-out dates.');return;}
-  const rooms=getRooms();
-  if(!rooms.length){alert('Please select at least one room.');return;}
+  const cards=getRoomCards().filter(r=>r.type);
+  if(!cards.length){alert('Please select at least one room.');return;}
+  const incomplete=cards.filter(r=>!r.ci||!r.co);
+  if(incomplete.length){alert('Please select check-in and check-out dates for all rooms.');return;}
   const btn=f.querySelector('button[type=submit]');
   btn.textContent='SENDING...';btn.disabled=true;
   try{
