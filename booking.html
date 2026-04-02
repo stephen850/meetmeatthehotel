@@ -725,7 +725,7 @@ form{display:flex;flex-direction:column;gap:14px}
 .room-date-inp{background:var(--blkc);border:1px solid var(--blkb);color:var(--wh);font-family:var(--fc);font-size:12px;letter-spacing:.06em;padding:10px 12px;width:100%;outline:none;transition:border-color .3s;text-transform:uppercase}
 .room-date-inp::placeholder{color:rgba(245,245,240,.25)}
 .room-nights-tag{font-family:var(--fc);font-size:10px;letter-spacing:.1em;color:var(--teal);text-transform:uppercase;margin-top:5px;min-height:14px}
-.cal-inline{margin-top:10px;border-top:1px solid var(--blkb);padding-top:12px;display:none}
+.cal-inline{margin-top:10px;border-top:1px solid var(--blkb);padding-top:12px;display:none;background:var(--blkc);padding:14px;border:1px solid var(--teal)}
 .cal-inline.open{display:block}
 .cal-inline-label{font-family:var(--fc);font-size:10px;letter-spacing:.18em;color:var(--teal);text-transform:uppercase;margin-bottom:10px;display:block}
 .cal-dow-row{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-bottom:3px}
@@ -737,7 +737,7 @@ form{display:flex;flex-direction:column;gap:14px}
 .cpd.avail:hover{background:rgba(77,168,160,.2);border-color:rgba(77,168,160,.4);color:var(--wh)}
 .cpd.sel{background:var(--teal);color:var(--blk)!important;border-color:var(--teal)}
 .cpd.inr{background:rgba(77,168,160,.15);color:var(--wh);border-color:rgba(77,168,160,.12)}
-.date-btn{background:var(--blkc);border:1px solid var(--blkb);color:var(--wh);font-family:var(--fc);font-size:12px;letter-spacing:.08em;padding:10px 12px;width:100%;cursor:pointer;text-align:left;transition:border-color .2s;text-transform:uppercase;display:flex;justify-content:space-between;align-items:center}
+.date-btn{background:var(--blkc);border:1px solid var(--blkb);color:var(--wh);font-family:var(--fc);font-size:12px;letter-spacing:.08em;padding:10px 12px;width:100%;cursor:pointer;text-align:left;transition:border-color .2s;text-transform:uppercase;display:flex;justify-content:space-between;align-items:center;min-height:42px}
 .date-btn:hover,.date-btn.active{border-color:var(--teal);color:var(--wh)}
 .date-btn span.ph{color:rgba(245,245,240,.3)}
 .date-btn .arr{color:var(--teal);font-size:10px}
@@ -753,7 +753,6 @@ const ROOM_OPTS=[
   {v:'Junior Suite',l:'Junior Suite · €365/night'},
   {v:'King Suite (Waitlist)',l:'King Suite — Waitlist · €435/night'},
 ];
-const MIN_D=15,MAX_D=30;
 let roomCount=0;
 let activeCal=null; // {roomId, field:'ci'|'co'}
 
@@ -791,7 +790,7 @@ function addRoom(preselect){
     </div>
     <div class="cal-inline" id="cal-${rid}">
       <span class="cal-inline-label" id="cal-title-${rid}">Select check-in date</span>
-      <div class="cal-dow-row">${['Mo','Tu','We','Th','Fr','Sa','Su'].map(d=>'<span>'+d+'</span>').join('')}</div>
+      <div class="cal-dow-row"><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span><span>Su</span></div>
       <div class="cal-grid" id="cal-grid-${rid}"></div>
     </div>
     <div class="room-nights-tag" id="nt-${rid}"></div>
@@ -808,7 +807,7 @@ function removeRoom(rid){
 }
 
 // ── CALENDAR (inline, no popup) ─────────────────────────────
-const MIN_D2=15, MAX_D2=30;
+const MIN_D=15, MAX_D=30;
 // calState[rid] = {field: 'ci'|'co'|null}
 const calState={};
 
@@ -842,7 +841,7 @@ function renderInlineCal(rid) {
   let html = '';
   for (let i=0; i<offset; i++) html += '<div class="cpd emp"> </div>';
   for (let d=1; d<=31; d++) {
-    const avail = d>=MIN_D2 && d<=MAX_D2;
+    const avail = d>=MIN_D && d<=MAX_D;
     let cls = 'cpd ' + (avail ? 'avail' : 'dis');
     if (d===ci) cls += ' sel';
     else if (d===co) cls += ' sel';
@@ -853,7 +852,7 @@ function renderInlineCal(rid) {
 }
 
 function pickDay(rid, d) {
-  if (d < MIN_D2 || d > MAX_D2) return;
+  if (d < MIN_D || d > MAX_D) return;
   const field = calState[rid]?.field;
   if (!field) return;
 
