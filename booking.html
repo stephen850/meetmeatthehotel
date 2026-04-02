@@ -571,54 +571,50 @@ form{display:flex;flex-direction:column;gap:14px}
     <div class="form-grid">
       <div class="form-text rv">
         <p>Fill in your details and we'll confirm availability and pricing for October 2026. We respond within 24 hours.</p>
-        <p>For group bookings of 4+ rooms, mention this in your message for dedicated group pricing and benefits.</p>
+        <p>For group bookings of 4+ rooms, you'll automatically get dedicated group pricing and benefits.</p>
         <div style="margin-top:32px;padding:24px 28px;background:var(--blkc);border:1px solid var(--blkb)">
           <span class="lbl">Direct Contact</span>
           <p style="font-family:var(--fc);font-size:13px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase;">info@meetmeatthehotel.com</p>
           <p style="font-family:var(--fc);font-size:13px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase;margin-top:6px;">IJdok 6 · Amsterdam</p>
         </div>
+        <div id="booking-summary" style="display:none;margin-top:20px;padding:24px 28px;background:var(--blkc);border:1px solid var(--teal)">
+          <span class="lbl" style="margin-bottom:10px">Your Selection</span>
+          <div id="summary-dates" style="font-family:var(--fc);font-size:13px;letter-spacing:.1em;color:var(--wh);text-transform:uppercase;margin-bottom:6px"></div>
+          <div id="summary-rooms-text" style="font-family:var(--fc);font-size:12px;letter-spacing:.08em;color:var(--wd);text-transform:uppercase;line-height:1.9"></div>
+          <div id="summary-total" style="font-family:var(--fd);font-size:32px;color:var(--teal);margin-top:12px"></div>
+        </div>
         <p style="font-family:var(--fc);font-size:10px;letter-spacing:.12em;color:rgba(245,245,240,.3);text-transform:uppercase;margin-top:16px">B2B industry professionals only · All inquiries treated with full confidentiality</p>
       </div>
-      <form class="rv d1" data-formspree="https://formspree.io/f/meepjqba" onsubmit="submitFS(this,event)">
+
+      <form class="rv d1" id="inquiry-form" data-formspree="https://formspree.io/f/meepjqba" onsubmit="submitFS(this,event)">
         <div class="field-row">
           <div class="field"><label>First Name</label><input type="text" name="first_name" placeholder="Your first name" required></div>
           <div class="field"><label>Last Name</label><input type="text" name="last_name" placeholder="Your last name" required></div>
         </div>
         <div class="field"><label>Email Address</label><input type="email" name="email" placeholder="your@email.com" required></div>
         <div class="field"><label>Company</label><input type="text" name="company" placeholder="Your company" required></div>
-        <div class="field">
-          <label>Room Type</label>
-          <select name="room_type" required>
-            <option value="" disabled selected>Select room type</option>
-            <option>Superior Room — Twin Bed · €285/night</option>
-            <option>Superior Room — Double Bed · €285/night</option>
-            <option>Superior Room — City View · €300/night</option>
-            <option>Executive Room · €325/night</option>
-            <option>Junior Suite · €365/night</option>
-            <option>King Suite — Waitlist · €435/night</option>
-            <option>Group Booking (4+ rooms)</option>
-          </select>
-        </div>
-        <div class="field-row">
-          <div class="field">
-            <label>Number of Nights</label>
-            <select name="nights">
-              <option>3 nights</option>
-              <option>4 nights</option>
-              <option selected>5 nights (full week)</option>
-              <option>Other</option>
-            </select>
+
+        <!-- DATE PICKER -->
+        <div style="background:var(--blkc);border:1px solid var(--blkb);padding:20px 20px 18px">
+          <span class="lbl" style="margin-bottom:14px">Stay Dates · October 2026</span>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+            <span style="font-family:var(--fd);font-size:18px;letter-spacing:.05em">OCTOBER 2026</span>
+            <span id="cal-label" style="font-family:var(--fc);font-size:11px;letter-spacing:.15em;color:var(--teal);text-transform:uppercase">Select check-in</span>
           </div>
-          <div class="field">
-            <label>Number of Rooms</label>
-            <select name="rooms">
-              <option selected>1 room</option>
-              <option>2 rooms</option>
-              <option>3 rooms</option>
-              <option>4+ rooms (group)</option>
-            </select>
-          </div>
+          <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-bottom:4px" id="cal-dow"></div>
+          <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:2px" id="cal-grid"></div>
+          <input type="hidden" name="check_in" id="inp-checkin">
+          <input type="hidden" name="check_out" id="inp-checkout">
         </div>
+
+        <!-- ROOMS -->
+        <div style="background:var(--blkc);border:1px solid var(--blkb);padding:20px;margin-top:2px">
+          <span class="lbl" style="margin-bottom:14px">Room Selection</span>
+          <div id="rooms-list"></div>
+          <button type="button" onclick="addRoom()" id="add-room-btn" style="display:flex;align-items:center;gap:8px;background:transparent;border:1px dashed rgba(77,168,160,.35);color:var(--teal);font-family:var(--fc);font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;padding:11px 16px;cursor:pointer;width:100%;justify-content:center;margin-top:4px;transition:all .3s">+ ADD ANOTHER ROOM</button>
+          <input type="hidden" name="rooms_detail" id="inp-rooms-detail">
+        </div>
+
         <div class="field"><label>Additional Notes</label><textarea name="notes" placeholder="Special requests, parking, breakfast, group details..."></textarea></div>
         <button type="submit" class="btn bp" style="width:100%;margin-top:8px;">Send Inquiry →</button>
       </form>
@@ -674,68 +670,164 @@ form{display:flex;flex-direction:column;gap:14px}
   </div>
 </footer>
 
+<style>
+.cal-dow{font-family:var(--fc);font-size:10px;font-weight:600;letter-spacing:.12em;color:rgba(245,245,240,.3);text-transform:uppercase;text-align:center;padding:4px 0}
+.cal-day{font-family:var(--fc);font-size:12px;font-weight:600;text-align:center;padding:7px 2px;cursor:pointer;transition:all .2s;border:1px solid transparent;color:var(--wd)}
+.cal-day.disabled{color:rgba(245,245,240,.15);cursor:default;pointer-events:none}
+.cal-day.empty{cursor:default}
+.cal-day.available:hover{background:rgba(77,168,160,.15);border-color:rgba(77,168,160,.3);color:var(--wh)}
+.cal-day.checkin{background:var(--teal);color:var(--blk)!important;border-color:var(--teal)}
+.cal-day.checkout{background:var(--teal);color:var(--blk)!important;border-color:var(--teal)}
+.cal-day.inrange{background:rgba(77,168,160,.18);color:var(--wh);border-color:rgba(77,168,160,.2)}
+.room-row{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;margin-bottom:6px}
+.room-select{background:var(--blk);border:1px solid var(--blkb);color:var(--wh);font-family:var(--fc);font-size:12px;letter-spacing:.08em;padding:11px 12px;width:100%;outline:none;transition:border-color .3s;text-transform:uppercase}
+.room-select:focus{border-color:var(--teal)}
+.room-remove{background:transparent;border:1px solid rgba(245,245,240,.1);color:rgba(245,245,240,.3);font-family:var(--fc);font-size:16px;width:36px;height:42px;cursor:pointer;transition:all .2s;flex-shrink:0}
+.room-remove:hover{border-color:#e05555;color:#e05555}
+</style>
+
 <script>
-// Carousel state
-const carouselState = {};
+// ── CALENDAR ────────────────────────────────────────────────
+const ROOM_PRICES = {
+  'Superior Twin':285,'Superior Double':285,'Superior City View':300,
+  'Executive Room':325,'Junior Suite':365,'King Suite (Waitlist)':435
+};
+const MIN_DAY = 15, MAX_DAY = 30;
+let ciDay = null, coDay = null;
 
-function carouselInit(id) {
-  if (!carouselState[id]) carouselState[id] = { index: 0 };
+function buildCalendar() {
+  const dow = document.getElementById('cal-dow');
+  const grid = document.getElementById('cal-grid');
+  dow.innerHTML = ['Mo','Tu','We','Th','Fr','Sa','Su'].map(d=>`<div class="cal-dow">${d}</div>`).join('');
+  // Oct 2026: 1st is Thursday → offset 3 (Mon=0)
+  const offset = 3;
+  let html = '';
+  for(let i=0;i<offset;i++) html+=`<div class="cal-day empty"></div>`;
+  for(let d=1;d<=31;d++){
+    const avail = d>=MIN_DAY && d<=MAX_DAY;
+    const cls = avail ? 'cal-day available' : 'cal-day disabled';
+    html+=`<div class="${cls}" data-day="${d}" onclick="calClick(${d})">${d}</div>`;
+  }
+  grid.innerHTML = html;
+  renderCalState();
 }
 
-function carouselMove(id, dir) {
-  carouselInit(id);
-  const el = document.getElementById(id);
-  const track = el.querySelector('.carousel-track');
-  const slides = track.querySelectorAll('.carousel-slide');
-  const total = slides.length;
-  carouselState[id].index = (carouselState[id].index + dir + total) % total;
-  carouselUpdate(id);
+function calClick(d) {
+  if(d < MIN_DAY || d > MAX_DAY) return;
+  if(!ciDay || (ciDay && coDay)) { ciDay=d; coDay=null; }
+  else if(d<=ciDay) { ciDay=d; coDay=null; }
+  else { coDay=d; }
+  renderCalState();
+  updateSummary();
 }
 
-function carouselGo(id, idx) {
-  carouselInit(id);
-  carouselState[id].index = idx;
-  carouselUpdate(id);
+function renderCalState() {
+  document.querySelectorAll('#cal-grid .cal-day').forEach(el=>{
+    const d = parseInt(el.dataset.day);
+    el.classList.remove('checkin','checkout','inrange');
+    if(d===ciDay) el.classList.add('checkin');
+    else if(d===coDay) el.classList.add('checkout');
+    else if(ciDay&&coDay&&d>ciDay&&d<coDay) el.classList.add('inrange');
+  });
+  const lbl = document.getElementById('cal-label');
+  if(!ciDay) lbl.textContent='Select check-in';
+  else if(!coDay) lbl.textContent=`Check-in: Oct ${ciDay} — Select check-out`;
+  else lbl.textContent=`Oct ${ciDay} → Oct ${coDay} (${coDay-ciDay} night${coDay-ciDay>1?'s':''})`;
+  document.getElementById('inp-checkin').value = ciDay ? `Oct ${ciDay}, 2026` : '';
+  document.getElementById('inp-checkout').value = coDay ? `Oct ${coDay}, 2026` : '';
 }
 
-function carouselUpdate(id) {
-  const el = document.getElementById(id);
-  const track = el.querySelector('.carousel-track');
-  const idx = carouselState[id].index;
-  track.style.transform = `translateX(-${idx * 100}%)`;
-  const dotsEl = document.getElementById('d-' + id.replace('c-',''));
-  if (dotsEl) {
-    dotsEl.querySelectorAll('.carousel-dot').forEach((d,i) => d.classList.toggle('active', i === idx));
+// ── ROOMS ────────────────────────────────────────────────────
+let roomCount = 0;
+const ROOM_OPTS = [
+  {v:'Superior Twin', l:'Superior Room — Twin Bed · €285/night'},
+  {v:'Superior Double', l:'Superior Room — Double Bed · €285/night'},
+  {v:'Superior City View', l:'Superior Room — City View · €300/night'},
+  {v:'Executive Room', l:'Executive Room · €325/night'},
+  {v:'Junior Suite', l:'Junior Suite · €365/night'},
+  {v:'King Suite (Waitlist)', l:'King Suite — Waitlist · €435/night'},
+];
+
+function addRoom(preselect) {
+  roomCount++;
+  const id = `room-${roomCount}`;
+  const div = document.createElement('div');
+  div.className='room-row';
+  div.id=`row-${id}`;
+  const opts = ROOM_OPTS.map(o=>`<option value="${o.v}"${preselect===o.v?' selected':''}>${o.l}</option>`).join('');
+  const removeBtn = roomCount>1 ? `<button type="button" class="room-remove" onclick="removeRoom('row-${id}')">✕</button>` : `<div style="width:36px"></div>`;
+  div.innerHTML=`<select class="room-select" id="${id}" onchange="updateSummary()" required><option value="" disabled${!preselect?' selected':''}>Select room type</option>${opts}</select>${removeBtn}`;
+  document.getElementById('rooms-list').appendChild(div);
+  updateSummary();
+}
+
+function removeRoom(rowId) {
+  document.getElementById(rowId).remove();
+  updateSummary();
+}
+
+function getRooms() {
+  return [...document.querySelectorAll('.room-select')].map(s=>s.value).filter(Boolean);
+}
+
+// ── SUMMARY ─────────────────────────────────────────────────
+function updateSummary() {
+  const rooms = getRooms();
+  const nights = (ciDay&&coDay) ? coDay-ciDay : 0;
+  const summary = document.getElementById('booking-summary');
+
+  // update hidden input
+  document.getElementById('inp-rooms-detail').value = rooms.join(' | ');
+
+  if(!rooms.length && !ciDay) { summary.style.display='none'; return; }
+  summary.style.display='block';
+
+  if(ciDay&&coDay) document.getElementById('summary-dates').textContent=`Oct ${ciDay} → Oct ${coDay} · ${nights} night${nights>1?'s':''}`;
+  else if(ciDay) document.getElementById('summary-dates').textContent=`Check-in: Oct ${ciDay} · Check-out pending`;
+  else document.getElementById('summary-dates').textContent='Dates not selected';
+
+  const roomLines = rooms.length ? rooms.map((r,i)=>`Room ${i+1}: ${r}`).join('<br>') : 'No rooms selected';
+  document.getElementById('summary-rooms-text').innerHTML = roomLines;
+
+  if(nights>0 && rooms.length) {
+    const total = rooms.reduce((sum,r)=>sum+(ROOM_PRICES[r]||0),0)*nights;
+    document.getElementById('summary-total').textContent=`Est. €${total.toLocaleString('nl-NL')} total`;
+  } else {
+    document.getElementById('summary-total').textContent='';
   }
 }
 
-// Touch swipe support
-document.querySelectorAll('.carousel').forEach(el => {
-  let startX = 0;
-  el.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, {passive:true});
-  el.addEventListener('touchend', e => {
-    const dx = e.changedTouches[0].clientX - startX;
-    if (Math.abs(dx) > 40) carouselMove(el.id, dx < 0 ? 1 : -1);
-  }, {passive:true});
+// ── INIT ────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', ()=>{
+  buildCalendar();
+  addRoom('Executive Room');
 });
 
-// Scroll reveal
-const obs = new IntersectionObserver(es => es.forEach(e => {
-  if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); }
-}), {threshold:.08});
-document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+// ── CAROUSEL ────────────────────────────────────────────────
+const carouselState = {};
+function carouselInit(id){if(!carouselState[id])carouselState[id]={index:0}}
+function carouselMove(id,dir){carouselInit(id);const el=document.getElementById(id);const track=el.querySelector('.carousel-track');const slides=track.querySelectorAll('.carousel-slide');const total=slides.length;carouselState[id].index=(carouselState[id].index+dir+total)%total;carouselUpdate(id)}
+function carouselGo(id,idx){carouselInit(id);carouselState[id].index=idx;carouselUpdate(id)}
+function carouselUpdate(id){const el=document.getElementById(id);const track=el.querySelector('.carousel-track');const idx=carouselState[id].index;track.style.transform=`translateX(-${idx*100}%)`;const dotsEl=document.getElementById('d-'+id.replace('c-',''));if(dotsEl){dotsEl.querySelectorAll('.carousel-dot').forEach((d,i)=>d.classList.toggle('active',i===idx))}}
+document.querySelectorAll('.carousel').forEach(el=>{let startX=0;el.addEventListener('touchstart',e=>{startX=e.touches[0].clientX},{passive:true});el.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-startX;if(Math.abs(dx)>40)carouselMove(el.id,dx<0?1:-1)},{passive:true})});
 
-// Form submit
-async function submitFS(f, e) {
+// ── SCROLL REVEAL ───────────────────────────────────────────
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target)}}),{threshold:.08});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+
+// ── FORM SUBMIT ─────────────────────────────────────────────
+async function submitFS(f,e){
   e.preventDefault();
-  const btn = f.querySelector('button[type=submit]');
-  btn.textContent = 'SENDING...';
-  btn.disabled = true;
-  try {
-    const res = await fetch(f.dataset.formspree, {method:'POST', body:new FormData(f), headers:{Accept:'application/json'}});
-    if (res.ok) { window.location.href = 'https://meetmeatthehotel.com/thanks.html'; }
-    else { btn.textContent = 'ERROR — TRY AGAIN'; btn.disabled = false; }
-  } catch(err) { btn.textContent = 'ERROR — TRY AGAIN'; btn.disabled = false; }
+  if(!ciDay||!coDay){alert('Please select your check-in and check-out dates.');return;}
+  const rooms=getRooms();
+  if(!rooms.length){alert('Please select at least one room.');return;}
+  const btn=f.querySelector('button[type=submit]');
+  btn.textContent='SENDING...';btn.disabled=true;
+  try{
+    const res=await fetch(f.dataset.formspree,{method:'POST',body:new FormData(f),headers:{Accept:'application/json'}});
+    if(res.ok){window.location.href='https://meetmeatthehotel.com/thanks.html';}
+    else{btn.textContent='ERROR — TRY AGAIN';btn.disabled=false;}
+  }catch(err){btn.textContent='ERROR — TRY AGAIN';btn.disabled=false;}
 }
 </script>
 </body>
