@@ -664,85 +664,21 @@ form{display:flex;flex-direction:column;gap:14px}
     </div>
   </div>
 </footer>
-<!-- FOOTER -->
-<footer class="ft">
-  <div class="c">
-    <div class="fg">
-      <div class="fb">
-        <img src="logo.png" alt="Meet Me at the Hotel" style="height:52px;width:auto;display:block;">
-        <p>MeetMeAtTheHotel is an international platform where the global music industry connects with culture, technology and creators.</p>
-        <p class="fa">Room Mate Aitana Hotel · IJdok 6 · Amsterdam · October 2026</p>
-      </div>
-      <div class="fcc">
-        <p class="fct">Explore</p>
-        <a href="about.html">About</a>
-        <a href="program.html">Program</a>
-        <a href="universe.html">Universe</a>
-        <a href="industry-hub.html">Industry Hub</a>
-        <a href="industry-exchange.html">Industry Exchange</a>
-        <a href="experiences.html">Experiences</a>
-      </div>
-      <div class="fcc">
-        <p class="fct">Book</p>
-        <a href="booking.html">Hotel Rooms</a>
-        <a href="spaces.html">Meeting Rooms</a>
-        <a href="experiences.html">Showcases</a>
-        <a href="partners.html">Partnerships</a>
-      </div>
-      <div class="fcc">
-        <p class="fct">Industry Resources</p>
-        <a href="music-industry-networking-amsterdam.html">Music Industry Networking</a>
-        <a href="artist-showcases-amsterdam.html">Artist Showcases</a>
-        <a href="b2b-music-platform.html">B2B Music Platform</a>
-        <a href="brand-activation-events.html">Brand Activations</a>
-        <a href="hotel-experience-amsterdam.html">Hotel Experience</a>
-      </div>
-      <div class="fcc">
-        <p class="fct">Connect</p>
-        <a href="contact.html">Contact</a>
-        <a href="https://www.instagram.com/meetmeconnect/" target="_blank" rel="noopener">Instagram</a>
-        <a href="https://www.linkedin.com/company/meetmeconnect/" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="#">TikTok</a>
-      </div>
-    </div>
-    <div class="fb2">
-      <p>© 2026 Meet Me at the Hotel · 5th Anniversary Edition · Amsterdam · October 2026</p>
-      <p><a href="#">Privacy</a> · <a href="#">Cookies</a> · <a href="#">Terms</a></p>
-    </div>
-  </div>
-</footer>
 
 <style>
-.room-card{background:var(--blk);border:1px solid var(--blkb);padding:16px;margin-bottom:6px;position:relative}
+.room-card{background:var(--blk);border:1px solid var(--blkb);padding:16px;margin-bottom:6px}
 .room-card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
 .room-card-num{font-family:var(--fd);font-size:16px;color:var(--teal);letter-spacing:.05em}
-.room-remove{background:transparent;border:1px solid rgba(245,245,240,.12);color:rgba(245,245,240,.3);font-size:13px;padding:4px 10px;cursor:pointer;font-family:var(--fc);letter-spacing:.1em;transition:all .2s}
+.room-remove{background:transparent;border:1px solid rgba(245,245,240,.12);color:rgba(245,245,240,.3);font-size:12px;padding:4px 10px;cursor:pointer;font-family:var(--fc);letter-spacing:.1em;transition:all .2s}
 .room-remove:hover{border-color:#e05555;color:#e05555}
 .room-select{background:var(--blkc);border:1px solid var(--blkb);color:var(--wh);font-family:var(--fc);font-size:12px;letter-spacing:.08em;padding:11px 12px;width:100%;outline:none;transition:border-color .3s;text-transform:uppercase;margin-bottom:8px}
-.room-select:focus,.room-date-inp:focus{border-color:var(--teal)}
-.room-dates{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:2px}
-.room-date-label{font-family:var(--fc);font-size:10px;font-weight:600;letter-spacing:.2em;color:var(--teal);text-transform:uppercase;display:block;margin-bottom:5px}
-.room-date-inp{background:var(--blkc);border:1px solid var(--blkb);color:var(--wh);font-family:var(--fc);font-size:12px;letter-spacing:.06em;padding:10px 12px;width:100%;outline:none;transition:border-color .3s;text-transform:uppercase}
-.room-date-inp::placeholder{color:rgba(245,245,240,.25)}
-.room-nights-tag{font-family:var(--fc);font-size:10px;letter-spacing:.1em;color:var(--teal);text-transform:uppercase;margin-top:8px;height:16px}
-.date-btn{background:var(--blkc);border:1px solid var(--blkb);color:var(--wh);font-family:var(--fc);font-size:12px;letter-spacing:.08em;padding:10px 12px;width:100%;cursor:pointer;text-align:left;transition:border-color .2s;text-transform:uppercase;display:flex;justify-content:space-between;align-items:center;height:42px;box-sizing:border-box}
-.date-btn:hover,.date-btn.active{border-color:var(--teal)}
-.date-btn .ph{color:rgba(245,245,240,.3)}
-.date-btn .arr{color:var(--teal);font-size:10px;transition:transform .2s}
-.date-btn.active .arr{transform:rotate(180deg)}
-.cal-wrap{overflow:hidden;max-height:0;transition:max-height .3s ease}
-.cal-wrap.open{max-height:320px}
-.cal-inner{background:var(--blkc);border:1px solid var(--teal);border-top:none;padding:12px}
-.cal-field-label{font-family:var(--fc);font-size:10px;letter-spacing:.18em;color:var(--teal);text-transform:uppercase;margin-bottom:8px;display:block}
-.cal-dow-row{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-bottom:3px}
-.cal-dow-row span{font-family:var(--fc);font-size:9px;font-weight:600;color:rgba(245,245,240,.3);text-transform:uppercase;text-align:center;padding:3px 0}
-.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
-.cpd{font-family:var(--fc);font-size:12px;font-weight:600;text-align:center;padding:8px 2px;cursor:pointer;transition:all .15s;border:1px solid transparent;color:var(--wd);user-select:none}
-.cpd.dis{color:rgba(245,245,240,.1);cursor:default;pointer-events:none}
-.cpd.emp{pointer-events:none;visibility:hidden}
-.cpd.avail:hover{background:rgba(77,168,160,.2);border-color:rgba(77,168,160,.4);color:var(--wh)}
-.cpd.sel{background:var(--teal);color:var(--blk)!important;border-color:var(--teal)}
-.cpd.inr{background:rgba(77,168,160,.15);color:var(--wh)}
+.room-select:focus{border-color:var(--teal)}
+.room-date-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:2px}
+.room-date-lbl{font-family:var(--fc);font-size:10px;font-weight:600;letter-spacing:.2em;color:var(--teal);text-transform:uppercase;display:block;margin-bottom:5px}
+.room-date-inp{background:var(--blkc);border:1px solid var(--blkb);color:var(--wh);font-family:var(--fc);font-size:12px;padding:10px 12px;width:100%;outline:none;transition:border-color .3s;height:42px;box-sizing:border-box;cursor:pointer}
+.room-date-inp:focus{border-color:var(--teal)}
+.room-date-inp::-webkit-calendar-picker-indicator{filter:invert(0.7) sepia(1) saturate(3) hue-rotate(130deg);cursor:pointer}
+.room-nights{font-family:var(--fc);font-size:10px;letter-spacing:.1em;color:var(--teal);text-transform:uppercase;margin-top:6px;height:16px}
 </style>
 
 <script>
@@ -756,173 +692,75 @@ const ROOM_OPTS=[
   {v:'King Suite (Waitlist)',l:'King Suite — Waitlist · €435/night'},
 ];
 let roomCount=0;
-let activeCal=null; // {roomId, field:'ci'|'co'}
 
-// ── ROOM CARDS ──────────────────────────────────────────────
 function addRoom(preselect){
   roomCount++;
   const rid=roomCount;
   const div=document.createElement('div');
   div.className='room-card';
-  div.id=`rc-${rid}`;
-  const opts=ROOM_OPTS.map(o=>`<option value="${o.v}"${preselect===o.v?' selected':''}>${o.l}</option>`).join('');
-  const removable=rid>1?`<button type="button" class="room-remove" onclick="removeRoom(${rid})">✕ Remove</button>`:'<span></span>';
-  div.innerHTML=`
-    <div class="room-card-header">
-      <span class="room-card-num">ROOM ${rid}</span>
-      ${removable}
-    </div>
-    <select class="room-select" id="rs-${rid}" onchange="updateSummary()" required>
-      <option value="" disabled${!preselect?' selected':''}>Select room type</option>
-      ${opts}
-    </select>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px">
-      <div>
-        <span style="font-family:var(--fc);font-size:10px;font-weight:600;letter-spacing:.2em;color:var(--teal);text-transform:uppercase;display:block;margin-bottom:5px">Check-in</span>
-        <button type="button" class="date-btn" id="cibtn-${rid}" onclick="toggleCal(${rid},'ci')">
-          <span id="ci-label-${rid}" class="ph">Select date</span><span class="arr">▾</span>
-        </button>
-      </div>
-      <div>
-        <span style="font-family:var(--fc);font-size:10px;font-weight:600;letter-spacing:.2em;color:var(--teal);text-transform:uppercase;display:block;margin-bottom:5px">Check-out</span>
-        <button type="button" class="date-btn" id="cobtn-${rid}" onclick="toggleCal(${rid},'co')">
-          <span id="co-label-${rid}" class="ph">Select date</span><span class="arr">▾</span>
-        </button>
-      </div>
-    </div>
-    <div class="cal-wrap" id="cal-${rid}">
-      <div class="cal-inner">
-        <span class="cal-field-label" id="cal-title-${rid}">Select check-in date</span>
-        <div class="cal-dow-row"><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span><span>Su</span></div>
-        <div class="cal-grid" id="cal-grid-${rid}"></div>
-      </div>
-    </div>
-    <div class="room-nights-tag" id="nt-${rid}"></div>
-    <input type="hidden" id="ci-${rid}" data-day="">
-    <input type="hidden" id="co-${rid}" data-day="">
-  `;
+  div.id='rc-'+rid;
+  const opts=ROOM_OPTS.map(o=>'<option value="'+o.v+'"'+(preselect===o.v?' selected':'')+'>'+o.l+'</option>').join('');
+  const removeBtn=rid>1?'<button type="button" class="room-remove" onclick="removeRoom('+rid+')">✕ Remove</button>':'<span></span>';
+  div.innerHTML=
+    '<div class="room-card-header">'+
+      '<span class="room-card-num">ROOM '+rid+'</span>'+
+      removeBtn+
+    '</div>'+
+    '<select class="room-select" id="rs-'+rid+'" onchange="updateSummary()" required>'+
+      '<option value="" disabled'+(preselect?'':' selected')+'>Select room type</option>'+
+      opts+
+    '</select>'+
+    '<div class="room-date-grid">'+
+      '<div>'+
+        '<span class="room-date-lbl">Check-in</span>'+
+        '<input type="date" class="room-date-inp" id="ci-'+rid+'" min="2026-10-15" max="2026-10-30" onchange="onDateChange('+rid+')" required>'+
+      '</div>'+
+      '<div>'+
+        '<span class="room-date-lbl">Check-out</span>'+
+        '<input type="date" class="room-date-inp" id="co-'+rid+'" min="2026-10-16" max="2026-10-30" onchange="onDateChange('+rid+')" required>'+
+      '</div>'+
+    '</div>'+
+    '<div class="room-nights" id="nt-'+rid+'"></div>';
   document.getElementById('rooms-list').appendChild(div);
   updateSummary();
 }
 
 function removeRoom(rid){
-  document.getElementById(`rc-${rid}`).remove();
+  document.getElementById('rc-'+rid).remove();
   updateSummary();
 }
 
-// ── CALENDAR (inline, no popup) ─────────────────────────────
-const MIN_D=15, MAX_D=30;
-// calState[rid] = {field: 'ci'|'co'|null}
-const calState={};
-
-function toggleCal(rid, field) {
-  const wrap = document.getElementById('cal-'+rid);
-  const isOpen = wrap.classList.contains('open');
-  const sameField = calState[rid] && calState[rid].field === field;
-  if (isOpen && sameField) {
-    wrap.classList.remove('open');
-    document.getElementById('cibtn-'+rid).classList.remove('active');
-    document.getElementById('cobtn-'+rid).classList.remove('active');
-    calState[rid] = {field: null};
-    return;
-  }
-  calState[rid] = {field};
-  wrap.classList.add('open');
-  document.getElementById('cibtn-'+rid).classList.toggle('active', field==='ci');
-  document.getElementById('cobtn-'+rid).classList.toggle('active', field==='co');
-  document.getElementById('cal-title-'+rid).textContent = field==='ci' ? 'Select check-in' : 'Select check-out';
-  renderInlineCal(rid);
-}
-
-function renderInlineCal(rid) {
-  const grid = document.getElementById('cal-grid-'+rid);
-  if (!grid) return;
-  const ci = getCiDay(rid), co = getCoDay(rid);
-  const offset = 3;
-  let html = '';
-  for (let i=0; i<offset; i++) html += '<div class="cpd emp"> </div>';
-  for (let d=1; d<=31; d++) {
-    const avail = d>=MIN_D && d<=MAX_D;
-    let cls = 'cpd ' + (avail ? 'avail' : 'dis');
-    if (d===ci) cls += ' sel';
-    else if (d===co) cls += ' sel';
-    else if (ci && co && d>ci && d<co) cls += ' inr';
-    html += `<div class="${cls}" onclick="pickDay(${rid},${d})">${d}</div>`;
-  }
-  grid.innerHTML = html;
-}
-
-function pickDay(rid, d) {
-  if (d < MIN_D || d > MAX_D) return;
-  const field = calState[rid]?.field;
-  if (!field) return;
-
-  const ciInp = document.getElementById('ci-'+rid);
-  const coInp = document.getElementById('co-'+rid);
-  const ciLbl = document.getElementById('ci-label-'+rid);
-  const coLbl = document.getElementById('co-label-'+rid);
-
-  if (field === 'ci') {
-    ciInp.dataset.day = d;
-    ciLbl.textContent = 'Oct ' + d;
-    ciLbl.classList.remove('ph');
-    // clear checkout if invalid
-    const co = getCoDay(rid);
-    if (co && co <= d) {
-      coInp.dataset.day = '';
-      coLbl.textContent = 'Select date';
-      coLbl.classList.add('ph');
+function onDateChange(rid){
+  const ci=document.getElementById('ci-'+rid).value;
+  const co=document.getElementById('co-'+rid).value;
+  // enforce co min = ci+1
+  if(ci){
+    const nextDay=new Date(ci);
+    nextDay.setDate(nextDay.getDate()+1);
+    const minCo=nextDay.toISOString().split('T')[0];
+    document.getElementById('co-'+rid).min=minCo;
+    if(co && co<=ci){
+      document.getElementById('co-'+rid).value='';
     }
-    // auto-switch to checkout picker
-    calState[rid].field = 'co';
-    document.getElementById('cibtn-'+rid).classList.remove('active');
-    document.getElementById('cobtn-'+rid).classList.add('active');
-    document.getElementById('cal-title-'+rid).textContent = 'Now select check-out date';
+  }
+  const el=document.getElementById('nt-'+rid);
+  if(ci&&co&&co>ci){
+    const nights=(new Date(co)-new Date(ci))/(1000*60*60*24);
+    el.textContent='→ '+nights+' night'+(nights>1?'s':'');
   } else {
-    const ci = getCiDay(rid);
-    if (!ci || d <= ci) {
-      // clicked before checkin: reset checkin
-      ciInp.dataset.day = d;
-      ciLbl.textContent = 'Oct ' + d;
-      ciLbl.classList.remove('ph');
-      coInp.dataset.day = '';
-      coLbl.textContent = 'Select date';
-      coLbl.classList.add('ph');
-      calState[rid].field = 'co';
-      document.getElementById('cal-title-'+rid).textContent = 'Now select check-out date';
-    } else {
-      coInp.dataset.day = d;
-      coLbl.textContent = 'Oct ' + d;
-      coLbl.classList.remove('ph');
-      // close calendar
-      document.getElementById('cal-'+rid).classList.remove('open');
-      document.getElementById('cibtn-'+rid).classList.remove('active');
-      document.getElementById('cobtn-'+rid).classList.remove('active');
-      if(calState[rid]) calState[rid].field = null;
-    }
+    el.textContent='';
   }
-  renderInlineCal(rid);
-  updateNights(rid);
   updateSummary();
 }
 
-function getCiDay(rid) { const v = document.getElementById('ci-'+rid)?.dataset.day; return v ? parseInt(v) : null; }
-function getCoDay(rid) { const v = document.getElementById('co-'+rid)?.dataset.day; return v ? parseInt(v) : null; }
-
-function updateNights(rid) {
-  const ci = getCiDay(rid), co = getCoDay(rid);
-  const el = document.getElementById('nt-'+rid);
-  if (!el) return;
-  el.textContent = (ci && co && co > ci) ? '→ ' + (co-ci) + ' night' + (co-ci>1?'s':'') : '';
-}
-
-// ── SUMMARY ─────────────────────────────────────────────────
 function getRoomCards(){
   return [...document.querySelectorAll('.room-card')].map(card=>{
     const rid=card.id.replace('rc-','');
-    const type=document.getElementById(`rs-${rid}`)?.value||'';
-    const ci=getCiDay(rid),co=getCoDay(rid);
-    return{rid,type,ci,co,nights:ci&&co&&co>ci?co-ci:0};
+    const type=document.getElementById('rs-'+rid)?.value||'';
+    const ci=document.getElementById('ci-'+rid)?.value||'';
+    const co=document.getElementById('co-'+rid)?.value||'';
+    const nights=ci&&co&&co>ci?(new Date(co)-new Date(ci))/(1000*60*60*24):0;
+    return{rid,type,ci,co,nights};
   });
 }
 
@@ -931,39 +769,37 @@ function updateSummary(){
   const summary=document.getElementById('booking-summary');
   if(!cards.length){summary.style.display='none';return;}
   summary.style.display='block';
-
   let html='',total=0;
   cards.forEach((r,i)=>{
     const price=ROOM_PRICES[r.type]||0;
     const sub=r.nights?price*r.nights:0;
     total+=sub;
-    const dates=r.ci&&r.co?`Oct ${r.ci} → Oct ${r.co} · ${r.nights}n`:'Dates pending';
-    html+=`<div style="padding:6px 0;border-bottom:1px solid var(--blkb)">Room ${i+1}: ${r.type}<br><span style="color:rgba(245,245,240,.4)">${dates}${sub?` · €${sub.toLocaleString('nl-NL')}`:''}</span></div>`;
+    const ciLabel=r.ci?r.ci.split('-').slice(1).reverse().join(' Oct '):'?';
+    const coLabel=r.co?r.co.split('-').slice(1).reverse().join(' Oct '):'?';
+    const dates=r.ci&&r.co?('Oct '+parseInt(r.ci.split('-')[2])+' → Oct '+parseInt(r.co.split('-')[2])+' · '+r.nights+'n'):'Dates pending';
+    html+='<div style="padding:6px 0;border-bottom:1px solid var(--blkb)">Room '+(i+1)+': '+r.type+'<br><span style="color:rgba(245,245,240,.4)">'+dates+(sub?' · €'+sub.toLocaleString('nl-NL'):'')+'</span></div>';
   });
   document.getElementById('summary-rooms-text').innerHTML=html;
-  document.getElementById('summary-total').textContent=total?`Est. €${total.toLocaleString('nl-NL')} total`:'';
-
-  // Build hidden input
-  const detail=cards.map(r=>`${r.type} (Oct ${r.ci||'?'} → Oct ${r.co||'?'}, ${r.nights||'?'} nights)`).join(' | ');
+  document.getElementById('summary-total').textContent=total?'Est. €'+total.toLocaleString('nl-NL')+' total':'';
+  const detail=cards.map(r=>r.type+' ('+r.ci+' → '+r.co+', '+r.nights+' nights)').join(' | ');
   document.getElementById('inp-rooms-detail').value=detail;
 }
 
-// ── INIT ────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded',()=>{ addRoom('Executive Room'); });
 
-// ── CAROUSEL ────────────────────────────────────────────────
+// Carousel
 const carouselState={};
 function carouselInit(id){if(!carouselState[id])carouselState[id]={index:0}}
 function carouselMove(id,dir){carouselInit(id);const el=document.getElementById(id);const track=el.querySelector('.carousel-track');const slides=track.querySelectorAll('.carousel-slide');const total=slides.length;carouselState[id].index=(carouselState[id].index+dir+total)%total;carouselUpdate(id)}
 function carouselGo(id,idx){carouselInit(id);carouselState[id].index=idx;carouselUpdate(id)}
-function carouselUpdate(id){const el=document.getElementById(id);const track=el.querySelector('.carousel-track');const idx=carouselState[id].index;track.style.transform=`translateX(-${idx*100}%)`;const dotsEl=document.getElementById('d-'+id.replace('c-',''));if(dotsEl){dotsEl.querySelectorAll('.carousel-dot').forEach((d,i)=>d.classList.toggle('active',i===idx))}}
+function carouselUpdate(id){const el=document.getElementById(id);const track=el.querySelector('.carousel-track');const idx=carouselState[id].index;track.style.transform='translateX(-'+idx*100+'%)';const dotsEl=document.getElementById('d-'+id.replace('c-',''));if(dotsEl){dotsEl.querySelectorAll('.carousel-dot').forEach((d,i)=>d.classList.toggle('active',i===idx))}}
 document.querySelectorAll('.carousel').forEach(el=>{let startX=0;el.addEventListener('touchstart',e=>{startX=e.touches[0].clientX},{passive:true});el.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-startX;if(Math.abs(dx)>40)carouselMove(el.id,dx<0?1:-1)},{passive:true})});
 
-// ── SCROLL REVEAL ───────────────────────────────────────────
+// Scroll reveal
 const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target)}}),{threshold:.08});
 document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
 
-// ── FORM SUBMIT ─────────────────────────────────────────────
+// Form submit
 async function submitFS(f,e){
   e.preventDefault();
   const cards=getRoomCards().filter(r=>r.type);
