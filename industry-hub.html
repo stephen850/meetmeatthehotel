@@ -151,10 +151,11 @@ form{display:flex;flex-direction:column;gap:16px}
 .nav-drop-menu a:hover{color:var(--wh);background:var(--blkc)}
 .drop-label{font-family:var(--fc);font-size:9px;letter-spacing:.2em;color:var(--teal);text-transform:uppercase}
 @media(max-width:900px){
-  .nav-drop-btn{font-size:20px}
-  .nav-drop-menu{position:static;transform:none;border:none;background:transparent;padding-left:20px;padding-top:0;display:none}
+  .nav-drop{width:100%}
+  .nav-drop-btn{font-size:20px;width:100%;justify-content:space-between;padding:0}
+  .nav-drop-menu{position:static;transform:none;border:none;background:transparent;padding-left:20px;padding-top:4px;display:none;width:100%}
   .nav-drop.open .nav-drop-menu{display:block}
-  .nav-drop-menu a{font-size:14px;padding:8px 0;border:none}
+  .nav-drop-menu a{font-size:16px;padding:10px 0;border:none;letter-spacing:.1em}
 }
 </style>
 </head>
@@ -175,7 +176,7 @@ form{display:flex;flex-direction:column;gap:16px}
         <a href="meetme-experience.html">Meet Me Experience</a>
         <a href="image-lab.html">Meet Me Image Lab</a>
         <a href="meetme-future.html">Meet Me in the Future</a>
-        <a href="creators-lab.html">Meet Me Creator Lab</a>
+        <a href="meetme-content-lab.html">Meet Me Content Lab</a>
         <a href="meetme-live.html">Meet Me Live</a>
       </div>
     </div>
@@ -191,7 +192,7 @@ form{display:flex;flex-direction:column;gap:16px}
     <a href="partners.html">Partners</a>
     <a href="booking.html" class="nc">Book Your Stay</a>
   </div>
-  <div class="hb" onclick="var nl=document.getElementById('nl');var ov=document.getElementById('nav-overlay');nl.classList.toggle('open');ov.style.display=nl.classList.contains('open')?'block':'none'">
+  <div class="hb" onclick="var nl=document.getElementById('nl');var ov=document.getElementById('nav-overlay');nl.classList.toggle('open');ov.style.display=nl.classList.contains('open')?'block':'none';if(!nl.classList.contains('open')){document.querySelectorAll('.nav-drop').forEach(function(d){d.classList.remove('open')})}">
     <span></span><span></span><span></span>
   </div>
 </nav>
