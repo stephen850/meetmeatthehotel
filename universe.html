@@ -110,6 +110,23 @@ h3{font-size:clamp(22px,3vw,40px)}
 .rv{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
 .rv.vis{opacity:1;transform:none}
 .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+
+.nav-drop{position:relative}
+.nav-drop-btn{font-family:var(--fc);font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--wd);transition:color var(--tr);cursor:pointer;background:none;border:none;padding:0;display:flex;align-items:center;gap:6px}
+.nav-drop-btn:hover{color:var(--wh)}
+.nav-drop-btn::after{content:'▾';font-size:9px;color:var(--teal)}
+.nav-drop-menu{display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);background:#0A0A0A;border:1px solid var(--blkb);min-width:200px;z-index:3000;padding-top:16px}
+.nav-drop:hover .nav-drop-menu{display:block}
+.nav-drop-menu a{display:flex;align-items:center;gap:8px;font-family:var(--fc);font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--wd);padding:12px 20px;border-bottom:1px solid var(--blkb);transition:all var(--tr)}
+.nav-drop-menu a:last-child{border-bottom:none}
+.nav-drop-menu a:hover{color:var(--wh);background:var(--blkc)}
+.drop-label{font-family:var(--fc);font-size:9px;letter-spacing:.2em;color:var(--teal);text-transform:uppercase}
+@media(max-width:900px){
+  .nav-drop-btn{font-size:20px}
+  .nav-drop-menu{position:static;transform:none;border:none;background:transparent;padding-left:20px;padding-top:0;display:none}
+  .nav-drop.open .nav-drop-menu{display:block}
+  .nav-drop-menu a{font-size:14px;padding:8px 0;border:none}
+}
 </style>
 </head>
 <body>
@@ -122,13 +139,27 @@ h3{font-size:clamp(22px,3vw,40px)}
   <div class="nl" id="nl">
     <a href="about.html">About</a>
     <a href="program.html">Program</a>
-    <a href="universe.html" style="color:var(--teal)">Universe</a>
-    <a href="industry-hub.html">Industry Hub</a>
-    <a href="industry-exchange.html">Industry Exchange</a>
-    <a href="experiences.html">Experiences</a>
-    <a href="spaces.html">Spaces</a>
+    <div class="nav-drop" id="nav-drop-universe">
+      <button class="nav-drop-btn" onclick="toggleNavDropUniverse()">Meet Me Universe</button>
+      <div class="nav-drop-menu">
+        <a href="universe.html">The Universe</a>
+        <a href="meetme-experience.html">Meet Me Experience</a>
+        <a href="image-lab.html">Meet Me Image Lab</a>
+        <a href="meetme-future.html">Meet Me in the Future</a>
+        <a href="meetme-concept-lab.html">Meet Me Concept Lab</a>
+        <a href="meetme-live.html">Meet Me Live</a>
+      </div>
+    </div>
+    <div class="nav-drop" id="nav-drop-connect">
+      <button class="nav-drop-btn" onclick="toggleNavDropConnect()">Connect</button>
+      <div class="nav-drop-menu">
+        <a href="industry-hub.html"><span class="drop-label">Free</span> Industry Hub</a>
+        <a href="industry-exchange.html">Industry Exchange</a>
+      </div>
+    </div>
+    <a href="experiences.html">Venue Hire</a>
+    <a href="spaces.html">Workspaces</a>
     <a href="partners.html">Partners</a>
-    <a href="merch.html">Merch</a>
     <a href="booking.html" class="nc">Book Your Stay</a>
   </div>
   <div class="hb" onclick="var nl=document.getElementById('nl');var ov=document.getElementById('nav-overlay');nl.classList.toggle('open');ov.style.display=nl.classList.contains('open')?'block':'none'">
@@ -212,11 +243,11 @@ h3{font-size:clamp(22px,3vw,40px)}
         <span style="font-family:var(--fc);font-size:11px;letter-spacing:.2em;color:#7B61FF;text-transform:uppercase;margin-top:20px;display:block">Explore →</span>
       </a>
 
-      <a href="creators-lab.html" class="platform rv" style="--pc:#CEFF47">
+      <a href="meetme-concept-lab.html" class="platform rv" style="--pc:#CEFF47">
         <div class="platform-num">04</div>
-        <div class="platform-name">MEET ME CREATOR LAB</div>
+        <div class="platform-name">MEET ME CONCEPT LAB</div>
         <span class="platform-focus">Creators & digital culture</span>
-        <p class="platform-text">Meet Me Creator Lab focuses on the growing role of creators within the global music industry. From content creators and media platforms to digital storytelling and community building, the platform explores how creators shape modern music culture.</p>
+        <p class="platform-text">Meet Me Concept Lab focuses on the growing role of creators within the global music industry. From content creators and media platforms to digital storytelling and community building, the platform explores how creators shape modern music culture.</p>
         <span style="font-family:var(--fc);font-size:11px;letter-spacing:.2em;color:#CEFF47;text-transform:uppercase;margin-top:20px;display:block">Explore →</span>
       </a>
 
@@ -331,6 +362,19 @@ h3{font-size:clamp(22px,3vw,40px)}
 <script>
 const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target)}}),{threshold:.08});
 document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+
+function toggleNavDropUniverse() {
+  const u = document.getElementById('nav-drop-universe');
+  const c = document.getElementById('nav-drop-connect');
+  u.classList.toggle('open');
+  c.classList.remove('open');
+}
+function toggleNavDropConnect() {
+  const u = document.getElementById('nav-drop-universe');
+  const c = document.getElementById('nav-drop-connect');
+  c.classList.toggle('open');
+  u.classList.remove('open');
+}
 </script>
 </body>
 </html>
