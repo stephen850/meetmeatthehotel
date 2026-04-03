@@ -30,6 +30,22 @@ h3{font-size:clamp(22px,3vw,40px)}
 .nl{display:flex;align-items:center;gap:28px}
 .nl a{font-family:var(--fc);font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--wd);transition:color var(--tr)}.nl a:hover{color:var(--wh)}
 .nc{background:var(--teal);color:var(--blk)!important;padding:10px 20px}.nc:hover{background:var(--deep)!important;color:var(--wh)!important}
+.nav-drop{position:relative}
+.nav-drop-btn{font-family:var(--fc);font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--wd);transition:color var(--tr);cursor:pointer;background:none;border:none;padding:0;display:flex;align-items:center;gap:6px}
+.nav-drop-btn:hover{color:var(--wh)}
+.nav-drop-btn::after{content:'▾';font-size:9px;color:var(--teal)}
+.nav-drop-menu{display:none;position:absolute;top:calc(100% + 16px);left:50%;transform:translateX(-50%);background:#0A0A0A;border:1px solid var(--blkb);min-width:200px;z-index:3000}
+.nav-drop:hover .nav-drop-menu{display:block}
+.nav-drop-menu a{display:block;font-family:var(--fc);font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--wd);padding:14px 20px;border-bottom:1px solid var(--blkb);transition:all var(--tr)}
+.nav-drop-menu a:last-child{border-bottom:none}
+.nav-drop-menu a:hover{color:var(--wh);background:var(--blkc)}
+.nav-drop-menu .drop-label{font-family:var(--fc);font-size:9px;letter-spacing:.2em;color:var(--teal);text-transform:uppercase;padding:2px 0 0}
+@media(max-width:900px){
+  .nav-drop-btn{font-size:20px}
+  .nav-drop-menu{position:static;transform:none;border:none;background:transparent;padding-left:20px;display:none}
+  .nav-drop.open .nav-drop-menu{display:block}
+  .nav-drop-menu a{font-size:14px;padding:8px 0;border:none}
+}
 .hb{display:none;flex-direction:column;gap:5px;cursor:pointer}
 .hb span{display:block;width:22px;height:1.5px;background:var(--wh)}
 @media(max-width:900px){
@@ -66,7 +82,7 @@ h3{font-size:clamp(22px,3vw,40px)}
 .badge-sold{background:#e05555;color:var(--wh)}
 
 /* CAROUSEL */
-.carousel{position:relative;overflow:hidden;flex-shrink:0;aspect-ratio:4/3}
+.carousel{position:relative;overflow:hidden;flex-shrink:0;aspect-ratio:3/2}
 .carousel-track{display:flex;height:100%;transition:transform .5s cubic-bezier(.4,0,.2,1)}
 .carousel-slide{min-width:100%;height:100%;flex-shrink:0}
 .carousel-slide img{width:100%;height:100%;object-fit:cover;object-position:center 65%;filter:brightness(.8) saturate(.85);display:block}
@@ -180,8 +196,13 @@ form{display:flex;flex-direction:column;gap:14px}
     <a href="about.html">About</a>
     <a href="program.html">Program</a>
     <a href="universe.html">Universe</a>
-    <a href="industry-hub.html">Industry Hub</a>
-    <a href="industry-exchange.html">Industry Exchange</a>
+    <div class="nav-drop" id="nav-drop-connect">
+      <button class="nav-drop-btn" onclick="toggleNavDrop()">Connect</button>
+      <div class="nav-drop-menu">
+        <a href="industry-hub.html"><span class="drop-label">Free</span>Industry Hub</a>
+        <a href="industry-exchange.html">Industry Exchange</a>
+      </div>
+    </div>
     <a href="experiences.html">Experiences</a>
     <a href="spaces.html">Spaces</a>
     <a href="partners.html">Partners</a>
