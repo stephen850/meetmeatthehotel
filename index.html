@@ -244,8 +244,14 @@ h3{font-size:clamp(22px,3vw,40px)}
 
 <!-- 1. HERO -->
 <section class="hero">
-  <div class="hbg"></div>
-  <div class="hov"></div>
+  <div class="hbg" style="display:none"></div>
+  <div style="position:absolute;inset:0;overflow:hidden;z-index:0">
+    <video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center">
+      <source src="https://drive.google.com/uc?export=download&id=1gUUaOF0uXd8bV-Vto_vTSD__uhG7He2Q" type="video/mp4">
+    </video>
+    <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,10,.55) 0%,rgba(10,10,10,.45) 30%,rgba(10,10,10,.85) 70%,rgba(10,10,10,.98) 100%)"></div>
+  </div>
+  <div class="hov" style="display:none"></div>
   <div class="hgr"></div>
   <div class="hcont">
     <div class="hbadge">5th Anniversary Edition · October 2026 · Amsterdam</div>
