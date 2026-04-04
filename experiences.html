@@ -213,8 +213,22 @@ form{display:flex;flex-direction:column;gap:20px}
       <p style="font-family:var(--fc);font-size:13px;letter-spacing:.15em;color:var(--teal);text-transform:uppercase;margin-top:8px" class="rv">The showcase stage of MMATH</p>
       <div class="venue-inner">
         <div class="venue-photo rv">
-          <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=800&q=80&fit=crop" alt="Oscar Room">
-          <div class="venue-tint"></div>
+          <div class="boat-carousel" id="oscar-car">
+            <div class="boat-carousel-track" id="oscar-track">
+              <div class="boat-carousel-slide"><img src="oscar-1.jpg" alt="Oscar Room — James Hype"></div>
+              <div class="boat-carousel-slide"><img src="oscar-2.jpg" alt="Oscar Room — Meduza"></div>
+              <div class="boat-carousel-slide"><img src="oscar-3.jpg" alt="Oscar Room — Masterclass"></div>
+              <div class="boat-carousel-slide"><img src="oscar-4.jpg" alt="Oscar Room — Cassian"></div>
+            </div>
+            <button class="boat-carousel-btn boat-carousel-prev" onclick="oscarMove(-1)">&#8592;</button>
+            <button class="boat-carousel-btn boat-carousel-next" onclick="oscarMove(1)">&#8594;</button>
+            <div class="boat-carousel-dots" id="oscar-dots">
+              <div class="boat-carousel-dot active" onclick="oscarGo(0)"></div>
+              <div class="boat-carousel-dot" onclick="oscarGo(1)"></div>
+              <div class="boat-carousel-dot" onclick="oscarGo(2)"></div>
+              <div class="boat-carousel-dot" onclick="oscarGo(3)"></div>
+            </div>
+          </div>
         </div>
         <div class="rv d1">
           <div class="venue-text">
@@ -552,6 +566,15 @@ function boatUpdate() {
 }
 // Auto-advance
 setInterval(() => boatMove(1), 4000);
+
+let oscarIdx = 0;
+function oscarMove(dir) { oscarIdx = (oscarIdx + dir + 4) % 4; oscarUpdate(); }
+function oscarGo(idx) { oscarIdx = idx; oscarUpdate(); }
+function oscarUpdate() {
+  document.getElementById('oscar-track').style.transform = `translateX(-${oscarIdx * 100}%)`;
+  document.querySelectorAll('#oscar-dots .boat-carousel-dot').forEach((d,i) => d.classList.toggle('active', i === oscarIdx));
+}
+setInterval(() => oscarMove(1), 4500);
 </script>
 <script>
 async function submitFS(f,e){
@@ -582,6 +605,15 @@ function boatUpdate() {
 }
 // Auto-advance
 setInterval(() => boatMove(1), 4000);
+
+let oscarIdx = 0;
+function oscarMove(dir) { oscarIdx = (oscarIdx + dir + 4) % 4; oscarUpdate(); }
+function oscarGo(idx) { oscarIdx = idx; oscarUpdate(); }
+function oscarUpdate() {
+  document.getElementById('oscar-track').style.transform = `translateX(-${oscarIdx * 100}%)`;
+  document.querySelectorAll('#oscar-dots .boat-carousel-dot').forEach((d,i) => d.classList.toggle('active', i === oscarIdx));
+}
+setInterval(() => oscarMove(1), 4500);
 </script>
 </body>
 </html>
