@@ -292,7 +292,22 @@ form{display:flex;flex-direction:column;gap:20px}
       <p style="font-family:var(--fc);font-size:13px;letter-spacing:.15em;color:var(--teal);text-transform:uppercase;margin-top:8px" class="rv">The networking hub</p>
       <div class="venue-inner flip">
         <div class="venue-photo rv">
-          <img src="https://images.unsplash.com/photo-1551818255-e6e10975bc17?w=800&q=80&fit=crop" alt="Aitana Lounge">
+          <div class="boat-carousel" id="lounge-car">
+            <div class="boat-carousel-track" id="lounge-track">
+              <div class="boat-carousel-slide"><img src="lounge-1.png" alt="Aitana Lounge"></div>
+              <div class="boat-carousel-slide"><img src="lounge-2.png" alt="Aitana Lounge"></div>
+              <div class="boat-carousel-slide"><img src="lounge-3.png" alt="Aitana Lounge"></div>
+              <div class="boat-carousel-slide"><img src="lounge-4.png" alt="Aitana Lounge"></div>
+            </div>
+            <button class="boat-carousel-btn boat-carousel-prev" onclick="loungeMove(-1)">&#8592;</button>
+            <button class="boat-carousel-btn boat-carousel-next" onclick="loungeMove(1)">&#8594;</button>
+            <div class="boat-carousel-dots" id="lounge-dots">
+              <div class="boat-carousel-dot active" onclick="loungeGo(0)"></div>
+              <div class="boat-carousel-dot" onclick="loungeGo(1)"></div>
+              <div class="boat-carousel-dot" onclick="loungeGo(2)"></div>
+              <div class="boat-carousel-dot" onclick="loungeGo(3)"></div>
+            </div>
+          </div>
           <div class="venue-tint"></div>
         </div>
         <div class="rv d1">
@@ -320,7 +335,24 @@ form{display:flex;flex-direction:column;gap:20px}
       <p style="font-family:var(--fc);font-size:13px;letter-spacing:.15em;color:var(--teal);text-transform:uppercase;margin-top:8px" class="rv">Industry dinners & large hospitality events</p>
       <div class="venue-inner">
         <div class="venue-photo rv">
-          <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80&fit=crop" alt="I-Dock">
+          <div class="boat-carousel" id="idock-car">
+            <div class="boat-carousel-track" id="idock-track">
+              <div class="boat-carousel-slide"><img src="idock-1.png" alt="I-Dock"></div>
+              <div class="boat-carousel-slide"><img src="idock-2.png" alt="I-Dock"></div>
+              <div class="boat-carousel-slide"><img src="idock-3.png" alt="I-Dock"></div>
+              <div class="boat-carousel-slide"><img src="idock-4.png" alt="I-Dock"></div>
+              <div class="boat-carousel-slide"><img src="idock-5.png" alt="I-Dock"></div>
+            </div>
+            <button class="boat-carousel-btn boat-carousel-prev" onclick="idockMove(-1)">&#8592;</button>
+            <button class="boat-carousel-btn boat-carousel-next" onclick="idockMove(1)">&#8594;</button>
+            <div class="boat-carousel-dots" id="idock-dots">
+              <div class="boat-carousel-dot active" onclick="idockGo(0)"></div>
+              <div class="boat-carousel-dot" onclick="idockGo(1)"></div>
+              <div class="boat-carousel-dot" onclick="idockGo(2)"></div>
+              <div class="boat-carousel-dot" onclick="idockGo(3)"></div>
+              <div class="boat-carousel-dot" onclick="idockGo(4)"></div>
+            </div>
+          </div>
           <div class="venue-tint"></div>
         </div>
         <div class="rv d1">
@@ -606,8 +638,26 @@ function oscarUpdate() {
   document.querySelectorAll('#oscar-dots .boat-carousel-dot').forEach((d,i) => d.classList.toggle('active', i === oscarIdx));
 }
 setInterval(() => oscarMove(1), 4500);
-</script>
-<script>
+
+let loungeIdx = 0;
+function loungeMove(dir) { loungeIdx = (loungeIdx + dir + 4) % 4; loungeUpdate(); }
+function loungeGo(idx) { loungeIdx = idx; loungeUpdate(); }
+function loungeUpdate() {
+  document.getElementById('lounge-track').style.transform = `translateX(-${loungeIdx * 100}%)`;
+  document.querySelectorAll('#lounge-dots .boat-carousel-dot').forEach((d,i) => d.classList.toggle('active', i === loungeIdx));
+}
+setInterval(() => loungeMove(1), 4200);
+
+let idockIdx = 0;
+function idockMove(dir) { idockIdx = (idockIdx + dir + 5) % 5; idockUpdate(); }
+function idockGo(idx) { idockIdx = idx; idockUpdate(); }
+function idockUpdate() {
+  document.getElementById('idock-track').style.transform = `translateX(-${idockIdx * 100}%)`;
+  document.querySelectorAll('#idock-dots .boat-carousel-dot').forEach((d,i) => d.classList.toggle('active', i === idockIdx));
+}
+setInterval(() => idockMove(1), 4600);
+
+
 async function submitFS(f,e){
   e.preventDefault();
   const btn=f.querySelector('button[type=submit]');
@@ -620,31 +670,6 @@ async function submitFS(f,e){
     else{btn.textContent='ERROR — TRY AGAIN';btn.disabled=false;}
   }catch(err){btn.textContent='ERROR — TRY AGAIN';btn.disabled=false;}
 }
-
-let boatIdx = 0;
-function boatMove(dir) {
-  boatIdx = (boatIdx + dir + 4) % 4;
-  boatUpdate();
-}
-function boatGo(idx) {
-  boatIdx = idx;
-  boatUpdate();
-}
-function boatUpdate() {
-  document.getElementById('boat-track').style.transform = `translateX(-${boatIdx * 100}%)`;
-  document.querySelectorAll('.boat-carousel-dot').forEach((d,i) => d.classList.toggle('active', i === boatIdx));
-}
-// Auto-advance
-setInterval(() => boatMove(1), 4000);
-
-let oscarIdx = 0;
-function oscarMove(dir) { oscarIdx = (oscarIdx + dir + 4) % 4; oscarUpdate(); }
-function oscarGo(idx) { oscarIdx = idx; oscarUpdate(); }
-function oscarUpdate() {
-  document.getElementById('oscar-track').style.transform = `translateX(-${oscarIdx * 100}%)`;
-  document.querySelectorAll('#oscar-dots .boat-carousel-dot').forEach((d,i) => d.classList.toggle('active', i === oscarIdx));
-}
-setInterval(() => oscarMove(1), 4500);
 </script>
 </body>
 </html>
