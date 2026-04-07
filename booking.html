@@ -202,50 +202,16 @@ form{display:flex;flex-direction:column;gap:14px}
   <div class="nl" id="nl">
     <a href="about.html">About</a>
     <a href="program.html">Program</a>
-    <div class="nav-drop" id="nav-drop-universe">
-      <button class="nav-drop-btn" onclick="toggleNavDropUniverse()">Meet Me Universe</button>
-      <div class="nav-drop-menu">
-        <a href="universe.html">The Universe</a>
-        <a href="meetme-experience.html">Meet Me Experience</a>
-        <a href="image-lab.html">Meet Me Image Lab</a>
-        <a href="meetme-future.html">Meet Me in the Future</a>
-        <a href="meetme-content-lab.html">Meet Me Content Lab</a>
-        <a href="meetme-connect.html">Meet Me Connect</a>
-      </div>
-    </div>
-    <div class="nav-drop" id="nav-drop-connect">
-      <button class="nav-drop-btn" onclick="toggleNavDropConnect()">Connect</button>
-      <div class="nav-drop-menu">
-        <a href="industry-hub.html"><span class="drop-label">Free</span> Industry Hub</a>
-        <a href="industry-exchange.html">Industry Exchange</a>
-      </div>
-    </div>
+    <a href="universe.html">Universe</a>
+    <a href="industry-hub.html">Industry Hub</a>
+    <a href="industry-exchange.html">Industry Exchange</a>
     <a href="experiences.html">Venue Hire</a>
-    <a href="spaces.html">Workspaces</a>
+    <a href="spaces.html">Spaces</a>
     <a href="partners.html">Partners</a>
-      <button class="nav-drop-btn" onclick="toggleNavDrop2()">Meet Me Universe</button>
-      <div class="nav-drop-menu">
-        <a href="universe.html">The Universe</a>
-        <a href="meetme-experience.html">Meet Me Experience</a>
-        <a href="image-lab.html">Meet Me Image Lab</a>
-        <a href="meetme-future.html">Meet Me in the Future</a>
-        <a href="meetme-content-lab.html">Meet Me Content Lab</a>
-        <a href="meetme-connect.html">Meet Me Connect</a>
-      </div>
-    </div>
-    <div class="nav-drop" id="nav-drop-connect">
-      <button class="nav-drop-btn" onclick="toggleNavDrop()">Connect</button>
-      <div class="nav-drop-menu">
-        <a href="industry-hub.html"><span class="drop-label">Free</span> Industry Hub</a>
-        <a href="industry-exchange.html">Industry Exchange</a>
-      </div>
-    </div>
-    <a href="experiences.html">Venue Hire</a>
-    <a href="spaces.html">Workspaces</a>
-    <a href="partners.html">Partners</a>
+    <a href="merch.html">Merch</a>
     <a href="booking.html" class="nc">Book Your Stay</a>
   </div>
-  <div class="hb" onclick="var nl=document.getElementById('nl');var ov=document.getElementById('nav-overlay');nl.classList.toggle('open');ov.style.display=nl.classList.contains('open')?'block':'none';if(!nl.classList.contains('open')){document.querySelectorAll('.nav-drop').forEach(function(d){d.classList.remove('open')})}">
+  <div class="hb" onclick="var nl=document.getElementById('nl');var ov=document.getElementById('nav-overlay');nl.classList.toggle('open');ov.style.display=nl.classList.contains('open')?'block':'none'">
     <span></span><span></span><span></span>
   </div>
 </nav>
@@ -632,7 +598,7 @@ form{display:flex;flex-direction:column;gap:14px}
         <p>For group bookings of 4+ rooms, you'll automatically receive dedicated group pricing and benefits.</p>
         <div style="margin-top:32px;padding:24px 28px;background:var(--blkc);border:1px solid var(--blkb)">
           <span class="lbl">Direct Contact</span>
-          <p style="font-family:var(--fc);font-size:13px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase;">info@meetmeatthehotel.com</p>
+          <p style="font-family:var(--fc);font-size:13px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="345d5a525b745951514059515540405c515c5b4051581a575b59">[email&#160;protected]</a></p>
           <p style="font-family:var(--fc);font-size:13px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase;margin-top:6px;">IJdok 6 · Amsterdam</p>
         </div>
         <div style="margin-top:16px;padding:20px 24px;background:var(--blkc);border:1px solid var(--blkb)">
@@ -749,7 +715,7 @@ form{display:flex;flex-direction:column;gap:14px}
 .room-nights{font-family:var(--fc);font-size:10px;letter-spacing:.1em;color:var(--teal);text-transform:uppercase;margin-top:6px;height:16px}
 </style>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 const ROOM_PRICES={'Superior Twin':285,'Superior Double':285,'Superior City View':300,'Executive Room':325,'Junior Suite':365,'King Suite (Waitlist)':435};
 const ROOM_OPTS=[
   {v:'Superior Twin',l:'Superior Room — Twin Bed · €285/night'},
@@ -872,10 +838,4 @@ async function submitFS(f,e){
   btn.textContent='SENDING...';btn.disabled=true;
   try{
     const res=await fetch(f.dataset.formspree,{method:'POST',body:new FormData(f),headers:{Accept:'application/json'}});
-    if(res.ok){window.location.href='https://meetmeatthehotel.com/thanks.html';}
-    else{btn.textContent='ERROR — TRY AGAIN';btn.disabled=false;}
-  }catch(err){btn.textContent='ERROR — TRY AGAIN';btn.disabled=false;}
-}
-</script>
-</body>
-</html>
+    if(res.ok

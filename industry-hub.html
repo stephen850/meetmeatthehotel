@@ -169,30 +169,16 @@ form{display:flex;flex-direction:column;gap:16px}
   <div class="nl" id="nl">
     <a href="about.html">About</a>
     <a href="program.html">Program</a>
-    <div class="nav-drop" id="nav-drop-universe">
-      <button class="nav-drop-btn" onclick="toggleNavDropUniverse()">Meet Me Universe</button>
-      <div class="nav-drop-menu">
-        <a href="universe.html">The Universe</a>
-        <a href="meetme-experience.html">Meet Me Experience</a>
-        <a href="image-lab.html">Meet Me Image Lab</a>
-        <a href="meetme-future.html">Meet Me in the Future</a>
-        <a href="meetme-content-lab.html">Meet Me Content Lab</a>
-        <a href="meetme-connect.html">Meet Me Connect</a>
-      </div>
-    </div>
-    <div class="nav-drop" id="nav-drop-connect">
-      <button class="nav-drop-btn" onclick="toggleNavDropConnect()">Connect</button>
-      <div class="nav-drop-menu">
-        <a href="industry-hub.html"><span class="drop-label">Free</span> Industry Hub</a>
-        <a href="industry-exchange.html">Industry Exchange</a>
-      </div>
-    </div>
+    <a href="universe.html">Universe</a>
+    <a href="industry-hub.html">Industry Hub</a>
+    <a href="industry-exchange.html">Industry Exchange</a>
     <a href="experiences.html">Venue Hire</a>
-    <a href="spaces.html">Workspaces</a>
+    <a href="spaces.html">Spaces</a>
     <a href="partners.html">Partners</a>
+    <a href="merch.html">Merch</a>
     <a href="booking.html" class="nc">Book Your Stay</a>
   </div>
-  <div class="hb" onclick="var nl=document.getElementById('nl');var ov=document.getElementById('nav-overlay');nl.classList.toggle('open');ov.style.display=nl.classList.contains('open')?'block':'none';if(!nl.classList.contains('open')){document.querySelectorAll('.nav-drop').forEach(function(d){d.classList.remove('open')})}">
+  <div class="hb" onclick="var nl=document.getElementById('nl');var ov=document.getElementById('nav-overlay');nl.classList.toggle('open');ov.style.display=nl.classList.contains('open')?'block':'none'">
     <span></span><span></span><span></span>
   </div>
 </nav>
