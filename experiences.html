@@ -476,7 +476,22 @@ form{display:flex;flex-direction:column;gap:20px}
       <h2 class="rv">Hotel<br><span class="teal">Suites.</span></h2>
       <div class="venue-inner flip">
         <div class="venue-photo rv">
-          <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80&fit=crop" alt="Hotel Suite">
+          <div class="boat-carousel" id="suite-car">
+            <div class="boat-carousel-track" id="suite-track">
+              <div class="boat-carousel-slide"><img src="suite-1.png" alt="Hotel Suite"></div>
+              <div class="boat-carousel-slide"><img src="suite-2.png" alt="Hotel Suite"></div>
+              <div class="boat-carousel-slide"><img src="suite-3.png" alt="Hotel Suite"></div>
+              <div class="boat-carousel-slide"><img src="suite-4.png" alt="Hotel Suite"></div>
+            </div>
+            <button class="boat-carousel-btn boat-carousel-prev" onclick="suiteMove(-1)">&#8592;</button>
+            <button class="boat-carousel-btn boat-carousel-next" onclick="suiteMove(1)">&#8594;</button>
+            <div class="boat-carousel-dots" id="suite-dots">
+              <div class="boat-carousel-dot active" onclick="suiteGo(0)"></div>
+              <div class="boat-carousel-dot" onclick="suiteGo(1)"></div>
+              <div class="boat-carousel-dot" onclick="suiteGo(2)"></div>
+              <div class="boat-carousel-dot" onclick="suiteGo(3)"></div>
+            </div>
+          </div>
           <div class="venue-tint"></div>
         </div>
         <div class="venue-text rv d1">
@@ -684,6 +699,15 @@ function meetingroomUpdate() {
   document.querySelectorAll('#meetingroom-dots .boat-carousel-dot').forEach((d,i) => d.classList.toggle('active', i === meetingroomIdx));
 }
 setInterval(() => meetingroomMove(1), 4800);
+
+let suiteIdx = 0;
+function suiteMove(dir) { suiteIdx = (suiteIdx + dir + 4) % 4; suiteUpdate(); }
+function suiteGo(idx) { suiteIdx = idx; suiteUpdate(); }
+function suiteUpdate() {
+  document.getElementById('suite-track').style.transform = `translateX(-${suiteIdx * 100}%)`;
+  document.querySelectorAll('#suite-dots .boat-carousel-dot').forEach((d,i) => d.classList.toggle('active', i === suiteIdx));
+}
+setInterval(() => suiteMove(1), 5000);
 
 
 async function submitFS(f,e){
