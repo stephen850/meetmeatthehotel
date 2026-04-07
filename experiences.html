@@ -384,7 +384,26 @@ form{display:flex;flex-direction:column;gap:20px}
       <p style="font-family:var(--fc);font-size:13px;letter-spacing:.15em;color:var(--teal);text-transform:uppercase;margin-top:8px" class="rv">Private sessions & curated meetings</p>
       <div class="venue-inner flip">
         <div class="venue-photo rv">
-          <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80&fit=crop" alt="Meeting Rooms">
+          <div class="boat-carousel" id="meetingroom-car">
+            <div class="boat-carousel-track" id="meetingroom-track">
+              <div class="boat-carousel-slide"><img src="meetingroom-1.png" alt="Industry Meeting Rooms"></div>
+              <div class="boat-carousel-slide"><img src="meetingroom-2.png" alt="Industry Meeting Rooms"></div>
+              <div class="boat-carousel-slide"><img src="meetingroom-3.png" alt="Industry Meeting Rooms"></div>
+              <div class="boat-carousel-slide"><img src="meetingroom-4.png" alt="Industry Meeting Rooms"></div>
+              <div class="boat-carousel-slide"><img src="meetingroom-5.png" alt="Industry Meeting Rooms"></div>
+              <div class="boat-carousel-slide"><img src="meetingroom-6.png" alt="Industry Meeting Rooms"></div>
+            </div>
+            <button class="boat-carousel-btn boat-carousel-prev" onclick="meetingroomMove(-1)">&#8592;</button>
+            <button class="boat-carousel-btn boat-carousel-next" onclick="meetingroomMove(1)">&#8594;</button>
+            <div class="boat-carousel-dots" id="meetingroom-dots">
+              <div class="boat-carousel-dot active" onclick="meetingroomGo(0)"></div>
+              <div class="boat-carousel-dot" onclick="meetingroomGo(1)"></div>
+              <div class="boat-carousel-dot" onclick="meetingroomGo(2)"></div>
+              <div class="boat-carousel-dot" onclick="meetingroomGo(3)"></div>
+              <div class="boat-carousel-dot" onclick="meetingroomGo(4)"></div>
+              <div class="boat-carousel-dot" onclick="meetingroomGo(5)"></div>
+            </div>
+          </div>
           <div class="venue-tint"></div>
         </div>
         <div class="rv d1">
@@ -656,6 +675,15 @@ function idockUpdate() {
   document.querySelectorAll('#idock-dots .boat-carousel-dot').forEach((d,i) => d.classList.toggle('active', i === idockIdx));
 }
 setInterval(() => idockMove(1), 4600);
+
+let meetingroomIdx = 0;
+function meetingroomMove(dir) { meetingroomIdx = (meetingroomIdx + dir + 6) % 6; meetingroomUpdate(); }
+function meetingroomGo(idx) { meetingroomIdx = idx; meetingroomUpdate(); }
+function meetingroomUpdate() {
+  document.getElementById('meetingroom-track').style.transform = `translateX(-${meetingroomIdx * 100}%)`;
+  document.querySelectorAll('#meetingroom-dots .boat-carousel-dot').forEach((d,i) => d.classList.toggle('active', i === meetingroomIdx));
+}
+setInterval(() => meetingroomMove(1), 4800);
 
 
 async function submitFS(f,e){
