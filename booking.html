@@ -1,856 +1,1674 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Book Your Stay — Meet Me at the Hotel · 5th Anniversary Edition</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
-<style>
-:root{--teal:#4DA8A0;--deep:#2E7A74;--pool:#7DCDC7;--blk:#0A0A0A;--blkm:#111;--blkc:#161616;--blkb:#222;--wh:#F5F5F0;--wd:rgba(245,245,240,0.6);--wd2:rgba(245,245,240,0.12);--fd:'Bebas Neue',sans-serif;--fc:'Barlow Condensed',sans-serif;--fb:'Barlow',sans-serif;--nav:72px;--tr:0.35s cubic-bezier(.4,0,.2,1)}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:var(--blk);color:var(--wh);font-family:var(--fb);overflow-x:hidden}
-a{color:inherit;text-decoration:none}
-img{display:block;max-width:100%}
-.c{max-width:1280px;margin:0 auto;padding:0 80px}
-@media(max-width:1024px){.c{padding:0 40px}}
-@media(max-width:640px){.c{padding:0 20px}}
-h1,h2,h3,h4{font-family:var(--fd);line-height:.93;text-transform:uppercase;letter-spacing:-.01em}
-h1{font-size:clamp(60px,9vw,130px)}
-h2{font-size:clamp(40px,6vw,84px)}
-h3{font-size:clamp(22px,3vw,40px)}
-.teal{color:var(--teal)}
-.lbl{font-family:var(--fc);font-size:11px;font-weight:600;letter-spacing:.28em;color:var(--teal);text-transform:uppercase;display:block;margin-bottom:16px}
-.btn{display:inline-block;font-family:var(--fc);font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:15px 36px;transition:all var(--tr);cursor:pointer;border:none;text-align:center}
-.bp{background:var(--teal);color:var(--blk)}.bp:hover{background:var(--deep);color:var(--wh)}
-.bo{border:1px solid var(--teal);color:var(--teal);background:transparent}.bo:hover{background:var(--teal);color:var(--blk)}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Your Stay — Meet Me at the Hotel · 5th Anniversary Edition</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --teal:#4DA8A0;
+      --deep:#2E7A74;
+      --pool:#7DCDC7;
+      --blk:#0A0A0A;
+      --blkm:#111;
+      --blkc:#161616;
+      --blkb:#222;
+      --wh:#F5F5F0;
+      --wd:rgba(245,245,240,0.6);
+      --wd2:rgba(245,245,240,0.12);
+      --fd:'Bebas Neue',sans-serif;
+      --fc:'Barlow Condensed',sans-serif;
+      --fb:'Barlow',sans-serif;
+      --nav:72px;
+      --tr:0.35s cubic-bezier(.4,0,.2,1)
+    }
 
-/* NAV */
-.nav{position:fixed;top:0;left:0;right:0;height:var(--nav);display:flex;align-items:center;justify-content:space-between;padding:0 40px;z-index:2000;background:rgba(10,10,10,.98);border-bottom:1px solid var(--blkb);backdrop-filter:blur(16px)}
-.nl{display:flex;align-items:center;gap:28px}
-.nl a{font-family:var(--fc);font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--wd);transition:color var(--tr)}.nl a:hover{color:var(--wh)}
-.nc{background:var(--teal);color:var(--blk)!important;padding:10px 20px}.nc:hover{background:var(--deep)!important;color:var(--wh)!important}
-.nav-drop{position:relative}
-.nav-drop-btn{font-family:var(--fc);font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--wd);transition:color var(--tr);cursor:pointer;background:none;border:none;padding:0;display:flex;align-items:center;gap:6px}
-.nav-drop-btn:hover{color:var(--wh)}
-.nav-drop-btn::after{content:'▾';font-size:9px;color:var(--teal)}
-.nav-drop-menu{display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);background:#0A0A0A;border:1px solid var(--blkb);min-width:200px;z-index:3000;padding-top:16px;margin-top:0}
-.nav-drop:hover .nav-drop-menu{display:block}
-.nav-drop-menu a{display:block;font-family:var(--fc);font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--wd);padding:14px 20px;border-bottom:1px solid var(--blkb);transition:all var(--tr)}
-.nav-drop-menu a:last-child{border-bottom:none}
-.nav-drop-menu a:hover{color:var(--wh);background:var(--blkc)}
-.nav-drop-menu .drop-label{font-family:var(--fc);font-size:9px;letter-spacing:.2em;color:var(--teal);text-transform:uppercase;padding:2px 0 0}
-@media(max-width:900px){
-  .nav-drop{width:100%}
-  .nav-drop-btn{font-size:20px;width:100%;justify-content:space-between;padding:0}
-  .nav-drop-menu{position:static;transform:none;border:none;background:transparent;padding-left:20px;padding-top:4px;display:none;width:100%}
-  .nav-drop.open .nav-drop-menu{display:block}
-  .nav-drop-menu a{font-size:16px;padding:10px 0;border:none;letter-spacing:.1em}
-}
-@media(max-width:900px){
-  .nav-drop-btn{font-size:20px}
-  .nav-drop-menu{position:static;transform:none;border:none;background:transparent;padding-left:20px;display:none}
-  .nav-drop.open .nav-drop-menu{display:block}
-  .nav-drop-menu a{font-size:14px;padding:8px 0;border:none}
-}
-.hb{display:none;flex-direction:column;gap:5px;cursor:pointer}
-.hb span{display:block;width:22px;height:1.5px;background:var(--wh)}
-@media(max-width:900px){
-  .hb{display:flex}
-  .nl{position:fixed;top:var(--nav);left:0;right:0;bottom:0;background:#0A0A0A;flex-direction:column;align-items:flex-start;padding:40px;gap:20px;transform:translateX(100%);transition:transform var(--tr);z-index:1999}
-  .nl.open{transform:none}
-  .nav.menu-open{background:#0A0A0A!important}
-  .nl a{font-size:20px}
-}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--blk);color:var(--wh);font-family:var(--fb);overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+    img{display:block;max-width:100%}
 
-/* HERO */
-.ph{padding-top:calc(var(--nav) + 100px);padding-bottom:100px;min-height:85vh;display:flex;align-items:center;position:relative;overflow:hidden;background:#0a1412;border-bottom:1px solid var(--blkb)}
-.ph-img{position:absolute;inset:0;z-index:0;background-image:url('room-hero.jpg');background-size:cover;background-position:center center;opacity:0.55}
-.ph-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(to right,rgba(10,10,10,.82) 0%,rgba(10,10,10,.45) 55%,rgba(10,10,10,.1) 100%),linear-gradient(to bottom,rgba(10,10,10,.2) 0%,rgba(10,10,10,.0) 40%,rgba(10,10,10,.55) 100%)}
-.ph-grid{position:absolute;inset:0;z-index:0;background-image:linear-gradient(rgba(77,168,160,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(77,168,160,.04) 1px,transparent 1px);background-size:80px 80px}
-.ph-inner{position:relative;z-index:10;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;width:100%}
-.ph-lead{font-family:var(--fc);font-size:clamp(15px,1.8vw,20px);font-weight:400;letter-spacing:.06em;color:var(--wd);max-width:520px;line-height:1.6;text-transform:uppercase;margin-top:20px}
-.ph-includes{display:flex;flex-direction:column;gap:10px}
-.ph-inc{display:flex;align-items:center;gap:14px;font-family:var(--fc);font-size:12px;letter-spacing:.12em;color:var(--wd);text-transform:uppercase}
-.ph-inc::before{content:'→';color:var(--teal);flex-shrink:0}
-@media(max-width:768px){.ph-inner{grid-template-columns:1fr;gap:40px}}
+    .c{max-width:1280px;margin:0 auto;padding:0 80px}
+    @media(max-width:1024px){.c{padding:0 40px}}
+    @media(max-width:640px){.c{padding:0 20px}}
 
-/* ROOMS */
-.rooms{padding:100px 0;border-bottom:1px solid var(--blkb)}
-.rooms-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:60px}
-@media(max-width:900px){.rooms-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:560px){.rooms-grid{grid-template-columns:1fr}}
-.room{background:var(--blkc);border:1px solid var(--blkb);overflow:hidden;transition:border-color var(--tr);position:relative;display:flex;flex-direction:column}
-.room.featured{border-color:var(--teal)}
-.room.soldout{opacity:.6}
-.room:not(.soldout):hover{border-color:var(--teal)}
-.room-badge{position:absolute;top:14px;left:14px;z-index:5;font-family:var(--fc);font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;padding:5px 12px}
-.badge-popular{background:var(--teal);color:var(--blk)}
-.badge-sold{background:#e05555;color:var(--wh)}
+    h1,h2,h3,h4{
+      font-family:var(--fd);
+      line-height:.93;
+      text-transform:uppercase;
+      letter-spacing:-.01em
+    }
 
-/* CAROUSEL */
-.carousel{position:relative;overflow:hidden;flex-shrink:0;aspect-ratio:3/2}
-.carousel-track{display:flex;height:100%;transition:transform .5s cubic-bezier(.4,0,.2,1)}
-.carousel-slide{min-width:100%;height:100%;flex-shrink:0}
-.carousel-slide img{width:100%;height:100%;object-fit:cover;object-position:center 65%;filter:brightness(.8) saturate(.85);display:block}
-.carousel-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,10,.55) 0%,transparent 50%);pointer-events:none;z-index:2}
-.carousel-btn{position:absolute;top:50%;transform:translateY(-50%);z-index:3;background:rgba(10,10,10,.6);border:1px solid rgba(245,245,240,.15);color:var(--wh);font-family:var(--fd);font-size:20px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background var(--tr);line-height:1}
-.carousel-btn:hover{background:rgba(77,168,160,.7)}
-.carousel-prev{left:10px}
-.carousel-next{right:10px}
-.carousel-dots{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:5px;z-index:3}
-.carousel-dot{width:5px;height:5px;background:rgba(245,245,240,.35);border-radius:50%;cursor:pointer;transition:background var(--tr)}
-.carousel-dot.active{background:var(--teal)}
-.room:not(.soldout):hover .carousel-slide img{filter:brightness(.85) saturate(.9)}
+    h1{font-size:clamp(60px,9vw,130px)}
+    h2{font-size:clamp(40px,6vw,84px)}
+    h3{font-size:clamp(22px,3vw,40px)}
 
-.room-body{padding:28px;flex:1;display:flex;flex-direction:column}
-.room-name{font-family:var(--fd);font-size:26px;margin-bottom:4px}
-.room-size{font-family:var(--fc);font-size:11px;letter-spacing:.18em;color:var(--wd);text-transform:uppercase;margin-bottom:12px}
-.room-desc{font-size:13px;color:var(--wd);line-height:1.65;margin-bottom:16px;font-weight:300;flex:1}
-.room-price-row{display:flex;align-items:baseline;gap:8px;padding:16px 0;border-top:1px solid var(--blkb);border-bottom:1px solid var(--blkb);margin-bottom:16px}
-.room-price{font-family:var(--fd);font-size:36px;color:var(--wh)}
-.room-per{font-family:var(--fc);font-size:11px;letter-spacing:.15em;color:var(--wd);text-transform:uppercase}
-.btn-sold{background:#333;color:rgba(245,245,240,.3);font-family:var(--fc);font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;padding:15px 36px;display:block;text-align:center;cursor:not-allowed}
-.price-note{margin-top:20px;font-family:var(--fc);font-size:11px;letter-spacing:.1em;color:rgba(245,245,240,.3);text-transform:uppercase}
+    .teal{color:var(--teal)}
+    .lbl{
+      font-family:var(--fc);
+      font-size:11px;
+      font-weight:600;
+      letter-spacing:.28em;
+      color:var(--teal);
+      text-transform:uppercase;
+      display:block;
+      margin-bottom:16px
+    }
 
-/* AMENITIES */
-.amenities{padding:100px 0;border-bottom:1px solid var(--blkb);background:var(--blkm)}
-.am-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:60px}
-@media(max-width:768px){.am-grid{grid-template-columns:1fr 1fr}}
-.am-item{background:var(--blkc);border:1px solid var(--blkb);padding:32px 24px;transition:border-color var(--tr)}
-.am-item:hover{border-color:var(--teal)}
-.am-title{font-family:var(--fd);font-size:20px;margin-bottom:8px}
-.am-desc{font-size:12px;color:var(--wd);line-height:1.65}
-.am-bar{width:32px;height:3px;background:var(--teal);margin-bottom:16px}
+    .btn{
+      display:inline-block;
+      font-family:var(--fc);
+      font-size:13px;
+      font-weight:600;
+      letter-spacing:.2em;
+      text-transform:uppercase;
+      padding:15px 36px;
+      transition:all var(--tr);
+      cursor:pointer;
+      border:none;
+      text-align:center
+    }
 
-/* INCLUDED */
-.included{padding:100px 0;border-bottom:1px solid var(--blkb)}
-.inc-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;margin-top:60px}
-@media(max-width:768px){.inc-grid{grid-template-columns:1fr}}
-.inc-list{display:grid;grid-template-columns:1fr 1fr;gap:2px}
-.inc-item{background:var(--blkc);border:1px solid var(--blkb);padding:28px 24px;transition:border-color var(--tr)}
-.inc-item:hover{border-color:var(--teal)}
-.inc-title{font-family:var(--fd);font-size:20px;margin-bottom:6px}
-.inc-desc{font-size:12px;color:var(--wd);line-height:1.6}
-.inc-bar{width:24px;height:2px;background:var(--teal);margin-bottom:12px}
-.inc-photo img{width:100%;aspect-ratio:4/5;object-fit:cover;filter:brightness(.7) saturate(.8);display:block}
+    .bp{background:var(--teal);color:var(--blk)}
+    .bp:hover{background:var(--deep);color:var(--wh)}
+    .bo{border:1px solid var(--teal);color:var(--teal);background:transparent}
+    .bo:hover{background:var(--teal);color:var(--blk)}
 
-/* GROUP */
-.group{padding:80px 0;border-bottom:1px solid var(--blkb);background:var(--blkm)}
-.group-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
-@media(max-width:768px){.group-inner{grid-template-columns:1fr}}
-.group-perks{list-style:none;display:flex;flex-direction:column;gap:0;margin:24px 0 32px}
-.group-perks li{font-family:var(--fc);font-size:12px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase;padding:12px 0;border-bottom:1px solid var(--blkb);display:flex;align-items:center;gap:12px}
-.group-perks li::before{content:'→';color:var(--teal)}
-.group-visual{background:var(--blkc);border:1px solid var(--blkb);padding:48px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:280px}
-.group-num{font-family:var(--fd);font-size:120px;color:var(--teal);line-height:1;opacity:.3}
-.group-label{font-family:var(--fc);font-size:12px;letter-spacing:.2em;color:var(--wd);text-transform:uppercase}
+    /* NAV */
+    .nav{
+      position:fixed;
+      top:0;left:0;right:0;
+      height:var(--nav);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:0 40px;
+      z-index:2000;
+      background:rgba(10,10,10,.98);
+      border-bottom:1px solid var(--blkb);
+      backdrop-filter:blur(16px)
+    }
 
-/* FAQ */
-.faq{padding:100px 0;border-bottom:1px solid var(--blkb)}
-.faq-list{margin-top:60px;display:flex;flex-direction:column;gap:2px}
-.faq-item{background:var(--blkc);border:1px solid var(--blkb);overflow:hidden}
-.faq-item.open{border-color:var(--teal)}
-.faq-q{display:flex;justify-content:space-between;align-items:center;padding:22px 28px;cursor:pointer;gap:20px}
-.faq-q span{font-family:var(--fc);font-size:14px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--wh)}
-.faq-icon{font-family:var(--fd);font-size:28px;color:var(--teal);flex-shrink:0;transition:transform var(--tr);line-height:1}
-.faq-item.open .faq-icon{transform:rotate(45deg)}
-.faq-a{display:none;padding:0 28px 22px;font-size:14px;color:var(--wd);line-height:1.75;font-weight:300}
-.faq-item.open .faq-a{display:block}
+    .nl{display:flex;align-items:center;gap:28px}
+    .nl a{
+      font-family:var(--fc);
+      font-size:12px;
+      font-weight:600;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:var(--wd);
+      transition:color var(--tr)
+    }
 
-/* FORM */
-.book-form{padding:100px 0}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-top:60px}
-@media(max-width:768px){.form-grid{grid-template-columns:1fr}}
-.form-text p{font-size:15px;color:var(--wd);line-height:1.8;font-weight:300;margin-bottom:12px}
-form{display:flex;flex-direction:column;gap:14px}
-.field{display:flex;flex-direction:column;gap:7px}
-.field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-@media(max-width:640px){.field-row{grid-template-columns:1fr}}
-.field label{font-family:var(--fc);font-size:10px;font-weight:600;letter-spacing:.22em;color:var(--teal);text-transform:uppercase}
-.field input,.field select,.field textarea{background:var(--blkc);border:1px solid var(--blkb);color:var(--wh);font-family:var(--fb);font-size:14px;padding:13px 16px;transition:border-color var(--tr);width:100%;outline:none}
-.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--teal)}
-.field select option{background:var(--blkc)}
-.field textarea{resize:vertical;min-height:100px}
+    .nl a:hover{color:var(--wh)}
+    .nc{background:var(--teal);color:var(--blk)!important;padding:10px 20px}
+    .nc:hover{background:var(--deep)!important;color:var(--wh)!important}
 
-/* FOOTER */
-.ft{background:var(--blkm);border-top:1px solid var(--blkb);padding:60px 0 32px}
-.fg{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px}
-@media(max-width:900px){.fg{grid-template-columns:1fr 1fr}}
-@media(max-width:640px){.fg{grid-template-columns:1fr}}
-.fb p{font-size:13px;color:var(--wd);line-height:1.8;margin-top:16px}
-.fa{margin-top:10px;opacity:.4;font-size:12px}
-.fcc{display:flex;flex-direction:column;gap:10px}
-.fct{font-family:var(--fc);font-size:11px;font-weight:600;letter-spacing:.2em;color:var(--wh);text-transform:uppercase;margin-bottom:8px}
-.fcc a{font-family:var(--fc);font-size:12px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase;transition:color var(--tr)}.fcc a:hover{color:var(--teal)}
-.fb2{border-top:1px solid var(--blkb);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
-.fb2 p,.fb2 a{font-family:var(--fc);font-size:11px;letter-spacing:.1em;color:rgba(245,245,240,.35);text-transform:uppercase}
-.fb2 a:hover{color:var(--teal)}
+    .nav-drop{position:relative}
+    .nav-drop-btn{
+      font-family:var(--fc);
+      font-size:12px;
+      font-weight:600;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:var(--wd);
+      transition:color var(--tr);
+      cursor:pointer;
+      background:none;
+      border:none;
+      padding:0;
+      display:flex;
+      align-items:center;
+      gap:6px
+    }
 
-.rv{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
-.rv.vis{opacity:1;transform:none}
-.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
-</style>
+    .nav-drop-btn:hover{color:var(--wh)}
+    .nav-drop-btn::after{content:'▾';font-size:9px;color:var(--teal)}
+
+    .nav-drop-menu{
+      display:none;
+      position:absolute;
+      top:100%;
+      left:50%;
+      transform:translateX(-50%);
+      background:#0A0A0A;
+      border:1px solid var(--blkb);
+      min-width:200px;
+      z-index:3000;
+      padding-top:16px;
+      margin-top:0
+    }
+
+    .nav-drop:hover .nav-drop-menu{display:block}
+
+    .nav-drop-menu a{
+      display:block;
+      font-family:var(--fc);
+      font-size:11px;
+      font-weight:600;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:var(--wd);
+      padding:14px 20px;
+      border-bottom:1px solid var(--blkb);
+      transition:all var(--tr)
+    }
+
+    .nav-drop-menu a:last-child{border-bottom:none}
+    .nav-drop-menu a:hover{color:var(--wh);background:var(--blkc)}
+    .nav-drop-menu .drop-label{
+      font-family:var(--fc);
+      font-size:9px;
+      letter-spacing:.2em;
+      color:var(--teal);
+      text-transform:uppercase;
+      padding:2px 0 0
+    }
+
+    @media(max-width:900px){
+      .nav-drop{width:100%}
+      .nav-drop-btn{
+        font-size:20px;
+        width:100%;
+        justify-content:space-between;
+        padding:0
+      }
+      .nav-drop-menu{
+        position:static;
+        transform:none;
+        border:none;
+        background:transparent;
+        padding-left:20px;
+        padding-top:4px;
+        display:none;
+        width:100%
+      }
+      .nav-drop.open .nav-drop-menu{display:block}
+      .nav-drop-menu a{
+        font-size:16px;
+        padding:10px 0;
+        border:none;
+        letter-spacing:.1em
+      }
+    }
+
+    .hb{display:none;flex-direction:column;gap:5px;cursor:pointer}
+    .hb span{display:block;width:22px;height:1.5px;background:var(--wh)}
+
+    @media(max-width:900px){
+      .hb{display:flex}
+      .nl{
+        position:fixed;
+        top:var(--nav);
+        left:0;right:0;bottom:0;
+        background:#0A0A0A;
+        flex-direction:column;
+        align-items:flex-start;
+        padding:40px;
+        gap:20px;
+        transform:translateX(100%);
+        transition:transform var(--tr);
+        z-index:1999
+      }
+      .nl.open{transform:none}
+      .nav.menu-open{background:#0A0A0A!important}
+      .nl a{font-size:20px}
+    }
+
+    /* HERO */
+    .ph{
+      padding-top:calc(var(--nav) + 100px);
+      padding-bottom:100px;
+      min-height:85vh;
+      display:flex;
+      align-items:center;
+      position:relative;
+      overflow:hidden;
+      background:#0a1412;
+      border-bottom:1px solid var(--blkb)
+    }
+
+    .ph-img{
+      position:absolute;
+      inset:0;
+      z-index:0;
+      background-image:url('room-hero.jpg');
+      background-size:cover;
+      background-position:center center;
+      opacity:0.55
+    }
+
+    .ph-overlay{
+      position:absolute;
+      inset:0;
+      z-index:1;
+      background:
+        linear-gradient(to right,rgba(10,10,10,.82) 0%,rgba(10,10,10,.45) 55%,rgba(10,10,10,.1) 100%),
+        linear-gradient(to bottom,rgba(10,10,10,.2) 0%,rgba(10,10,10,.0) 40%,rgba(10,10,10,.55) 100%)
+    }
+
+    .ph-grid{
+      position:absolute;
+      inset:0;
+      z-index:0;
+      background-image:
+        linear-gradient(rgba(77,168,160,.04) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(77,168,160,.04) 1px,transparent 1px);
+      background-size:80px 80px
+    }
+
+    .ph-inner{
+      position:relative;
+      z-index:10;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:80px;
+      align-items:center;
+      width:100%
+    }
+
+    .ph-lead{
+      font-family:var(--fc);
+      font-size:clamp(15px,1.8vw,20px);
+      font-weight:400;
+      letter-spacing:.06em;
+      color:var(--wd);
+      max-width:520px;
+      line-height:1.6;
+      text-transform:uppercase;
+      margin-top:20px
+    }
+
+    .ph-includes{display:flex;flex-direction:column;gap:10px}
+    .ph-inc{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      font-family:var(--fc);
+      font-size:12px;
+      letter-spacing:.12em;
+      color:var(--wd);
+      text-transform:uppercase
+    }
+
+    .ph-inc::before{content:'→';color:var(--teal);flex-shrink:0}
+    @media(max-width:768px){.ph-inner{grid-template-columns:1fr;gap:40px}}
+
+    /* ROOMS */
+    .rooms{padding:100px 0;border-bottom:1px solid var(--blkb)}
+    .rooms-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:60px}
+    @media(max-width:900px){.rooms-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:560px){.rooms-grid{grid-template-columns:1fr}}
+
+    .room{
+      background:var(--blkc);
+      border:1px solid var(--blkb);
+      overflow:hidden;
+      transition:border-color var(--tr);
+      position:relative;
+      display:flex;
+      flex-direction:column
+    }
+
+    .room.featured{border-color:var(--teal)}
+    .room.soldout{opacity:.6}
+    .room:not(.soldout):hover{border-color:var(--teal)}
+
+    .room-badge{
+      position:absolute;
+      top:14px;
+      left:14px;
+      z-index:5;
+      font-family:var(--fc);
+      font-size:10px;
+      font-weight:700;
+      letter-spacing:.2em;
+      text-transform:uppercase;
+      padding:5px 12px
+    }
+
+    .badge-popular{background:var(--teal);color:var(--blk)}
+    .badge-sold{background:#e05555;color:var(--wh)}
+
+    /* CAROUSEL */
+    .carousel{position:relative;overflow:hidden;flex-shrink:0;aspect-ratio:3/2}
+    .carousel-track{display:flex;height:100%;transition:transform .5s cubic-bezier(.4,0,.2,1)}
+    .carousel-slide{min-width:100%;height:100%;flex-shrink:0}
+    .carousel-slide img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center 65%;
+      filter:brightness(.8) saturate(.85);
+      display:block
+    }
+
+    .carousel-overlay{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to top,rgba(10,10,10,.55) 0%,transparent 50%);
+      pointer-events:none;
+      z-index:2
+    }
+
+    .carousel-btn{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      z-index:3;
+      background:rgba(10,10,10,.6);
+      border:1px solid rgba(245,245,240,.15);
+      color:var(--wh);
+      font-family:var(--fd);
+      font-size:20px;
+      width:36px;
+      height:36px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      transition:background var(--tr);
+      line-height:1
+    }
+
+    .carousel-btn:hover{background:rgba(77,168,160,.7)}
+    .carousel-prev{left:10px}
+    .carousel-next{right:10px}
+
+    .carousel-dots{
+      position:absolute;
+      bottom:10px;
+      left:50%;
+      transform:translateX(-50%);
+      display:flex;
+      gap:5px;
+      z-index:3
+    }
+
+    .carousel-dot{
+      width:5px;height:5px;
+      background:rgba(245,245,240,.35);
+      border-radius:50%;
+      cursor:pointer;
+      transition:background var(--tr)
+    }
+
+    .carousel-dot.active{background:var(--teal)}
+    .room:not(.soldout):hover .carousel-slide img{filter:brightness(.85) saturate(.9)}
+
+    .room-body{padding:28px;flex:1;display:flex;flex-direction:column}
+    .room-name{font-family:var(--fd);font-size:26px;margin-bottom:4px}
+    .room-size{
+      font-family:var(--fc);
+      font-size:11px;
+      letter-spacing:.18em;
+      color:var(--wd);
+      text-transform:uppercase;
+      margin-bottom:12px
+    }
+
+    .room-desc{
+      font-size:13px;
+      color:var(--wd);
+      line-height:1.65;
+      margin-bottom:16px;
+      font-weight:300;
+      flex:1
+    }
+
+    .room-price-row{
+      display:flex;
+      align-items:baseline;
+      gap:8px;
+      padding:16px 0;
+      border-top:1px solid var(--blkb);
+      border-bottom:1px solid var(--blkb);
+      margin-bottom:16px
+    }
+
+    .room-price{font-family:var(--fd);font-size:36px;color:var(--wh)}
+    .room-per{
+      font-family:var(--fc);
+      font-size:11px;
+      letter-spacing:.15em;
+      color:var(--wd);
+      text-transform:uppercase
+    }
+
+    .btn-sold{
+      background:#333;
+      color:rgba(245,245,240,.3);
+      font-family:var(--fc);
+      font-size:13px;
+      font-weight:600;
+      letter-spacing:.2em;
+      text-transform:uppercase;
+      padding:15px 36px;
+      display:block;
+      text-align:center;
+      cursor:not-allowed
+    }
+
+    .price-note{
+      margin-top:20px;
+      font-family:var(--fc);
+      font-size:11px;
+      letter-spacing:.1em;
+      color:rgba(245,245,240,.3);
+      text-transform:uppercase
+    }
+
+    /* AMENITIES */
+    .amenities{padding:100px 0;border-bottom:1px solid var(--blkb);background:var(--blkm)}
+    .am-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:60px}
+    @media(max-width:768px){.am-grid{grid-template-columns:1fr 1fr}}
+
+    .am-item{
+      background:var(--blkc);
+      border:1px solid var(--blkb);
+      padding:32px 24px;
+      transition:border-color var(--tr)
+    }
+
+    .am-item:hover{border-color:var(--teal)}
+    .am-title{font-family:var(--fd);font-size:20px;margin-bottom:8px}
+    .am-desc{font-size:12px;color:var(--wd);line-height:1.65}
+    .am-bar{width:32px;height:3px;background:var(--teal);margin-bottom:16px}
+
+    /* INCLUDED */
+    .included{padding:100px 0;border-bottom:1px solid var(--blkb)}
+    .inc-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;margin-top:60px}
+    @media(max-width:768px){.inc-grid{grid-template-columns:1fr}}
+
+    .inc-list{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+    .inc-item{
+      background:var(--blkc);
+      border:1px solid var(--blkb);
+      padding:28px 24px;
+      transition:border-color var(--tr)
+    }
+
+    .inc-item:hover{border-color:var(--teal)}
+    .inc-title{font-family:var(--fd);font-size:20px;margin-bottom:6px}
+    .inc-desc{font-size:12px;color:var(--wd);line-height:1.6}
+    .inc-bar{width:24px;height:2px;background:var(--teal);margin-bottom:12px}
+    .inc-photo img{width:100%;aspect-ratio:4/5;object-fit:cover;filter:brightness(.7) saturate(.8);display:block}
+
+    /* GROUP */
+    .group{padding:80px 0;border-bottom:1px solid var(--blkb);background:var(--blkm)}
+    .group-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+    @media(max-width:768px){.group-inner{grid-template-columns:1fr}}
+
+    .group-perks{
+      list-style:none;
+      display:flex;
+      flex-direction:column;
+      gap:0;
+      margin:24px 0 32px
+    }
+
+    .group-perks li{
+      font-family:var(--fc);
+      font-size:12px;
+      letter-spacing:.1em;
+      color:var(--wd);
+      text-transform:uppercase;
+      padding:12px 0;
+      border-bottom:1px solid var(--blkb);
+      display:flex;
+      align-items:center;
+      gap:12px
+    }
+
+    .group-perks li::before{content:'→';color:var(--teal)}
+
+    .group-visual{
+      background:var(--blkc);
+      border:1px solid var(--blkb);
+      padding:48px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      min-height:280px
+    }
+
+    .group-num{font-family:var(--fd);font-size:120px;color:var(--teal);line-height:1;opacity:.3}
+    .group-label{font-family:var(--fc);font-size:12px;letter-spacing:.2em;color:var(--wd);text-transform:uppercase}
+
+    /* FAQ */
+    .faq{padding:100px 0;border-bottom:1px solid var(--blkb)}
+    .faq-list{margin-top:60px;display:flex;flex-direction:column;gap:2px}
+    .faq-item{background:var(--blkc);border:1px solid var(--blkb);overflow:hidden}
+    .faq-item.open{border-color:var(--teal)}
+
+    .faq-q{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:22px 28px;
+      cursor:pointer;
+      gap:20px
+    }
+
+    .faq-q span{
+      font-family:var(--fc);
+      font-size:14px;
+      font-weight:600;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:var(--wh)
+    }
+
+    .faq-icon{
+      font-family:var(--fd);
+      font-size:28px;
+      color:var(--teal);
+      flex-shrink:0;
+      transition:transform var(--tr);
+      line-height:1
+    }
+
+    .faq-item.open .faq-icon{transform:rotate(45deg)}
+    .faq-a{display:none;padding:0 28px 22px;font-size:14px;color:var(--wd);line-height:1.75;font-weight:300}
+    .faq-item.open .faq-a{display:block}
+
+    /* FORM */
+    .book-form{padding:100px 0}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-top:60px}
+    @media(max-width:768px){.form-grid{grid-template-columns:1fr}}
+
+    .form-text p{font-size:15px;color:var(--wd);line-height:1.8;font-weight:300;margin-bottom:12px}
+    form{display:flex;flex-direction:column;gap:14px}
+    .field{display:flex;flex-direction:column;gap:7px}
+    .field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    @media(max-width:640px){.field-row{grid-template-columns:1fr}}
+
+    .field label{
+      font-family:var(--fc);
+      font-size:10px;
+      font-weight:600;
+      letter-spacing:.22em;
+      color:var(--teal);
+      text-transform:uppercase
+    }
+
+    .field input,.field select,.field textarea{
+      background:var(--blkc);
+      border:1px solid var(--blkb);
+      color:var(--wh);
+      font-family:var(--fb);
+      font-size:14px;
+      padding:13px 16px;
+      transition:border-color var(--tr);
+      width:100%;
+      outline:none
+    }
+
+    .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--teal)}
+    .field select option{background:var(--blkc)}
+    .field textarea{resize:vertical;min-height:100px}
+
+    /* FOOTER */
+    .ft{background:var(--blkm);border-top:1px solid var(--blkb);padding:60px 0 32px}
+    .fg{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px}
+    @media(max-width:900px){.fg{grid-template-columns:1fr 1fr}}
+    @media(max-width:640px){.fg{grid-template-columns:1fr}}
+
+    .fb p{font-size:13px;color:var(--wd);line-height:1.8;margin-top:16px}
+    .fa{margin-top:10px;opacity:.4;font-size:12px}
+    .fcc{display:flex;flex-direction:column;gap:10px}
+    .fct{
+      font-family:var(--fc);
+      font-size:11px;
+      font-weight:600;
+      letter-spacing:.2em;
+      color:var(--wh);
+      text-transform:uppercase;
+      margin-bottom:8px
+    }
+
+    .fcc a{
+      font-family:var(--fc);
+      font-size:12px;
+      letter-spacing:.1em;
+      color:var(--wd);
+      text-transform:uppercase;
+      transition:color var(--tr)
+    }
+
+    .fcc a:hover{color:var(--teal)}
+
+    .fb2{
+      border-top:1px solid var(--blkb);
+      padding-top:24px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:12px
+    }
+
+    .fb2 p,.fb2 a{
+      font-family:var(--fc);
+      font-size:11px;
+      letter-spacing:.1em;
+      color:rgba(245,245,240,.35);
+      text-transform:uppercase
+    }
+
+    .fb2 a:hover{color:var(--teal)}
+
+    .rv{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+    .rv.vis{opacity:1;transform:none}
+    .d1{transition-delay:.1s}
+    .d2{transition-delay:.2s}
+    .d3{transition-delay:.3s}
+
+    /* ROOM PICKER */
+    .room-card{background:var(--blk);border:1px solid var(--blkb);padding:16px;margin-bottom:6px}
+    .room-card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+    .room-card-num{font-family:var(--fd);font-size:16px;color:var(--teal);letter-spacing:.05em}
+
+    .room-remove{
+      background:transparent;
+      border:1px solid rgba(245,245,240,.12);
+      color:rgba(245,245,240,.3);
+      font-size:12px;
+      padding:4px 10px;
+      cursor:pointer;
+      font-family:var(--fc);
+      letter-spacing:.1em;
+      transition:all .2s
+    }
+
+    .room-remove:hover{border-color:#e05555;color:#e05555}
+
+    .room-select{
+      background:var(--blkc);
+      border:1px solid var(--blkb);
+      color:var(--wh);
+      font-family:var(--fc);
+      font-size:12px;
+      letter-spacing:.08em;
+      padding:11px 12px;
+      width:100%;
+      outline:none;
+      transition:border-color .3s;
+      text-transform:uppercase;
+      margin-bottom:8px
+    }
+
+    .room-select:focus{border-color:var(--teal)}
+    .room-date-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:2px}
+
+    .room-date-lbl{
+      font-family:var(--fc);
+      font-size:10px;
+      font-weight:600;
+      letter-spacing:.2em;
+      color:var(--teal);
+      text-transform:uppercase;
+      display:block;
+      margin-bottom:5px
+    }
+
+    .room-date-sel{
+      background:var(--blkc);
+      border:1px solid var(--blkb);
+      color:var(--wh);
+      font-family:var(--fc);
+      font-size:12px;
+      padding:10px 12px;
+      width:100%;
+      outline:none;
+      transition:border-color .3s;
+      height:42px;
+      box-sizing:border-box;
+      cursor:pointer;
+      -webkit-appearance:none;
+      appearance:none;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%234DA8A0'/%3E%3C/svg%3E");
+      background-repeat:no-repeat;
+      background-position:right 12px center
+    }
+
+    .room-date-sel:focus{border-color:var(--teal)}
+    .room-date-sel option{background:#161616;color:var(--wh)}
+    .room-nights{font-family:var(--fc);font-size:10px;letter-spacing:.1em;color:var(--teal);text-transform:uppercase;margin-top:6px;height:16px}
+  </style>
 </head>
 <body>
 
-<div id="nav-overlay" style="display:none;position:fixed;inset:0;background:#0A0A0A;z-index:1998"></div>
-<nav class="nav">
-  <a href="index.html" style="display:flex;align-items:center;">
-    <img src="logo.png" alt="Meet Me at the Hotel" style="height:48px;width:auto;display:block;">
-  </a>
-  <div class="nl" id="nl">
-    <a href="about.html">About</a>
-    <a href="program.html">Program</a>
-    <div class="nav-drop" id="nav-drop-universe">
-      <button class="nav-drop-btn" onclick="toggleNavDropUniverse()">Meet Me Universe</button>
-      <div class="nav-drop-menu">
-        <a href="universe.html">The Universe</a>
-        <a href="meetme-experience.html">Meet Me Experience</a>
-        <a href="image-lab.html">Meet Me Image Lab</a>
-        <a href="meetme-future.html">Meet Me in the Future</a>
-        <a href="meetme-content-lab.html">Meet Me Content Lab</a>
-        <a href="meetme-connect.html">Meet Me Connect</a>
+  <div id="nav-overlay" style="display:none;position:fixed;inset:0;background:#0A0A0A;z-index:1998"></div>
+
+  <nav class="nav" id="nav">
+    <a href="index.html" style="display:flex;align-items:center;">
+      <img src="logo.png" alt="Meet Me at the Hotel" style="height:48px;width:auto;display:block;">
+    </a>
+
+    <div class="nl" id="nl">
+      <a href="about.html">About</a>
+      <a href="program.html">Program</a>
+
+      <div class="nav-drop" id="nav-drop-universe">
+        <button type="button" class="nav-drop-btn" onclick="toggleNavDrop('nav-drop-universe')">Meet Me Universe</button>
+        <div class="nav-drop-menu">
+          <a href="universe.html">The Universe</a>
+          <a href="meetme-experience.html">Meet Me Experience</a>
+          <a href="image-lab.html">Meet Me Image Lab</a>
+          <a href="meetme-future.html">Meet Me in the Future</a>
+          <a href="meetme-content-lab.html">Meet Me Content Lab</a>
+          <a href="meetme-connect.html">Meet Me Connect</a>
+        </div>
+      </div>
+
+      <div class="nav-drop" id="nav-drop-connect">
+        <button type="button" class="nav-drop-btn" onclick="toggleNavDrop('nav-drop-connect')">Connect</button>
+        <div class="nav-drop-menu">
+          <a href="industry-hub.html"><span class="drop-label">Free</span> Industry Hub</a>
+          <a href="industry-exchange.html">Industry Exchange</a>
+        </div>
+      </div>
+
+      <a href="experiences.html">Venue Hire</a>
+      <a href="spaces.html">Workspaces</a>
+      <a href="partners.html">Partners</a>
+      <a href="merch.html">Merch</a>
+      <a href="booking.html" class="nc">Book Your Stay</a>
+    </div>
+
+    <div class="hb" onclick="toggleMobileMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="ph">
+    <div class="ph-img"></div>
+    <div class="ph-overlay"></div>
+    <div class="ph-grid"></div>
+    <div class="c ph-inner">
+      <div>
+        <span class="lbl rv">Room Mate Aitana Hotel · IJdok 6 · Amsterdam</span>
+        <h1 class="rv">
+          <span style="display:block;color:var(--wh)">BOOK</span>
+          <span style="display:block;color:var(--teal)">YOUR STAY.</span>
+        </h1>
+        <p class="ph-lead rv d1">Your room is your base. Hotel guests get full MMATH access throughout the week — no separate registration, no extra cost. Just check in and the industry opens up.</p>
+      </div>
+      <div class="ph-includes rv d2">
+        <span class="lbl">Every room includes</span>
+        <div class="ph-inc">Full MMATH Industry Hub access all week</div>
+        <div class="ph-inc">Oscar Room day programme</div>
+        <div class="ph-inc">Aitana Lounge Bar access</div>
+        <div class="ph-inc">Priority event registration</div>
+        <div class="ph-inc">Concierge support throughout the week</div>
       </div>
     </div>
-    <div class="nav-drop" id="nav-drop-connect">
-      <button class="nav-drop-btn" onclick="toggleNavDropConnect()">Connect</button>
-      <div class="nav-drop-menu">
-        <a href="industry-hub.html"><span class="drop-label">Free</span> Industry Hub</a>
-        <a href="industry-exchange.html">Industry Exchange</a>
+  </section>
+
+  <!-- ROOMS -->
+  <section class="rooms">
+    <div class="c">
+      <span class="lbl rv">Room Types · October 2026 Rates</span>
+      <h2 class="rv">Choose your<br><span class="teal">base camp.</span></h2>
+
+      <div class="rooms-grid">
+
+        <!-- Superior Twin -->
+        <div class="room rv">
+          <div class="carousel" id="c-twin">
+            <div class="carousel-track">
+              <div class="carousel-slide"><img src="room-superior-twin-1.jpg" alt="Superior Twin"></div>
+              <div class="carousel-slide"><img src="room-superior-twin-2.jpg" alt="Superior Twin"></div>
+              <div class="carousel-slide"><img src="room-superior-twin-3.jpg" alt="Superior Twin"></div>
+              <div class="carousel-slide"><img src="room-superior-twin-4.jpg" alt="Superior Twin"></div>
+            </div>
+            <div class="carousel-overlay"></div>
+            <button type="button" class="carousel-btn carousel-prev" onclick="carouselMove('c-twin',-1)">&#8592;</button>
+            <button type="button" class="carousel-btn carousel-next" onclick="carouselMove('c-twin',1)">&#8594;</button>
+            <div class="carousel-dots" id="d-twin">
+              <div class="carousel-dot active" onclick="carouselGo('c-twin',0)"></div>
+              <div class="carousel-dot" onclick="carouselGo('c-twin',1)"></div>
+              <div class="carousel-dot" onclick="carouselGo('c-twin',2)"></div>
+              <div class="carousel-dot" onclick="carouselGo('c-twin',3)"></div>
+            </div>
+          </div>
+          <div class="room-body">
+            <div class="room-name">SUPERIOR ROOM</div>
+            <div class="room-size">Twin Bed · 30–33m²</div>
+            <div class="room-desc">Two single beds, modern design, city-facing. The smart base for solo professionals or colleagues sharing.</div>
+            <div class="room-price-row">
+              <div class="room-price">€285</div>
+              <div class="room-per">per night</div>
+            </div>
+            <a href="#inquiry" class="btn bo" style="display:block;">Inquire →</a>
+          </div>
+        </div>
+
+        <!-- Superior Double -->
+        <div class="room rv d1">
+          <div class="carousel" id="c-double">
+            <div class="carousel-track">
+              <div class="carousel-slide"><img src="room-superior-double-1.jpg" alt="Superior Double"></div>
+              <div class="carousel-slide"><img src="room-superior-double-2.jpg" alt="Superior Double"></div>
+              <div class="carousel-slide"><img src="room-superior-double-3.jpg" alt="Superior Double"></div>
+              <div class="carousel-slide"><img src="room-superior-double-4.jpg" alt="Superior Double"></div>
+              <div class="carousel-slide"><img src="room-superior-double-5.jpg" alt="Superior Double"></div>
+            </div>
+            <div class="carousel-overlay"></div>
+            <button type="button" class="carousel-btn carousel-prev" onclick="carouselMove('c-double',-1)">&#8592;</button>
+            <button type="button" class="carousel-btn carousel-next" onclick="carouselMove('c-double',1)">&#8594;</button>
+            <div class="carousel-dots" id="d-double">
+              <div class="carousel-dot active" onclick="carouselGo('c-double',0)"></div>
+              <div class="carousel-dot" onclick="carouselGo('c-double',1)"></div>
+              <div class="carousel-dot" onclick="carouselGo('c-double',2)"></div>
+              <div class="carousel-dot" onclick="carouselGo('c-double',3)"></div>
+              <div class="carousel-dot" onclick="carouselGo('c-double',4)"></div>
+            </div>
+          </div>
+          <div class="room-body">
+            <div class="room-name">SUPERIOR ROOM</div>
+            <div class="room-size">Double Bed · 27–35m²</div>
+            <div class="room-desc">King double bed, sleek interiors. The most versatile room — work hard by day, rest well by night.</div>
+            <div class="room-price-row">
+              <div class="room-price">€285</div>
+              <div class="room-per">per night</div>
+            </div>
+            <a href="#inquiry" class="btn bo" style="display:block;">Inquire →</a>
+          </div>
+        </div>
+
+        <!-- Superior City View -->
+        <div class="room rv d2">
+          <div class="room-badge badge-popular">Best Views</div>
+          <div class="carousel" id="c-cityview">
+            <div class="carousel-track">
+              <div class="carousel-slide"><img src="room-cityview-1.jpg" alt="City View"></div>
+              <div class="carousel-slide"><img src="room-cityview-2.jpg" alt="City View"></div>
+              <div class="carousel-slide"><img src="room-cityview-3.jpg" alt="City View"></div>
+            </div>
+            <div class="carousel-overlay"></div>
+            <button type="button" class="carousel-btn carousel-prev" onclick="carouselMove('c-cityview',-1)">&#8592;</button>
+            <button type="button" class="carousel-btn carousel-next" onclick="carouselMove('c-cityview',1)">&#8594;</button>
+            <div class="carousel-dots" id="d-cityview">
+              <div class="carousel-dot active" onclick="carouselGo('c-cityview',0)"></div>
+              <div class="carousel-dot" onclick="carouselGo('c-cityview',1)"></div>
+              <div class="carousel-dot" onclick="carouselGo('c-cityview',2)"></div>
+            </div>
+          </div>
+          <div class="room-body">
+            <div class="room-name">SUPERIOR ROOM</div>
+            <div class="room-size">City View · 27–31m²</div>
+            <div class="room-desc">Elevated city views over Amsterdam. Start every morning with a view that sets the tone for the day.</div>
+            <div class="room-price-row">
+              <div class="room-price">€300</div>
+              <div class="room-per">per night</div>
+            </div>
+            <a href="#inquiry" class="btn bo" style="display:block;">Inquire →</a>
+          </div>
+        </div>
+
+        <!-- Executive Room -->
+        <div class="room featured rv">
+          <div class="room-badge badge-popular">Most Booked</div>
+          <div class="carousel" id="c-exec">
+            <div class="carousel-track">
+              <div class="carousel-slide"><img src="room-executive-1.jpg" alt="Executive Room"></div>
+              <div class="carousel-slide"><img src="room-executive-2.jpg" alt="Executive Room"></div>
+              <div class="carousel-slide"><img src="room-executive-3.jpg" alt="Executive Room"></div>
+              <div class="carousel-slide"><img src="room-executive-4.jpg" alt="Executive Room"></div>
+              <div class="carousel-slide"><img src="room-executive-5.jpg" alt="Executive Room"></div>
+              <div class="carousel-slide"><img src="room-executive-6.jpg" alt="Executive Room"></div>
+              <div class="carousel-slide"><img src="room-executive-7.jpg" alt="Executive Room"></div>
+            </div>
+            <div class="carousel-overlay"></div>
+            <button type="button" class="carousel-btn carousel-prev" onclick="carouselMove('c-exec',-1)">&#8592;</button>
+            <button type="button" class="carousel-btn carousel-next" onclick="carouselMove('c-exec',1)">&#8594;</button>
+            <div class="carousel-dots" id="d-exec">
+              <div class="carousel-dot active" onclick="carouselGo('c-exec',0)"></div>
+              <div class="carousel-dot" onclick="carouselGo('c-exec',1)"></div>
+              <div class="carousel-dot" onclick="carouselGo('c-exec',2)"></div>
+              <div class="carousel-dot" onclick="carouselGo('c-exec',3)"></div>
+              <div class="carousel-dot" onclick="carouselGo('c-exec',4)"></div>
+              <div class="carousel-dot" onclick="carouselGo('c-exec',5)"></div>
+              <div class="carousel-dot" onclick="carouselGo('c-exec',6)"></div>
+            </div>
+          </div>
+          <div class="room-body">
+            <div class="room-name">EXECUTIVE ROOM</div>
+            <div class="room-size">33–44m²</div>
+            <div class="room-desc">Larger format rooms with premium finishes and extra working space. The professional's choice for a full week.</div>
+            <div class="room-price-row">
+              <div class="room-price">€325</div>
+              <div class="room-per">per night</div>
+            </div>
+            <a href="#inquiry" class="btn bp" style="display:block;">Inquire →</a>
+          </div>
+        </div>
+
+        <!-- Junior Suite -->
+        <div class="room rv d1">
+          <div class="carousel" id="c-junior">
+            <div class="carousel-track">
+              <div class="carousel-slide"><img src="room-junior-1.jpg" alt="Junior Suite"></div>
+              <div class="carousel-slide"><img src="room-junior-2.jpg" alt="Junior Suite"></div>
+              <div class="carousel-slide"><img src="room-junior-3.jpg" alt="Junior Suite"></div>
+              <div class="carousel-slide"><img src="room-junior-4.jpg" alt="Junior Suite"></div>
+              <div class="carousel-slide"><img src="room-junior-5.jpg" alt="Junior Suite"></div>
+              <div class="carousel-slide"><img src="room-junior-bathroom.jpg" alt="Junior Suite Bathroom"></div>
+            </div>
+            <div class="carousel-overlay"></div>
+            <button type="button" class="carousel-btn carousel-prev" onclick="carouselMove('c-junior',-1)">&#8592;</button>
+            <button type="button" class="carousel-btn carousel-next" onclick="carouselMove('c-junior',1)">&#8594;</button>
+            <div class="carousel-dots" id="d-junior">
+              <div class="carousel-dot active" onclick="carouselGo('c-junior',0)"></div>
+              <div class="carousel-dot" onclick="carouselGo('c-junior',1)"></div>
+              <div class="carousel-dot" onclick="carouselGo('c-junior',2)"></div>
+              <div class="carousel-dot" onclick="carouselGo('c-junior',3)"></div>
+              <div class="carousel-dot" onclick="carouselGo('c-junior',4)"></div>
+              <div class="carousel-dot" onclick="carouselGo('c-junior',5)"></div>
+            </div>
+          </div>
+          <div class="room-body">
+            <div class="room-name">JUNIOR SUITE</div>
+            <div class="room-size">50m²</div>
+            <div class="room-desc">Spacious suite with separate seating area. Perfect for hosting small informal meetings in your own space.</div>
+            <div class="room-price-row">
+              <div class="room-price">€365</div>
+              <div class="room-per">per night</div>
+            </div>
+            <a href="#inquiry" class="btn bo" style="display:block;">Inquire →</a>
+          </div>
+        </div>
+
+        <!-- King Suite -->
+        <div class="room soldout rv d2">
+          <div class="room-badge badge-sold">Sold Out</div>
+          <div class="carousel" id="c-king">
+            <div class="carousel-track">
+              <div class="carousel-slide"><img src="room-king-1.jpg" alt="King Suite"></div>
+              <div class="carousel-slide"><img src="room-king-2.jpg" alt="King Suite"></div>
+              <div class="carousel-slide"><img src="room-king-3.jpg" alt="King Suite"></div>
+              <div class="carousel-slide"><img src="room-king-4.jpg" alt="King Suite"></div>
+            </div>
+            <div class="carousel-overlay"></div>
+            <button type="button" class="carousel-btn carousel-prev" onclick="carouselMove('c-king',-1)">&#8592;</button>
+            <button type="button" class="carousel-btn carousel-next" onclick="carouselMove('c-king',1)">&#8594;</button>
+            <div class="carousel-dots" id="d-king">
+              <div class="carousel-dot active" onclick="carouselGo('c-king',0)"></div>
+              <div class="carousel-dot" onclick="carouselGo('c-king',1)"></div>
+              <div class="carousel-dot" onclick="carouselGo('c-king',2)"></div>
+              <div class="carousel-dot" onclick="carouselGo('c-king',3)"></div>
+            </div>
+          </div>
+          <div class="room-body">
+            <div class="room-name">KING SUITE</div>
+            <div class="room-size">74–100m²</div>
+            <div class="room-desc">The flagship suite. Panoramic views, full living space. Join the waitlist below.</div>
+            <div class="room-price-row">
+              <div class="room-price">€435</div>
+              <div class="room-per">per night</div>
+            </div>
+            <div class="btn-sold">Sold Out — Join Waitlist ↓</div>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="price-note">* Prices per room per night · Subject to availability · October 2026 rates · Excl. city tax (paid at hotel reception) · Breakfast available on-site at the hotel</p>
+    </div>
+  </section>
+
+  <!-- AMENITIES -->
+  <section class="amenities">
+    <div class="c">
+      <span class="lbl rv">Hotel Amenities</span>
+      <h2 class="rv">What guests<br><span class="teal">value most.</span></h2>
+      <div class="am-grid">
+        <div class="am-item rv">
+          <div class="am-bar"></div>
+          <div class="am-title">UNBEATABLE STAFF</div>
+          <div class="am-desc">Room Mate Aitana is known for its warm, attentive team. Available around the clock throughout the week.</div>
+        </div>
+        <div class="am-item rv d1">
+          <div class="am-bar"></div>
+          <div class="am-title">CLEANLINESS</div>
+          <div class="am-desc">Consistently rated top for cleanliness. Daily servicing throughout your stay.</div>
+        </div>
+        <div class="am-item rv d2">
+          <div class="am-bar"></div>
+          <div class="am-title">BREAKFAST</div>
+          <div class="am-desc">Hot breakfast served daily from 07:00 to 12:00. The best way to start the day.</div>
+        </div>
+        <div class="am-item rv d3">
+          <div class="am-bar"></div>
+          <div class="am-title">FAST WIFI</div>
+          <div class="am-desc">Secure, high-speed internet throughout the hotel. Reliable connection for a full week of business.</div>
+        </div>
+        <div class="am-item rv">
+          <div class="am-bar"></div>
+          <div class="am-title">CLIMATE CONTROL</div>
+          <div class="am-desc">Individual heating and air conditioning in every room.</div>
+        </div>
+        <div class="am-item rv d1">
+          <div class="am-bar"></div>
+          <div class="am-title">PARKING</div>
+          <div class="am-desc">Valet and self-parking available. €40 per 24 hours. Advance reservation recommended.</div>
+        </div>
+        <div class="am-item rv d2">
+          <div class="am-bar"></div>
+          <div class="am-title">THE VIEWS</div>
+          <div class="am-desc">Overlooking the IJ waterfront and Amsterdam skyline. Select rooms offer panoramic marina views.</div>
+        </div>
+        <div class="am-item rv d3">
+          <div class="am-bar"></div>
+          <div class="am-title">LOCATION</div>
+          <div class="am-desc">IJdok 6, 5 minutes from Amsterdam Centraal. Everything Amsterdam on your doorstep.</div>
+        </div>
       </div>
     </div>
-    <a href="experiences.html">Venue Hire</a>
-    <a href="spaces.html">Workspaces</a>
-    <a href="partners.html">Partners</a>
-    <a href="merch.html">Merch</a>
-    <a href="booking.html" class="nc">Book Your Stay</a>
-  </div>
-  <div class="hb" onclick="var nl=document.getElementById('nl');var ov=document.getElementById('nav-overlay');nl.classList.toggle('open');ov.style.display=nl.classList.contains('open')?'block':'none';if(!nl.classList.contains('open')){document.querySelectorAll('.nav-drop').forEach(function(d){d.classList.remove('open')})}">
-    <span></span><span></span><span></span>
-  </div>
-</nav>
+  </section>
 
-<!-- HERO -->
-<section class="ph">
-  <div class="ph-img"></div>
-  <div class="ph-overlay"></div>
-  <div class="ph-grid"></div>
-  <div class="c ph-inner">
-    <div>
-      <span class="lbl rv">Room Mate Aitana Hotel · IJdok 6 · Amsterdam</span>
-      <h1 class="rv">
-        <span style="display:block;color:var(--wh)">BOOK</span>
-        <span style="display:block;color:var(--teal)">YOUR STAY.</span>
-      </h1>
-      <p class="ph-lead rv d1">Your room is your base. Hotel guests get full MMATH access throughout the week — no separate registration, no extra cost. Just check in and the industry opens up.</p>
-    </div>
-    <div class="ph-includes rv d2">
-      <span class="lbl">Every room includes</span>
-      <div class="ph-inc">Full MMATH Industry Hub access all week</div>
-      <div class="ph-inc">Oscar Room day programme</div>
-      <div class="ph-inc">Aitana Lounge Bar access</div>
-      <div class="ph-inc">Priority event registration</div>
-      <div class="ph-inc">Concierge support throughout the week</div>
-    </div>
-  </div>
-</section>
-
-<!-- ROOMS -->
-<section class="rooms">
-  <div class="c">
-    <span class="lbl rv">Room Types · October 2026 Rates</span>
-    <h2 class="rv">Choose your<br><span class="teal">base camp.</span></h2>
-    <div class="rooms-grid">
-
-      <!-- Superior Twin -->
-      <div class="room rv">
-        <div class="carousel" id="c-twin">
-          <div class="carousel-track">
-            <div class="carousel-slide"><img src="room-superior-twin-1.jpg" alt="Superior Twin"></div>
-            <div class="carousel-slide"><img src="room-superior-twin-2.jpg" alt="Superior Twin"></div>
-            <div class="carousel-slide"><img src="room-superior-twin-3.jpg" alt="Superior Twin"></div>
-            <div class="carousel-slide"><img src="room-superior-twin-4.jpg" alt="Superior Twin"></div>
+  <!-- INCLUDED -->
+  <section class="included">
+    <div class="c">
+      <span class="lbl rv">Included with Every Room</span>
+      <h2 class="rv">More than<br><span class="teal">a hotel room.</span></h2>
+      <div class="inc-grid">
+        <div class="inc-list">
+          <div class="inc-item rv">
+            <div class="inc-bar"></div>
+            <div class="inc-title">HUB ACCESS</div>
+            <div class="inc-desc">Full MMATH Industry Hub all week. Open networking throughout the event.</div>
           </div>
-          <div class="carousel-overlay"></div>
-          <button class="carousel-btn carousel-prev" onclick="carouselMove('c-twin',-1)">&#8592;</button>
-          <button class="carousel-btn carousel-next" onclick="carouselMove('c-twin',1)">&#8594;</button>
-          <div class="carousel-dots" id="d-twin">
-            <div class="carousel-dot active" onclick="carouselGo('c-twin',0)"></div>
-            <div class="carousel-dot" onclick="carouselGo('c-twin',1)"></div>
-            <div class="carousel-dot" onclick="carouselGo('c-twin',2)"></div>
-            <div class="carousel-dot" onclick="carouselGo('c-twin',3)"></div>
+          <div class="inc-item rv d1">
+            <div class="inc-bar"></div>
+            <div class="inc-title">LOUNGE ACCESS</div>
+            <div class="inc-desc">Aitana Lounge Bar all week. Where the best informal conversations happen.</div>
+          </div>
+          <div class="inc-item rv d1">
+            <div class="inc-bar"></div>
+            <div class="inc-title">PRIORITY ACCESS</div>
+            <div class="inc-desc">First access to showcase tickets, boat events and invite-only sessions.</div>
+          </div>
+          <div class="inc-item rv d2">
+            <div class="inc-bar"></div>
+            <div class="inc-title">CONCIERGE</div>
+            <div class="inc-desc">Dedicated MMATH concierge. Planning, restaurant bookings, transport.</div>
+          </div>
+          <div class="inc-item rv d2">
+            <div class="inc-bar"></div>
+            <div class="inc-title">OSCAR ROOM</div>
+            <div class="inc-desc">Access to the Oscar Room day programme throughout the week.</div>
+          </div>
+          <div class="inc-item rv d3">
+            <div class="inc-bar"></div>
+            <div class="inc-title">FULL WEEK</div>
+            <div class="inc-desc">Access valid for the full duration — day one through to the final night.</div>
           </div>
         </div>
-        <div class="room-body">
-          <div class="room-name">SUPERIOR ROOM</div>
-          <div class="room-size">Twin Bed · 30–33m²</div>
-          <div class="room-desc">Two single beds, modern design, city-facing. The smart base for solo professionals or colleagues sharing.</div>
-          <div class="room-price-row">
-            <div class="room-price">€285</div>
-            <div class="room-per">per night</div>
-          </div>
-          <a href="#inquiry" class="btn bo" style="display:block;">Inquire →</a>
+        <div class="rv d1 inc-photo">
+          <img src="room-junior-1.jpg" alt="Junior Suite">
         </div>
-      </div>
-
-      <!-- Superior Double -->
-      <div class="room rv d1">
-        <div class="carousel" id="c-double">
-          <div class="carousel-track">
-            <div class="carousel-slide"><img src="room-superior-double-1.jpg" alt="Superior Double"></div>
-            <div class="carousel-slide"><img src="room-superior-double-2.jpg" alt="Superior Double"></div>
-            <div class="carousel-slide"><img src="room-superior-double-3.jpg" alt="Superior Double"></div>
-            <div class="carousel-slide"><img src="room-superior-double-4.jpg" alt="Superior Double"></div>
-            <div class="carousel-slide"><img src="room-superior-double-5.jpg" alt="Superior Double"></div>
-          </div>
-          <div class="carousel-overlay"></div>
-          <button class="carousel-btn carousel-prev" onclick="carouselMove('c-double',-1)">&#8592;</button>
-          <button class="carousel-btn carousel-next" onclick="carouselMove('c-double',1)">&#8594;</button>
-          <div class="carousel-dots" id="d-double">
-            <div class="carousel-dot active" onclick="carouselGo('c-double',0)"></div>
-            <div class="carousel-dot" onclick="carouselGo('c-double',1)"></div>
-            <div class="carousel-dot" onclick="carouselGo('c-double',2)"></div>
-            <div class="carousel-dot" onclick="carouselGo('c-double',3)"></div>
-            <div class="carousel-dot" onclick="carouselGo('c-double',4)"></div>
-          </div>
-        </div>
-        <div class="room-body">
-          <div class="room-name">SUPERIOR ROOM</div>
-          <div class="room-size">Double Bed · 27–35m²</div>
-          <div class="room-desc">King double bed, sleek interiors. The most versatile room — work hard by day, rest well by night.</div>
-          <div class="room-price-row">
-            <div class="room-price">€285</div>
-            <div class="room-per">per night</div>
-          </div>
-          <a href="#inquiry" class="btn bo" style="display:block;">Inquire →</a>
-        </div>
-      </div>
-
-      <!-- Superior City View -->
-      <div class="room rv d2">
-        <div class="room-badge badge-popular">Best Views</div>
-        <div class="carousel" id="c-cityview">
-          <div class="carousel-track">
-            <div class="carousel-slide"><img src="room-cityview-1.jpg" alt="City View"></div>
-            <div class="carousel-slide"><img src="room-cityview-2.jpg" alt="City View"></div>
-            <div class="carousel-slide"><img src="room-cityview-3.jpg" alt="City View"></div>
-          </div>
-          <div class="carousel-overlay"></div>
-          <button class="carousel-btn carousel-prev" onclick="carouselMove('c-cityview',-1)">&#8592;</button>
-          <button class="carousel-btn carousel-next" onclick="carouselMove('c-cityview',1)">&#8594;</button>
-          <div class="carousel-dots" id="d-cityview">
-            <div class="carousel-dot active" onclick="carouselGo('c-cityview',0)"></div>
-            <div class="carousel-dot" onclick="carouselGo('c-cityview',1)"></div>
-            <div class="carousel-dot" onclick="carouselGo('c-cityview',2)"></div>
-          </div>
-        </div>
-        <div class="room-body">
-          <div class="room-name">SUPERIOR ROOM</div>
-          <div class="room-size">City View · 27–31m²</div>
-          <div class="room-desc">Elevated city views over Amsterdam. Start every morning with a view that sets the tone for the day.</div>
-          <div class="room-price-row">
-            <div class="room-price">€300</div>
-            <div class="room-per">per night</div>
-          </div>
-          <a href="#inquiry" class="btn bo" style="display:block;">Inquire →</a>
-        </div>
-      </div>
-
-      <!-- Executive Room -->
-      <div class="room featured rv">
-        <div class="room-badge badge-popular">Most Booked</div>
-        <div class="carousel" id="c-exec">
-          <div class="carousel-track">
-            <div class="carousel-slide"><img src="room-executive-1.jpg" alt="Executive Room"></div>
-            <div class="carousel-slide"><img src="room-executive-2.jpg" alt="Executive Room"></div>
-            <div class="carousel-slide"><img src="room-executive-3.jpg" alt="Executive Room"></div>
-            <div class="carousel-slide"><img src="room-executive-4.jpg" alt="Executive Room"></div>
-            <div class="carousel-slide"><img src="room-executive-5.jpg" alt="Executive Room"></div>
-            <div class="carousel-slide"><img src="room-executive-6.jpg" alt="Executive Room"></div>
-            <div class="carousel-slide"><img src="room-executive-7.jpg" alt="Executive Room"></div>
-          </div>
-          <div class="carousel-overlay"></div>
-          <button class="carousel-btn carousel-prev" onclick="carouselMove('c-exec',-1)">&#8592;</button>
-          <button class="carousel-btn carousel-next" onclick="carouselMove('c-exec',1)">&#8594;</button>
-          <div class="carousel-dots" id="d-exec">
-            <div class="carousel-dot active" onclick="carouselGo('c-exec',0)"></div>
-            <div class="carousel-dot" onclick="carouselGo('c-exec',1)"></div>
-            <div class="carousel-dot" onclick="carouselGo('c-exec',2)"></div>
-            <div class="carousel-dot" onclick="carouselGo('c-exec',3)"></div>
-            <div class="carousel-dot" onclick="carouselGo('c-exec',4)"></div>
-            <div class="carousel-dot" onclick="carouselGo('c-exec',5)"></div>
-            <div class="carousel-dot" onclick="carouselGo('c-exec',6)"></div>
-          </div>
-        </div>
-        <div class="room-body">
-          <div class="room-name">EXECUTIVE ROOM</div>
-          <div class="room-size">33–44m²</div>
-          <div class="room-desc">Larger format rooms with premium finishes and extra working space. The professional's choice for a full week.</div>
-          <div class="room-price-row">
-            <div class="room-price">€325</div>
-            <div class="room-per">per night</div>
-          </div>
-          <a href="#inquiry" class="btn bp" style="display:block;">Inquire →</a>
-        </div>
-      </div>
-
-      <!-- Junior Suite -->
-      <div class="room rv d1">
-        <div class="carousel" id="c-junior">
-          <div class="carousel-track">
-            <div class="carousel-slide"><img src="room-junior-1.jpg" alt="Junior Suite"></div>
-            <div class="carousel-slide"><img src="room-junior-2.jpg" alt="Junior Suite"></div>
-            <div class="carousel-slide"><img src="room-junior-3.jpg" alt="Junior Suite"></div>
-            <div class="carousel-slide"><img src="room-junior-4.jpg" alt="Junior Suite"></div>
-            <div class="carousel-slide"><img src="room-junior-5.jpg" alt="Junior Suite"></div>
-            <div class="carousel-slide"><img src="room-junior-bathroom.jpg" alt="Junior Suite Bathroom"></div>
-          </div>
-          <div class="carousel-overlay"></div>
-          <button class="carousel-btn carousel-prev" onclick="carouselMove('c-junior',-1)">&#8592;</button>
-          <button class="carousel-btn carousel-next" onclick="carouselMove('c-junior',1)">&#8594;</button>
-          <div class="carousel-dots" id="d-junior">
-            <div class="carousel-dot active" onclick="carouselGo('c-junior',0)"></div>
-            <div class="carousel-dot" onclick="carouselGo('c-junior',1)"></div>
-            <div class="carousel-dot" onclick="carouselGo('c-junior',2)"></div>
-            <div class="carousel-dot" onclick="carouselGo('c-junior',3)"></div>
-            <div class="carousel-dot" onclick="carouselGo('c-junior',4)"></div>
-            <div class="carousel-dot" onclick="carouselGo('c-junior',5)"></div>
-          </div>
-        </div>
-        <div class="room-body">
-          <div class="room-name">JUNIOR SUITE</div>
-          <div class="room-size">50m²</div>
-          <div class="room-desc">Spacious suite with separate seating area. Perfect for hosting small informal meetings in your own space.</div>
-          <div class="room-price-row">
-            <div class="room-price">€365</div>
-            <div class="room-per">per night</div>
-          </div>
-          <a href="#inquiry" class="btn bo" style="display:block;">Inquire →</a>
-        </div>
-      </div>
-
-      <!-- King Suite -->
-      <div class="room soldout rv d2">
-        <div class="room-badge badge-sold">Sold Out</div>
-        <div class="carousel" id="c-king">
-          <div class="carousel-track">
-            <div class="carousel-slide"><img src="room-king-1.jpg" alt="King Suite"></div>
-            <div class="carousel-slide"><img src="room-king-2.jpg" alt="King Suite"></div>
-            <div class="carousel-slide"><img src="room-king-3.jpg" alt="King Suite"></div>
-            <div class="carousel-slide"><img src="room-king-4.jpg" alt="King Suite"></div>
-          </div>
-          <div class="carousel-overlay"></div>
-          <button class="carousel-btn carousel-prev" onclick="carouselMove('c-king',-1)">&#8592;</button>
-          <button class="carousel-btn carousel-next" onclick="carouselMove('c-king',1)">&#8594;</button>
-          <div class="carousel-dots" id="d-king">
-            <div class="carousel-dot active" onclick="carouselGo('c-king',0)"></div>
-            <div class="carousel-dot" onclick="carouselGo('c-king',1)"></div>
-            <div class="carousel-dot" onclick="carouselGo('c-king',2)"></div>
-            <div class="carousel-dot" onclick="carouselGo('c-king',3)"></div>
-          </div>
-        </div>
-        <div class="room-body">
-          <div class="room-name">KING SUITE</div>
-          <div class="room-size">74–100m²</div>
-          <div class="room-desc">The flagship suite. Panoramic views, full living space. Join the waitlist below.</div>
-          <div class="room-price-row">
-            <div class="room-price">€435</div>
-            <div class="room-per">per night</div>
-          </div>
-          <div class="btn-sold">Sold Out — Join Waitlist ↓</div>
-        </div>
-      </div>
-
-    </div>
-    <p class="price-note">* Prices per room per night · Subject to availability · October 2026 rates · Excl. city tax (paid at hotel reception) · Breakfast available on-site at the hotel</p>
-  </div>
-</section>
-
-<!-- AMENITIES -->
-<section class="amenities">
-  <div class="c">
-    <span class="lbl rv">Hotel Amenities</span>
-    <h2 class="rv">What guests<br><span class="teal">value most.</span></h2>
-    <div class="am-grid">
-      <div class="am-item rv">
-        <div class="am-bar"></div>
-        <div class="am-title">UNBEATABLE STAFF</div>
-        <div class="am-desc">Room Mate Aitana is known for its warm, attentive team. Available around the clock throughout the week.</div>
-      </div>
-      <div class="am-item rv d1">
-        <div class="am-bar"></div>
-        <div class="am-title">CLEANLINESS</div>
-        <div class="am-desc">Consistently rated top for cleanliness. Daily servicing throughout your stay.</div>
-      </div>
-      <div class="am-item rv d2">
-        <div class="am-bar"></div>
-        <div class="am-title">BREAKFAST</div>
-        <div class="am-desc">Hot breakfast served daily from 07:00 to 12:00. The best way to start the day.</div>
-      </div>
-      <div class="am-item rv d3">
-        <div class="am-bar"></div>
-        <div class="am-title">FAST WIFI</div>
-        <div class="am-desc">Secure, high-speed internet throughout the hotel. Reliable connection for a full week of business.</div>
-      </div>
-      <div class="am-item rv">
-        <div class="am-bar"></div>
-        <div class="am-title">CLIMATE CONTROL</div>
-        <div class="am-desc">Individual heating and air conditioning in every room.</div>
-      </div>
-      <div class="am-item rv d1">
-        <div class="am-bar"></div>
-        <div class="am-title">PARKING</div>
-        <div class="am-desc">Valet and self-parking available. €40 per 24 hours. Advance reservation recommended.</div>
-      </div>
-      <div class="am-item rv d2">
-        <div class="am-bar"></div>
-        <div class="am-title">THE VIEWS</div>
-        <div class="am-desc">Overlooking the IJ waterfront and Amsterdam skyline. Select rooms offer panoramic marina views.</div>
-      </div>
-      <div class="am-item rv d3">
-        <div class="am-bar"></div>
-        <div class="am-title">LOCATION</div>
-        <div class="am-desc">IJdok 6, 5 minutes from Amsterdam Centraal. Everything Amsterdam on your doorstep.</div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- INCLUDED -->
-<section class="included">
-  <div class="c">
-    <span class="lbl rv">Included with Every Room</span>
-    <h2 class="rv">More than<br><span class="teal">a hotel room.</span></h2>
-    <div class="inc-grid">
-      <div class="inc-list">
-        <div class="inc-item rv">
-          <div class="inc-bar"></div>
-          <div class="inc-title">HUB ACCESS</div>
-          <div class="inc-desc">Full MMATH Industry Hub all week. Open networking throughout the event.</div>
+  <!-- GROUP -->
+  <section class="group">
+    <div class="c">
+      <div class="group-inner">
+        <div class="rv">
+          <span class="lbl">Group Bookings</span>
+          <h2>Bringing<br><span class="teal">your team?</span></h2>
+          <p style="font-size:15px;color:var(--wd);line-height:1.8;font-weight:300;margin-top:16px">Book 4 or more rooms and unlock dedicated group benefits. Perfect for labels, agencies and brand teams attending together.</p>
+          <ul class="group-perks">
+            <li>Dedicated group check-in & coordination</li>
+            <li>Group meeting room allocation</li>
+            <li>Branded team lounge area (on request)</li>
+            <li>Group showcase & event tickets</li>
+            <li>Custom week itinerary planning</li>
+          </ul>
+          <a href="#inquiry" class="btn bp">Enquire About Groups →</a>
         </div>
-        <div class="inc-item rv d1">
-          <div class="inc-bar"></div>
-          <div class="inc-title">LOUNGE ACCESS</div>
-          <div class="inc-desc">Aitana Lounge Bar all week. Where the best informal conversations happen.</div>
+        <div class="group-visual rv d1">
+          <div class="group-num">4+</div>
+          <div class="group-label">Rooms for group benefits</div>
         </div>
-        <div class="inc-item rv d1">
-          <div class="inc-bar"></div>
-          <div class="inc-title">PRIORITY ACCESS</div>
-          <div class="inc-desc">First access to showcase tickets, boat events and invite-only sessions.</div>
-        </div>
-        <div class="inc-item rv d2">
-          <div class="inc-bar"></div>
-          <div class="inc-title">CONCIERGE</div>
-          <div class="inc-desc">Dedicated MMATH concierge. Planning, restaurant bookings, transport.</div>
-        </div>
-        <div class="inc-item rv d2">
-          <div class="inc-bar"></div>
-          <div class="inc-title">OSCAR ROOM</div>
-          <div class="inc-desc">Access to the Oscar Room day programme throughout the week.</div>
-        </div>
-        <div class="inc-item rv d3">
-          <div class="inc-bar"></div>
-          <div class="inc-title">FULL WEEK</div>
-          <div class="inc-desc">Access valid for the full duration — day one through to the final night.</div>
-        </div>
-      </div>
-      <div class="rv d1 inc-photo">
-        <img src="room-junior-1.jpg" alt="Junior Suite">
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- GROUP -->
-<section class="group">
-  <div class="c">
-    <div class="group-inner">
-      <div class="rv">
-        <span class="lbl">Group Bookings</span>
-        <h2>Bringing<br><span class="teal">your team?</span></h2>
-        <p style="font-size:15px;color:var(--wd);line-height:1.8;font-weight:300;margin-top:16px">Book 4 or more rooms and unlock dedicated group benefits. Perfect for labels, agencies and brand teams attending together.</p>
-        <ul class="group-perks">
-          <li>Dedicated group check-in & coordination</li>
-          <li>Group meeting room allocation</li>
-          <li>Branded team lounge area (on request)</li>
-          <li>Group showcase & event tickets</li>
-          <li>Custom week itinerary planning</li>
-        </ul>
-        <a href="#inquiry" class="btn bp">Enquire About Groups →</a>
-      </div>
-      <div class="group-visual rv d1">
-        <div class="group-num">4+</div>
-        <div class="group-label">Rooms for group benefits</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section class="faq">
-  <div class="c">
-    <span class="lbl rv">FAQ</span>
-    <h2 class="rv">Good<br><span class="teal">questions.</span></h2>
-    <div class="faq-list">
-      <div class="faq-item rv"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span>Do I need separate registration to access MMATH as a hotel guest?</span><div class="faq-icon">+</div></div><div class="faq-a">No. Hotel guests receive full MMATH Industry Hub access automatically upon check-in. No separate registration, no additional cost.</div></div>
-      <div class="faq-item rv"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span>Is breakfast included in the room rate?</span><div class="faq-icon">+</div></div><div class="faq-a">Breakfast is not included in the base rate but is available from €25 per person. Served daily from 07:00 to 12:00. Can be added to your booking on request.</div></div>
-      <div class="faq-item rv"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span>Is parking available at the hotel?</span><div class="faq-icon">+</div></div><div class="faq-a">Yes. Parking is available at €40 per 24 hours. We strongly recommend booking in advance as availability is limited. Mention it in your inquiry and we'll arrange it.</div></div>
-      <div class="faq-item rv"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span>What is the cancellation policy?</span><div class="faq-icon">+</div></div><div class="faq-a">Full details provided at booking. MMATH works with Room Mate Aitana's standard cancellation policy. Flexible options available for early bookings — contact us directly.</div></div>
-      <div class="faq-item rv"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span>Can I attend without staying at the hotel?</span><div class="faq-icon">+</div></div><div class="faq-a">Yes — RSVP for the Industry Hub is available for registered industry professionals. However, hotel guests receive priority access and all included benefits throughout the full week.</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- BOOKING FORM -->
-<section class="book-form" id="inquiry">
-  <div class="c">
-    <span class="lbl rv">Room Inquiry</span>
-    <h2 class="rv">Reserve your<br><span class="teal">room now.</span></h2>
-    <div class="form-grid">
-      <div class="form-text rv">
-        <p>Fill in your details and we'll confirm availability and pricing for October 2026. We respond within 24 hours.</p>
-        <p>For group bookings of 4+ rooms, you'll automatically receive dedicated group pricing and benefits.</p>
-        <div style="margin-top:32px;padding:24px 28px;background:var(--blkc);border:1px solid var(--blkb)">
-          <span class="lbl">Direct Contact</span>
-          <p style="font-family:var(--fc);font-size:13px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="8ce5e2eae3cce1e9e9f8e1e9edf8f8e4e9e4e3f8e9e0a2efe3e1">[email&#160;protected]</a></p>
-          <p style="font-family:var(--fc);font-size:13px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase;margin-top:6px;">IJdok 6 · Amsterdam</p>
-        </div>
-        <div style="margin-top:16px;padding:20px 24px;background:var(--blkc);border:1px solid var(--blkb)">
-          <span class="lbl" style="margin-bottom:8px">Good to Know</span>
-          <p style="font-family:var(--fc);font-size:12px;letter-spacing:.08em;color:var(--wd);line-height:1.8;text-transform:uppercase">
-            → City tax excl. · Paid at hotel reception upon check-in<br>
-            → Breakfast available on-site at the hotel
-          </p>
-        </div>
-        <div id="booking-summary" style="display:none;margin-top:16px;padding:24px 28px;background:var(--blkc);border:1px solid var(--teal)">
-          <span class="lbl" style="margin-bottom:10px">Your Selection</span>
-          <div id="summary-rooms-text" style="font-family:var(--fc);font-size:12px;letter-spacing:.08em;color:var(--wd);text-transform:uppercase;line-height:2"></div>
-          <div id="summary-total" style="font-family:var(--fd);font-size:32px;color:var(--teal);margin-top:12px"></div>
-          <div style="font-family:var(--fc);font-size:10px;letter-spacing:.1em;color:rgba(245,245,240,.3);text-transform:uppercase;margin-top:6px">Excl. city tax · Subject to availability</div>
-        </div>
-        <p style="font-family:var(--fc);font-size:10px;letter-spacing:.12em;color:rgba(245,245,240,.3);text-transform:uppercase;margin-top:16px">B2B industry professionals only · All inquiries treated with full confidentiality</p>
-      </div>
-
-      <form class="rv d1" id="inquiry-form" data-formspree="https://formspree.io/f/meepjqba" onsubmit="submitFS(this,event)">
-        <div class="field-row">
-          <div class="field"><label>First Name</label><input type="text" name="first_name" placeholder="Your first name" required></div>
-          <div class="field"><label>Last Name</label><input type="text" name="last_name" placeholder="Your last name" required></div>
-        </div>
-        <div class="field"><label>Email Address</label><input type="email" name="email" placeholder="your@email.com" required></div>
-        <div class="field"><label>Company</label><input type="text" name="company" placeholder="Your company" required></div>
-
-        <!-- ROOMS WITH PER-ROOM DATES -->
-        <div style="background:var(--blkc);border:1px solid var(--blkb);padding:20px">
-          <span class="lbl" style="margin-bottom:4px">Room Selection</span>
-          <p style="font-family:var(--fc);font-size:10px;letter-spacing:.12em;color:rgba(245,245,240,.3);text-transform:uppercase;margin-bottom:16px">Each room can have different dates · Oct 15–30 only</p>
-          <div id="rooms-list"></div>
-          <button type="button" onclick="addRoom()" style="display:flex;align-items:center;gap:8px;background:transparent;border:1px dashed rgba(77,168,160,.35);color:var(--teal);font-family:var(--fc);font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;padding:11px 16px;cursor:pointer;width:100%;justify-content:center;margin-top:6px;transition:all .3s" onmouseover="this.style.borderColor='var(--teal)'" onmouseout="this.style.borderColor='rgba(77,168,160,.35)'">+ ADD ANOTHER ROOM</button>
-          <input type="hidden" name="rooms_detail" id="inp-rooms-detail">
+  <!-- FAQ -->
+  <section class="faq">
+    <div class="c">
+      <span class="lbl rv">FAQ</span>
+      <h2 class="rv">Good<br><span class="teal">questions.</span></h2>
+      <div class="faq-list">
+        <div class="faq-item rv">
+          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+            <span>Do I need separate registration to access MMATH as a hotel guest?</span>
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-a">No. Hotel guests receive full MMATH Industry Hub access automatically upon check-in. No separate registration, no additional cost.</div>
         </div>
 
-        <div class="field"><label>Additional Notes</label><textarea name="notes" placeholder="Special requests, parking, city tax info, group details..."></textarea></div>
-        <button type="submit" class="btn bp" style="width:100%;margin-top:8px;">Send Inquiry →</button>
-      </form>
-    </div>
-  </div>
-</section>
+        <div class="faq-item rv">
+          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+            <span>Is breakfast included in the room rate?</span>
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-a">Breakfast is not included in the base rate but is available from €25 per person. Served daily from 07:00 to 12:00. Can be added to your booking on request.</div>
+        </div>
 
-<!-- FOOTER -->
-<footer class="ft">
-  <div class="c">
-    <div class="fg">
-      <div class="fb">
-        <img src="logo.png" alt="Meet Me at the Hotel" style="height:52px;width:auto;display:block;">
-        <p>MeetMeAtTheHotel is an international platform where the global music industry connects with culture, technology and creators.</p>
-        <p class="fa">Room Mate Aitana Hotel · IJdok 6 · Amsterdam · October 2026</p>
-      </div>
-      <div class="fcc">
-        <p class="fct">Explore</p>
-        <a href="about.html">About</a>
-        <a href="program.html">Program</a>
-        <div class="nav-drop" id="nav-drop-universe">
-      <button class="nav-drop-btn" onclick="toggleNavDrop2()">Meet Me Universe</button>
-      <div class="nav-drop-menu">
-        <a href="universe.html">The Universe</a>
-        <a href="meetme-experience.html">Meet Me Experience</a>
-        <a href="image-lab.html">Meet Me Image Lab</a>
-        <a href="meetme-future.html">Meet Me in the Future</a>
-        <a href="meetme-content-lab.html">Meet Me Content Lab</a>
-        <a href="meetme-connect.html">Meet Me Connect</a>
-      </div>
-    </div>
-        <a href="industry-hub.html">Industry Hub</a>
-        <a href="industry-exchange.html">Industry Exchange</a>
-        <a href="experiences.html">Venue Hire</a>
-      </div>
-      <div class="fcc">
-        <p class="fct">Book</p>
-        <a href="booking.html">Hotel Rooms</a>
-        <a href="spaces.html">Meeting Rooms</a>
-        <a href="experiences.html">Showcases</a>
-        <a href="partners.html">Partnerships</a>
-      </div>
-      <div class="fcc">
-        <p class="fct">Industry Resources</p>
-        <a href="music-industry-networking-amsterdam.html">Music Industry Networking</a>
-        <a href="artist-showcases-amsterdam.html">Artist Showcases</a>
-        <a href="b2b-music-platform.html">B2B Music Platform</a>
-        <a href="brand-activation-events.html">Brand Activations</a>
-        <a href="hotel-experience-amsterdam.html">Hotel Experience</a>
-      </div>
-      <div class="fcc">
-        <p class="fct">Connect</p>
-        <a href="contact.html">Contact</a>
-        <a href="https://www.instagram.com/meetmeconnect/" target="_blank" rel="noopener">Instagram</a>
-        <a href="https://www.linkedin.com/company/meetmeconnect/" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="#">TikTok</a>
+        <div class="faq-item rv">
+          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+            <span>Is parking available at the hotel?</span>
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-a">Yes. Parking is available at €40 per 24 hours. We strongly recommend booking in advance as availability is limited. Mention it in your inquiry and we'll arrange it.</div>
+        </div>
+
+        <div class="faq-item rv">
+          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+            <span>What is the cancellation policy?</span>
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-a">Full details provided at booking. MMATH works with Room Mate Aitana's standard cancellation policy. Flexible options available for early bookings — contact us directly.</div>
+        </div>
+
+        <div class="faq-item rv">
+          <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+            <span>Can I attend without staying at the hotel?</span>
+            <div class="faq-icon">+</div>
+          </div>
+          <div class="faq-a">Yes — RSVP for the Industry Hub is available for registered industry professionals. However, hotel guests receive priority access and all included benefits throughout the full week.</div>
+        </div>
       </div>
     </div>
-    <div class="fb2">
-      <p>© 2026 Meet Me at the Hotel · 5th Anniversary Edition · Amsterdam · October 2026</p>
-      <p><a href="#">Privacy</a> · <a href="#">Cookies</a> · <a href="#">Terms</a></p>
+  </section>
+
+  <!-- BOOKING FORM -->
+  <section class="book-form" id="inquiry">
+    <div class="c">
+      <span class="lbl rv">Room Inquiry</span>
+      <h2 class="rv">Reserve your<br><span class="teal">room now.</span></h2>
+
+      <div class="form-grid">
+        <div class="form-text rv">
+          <p>Fill in your details and we'll confirm availability and pricing for October 2026. We respond within 24 hours.</p>
+          <p>For group bookings of 4+ rooms, you'll automatically receive dedicated group pricing and benefits.</p>
+
+          <div style="margin-top:32px;padding:24px 28px;background:var(--blkc);border:1px solid var(--blkb)">
+            <span class="lbl">Direct Contact</span>
+            <p style="font-family:var(--fc);font-size:13px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase;">
+              <a href="mailto:stay@meetmeatthehotel.com">stay@meetmeatthehotel.com</a>
+            </p>
+            <p style="font-family:var(--fc);font-size:13px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase;margin-top:6px;">IJdok 6 · Amsterdam</p>
+          </div>
+
+          <div style="margin-top:16px;padding:20px 24px;background:var(--blkc);border:1px solid var(--blkb)">
+            <span class="lbl" style="margin-bottom:8px">Good to Know</span>
+            <p style="font-family:var(--fc);font-size:12px;letter-spacing:.08em;color:var(--wd);line-height:1.8;text-transform:uppercase">
+              → City tax excl. · Paid at hotel reception upon check-in<br>
+              → Breakfast available on-site at the hotel
+            </p>
+          </div>
+
+          <div id="booking-summary" style="display:none;margin-top:16px;padding:24px 28px;background:var(--blkc);border:1px solid var(--teal)">
+            <span class="lbl" style="margin-bottom:10px">Your Selection</span>
+            <div id="summary-rooms-text" style="font-family:var(--fc);font-size:12px;letter-spacing:.08em;color:var(--wd);text-transform:uppercase;line-height:2"></div>
+            <div id="summary-total" style="font-family:var(--fd);font-size:32px;color:var(--teal);margin-top:12px"></div>
+            <div style="font-family:var(--fc);font-size:10px;letter-spacing:.1em;color:rgba(245,245,240,.3);text-transform:uppercase;margin-top:6px">Excl. city tax · Subject to availability</div>
+          </div>
+
+          <p style="font-family:var(--fc);font-size:10px;letter-spacing:.12em;color:rgba(245,245,240,.3);text-transform:uppercase;margin-top:16px">B2B industry professionals only · All inquiries treated with full confidentiality</p>
+        </div>
+
+        <form class="rv d1" id="inquiry-form" data-formspree="https://formspree.io/f/meepjqba" onsubmit="submitFS(this,event)">
+          <div class="field-row">
+            <div class="field">
+              <label>First Name</label>
+              <input type="text" name="first_name" placeholder="Your first name" required>
+            </div>
+            <div class="field">
+              <label>Last Name</label>
+              <input type="text" name="last_name" placeholder="Your last name" required>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Email Address</label>
+            <input type="email" name="email" placeholder="your@email.com" required>
+          </div>
+
+          <div class="field">
+            <label>Company</label>
+            <input type="text" name="company" placeholder="Your company" required>
+          </div>
+
+          <div style="background:var(--blkc);border:1px solid var(--blkb);padding:20px">
+            <span class="lbl" style="margin-bottom:4px">Room Selection</span>
+            <p style="font-family:var(--fc);font-size:10px;letter-spacing:.12em;color:rgba(245,245,240,.3);text-transform:uppercase;margin-bottom:16px">Each room can have different dates · Oct 15–30 only</p>
+
+            <div id="rooms-list"></div>
+
+            <button
+              type="button"
+              onclick="addRoom()"
+              style="display:flex;align-items:center;gap:8px;background:transparent;border:1px dashed rgba(77,168,160,.35);color:var(--teal);font-family:var(--fc);font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;padding:11px 16px;cursor:pointer;width:100%;justify-content:center;margin-top:6px;transition:all .3s"
+              onmouseover="this.style.borderColor='var(--teal)'"
+              onmouseout="this.style.borderColor='rgba(77,168,160,.35)'"
+            >+ ADD ANOTHER ROOM</button>
+
+            <input type="hidden" name="rooms_detail" id="inp-rooms-detail">
+          </div>
+
+          <div class="field">
+            <label>Additional Notes</label>
+            <textarea name="notes" placeholder="Special requests, parking, city tax info, group details..."></textarea>
+          </div>
+
+          <button type="submit" class="btn bp" style="width:100%;margin-top:8px;">Send Inquiry →</button>
+        </form>
+      </div>
     </div>
-  </div>
-</footer>
+  </section>
 
-<style>
-.room-card{background:var(--blk);border:1px solid var(--blkb);padding:16px;margin-bottom:6px}
-.room-card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
-.room-card-num{font-family:var(--fd);font-size:16px;color:var(--teal);letter-spacing:.05em}
-.room-remove{background:transparent;border:1px solid rgba(245,245,240,.12);color:rgba(245,245,240,.3);font-size:12px;padding:4px 10px;cursor:pointer;font-family:var(--fc);letter-spacing:.1em;transition:all .2s}
-.room-remove:hover{border-color:#e05555;color:#e05555}
-.room-select{background:var(--blkc);border:1px solid var(--blkb);color:var(--wh);font-family:var(--fc);font-size:12px;letter-spacing:.08em;padding:11px 12px;width:100%;outline:none;transition:border-color .3s;text-transform:uppercase;margin-bottom:8px}
-.room-select:focus{border-color:var(--teal)}
-.room-date-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:2px}
-.room-date-lbl{font-family:var(--fc);font-size:10px;font-weight:600;letter-spacing:.2em;color:var(--teal);text-transform:uppercase;display:block;margin-bottom:5px}
-.room-date-sel{background:var(--blkc);border:1px solid var(--blkb);color:var(--wh);font-family:var(--fc);font-size:12px;padding:10px 12px;width:100%;outline:none;transition:border-color .3s;height:42px;box-sizing:border-box;cursor:pointer;-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%234DA8A0'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
-.room-date-sel:focus{border-color:var(--teal)}
-.room-date-sel option{background:#161616;color:var(--wh)}
-.room-nights{font-family:var(--fc);font-size:10px;letter-spacing:.1em;color:var(--teal);text-transform:uppercase;margin-top:6px;height:16px}
-</style>
+  <!-- FOOTER -->
+  <footer class="ft">
+    <div class="c">
+      <div class="fg">
+        <div class="fb">
+          <img src="logo.png" alt="Meet Me at the Hotel" style="height:52px;width:auto;display:block;">
+          <p>MeetMeAtTheHotel is an international platform where the global music industry connects with culture, technology and creators.</p>
+          <p class="fa">Room Mate Aitana Hotel · IJdok 6 · Amsterdam · October 2026</p>
+        </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-const ROOM_PRICES={'Superior Twin':285,'Superior Double':285,'Superior City View':300,'Executive Room':325,'Junior Suite':365,'King Suite (Waitlist)':435};
-const ROOM_OPTS=[
-  {v:'Superior Twin',l:'Superior Room — Twin Bed · €285/night'},
-  {v:'Superior Double',l:'Superior Room — Double Bed · €285/night'},
-  {v:'Superior City View',l:'Superior Room — City View · €300/night'},
-  {v:'Executive Room',l:'Executive Room · €325/night'},
-  {v:'Junior Suite',l:'Junior Suite · €365/night'},
-  {v:'King Suite (Waitlist)',l:'King Suite — Waitlist · €435/night'},
-];
-let roomCount=0;
+        <div class="fcc">
+          <p class="fct">Explore</p>
+          <a href="about.html">About</a>
+          <a href="program.html">Program</a>
+          <a href="universe.html">Meet Me Universe</a>
+          <a href="industry-hub.html">Industry Hub</a>
+          <a href="industry-exchange.html">Industry Exchange</a>
+          <a href="experiences.html">Venue Hire</a>
+        </div>
 
-function addRoom(preselect){
-  roomCount++;
-  const rid=roomCount;
-  const div=document.createElement('div');
-  div.className='room-card';
-  div.id='rc-'+rid;
-  const opts=ROOM_OPTS.map(o=>'<option value="'+o.v+'"'+(preselect===o.v?' selected':'')+'>'+o.l+'</option>').join('');
-  const removeBtn=rid>1?'<button type="button" class="room-remove" onclick="removeRoom('+rid+')">✕ Remove</button>':'<span></span>';
-  div.innerHTML=
-    '<div class="room-card-header">'+
-      '<span class="room-card-num">ROOM '+rid+'</span>'+
-      removeBtn+
-    '</div>'+
-    '<select class="room-select" id="rs-'+rid+'" onchange="updateSummary()" required>'+
-      '<option value="" disabled'+(preselect?'':' selected')+'>Select room type</option>'+
-      opts+
-    '</select>'+
-    '<div class="room-date-grid">'+
-      '<div>'+
-        '<span class="room-date-lbl">Check-in</span>'+
-        '<select class="room-date-sel" id="ci-'+rid+'" onchange="onDateChange('+rid+')" required><option value="">Day</option><option value="15">15 Oct</option><option value="16">16 Oct</option><option value="17">17 Oct</option><option value="18">18 Oct</option><option value="19">19 Oct</option><option value="20">20 Oct</option><option value="21">21 Oct</option><option value="22">22 Oct</option><option value="23">23 Oct</option><option value="24">24 Oct</option><option value="25">25 Oct</option><option value="26">26 Oct</option><option value="27">27 Oct</option><option value="28">28 Oct</option><option value="29">29 Oct</option><option value="30">30 Oct</option></select>'+
-      '</div>'+
-      '<div>'+
-        '<span class="room-date-lbl">Check-out</span>'+
-        '<select class="room-date-sel" id="co-'+rid+'" onchange="onDateChange('+rid+')" required><option value="">Day</option><option value="15">15 Oct</option><option value="16">16 Oct</option><option value="17">17 Oct</option><option value="18">18 Oct</option><option value="19">19 Oct</option><option value="20">20 Oct</option><option value="21">21 Oct</option><option value="22">22 Oct</option><option value="23">23 Oct</option><option value="24">24 Oct</option><option value="25">25 Oct</option><option value="26">26 Oct</option><option value="27">27 Oct</option><option value="28">28 Oct</option><option value="29">29 Oct</option><option value="30">30 Oct</option></select>'+
-      '</div>'+
-    '</div>'+
-    '<div class="room-nights" id="nt-'+rid+'"></div>';
-  document.getElementById('rooms-list').appendChild(div);
-  updateSummary();
-}
+        <div class="fcc">
+          <p class="fct">Book</p>
+          <a href="booking.html">Hotel Rooms</a>
+          <a href="spaces.html">Meeting Rooms</a>
+          <a href="experiences.html">Showcases</a>
+          <a href="partners.html">Partnerships</a>
+        </div>
 
-function removeRoom(rid){
-  document.getElementById('rc-'+rid).remove();
-  updateSummary();
-}
+        <div class="fcc">
+          <p class="fct">Industry Resources</p>
+          <a href="music-industry-networking-amsterdam.html">Music Industry Networking</a>
+          <a href="artist-showcases-amsterdam.html">Artist Showcases</a>
+          <a href="b2b-music-platform.html">B2B Music Platform</a>
+          <a href="brand-activation-events.html">Brand Activations</a>
+          <a href="hotel-experience-amsterdam.html">Hotel Experience</a>
+        </div>
 
-function onDateChange(rid){
-  const ciSel=document.getElementById('ci-'+rid);
-  const coSel=document.getElementById('co-'+rid);
-  const ci=parseInt(ciSel.value)||0;
-  const co=parseInt(coSel.value)||0;
-  // disable co options <= ci
-  [...coSel.options].forEach(opt=>{
-    const v=parseInt(opt.value)||0;
-    opt.disabled = v>0 && v<=ci;
-  });
-  if(co && co<=ci) coSel.value='';
-  const el=document.getElementById('nt-'+rid);
-  const nights=ci&&co&&co>ci?co-ci:0;
-  el.textContent=nights?'→ '+nights+' night'+(nights>1?'s':''):'';
-  updateSummary();
-}
+        <div class="fcc">
+          <p class="fct">Connect</p>
+          <a href="contact.html">Contact</a>
+          <a href="https://www.instagram.com/meetmeconnect/" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.linkedin.com/company/meetmeconnect/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="#">TikTok</a>
+        </div>
+      </div>
 
-function getRoomCards(){
-  return [...document.querySelectorAll('.room-card')].map(card=>{
-    const rid=card.id.replace('rc-','');
-    const type=document.getElementById('rs-'+rid)?.value||'';
-    const ci=parseInt(document.getElementById('ci-'+rid)?.value)||0;
-    const co=parseInt(document.getElementById('co-'+rid)?.value)||0;
-    const nights=ci&&co&&co>ci?co-ci:0;
-    return{rid,type,ci,co,nights};
-  });
-}
+      <div class="fb2">
+        <p>© 2026 Meet Me at the Hotel · 5th Anniversary Edition · Amsterdam · October 2026</p>
+        <p><a href="#">Privacy</a> · <a href="#">Cookies</a> · <a href="#">Terms</a></p>
+      </div>
+    </div>
+  </footer>
 
-function updateSummary(){
-  const cards=getRoomCards().filter(r=>r.type);
-  const summary=document.getElementById('booking-summary');
-  if(!cards.length){summary.style.display='none';return;}
-  summary.style.display='block';
-  let html='',total=0;
-  cards.forEach((r,i)=>{
-    const price=ROOM_PRICES[r.type]||0;
-    const sub=r.nights?price*r.nights:0;
-    total+=sub;
-    const ciLabel=r.ci?r.ci.split('-').slice(1).reverse().join(' Oct '):'?';
-    const coLabel=r.co?r.co.split('-').slice(1).reverse().join(' Oct '):'?';
-    const dates=r.ci&&r.co?('Oct '+r.ci+' → Oct '+r.co+' · '+r.nights+'n'):'Dates pending';
-    html+='<div style="padding:6px 0;border-bottom:1px solid var(--blkb)">Room '+(i+1)+': '+r.type+'<br><span style="color:rgba(245,245,240,.4)">'+dates+(sub?' · €'+sub.toLocaleString('nl-NL'):'')+'</span></div>';
-  });
-  document.getElementById('summary-rooms-text').innerHTML=html;
-  document.getElementById('summary-total').textContent=total?'Est. €'+total.toLocaleString('nl-NL')+' total':'';
-  const detail=cards.map(r=>r.type+' (Oct '+r.ci+' → Oct '+r.co+', '+r.nights+' nights)').join(' | ');
-  document.getElementById('inp-rooms-detail').value=detail;
-}
+  <script>
+    const ROOM_PRICES = {
+      'Superior Twin': 285,
+      'Superior Double': 285,
+      'Superior City View': 300,
+      'Executive Room': 325,
+      'Junior Suite': 365,
+      'King Suite (Waitlist)': 435
+    };
 
-document.addEventListener('DOMContentLoaded',()=>{ addRoom('Executive Room'); });
+    const ROOM_OPTS = [
+      { v:'Superior Twin', l:'Superior Room — Twin Bed · €285/night' },
+      { v:'Superior Double', l:'Superior Room — Double Bed · €285/night' },
+      { v:'Superior City View', l:'Superior Room — City View · €300/night' },
+      { v:'Executive Room', l:'Executive Room · €325/night' },
+      { v:'Junior Suite', l:'Junior Suite · €365/night' },
+      { v:'King Suite (Waitlist)', l:'King Suite — Waitlist · €435/night' }
+    ];
 
-// Carousel
-const carouselState={};
-function carouselInit(id){if(!carouselState[id])carouselState[id]={index:0}}
-function carouselMove(id,dir){carouselInit(id);const el=document.getElementById(id);const track=el.querySelector('.carousel-track');const slides=track.querySelectorAll('.carousel-slide');const total=slides.length;carouselState[id].index=(carouselState[id].index+dir+total)%total;carouselUpdate(id)}
-function carouselGo(id,idx){carouselInit(id);carouselState[id].index=idx;carouselUpdate(id)}
-function carouselUpdate(id){const el=document.getElementById(id);const track=el.querySelector('.carousel-track');const idx=carouselState[id].index;track.style.transform='translateX(-'+idx*100+'%)';const dotsEl=document.getElementById('d-'+id.replace('c-',''));if(dotsEl){dotsEl.querySelectorAll('.carousel-dot').forEach((d,i)=>d.classList.toggle('active',i===idx))}}
-document.querySelectorAll('.carousel').forEach(el=>{let startX=0;el.addEventListener('touchstart',e=>{startX=e.touches[0].clientX},{passive:true});el.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-startX;if(Math.abs(dx)>40)carouselMove(el.id,dx<0?1:-1)},{passive:true})});
+    let roomCount = 0;
 
-// Scroll reveal
-const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target)}}),{threshold:.08});
-document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+    function toggleMobileMenu() {
+      const nl = document.getElementById('nl');
+      const ov = document.getElementById('nav-overlay');
+      const nav = document.getElementById('nav');
 
-// Form submit
-async function submitFS(f,e){
-  e.preventDefault();
-  const cards=getRoomCards().filter(r=>r.type);
-  if(!cards.length){alert('Please select at least one room.');return;}
-  const incomplete=cards.filter(r=>!r.ci||!r.co||r.nights<=0);
-  if(incomplete.length){alert('Please select check-in and check-out dates for all rooms.');return;}
-  const btn=f.querySelector('button[type=submit]');
-  btn.textContent='SENDING...';btn.disabled=true;
-  try{
-    const res=await fetch(f.dataset.formspree,{method:'POST',body:new FormData(f),headers:{Accept:'application/json'}});
-    if(res.ok
+      nl.classList.toggle('open');
+      ov.style.display = nl.classList.contains('open') ? 'block' : 'none';
+      nav.classList.toggle('menu-open', nl.classList.contains('open'));
+
+      if (!nl.classList.contains('open')) {
+        document.querySelectorAll('.nav-drop').forEach(drop => drop.classList.remove('open'));
+      }
+    }
+
+    function toggleNavDrop(id) {
+      if (window.innerWidth > 900) return;
+
+      const target = document.getElementById(id);
+      document.querySelectorAll('.nav-drop').forEach(drop => {
+        if (drop !== target) drop.classList.remove('open');
+      });
+      target.classList.toggle('open');
+    }
+
+    document.getElementById('nav-overlay').addEventListener('click', function () {
+      const nl = document.getElementById('nl');
+      const nav = document.getElementById('nav');
+      nl.classList.remove('open');
+      this.style.display = 'none';
+      nav.classList.remove('menu-open');
+      document.querySelectorAll('.nav-drop').forEach(drop => drop.classList.remove('open'));
+    });
+
+    function addRoom(preselect = '') {
+      roomCount++;
+      const rid = roomCount;
+      const div = document.createElement('div');
+      div.className = 'room-card';
+      div.id = 'rc-' + rid;
+
+      const opts = ROOM_OPTS.map(o =>
+        '<option value="' + o.v + '"' + (preselect === o.v ? ' selected' : '') + '>' + o.l + '</option>'
+      ).join('');
+
+      const removeBtn = rid > 1
+        ? '<button type="button" class="room-remove" onclick="removeRoom(' + rid + ')">✕ Remove</button>'
+        : '<span></span>';
+
+      div.innerHTML =
+        '<div class="room-card-header">' +
+          '<span class="room-card-num">ROOM ' + rid + '</span>' +
+          removeBtn +
+        '</div>' +
+        '<select class="room-select" id="rs-' + rid + '" onchange="updateSummary()" required>' +
+          '<option value="" disabled' + (preselect ? '' : ' selected') + '>Select room type</option>' +
+          opts +
+        '</select>' +
+        '<div class="room-date-grid">' +
+          '<div>' +
+            '<span class="room-date-lbl">Check-in</span>' +
+            '<select class="room-date-sel" id="ci-' + rid + '" onchange="onDateChange(' + rid + ')" required>' +
+              '<option value="">Day</option>' +
+              '<option value="15">15 Oct</option>' +
+              '<option value="16">16 Oct</option>' +
+              '<option value="17">17 Oct</option>' +
+              '<option value="18">18 Oct</option>' +
+              '<option value="19">19 Oct</option>' +
+              '<option value="20">20 Oct</option>' +
+              '<option value="21">21 Oct</option>' +
+              '<option value="22">22 Oct</option>' +
+              '<option value="23">23 Oct</option>' +
+              '<option value="24">24 Oct</option>' +
+              '<option value="25">25 Oct</option>' +
+              '<option value="26">26 Oct</option>' +
+              '<option value="27">27 Oct</option>' +
+              '<option value="28">28 Oct</option>' +
+              '<option value="29">29 Oct</option>' +
+              '<option value="30">30 Oct</option>' +
+            '</select>' +
+          '</div>' +
+          '<div>' +
+            '<span class="room-date-lbl">Check-out</span>' +
+            '<select class="room-date-sel" id="co-' + rid + '" onchange="onDateChange(' + rid + ')" required>' +
+              '<option value="">Day</option>' +
+              '<option value="15">15 Oct</option>' +
+              '<option value="16">16 Oct</option>' +
+              '<option value="17">17 Oct</option>' +
+              '<option value="18">18 Oct</option>' +
+              '<option value="19">19 Oct</option>' +
+              '<option value="20">20 Oct</option>' +
+              '<option value="21">21 Oct</option>' +
+              '<option value="22">22 Oct</option>' +
+              '<option value="23">23 Oct</option>' +
+              '<option value="24">24 Oct</option>' +
+              '<option value="25">25 Oct</option>' +
+              '<option value="26">26 Oct</option>' +
+              '<option value="27">27 Oct</option>' +
+              '<option value="28">28 Oct</option>' +
+              '<option value="29">29 Oct</option>' +
+              '<option value="30">30 Oct</option>' +
+            '</select>' +
+          '</div>' +
+        '</div>' +
+        '<div class="room-nights" id="nt-' + rid + '"></div>';
+
+      document.getElementById('rooms-list').appendChild(div);
+      updateSummary();
+    }
+
+    function removeRoom(rid) {
+      const el = document.getElementById('rc-' + rid);
+      if (el) el.remove();
+      updateSummary();
+    }
+
+    function onDateChange(rid) {
+      const ciSel = document.getElementById('ci-' + rid);
+      const coSel = document.getElementById('co-' + rid);
+      const ci = parseInt(ciSel.value) || 0;
+      const co = parseInt(coSel.value) || 0;
+
+      [...coSel.options].forEach(opt => {
+        const v = parseInt(opt.value) || 0;
+        opt.disabled = v > 0 && v <= ci;
+      });
+
+      if (co && co <= ci) {
+        coSel.value = '';
+      }
+
+      const nightsEl = document.getElementById('nt-' + rid);
+      const nights = ci && co && co > ci ? co - ci : 0;
+      nightsEl.textContent = nights ? '→ ' + nights + ' night' + (nights > 1 ? 's' : '') : '';
+
+      updateSummary();
+    }
+
+    function getRoomCards() {
+      return [...document.querySelectorAll('.room-card')].map(card => {
+        const rid = card.id.replace('rc-', '');
+        const type = document.getElementById('rs-' + rid)?.value || '';
+        const ci = parseInt(document.getElementById('ci-' + rid)?.value) || 0;
+        const co = parseInt(document.getElementById('co-' + rid)?.value) || 0;
+        const nights = ci && co && co > ci ? co - ci : 0;
+        return { rid, type, ci, co, nights };
+      });
+    }
+
+    function updateSummary() {
+      const cards = getRoomCards().filter(r => r.type);
+      const summary = document.getElementById('booking-summary');
+
+      if (!cards.length) {
+        summary.style.display = 'none';
+        document.getElementById('inp-rooms-detail').value = '';
+        return;
+      }
+
+      summary.style.display = 'block';
+
+      let html = '';
+      let total = 0;
+
+      cards.forEach((r, i) => {
+        const price = ROOM_PRICES[r.type] || 0;
+        const sub = r.nights ? price * r.nights : 0;
+        total += sub;
+
+        const dates = r.ci && r.co
+          ? ('Oct ' + r.ci + ' → Oct ' + r.co + ' · ' + r.nights + 'n')
+          : 'Dates pending';
+
+        html +=
+          '<div style="padding:6px 0;border-bottom:1px solid var(--blkb)">' +
+            'Room ' + (i + 1) + ': ' + r.type +
+            '<br><span style="color:rgba(245,245,240,.4)">' +
+            dates + (sub ? ' · €' + sub.toLocaleString('nl-NL') : '') +
+            '</span>' +
+          '</div>';
+      });
+
+      document.getElementById('summary-rooms-text').innerHTML = html;
+      document.getElementById('summary-total').textContent = total ? 'Est. €' + total.toLocaleString('nl-NL') + ' total' : '';
+
+      const detail = cards.map(r =>
+        r.type + ' (Oct ' + r.ci + ' → Oct ' + r.co + ', ' + r.nights + ' nights)'
+      ).join(' | ');
+
+      document.getElementById('inp-rooms-detail').value = detail;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      addRoom('Executive Room');
+
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('vis');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08 });
+
+      document.querySelectorAll('.rv').forEach(el => observer.observe(el));
+
+      document.querySelectorAll('.carousel').forEach(el => {
+        let startX = 0;
+
+        el.addEventListener('touchstart', e => {
+          startX = e.touches[0].clientX;
+        }, { passive: true });
+
+        el.addEventListener('touchend', e => {
+          const dx = e.changedTouches[0].clientX - startX;
+          if (Math.abs(dx) > 40) {
+            carouselMove(el.id, dx < 0 ? 1 : -1);
+          }
+        }, { passive: true });
+      });
+    });
+
+    /* Carousel */
+    const carouselState = {};
+
+    function carouselInit(id) {
+      if (!carouselState[id]) {
+        carouselState[id] = { index: 0 };
+      }
+    }
+
+    function carouselMove(id, dir) {
+      carouselInit(id);
+      const el = document.getElementById(id);
+      if (!el) return;
+
+      const track = el.querySelector('.carousel-track');
+      const slides = track.querySelectorAll('.carousel-slide');
+      const total = slides.length;
+
+      carouselState[id].index = (carouselState[id].index + dir + total) % total;
+      carouselUpdate(id);
+    }
+
+    function carouselGo(id, idx) {
+      carouselInit(id);
+      carouselState[id].index = idx;
+      carouselUpdate(id);
+    }
+
+    function carouselUpdate(id) {
+      const el = document.getElementById(id);
+      if (!el) return;
+
+      const track = el.querySelector('.carousel-track');
+      const idx = carouselState[id].index;
+      track.style.transform = 'translateX(-' + (idx * 100) + '%)';
+
+      const dotsEl = document.getElementById('d-' + id.replace('c-', ''));
+      if (dotsEl) {
+        dotsEl.querySelectorAll('.carousel-dot').forEach((d, i) => {
+          d.classList.toggle('active', i === idx);
+        });
+      }
+    }
+
+    /* Form submit */
+    async function submitFS(f, e) {
+      e.preventDefault();
+
+      const cards = getRoomCards().filter(r => r.type);
+      if (!cards.length) {
+        alert('Please select at least one room.');
+        return;
+      }
+
+      const incomplete = cards.filter(r => !r.ci || !r.co || r.nights <= 0);
+      if (incomplete.length) {
+        alert('Please select check-in and check-out dates for all rooms.');
+        return;
+      }
+
+      updateSummary();
+
+      const btn = f.querySelector('button[type=submit]');
+      const originalText = btn.textContent;
+      btn.textContent = 'SENDING...';
+      btn.disabled = true;
+
+      try {
+        const res = await fetch(f.dataset.formspree, {
+          method: 'POST',
+          body: new FormData(f),
+          headers: { Accept: 'application/json' }
+        });
+
+        if (res.ok) {
+          alert('Inquiry sent successfully.');
+          f.reset();
+          document.getElementById('rooms-list').innerHTML = '';
+          document.getElementById('summary-rooms-text').innerHTML = '';
+          document.getElementById('summary-total').textContent = '';
+          document.getElementById('booking-summary').style.display = 'none';
+          document.getElementById('inp-rooms-detail').value = '';
+          roomCount = 0;
+          addRoom('Executive Room');
+        } else {
+          alert('Something went wrong. Please try again.');
+        }
+      } catch (err) {
+        alert('Network error. Please try again.');
+      } finally {
+        btn.textContent = originalText;
+        btn.disabled = false;
+      }
+    }
+  </script>
+</body>
+</html>
