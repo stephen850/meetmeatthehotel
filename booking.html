@@ -439,7 +439,7 @@
 
     .btn-sold{
       background:#333;
-      color:rgba(245,245,240,.3);
+      color:rgba(245,245,240,.75);
       font-family:var(--fc);
       font-size:13px;
       font-weight:600;
@@ -456,7 +456,7 @@
       font-family:var(--fc);
       font-size:11px;
       letter-spacing:.1em;
-      color:rgba(245,245,240,.3);
+      color:rgba(245,245,240,.75);
       text-transform:uppercase
     }
 
@@ -656,7 +656,7 @@
       font-family:var(--fc);
       font-size:11px;
       letter-spacing:.1em;
-      color:rgba(245,245,240,.35);
+      color:rgba(245,245,240,.75);
       text-transform:uppercase
     }
 
@@ -676,7 +676,7 @@
     .room-remove{
       background:transparent;
       border:1px solid rgba(245,245,240,.12);
-      color:rgba(245,245,240,.3);
+      color:rgba(245,245,240,.75);
       font-size:12px;
       padding:4px 10px;
       cursor:pointer;
@@ -1236,10 +1236,10 @@
             <span class="lbl" style="margin-bottom:10px">Your Selection</span>
             <div id="summary-rooms-text" style="font-family:var(--fc);font-size:12px;letter-spacing:.08em;color:var(--wd);text-transform:uppercase;line-height:2"></div>
             <div id="summary-total" style="font-family:var(--fd);font-size:32px;color:var(--teal);margin-top:12px"></div>
-            <div style="font-family:var(--fc);font-size:10px;letter-spacing:.1em;color:rgba(245,245,240,.3);text-transform:uppercase;margin-top:6px">Excl. city tax · Subject to availability</div>
+            <div style="font-family:var(--fc);font-size:10px;letter-spacing:.1em;color:rgba(245,245,240,.75);text-transform:uppercase;margin-top:6px">Excl. city tax · Subject to availability</div>
           </div>
 
-          <p style="font-family:var(--fc);font-size:10px;letter-spacing:.12em;color:rgba(245,245,240,.3);text-transform:uppercase;margin-top:16px">B2B industry professionals only · All inquiries treated with full confidentiality</p>
+          <p style="font-family:var(--fc);font-size:10px;letter-spacing:.12em;color:rgba(245,245,240,.75);text-transform:uppercase;margin-top:16px">B2B industry professionals only · All inquiries treated with full confidentiality</p>
         </div>
 
         <form class="rv d1" id="inquiry-form" data-formspree="https://formspree.io/f/meepjqba" onsubmit="submitFS(this,event)">
@@ -1266,7 +1266,7 @@
 
           <div style="background:var(--blkc);border:1px solid var(--blkb);padding:20px">
             <span class="lbl" style="margin-bottom:4px">Room Selection</span>
-            <p style="font-family:var(--fc);font-size:10px;letter-spacing:.12em;color:rgba(245,245,240,.3);text-transform:uppercase;margin-bottom:16px">Each room can have different dates · Oct 15–30 only</p>
+            <p style="font-family:var(--fc);font-size:10px;letter-spacing:.12em;color:rgba(245,245,240,.75);text-transform:uppercase;margin-bottom:16px">Each room can have different dates · Oct 15–30 only</p>
 
             <div id="rooms-list"></div>
 
@@ -1541,7 +1541,7 @@
         html +=
           '<div style="padding:6px 0;border-bottom:1px solid var(--blkb)">' +
             'Room ' + (i + 1) + ': ' + r.type +
-            '<br><span style="color:rgba(245,245,240,.4)">' +
+            '<br><span style="color:rgba(245,245,240,.75)">' +
             dates + (sub ? ' · €' + sub.toLocaleString('nl-NL') : '') +
             '</span>' +
           '</div>';
