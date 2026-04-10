@@ -1338,7 +1338,7 @@
       'Superior Twin': 285,
       'Superior Double': 285,
       'Superior City View': 300,
-      'Executive Room': 325,
+      'Executive Queen': 369,
       'Junior Suite': 365,
       'King Suite (Waitlist)': 435
     };
@@ -1546,7 +1546,7 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-      addRoom('Executive Room');
+      addRoom('Executive Queen');
 
       const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
@@ -1658,6 +1658,17 @@
           document.getElementById('booking-summary').style.display = 'none';
           document.getElementById('inp-rooms-detail').value = '';
           roomCount = 0;
-          addRoom('Executive Room');
+          addRoom('Executive Queen');
         } else {
-          alert('S
+          alert('Something went wrong. Please try again.');
+        }
+      } catch (err) {
+        alert('Error sending inquiry.');
+      } finally {
+        btn.textContent = originalText;
+        btn.disabled = false;
+      }
+    }
+    </script>
+  </body>
+</html>
