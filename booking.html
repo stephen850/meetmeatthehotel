@@ -739,7 +739,19 @@
     .room-date-sel:focus{border-color:var(--teal)}
     .room-date-sel option{background:#161616;color:var(--wh)}
     .room-nights{font-family:var(--fc);font-size:10px;letter-spacing:.1em;color:var(--teal);text-transform:uppercase;margin-top:6px;height:16px}
-  </style>
+  
+    /* Leesbare placeholder tekst */
+    .field input::placeholder,
+    .field textarea::placeholder{color:rgba(245,245,240,.6)}
+    .field input,.field select,.field textarea{color:var(--wh)}
+
+    /* Room picker select & day selects */
+    .room-select{color:var(--wh)!important}
+    .day-select{color:var(--wh)!important}
+    .day-select option{background:var(--blkc);color:var(--wh)}
+    .room-select option{background:var(--blkc);color:var(--wh)}
+
+    </style>
 </head>
 <body>
 
