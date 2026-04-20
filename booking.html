@@ -858,7 +858,7 @@
               <div class="room-price">€329</div>
               <div class="room-per">per night</div>
             </div>
-            <a href="#inquiry" class="btn bo" style="display:block;">Inquire →</a>
+            <a href="javascript:void(0)" onclick="selectAndScroll('Superior Twin')" class="btn bo" style="display:block;">Inquire &rarr;</a>
           </div>
         </div>
 
@@ -891,7 +891,7 @@
               <div class="room-price">€329</div>
               <div class="room-per">per night</div>
             </div>
-            <a href="#inquiry" class="btn bo" style="display:block;">Inquire →</a>
+            <a href="javascript:void(0)" onclick="selectAndScroll('Superior Double')" class="btn bo" style="display:block;">Inquire &rarr;</a>
           </div>
         </div>
 
@@ -921,7 +921,7 @@
               <div class="room-price">€344</div>
               <div class="room-per">per night</div>
             </div>
-            <a href="#inquiry" class="btn bo" style="display:block;">Inquire →</a>
+            <a href="javascript:void(0)" onclick="selectAndScroll('Superior City View')" class="btn bo" style="display:block;">Inquire &rarr;</a>
           </div>
         </div>
 
@@ -959,7 +959,7 @@
               <div class="room-price">€369</div>
               <div class="room-per">per night</div>
             </div>
-            <a href="#inquiry" class="btn bp" style="display:block;">Inquire →</a>
+            <a href="javascript:void(0)" onclick="selectAndScroll('Executive Queen')" class="btn bp" style="display:block;">Inquire &rarr;</a>
           </div>
         </div>
 
@@ -994,7 +994,7 @@
               <div class="room-price">€409</div>
               <div class="room-per">per night</div>
             </div>
-            <a href="#inquiry" class="btn bo" style="display:block;">Inquire →</a>
+            <a href="javascript:void(0)" onclick="selectAndScroll('Junior Suite')" class="btn bo" style="display:block;">Inquire &rarr;</a>
           </div>
         </div>
 
@@ -1317,6 +1317,15 @@
       { v:'Junior Suite', l:'Junior Suite · €409/night' },
       { v:'King Suite (Waitlist)', l:'King Suite — Waitlist · €479/night' }
     ];
+
+    function selectAndScroll(roomType) {
+      var sel = document.getElementById('rs-1');
+      if (sel) {
+        sel.value = roomType;
+      }
+      updateSummary();
+      document.getElementById('inquiry').scrollIntoView({ behavior: 'smooth' });
+    }
 
     let roomCount = 0;
 
