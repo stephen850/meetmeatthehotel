@@ -753,8 +753,34 @@
     .field textarea::placeholder{color:rgba(245,245,240,.6)}
     .field input,.field select,.field textarea{color:var(--wh)}
 
+    /* Custom room type dropdown */
+    .cdd{position:relative;margin-bottom:8px}
+    .cdd-trigger{
+      background:#161616;border:1px solid #222;color:#F5F5F0;
+      font-family:var(--fc);font-size:14px;font-weight:500;letter-spacing:.06em;
+      padding:12px 40px 12px 14px;width:100%;text-transform:uppercase;
+      cursor:pointer;box-sizing:border-box;height:44px;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7'%3E%3Cpath d='M0 0l6 7 6-7z' fill='%234DA8A0'/%3E%3C/svg%3E");
+      background-repeat:no-repeat;background-position:right 14px center;
+      transition:border-color .3s;user-select:none
+    }
+    .cdd-trigger:hover,.cdd.open .cdd-trigger{border-color:var(--teal)}
+    .cdd-menu{
+      display:none;position:absolute;left:0;right:0;top:100%;z-index:100;
+      background:#1a1a1a;border:1px solid #333;border-top:none;
+      max-height:280px;overflow-y:auto
+    }
+    .cdd.open .cdd-menu{display:block}
+    .cdd-item{
+      padding:12px 14px;color:#F5F5F0;font-family:var(--fc);
+      font-size:14px;font-weight:500;letter-spacing:.04em;
+      text-transform:uppercase;cursor:pointer;transition:background .15s
+    }
+    .cdd-item:hover{background:#2a2a2a}
+    .cdd-item.selected{background:var(--teal);color:#0A0A0A}
+    .cdd-placeholder{color:rgba(245,245,240,.5)}
+
     /* Room picker select & day selects */
-    .room-select{color:#F5F5F0!important;background-color:#161616!important;font-size:13px!important}
     .day-select{color:#F5F5F0!important;background-color:#161616!important}
     .day-select option{background:#161616;color:#F5F5F0}
     .room-select option{background:#161616;color:#F5F5F0}
@@ -1327,9 +1353,17 @@
     ];
 
     function selectAndScroll(roomType) {
-      var sel = document.getElementById('rs-1');
-      if (sel) {
-        sel.value = roomType;
+      var hidden = document.getElementById('rs-1');
+      if (hidden) {
+        hidden.value = roomType;
+      }
+      var cdd = document.getElementById('cdd-1');
+      if (cdd) {
+        var opt = ROOM_OPTS.find(function(o) { return o.v === roomType; });
+        if (opt) cdd.querySelector('.cdd-trigger').innerHTML = opt.l;
+        cdd.querySelectorAll('.cdd-item').forEach(function(i) {
+          i.classList.toggle('selected', i.getAttribute('data-value') === roomType);
+        });
       }
       updateSummary();
       document.getElementById('inquiry').scrollIntoView({ behavior: 'smooth' });
@@ -1377,8 +1411,9 @@
       div.className = 'room-card';
       div.id = 'rc-' + rid;
 
-      const opts = ROOM_OPTS.map(o =>
-        '<option value="' + o.v + '"' + (preselect === o.v ? ' selected' : '') + '>' + o.l + '</option>'
+      const preLabel = preselect ? ROOM_OPTS.find(o => o.v === preselect)?.l || 'Select room type' : '';
+      const items = ROOM_OPTS.map(o =>
+        '<div class="cdd-item' + (preselect === o.v ? ' selected' : '') + '" data-value="' + o.v + '">' + o.l + '</div>'
       ).join('');
 
       const removeBtn = rid > 1
@@ -1390,10 +1425,13 @@
           '<span class="room-card-num">ROOM ' + rid + '</span>' +
           removeBtn +
         '</div>' +
-        '<select class="room-select" id="rs-' + rid + '" onchange="updateSummary()" required>' +
-          '<option value="" disabled' + (preselect ? '' : ' selected') + '>Select room type</option>' +
-          opts +
-        '</select>' +
+        '<input type="hidden" id="rs-' + rid + '" value="' + (preselect || '') + '">' +
+        '<div class="cdd" id="cdd-' + rid + '">' +
+          '<div class="cdd-trigger"' + (!preselect ? ' class="cdd-placeholder"' : '') + '>' +
+            (preselect ? preLabel : '<span class="cdd-placeholder">Select room type</span>') +
+          '</div>' +
+          '<div class="cdd-menu">' + items + '</div>' +
+        '</div>' +
         '<div class="room-date-grid">' +
           '<div>' +
             '<span class="room-date-lbl">Check-in</span>' +
@@ -1530,6 +1568,42 @@
 
     document.addEventListener('DOMContentLoaded', () => {
       addRoom('Executive Queen');
+
+      // Custom dropdown logic
+      document.addEventListener('click', function(e) {
+        // Click on trigger — toggle menu
+        var trigger = e.target.closest('.cdd-trigger');
+        if (trigger) {
+          var cdd = trigger.closest('.cdd');
+          // Close all other dropdowns first
+          document.querySelectorAll('.cdd.open').forEach(function(d) {
+            if (d !== cdd) d.classList.remove('open');
+          });
+          cdd.classList.toggle('open');
+          e.stopPropagation();
+          return;
+        }
+        // Click on item — select it
+        var item = e.target.closest('.cdd-item');
+        if (item) {
+          var cdd = item.closest('.cdd');
+          var val = item.getAttribute('data-value');
+          var label = item.textContent;
+          // Update hidden input
+          var id = cdd.id.replace('cdd-', 'rs-');
+          document.getElementById(id).value = val;
+          // Update trigger text
+          cdd.querySelector('.cdd-trigger').innerHTML = label;
+          // Update selected state
+          cdd.querySelectorAll('.cdd-item').forEach(function(i) { i.classList.remove('selected'); });
+          item.classList.add('selected');
+          cdd.classList.remove('open');
+          updateSummary();
+          return;
+        }
+        // Click outside — close all
+        document.querySelectorAll('.cdd.open').forEach(function(d) { d.classList.remove('open'); });
+      });
 
       const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
