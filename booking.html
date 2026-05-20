@@ -589,26 +589,27 @@
 
     .field label{
       font-family:var(--fc);
-      font-size:10px;
-      font-weight:600;
+      font-size:11px;
+      font-weight:700;
       letter-spacing:.22em;
       color:var(--teal);
       text-transform:uppercase
     }
 
     .field input,.field select,.field textarea{
-      background:var(--blkc);
-      border:1px solid var(--blkb);
-      color:var(--wh);
+      background:#111;
+      border:1px solid #3a3a3a;
+      color:#F5F5F0;
       font-family:var(--fb);
-      font-size:14px;
-      padding:13px 16px;
+      font-size:15px;
+      padding:14px 16px;
       transition:border-color var(--tr);
       width:100%;
-      outline:none
+      outline:none;
+      border-radius:0
     }
 
-    .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--teal)}
+    .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--teal);box-shadow:0 0 0 1px rgba(77,168,160,.25)}
     .field select option{background:var(--blkc)}
     .field textarea{resize:vertical;min-height:100px}
 
@@ -669,9 +670,9 @@
     .d3{transition-delay:.3s}
 
     /* ROOM PICKER */
-    .room-card{background:var(--blk);border:1px solid var(--blkb);padding:16px;margin-bottom:6px}
-    .room-card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
-    .room-card-num{font-family:var(--fd);font-size:16px;color:var(--teal);letter-spacing:.05em}
+    .room-card{background:#111;border:1px solid #3a3a3a;padding:18px;margin-bottom:8px;border-radius:0}
+    .room-card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+    .room-card-num{font-family:var(--fd);font-size:17px;color:var(--teal);letter-spacing:.05em;font-weight:700}
 
     .room-remove{
       background:transparent;
@@ -725,16 +726,17 @@
     }
 
     .room-date-sel{
-      background:var(--blkc);
-      border:1px solid var(--blkb);
-      color:var(--wh);
+      background:#111;
+      border:1px solid #3a3a3a;
+      color:#F5F5F0;
       font-family:var(--fc);
-      font-size:12px;
+      font-size:13px;
+      font-weight:500;
       padding:10px 12px;
       width:100%;
       outline:none;
       transition:border-color .3s;
-      height:42px;
+      height:44px;
       box-sizing:border-box;
       cursor:pointer;
       -webkit-appearance:none;
@@ -744,27 +746,27 @@
       background-position:right 12px center
     }
 
-    .room-date-sel:focus{border-color:var(--teal)}
+    .room-date-sel:focus{border-color:var(--teal);box-shadow:0 0 0 1px rgba(77,168,160,.25)}
     .room-date-sel option{background:#161616;color:var(--wh)}
     .room-nights{font-family:var(--fc);font-size:10px;letter-spacing:.1em;color:var(--teal);text-transform:uppercase;margin-top:6px;height:16px}
   
     /* Leesbare placeholder tekst */
     .field input::placeholder,
-    .field textarea::placeholder{color:rgba(245,245,240,.6)}
-    .field input,.field select,.field textarea{color:var(--wh)}
+    .field textarea::placeholder{color:rgba(245,245,240,.45);font-size:14px}
+    .field input,.field select,.field textarea{color:#F5F5F0}
 
     /* Custom room type dropdown */
     .cdd{position:relative;margin-bottom:8px}
     .cdd-trigger{
-      background:#161616;border:1px solid #222;color:#F5F5F0;
-      font-family:var(--fc);font-size:14px;font-weight:500;letter-spacing:.06em;
+      background:#111;border:1px solid #3a3a3a;color:#F5F5F0;
+      font-family:var(--fc);font-size:14px;font-weight:600;letter-spacing:.06em;
       padding:12px 40px 12px 14px;width:100%;text-transform:uppercase;
-      cursor:pointer;box-sizing:border-box;height:44px;
+      cursor:pointer;box-sizing:border-box;height:46px;
       background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7'%3E%3Cpath d='M0 0l6 7 6-7z' fill='%234DA8A0'/%3E%3C/svg%3E");
       background-repeat:no-repeat;background-position:right 14px center;
       transition:border-color .3s;user-select:none
     }
-    .cdd-trigger:hover,.cdd.open .cdd-trigger{border-color:var(--teal)}
+    .cdd-trigger:hover,.cdd.open .cdd-trigger{border-color:var(--teal);box-shadow:0 0 0 1px rgba(77,168,160,.25)}
     .cdd-menu{
       display:none;position:absolute;left:0;right:0;top:100%;z-index:100;
       background:#1a1a1a;border:1px solid #333;border-top:none;
@@ -1252,9 +1254,9 @@
             <input type="text" name="company" placeholder="Your company" required>
           </div>
 
-          <div style="background:var(--blkc);border:1px solid var(--blkb);padding:20px">
-            <span class="lbl" style="margin-bottom:4px">Room Selection</span>
-            <p style="font-family:var(--fc);font-size:10px;letter-spacing:.12em;color:rgba(245,245,240,.75);text-transform:uppercase;margin-bottom:16px">Each room can have different dates · Oct 15–30 only</p>
+          <div style="background:#0d0d0d;border:1px solid #3a3a3a;padding:22px">
+            <span class="lbl" style="margin-bottom:4px;font-size:12px;font-weight:700">Room Selection</span>
+            <p style="font-family:var(--fc);font-size:11px;letter-spacing:.12em;color:rgba(245,245,240,.6);text-transform:uppercase;margin-bottom:18px">Each room can have different dates · Oct 15–30 only</p>
 
             <div id="rooms-list"></div>
 
