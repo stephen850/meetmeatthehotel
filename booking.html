@@ -962,8 +962,8 @@
         </div>
 
         <!-- Executive Room -->
-        <div class="room featured rv">
-          <div class="room-badge badge-popular">Most Booked</div>
+        <div class="room featured soldout rv">
+          <div class="room-badge badge-sold">Sold Out</div>
           <div class="carousel" id="c-exec">
             <div class="carousel-track">
               <div class="carousel-slide"><img src="room-executive-1.jpg" alt="Executive Room"></div>
@@ -995,12 +995,13 @@
               <div class="room-price">€369</div>
               <div class="room-per">per night</div>
             </div>
-            <a href="javascript:void(0)" onclick="selectAndScroll('Executive Queen')" class="btn bp" style="display:block;">Inquire &rarr;</a>
+            <div class="btn-sold">Sold Out — Join Waitlist ↓</div>
           </div>
         </div>
 
         <!-- Junior Suite -->
-        <div class="room rv d1">
+        <div class="room soldout rv d1">
+          <div class="room-badge badge-sold">Sold Out</div>
           <div class="carousel" id="c-junior">
             <div class="carousel-track">
               <div class="carousel-slide"><img src="room-junior-1.jpg" alt="Junior Suite"></div>
@@ -1030,7 +1031,7 @@
               <div class="room-price">€409</div>
               <div class="room-per">per night</div>
             </div>
-            <a href="javascript:void(0)" onclick="selectAndScroll('Junior Suite')" class="btn bo" style="display:block;">Inquire &rarr;</a>
+            <div class="btn-sold">Sold Out — Join Waitlist ↓</div>
           </div>
         </div>
 
@@ -1340,8 +1341,8 @@
       'Superior Twin': 329,
       'Superior Queen': 329,
       'Superior Queen with View': 344,
-      'Executive Queen': 369,
-      'Junior Suite': 409,
+      'Executive Queen (Waitlist)': 369,
+      'Junior Suite (Waitlist)': 409,
       'King Suite (Waitlist)': 479
     };
 
@@ -1349,8 +1350,8 @@
       { v:'Superior Twin', l:'Twin Room — Two Single Beds · €329/night' },
       { v:'Superior Queen', l:'Superior Queen — Queen Bed · €329/night' },
       { v:'Superior Queen with View', l:'Superior Room — Queen with View · €344/night' },
-      { v:'Executive Queen', l:'Executive Queen · €369/night' },
-      { v:'Junior Suite', l:'Junior Suite · €409/night' },
+      { v:'Executive Queen (Waitlist)', l:'Executive Queen — Waitlist · €369/night' },
+      { v:'Junior Suite (Waitlist)', l:'Junior Suite — Waitlist · €409/night' },
       { v:'King Suite (Waitlist)', l:'King Suite — Waitlist · €479/night' }
     ];
 
@@ -1569,7 +1570,7 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-      addRoom('Executive Queen');
+      addRoom('Superior Queen');
 
       // Custom dropdown logic
       document.addEventListener('click', function(e) {
@@ -1717,7 +1718,7 @@
           document.getElementById('booking-summary').style.display = 'none';
           document.getElementById('inp-rooms-detail').value = '';
           roomCount = 0;
-          addRoom('Executive Queen');
+          addRoom('Superior Queen');
         } else {
           alert('Something went wrong. Please try again.');
         }
