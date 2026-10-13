@@ -39,7 +39,7 @@ h3{font-size:clamp(22px,3vw,40px)}
 @media(max-width:900px){
 .nav img{height:48px!important;width:auto!important}
 .hb{display:flex}
-.nl{position:fixed;top:var(--nav);left:0;right:0;bottom:0;background:var(--blk);flex-direction:column;align-items:flex-start;padding:40px;gap:20px;transform:translateX(100%);transition:transform var(--t)}
+.nl{position:fixed;top:calc(var(--nav) + 44px);left:0;right:0;bottom:0;background:var(--blk);flex-direction:column;align-items:flex-start;padding:40px;gap:20px;transform:translateX(100%);transition:transform var(--t)}
 .nl.open{transform:none}
 .nl a{font-size:20px}
 }
@@ -192,6 +192,18 @@ h3{font-size:clamp(22px,3vw,40px)}
 .nav-drop.open .nav-drop-menu{display:block}
 .nav-drop-menu a{font-size:16px;padding:10px 0;border:none;letter-spacing:.1em}
 }
+
+/* PROGRAMME ANNOUNCEMENT BAR */
+.pbar{position:fixed;top:0;left:0;right:0;height:44px;z-index:1100;background:var(--teal);display:flex;align-items:center;justify-content:center;gap:18px;padding:0 20px;font-family:var(--fc);text-transform:uppercase;letter-spacing:.2em;color:var(--blk)}
+.pbar-dot{width:8px;height:8px;border-radius:50%;background:var(--blk);animation:pulse 1.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+.pbar-txt{font-size:13px;font-weight:700}
+.pbar-sub{font-size:11px;font-weight:500;opacity:.75}
+.pbar-btn{font-size:11px;font-weight:700;background:var(--blk);color:var(--wh);padding:8px 16px;white-space:nowrap;transition:background var(--t)}
+.pbar-btn:hover{background:#222}
+.nav{top:44px}
+.hero{padding-top:calc(var(--nav) + 84px)}
+@media(max-width:640px){.pbar{gap:10px;padding:0 12px}.pbar-sub{display:none}.pbar-txt{font-size:11px;letter-spacing:.12em;white-space:nowrap}.pbar-btn{font-size:10px;padding:7px 10px}}
 </style>
 </head>
 <body>
@@ -199,6 +211,7 @@ h3{font-size:clamp(22px,3vw,40px)}
 <span>We use cookies · International event — GDPR compliant · <a href="#">Cookie Policy</a></span>
 <button onclick="document.getElementById('ck').remove()">Accept</button>
 </div>
+<a href="program.html#timetable" class="pbar"><span class="pbar-dot"></span><span class="pbar-txt">The programme is online</span><span class="pbar-sub">21–24 Oct · Room Mate Aitana · Day by day</span><span class="pbar-btn">View timetable →</span></a>
 <nav class="nav">
 <a href="index.html" style="display:flex;align-items:center;">
 <img src="logo.png" alt="Meet Me at the Hotel" style="height:48px;width:auto;display:block;">
@@ -247,9 +260,8 @@ h3{font-size:clamp(22px,3vw,40px)}
 <div class="hov" style="display:none"></div>
 <div class="hgr"></div>
 <div class="hcont">
-<div class="hbadge">5th Anniversary Edition · October 2026 · Amsterdam</div>
+<div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:28px"><a href="program.html#timetable" class="hbadge" style="background:var(--teal);color:var(--blk);border-color:var(--teal);margin-bottom:0;font-weight:700">● Programme online → View timetable</a><div class="hbadge" style="margin-bottom:0">5th Anniversary Edition · October 2026 · Amsterdam</div></div>
 <h1>WHERE THE MUSIC<br><span class="teal">INDUSTRY MEETS.</span></h1>
-<p class="hsub">MeetMeAtTheHotel is the international platform where the global music industry connects with culture, technology, and creators, and where business gets done.</p>
 <div style="margin:24px 0 24px;max-width:680px;display:flex;flex-direction:column;gap:6px">
 <p style="font-family:var(--fc);font-size:15px;font-weight:600;letter-spacing:.18em;color:var(--wh);text-transform:uppercase;margin:0">Open access every day <span style="color:var(--teal)">(free with RSVP)</span> · Invite-only nights: <span style="color:var(--teal)">WeRaveYou / Bootshaus</span> &amp; <span style="color:var(--teal)">TwoFiftyK</span> <span style="color:var(--wd)">(more may be announced)</span></p>
 <p style="font-family:var(--fc);font-size:13px;font-weight:500;letter-spacing:.16em;color:var(--wd);text-transform:uppercase;margin:0">→ Hotel guests get priority access throughout</p>
@@ -272,8 +284,6 @@ h3{font-size:clamp(22px,3vw,40px)}
 <div style="font-family:var(--fc);font-size:11px;letter-spacing:.2em;color:rgba(245,245,240,.75);text-transform:uppercase">5th Anniversary Edition</div>
 <div style="width:1px;height:16px;background:var(--blkb)"></div>
 <div style="font-family:var(--fc);font-size:11px;letter-spacing:.2em;color:var(--teal);text-transform:uppercase">⚠ Limited rooms available</div>
-<div style="width:1px;height:16px;background:var(--blkb)"></div>
-<a href="program.html#timetable" style="font-family:var(--fc);font-size:11px;font-weight:600;letter-spacing:.2em;color:var(--blk);background:var(--teal);padding:6px 12px;text-transform:uppercase">● Programme online → View timetable</a>
 </div>
 </div>
 <div class="hscr">
