@@ -183,7 +183,7 @@ form{display:flex;flex-direction:column;gap:16px}
     <div class="nav-drop" id="nav-drop-connect">
       <button class="nav-drop-btn" onclick="toggleNavDropConnect()">Connect</button>
       <div class="nav-drop-menu">
-        <a href="industry-hub.html"><span class="drop-label">Free</span> Industry Hub</a>
+        <a href="industry-hub.html"><span class="drop-label">Request</span> Industry Hub</a>
         <a href="industry-exchange.html">Industry Exchange</a>
       </div>
     </div>
@@ -213,13 +213,13 @@ form{display:flex;flex-direction:column;gap:16px}
       </h1>
       <p class="ph-lead">The open networking ecosystem of the MMATH platform. Where professionals from across the global music industry meet naturally.</p>
       <div style="margin-top:28px;display:flex;flex-direction:column;gap:8px">
-<p style="font-family:var(--fc);font-size:15px;font-weight:600;letter-spacing:.18em;color:var(--wh);text-transform:uppercase;margin:0">Open access every day <span style="color:var(--teal)">(free with RSVP, after approval)</span> · Strictly by invitation &amp; only for industry professionals</p>
-<p style="font-family:var(--fc);font-size:13px;font-weight:500;letter-spacing:.16em;color:var(--wd);text-transform:uppercase;margin:0">→ Hotel guests get priority access throughout</p>
+<p style="font-family:var(--fc);font-size:15px;font-weight:600;letter-spacing:.18em;color:var(--wh);text-transform:uppercase;margin:0">Participation subject to individual confirmation <span style="color:var(--teal)">· Industry professionals only</span></p>
+<p style="font-family:var(--fc);font-size:13px;font-weight:500;letter-spacing:.16em;color:var(--wd);text-transform:uppercase;margin:0">→ Hub registration is separate from access to individual partner sessions</p>
 </div>
-      <a href="#register" class="btn bp" style="margin-top:28px;display:inline-block">RSVP for Industry Hub Access →</a>
+      <a href="#register" class="btn bp" style="margin-top:28px;display:inline-block">Request an Invitation →</a>
     </div>
     <div class="ph-stats rv d1">
-      <div class="ph-stat"><div class="ph-stat-n">1,500+</div><div class="ph-stat-l">Guests / Day</div></div>
+      <div class="ph-stat"><div class="ph-stat-n">1,500+</div><div class="ph-stat-l">Guests / day · previous editions</div><!-- bevestiging nodig van Stephen/Björn: 1,500+ is dagbezoek over eerdere edities, niet gelijktijdige bezetting en geen vergunde capaciteit; bron nodig --></div>
       <div class="ph-stat"><div class="ph-stat-n">45+</div><div class="ph-stat-l">Nationalities</div></div>
       <div class="ph-stat"><div class="ph-stat-n">5</div><div class="ph-stat-l">Years · 5th Edition</div></div>
       <div class="ph-stat"><div class="ph-stat-n">100%</div><div class="ph-stat-l">B2B Professionals</div></div>
@@ -239,7 +239,7 @@ form{display:flex;flex-direction:column;gap:16px}
         <span class="lbl">The Open Networking Floor</span>
         <p>The Industry Hub is the open networking environment at the heart of MMATH. It's where professionals from across the global music industry connect naturally — over coffee, in the lounge, at the bar, in a hotel corridor.</p>
         <p>Informal meetings, introductions between artists and promoters, conversations between brands and creators. No agenda. No badge-swapping. Just the right people in the right place.</p>
-        <p>The Hub is the open layer of the MMATH ecosystem — accessible to all registered guests throughout the entire week.</p>
+        <p>The Hub is the networking layer of the MMATH ecosystem, available to confirmed registrants throughout the week. Individual partner sessions and evening activities carry their own access conditions.</p>
       </div>
     </div>
   </div>
@@ -325,13 +325,14 @@ form{display:flex;flex-direction:column;gap:16px}
     <h2 class="rv">Start your<br><span class="teal">October 2026 here.</span></h2>
     <div class="reg-grid">
       <div class="rv">
-        <p>RSVP to secure your access to the Industry Hub at MMATH October 2026. The Hub is open to all registered industry professionals throughout the week — no matching, no application required.</p>
-        <p>Open access every day, free with RSVP and subject to approval. Strictly by invitation and only for industry professionals. Hotel guests are automatically included and get priority access throughout.</p>
+        <p>Submit a registration request for the Industry Hub at MMATH October 2026. Every request is reviewed individually by the MMATH team; participation is for industry professionals only and is confirmed per person.</p>
+        <p>Hub registration covers the daytime networking floor. Partner sessions, showcases and evening programming are separate: some require a request with review, others a personal invitation. Check the conditions per session on the <a href="program.html#timetable" style="color:var(--teal)">programme page</a>.</p>
+        <p>Hotel guests are registered for the Hub as part of their booking and still receive a separate confirmation. A hotel booking does not by itself grant access to individual partner sessions.</p>
         <div class="contact-box">
           <span class="lbl">Questions?</span>
           <p style="font-family:var(--fc);font-size:13px;letter-spacing:.1em;color:var(--wd);text-transform:uppercase;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b5dcdbd3daf5d8d0d0c1d8d0d4c1c1ddd0dddac1d0d99bd6dad8">[email&#160;protected]</a></p>
         </div>
-        <p class="reg-note">B2B industry professionals only · All profiles are manually reviewed · Opens 3 months before the event</p>
+        <p class="reg-note">Registration requests are reviewed individually. Submitting a request does not confirm admission. Please check the access conditions for each session.</p>
       </div>
       <form class="rv d1" data-formspree="https://formspree.io/f/xdawjglj" onsubmit="submitFS(this,event)">
         <div class="field-row">
@@ -358,12 +359,12 @@ form{display:flex;flex-direction:column;gap:16px}
         <div class="field">
           <label>Attendance Type</label>
           <select name="attendance">
-            <option>Hotel Guest (full week access)</option>
+            <option>Hotel Guest</option>
             <option>Not booked yet</option>
           </select>
         </div>
         <div class="field"><label>Message (optional)</label><textarea name="message" placeholder="Anything you'd like us to know about your participation at MMATH October 2026..."></textarea></div>
-        <button type="submit" class="btn bp" style="width:100%;margin-top:8px;">RSVP for Industry Hub Access →</button>
+        <button type="submit" class="btn bp" style="width:100%;margin-top:8px;">Submit registration request →</button>
       </form>
     </div>
   </div>
